@@ -284,6 +284,26 @@ function bafg_metabox_callback($post){
                 <p><?php echo esc_html__('Set a custom label for the title "After".','bafg'); ?></p>
             </td>
         </tr>
+        
+        <?php ob_start();?>
+        <tr>
+            <td class="bafg-option-label"><label for="bafg_label_outside1"><?php echo esc_html__('Show Label Outside Of Image','bafg'); ?>
+                <div class="bafg-tooltip"><span>?</span>
+                    <div class="bafg-tooltip-info">Pro feature!</div>
+                </div></label>
+            </td>
+            <td class="bafg-option-content">
+                <ul>
+                    <li><input type="radio" name="bafg_label_outside" id="bafg_label_outside1" value="true"> <label for="bafg_label_outside1">Yes</label></li>
+                    <li><input type="radio" name="bafg_label_outside" id="bafg_label_outside2" value="false" checked="checked"> <label for="bafg_label_outside2">No</label></li>
+                </ul>
+            </td>
+        </tr>
+        <?php 
+            $show_label_outside_html = ob_get_clean();
+            echo apply_filters( 'bafg_show_label_outside', $show_label_outside_html, $post );
+        ?>
+
         <?php
         ob_start();
         ?>
@@ -401,6 +421,20 @@ function bafg_metabox_callback($post){
             ?>
             <td class="bafg-option-content"><input id="bafg_after_label_color" class="bafg-color-field" type="text" name="bafg_after_label_color" value="<?php echo esc_attr($bafg_after_label_color); ?>" /></td>
         </tr>
+        
+        <?php
+        ob_start();
+        ?>
+        <tr>
+            <td class="bafg-option-label"><label for="bafg_handle_color"><?php echo esc_html__('Slider Handle Color','bafg'); ?><div class="bafg-tooltip"><span>?</span><div class="bafg-tooltip-info">Pro feature!</div>
+                </div></label>
+            </td>
+            <td class="bafg-option-content"><input id="bafg_handle_color" class="bafg-color-field" type="text" name="bafg_handle_color" value="" /></td>
+        </tr>
+        <?php 
+        $bafg_handle_color = ob_get_clean();
+        echo apply_filters( 'bafg_handle_color', $bafg_handle_color, $post );
+        ?>
         
         <?php
         ob_start();
