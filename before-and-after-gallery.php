@@ -91,13 +91,6 @@ class BAFG_Before_After_Gallery {
         wp_enqueue_script( 'bafg_custom_js', plugin_dir_url( __FILE__ ) . 'assets/js/bafg-custom-js.js', array( 'jquery' ), null, true );
     }
 
-    //Enqueue script in admin area
-    public function bafg_admin_enqueue_scripts() {
-        wp_enqueue_script( 'custom_js', plugin_dir_url( __FILE__ ) . 'assets/js/bafg-script.js', array( 'jquery' ), null, true );
-
-        wp_enqueue_style( 'bafg_admin_style', plugin_dir_url( __FILE__ ) . 'assets/css/bafg-admin-style.css' );
-    }
-
     //register post type
     public function bafg_image_before_after_foucs_posttype() {
         register_post_type( 'bafg',

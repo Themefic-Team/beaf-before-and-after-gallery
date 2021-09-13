@@ -435,6 +435,24 @@ function bafg_metabox_callback($post){
         $bafg_handle_color = ob_get_clean();
         echo apply_filters( 'bafg_handle_color', $bafg_handle_color, $post );
         ?>
+
+        <?php
+        ob_start();
+        ?>
+        <tr>
+            <td class="bafg-option-label"><label for="bafg_overlay_color"><?php echo esc_html__('Slider Overlay Color','bafg'); ?><div class="bafg-tooltip"><span>?</span><div class="bafg-tooltip-info">Pro feature!</div>
+                </div></label>
+            </td>
+            <td class="bafg-option-content">
+                <input id="bafg_overlay_color" class="bafg-color-field" type="text" name="bafg_overlay_color" value="" />
+                <br>
+                <label for="bafg_overlay_opacity"><input style="width:100px" type="text" id="bafg_overlay_opacity" name="bafg_overlay_opacity" placeholder="100%"> <?php echo esc_html( "Opacity","bafg" ) ?></label>
+            </td>
+        </tr>
+        <?php 
+        $bafg_overlay_color = ob_get_clean();
+        echo apply_filters( 'bafg_overlay_color', $bafg_overlay_color, $post );
+        ?>
         
         <?php
         ob_start();
@@ -462,7 +480,7 @@ function bafg_metabox_callback($post){
         ?>
         <tr>
             <td class="bafg-option-label"><label for="bafg_slider_alignment"><?php echo esc_html__('Alignment','bafg'); ?><div class="bafg-tooltip"><span>?</span><div class="bafg-tooltip-info">Pro feature!</div>
-                    </div></label>
+            </div></label>
             </td>
             <td class="bafg-option-content">
                 <select name="bafg_slider_alignment" id="bafg_slider_alignment">
