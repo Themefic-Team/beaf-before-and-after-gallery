@@ -12,8 +12,7 @@ add_action( 'admin_enqueue_scripts', 'bafg_admin_enqueue_scripts' );
 
 //Enqueue script in admin area
 function bafg_admin_enqueue_scripts(){
-    wp_enqueue_script( 'custom_js', plugins_url( '../assets/js/bafg-script.js', __FILE__ ), array('jquery','wp-color-picker'), null, true );
-
+    wp_enqueue_script( 'custom_js', plugins_url( '../assets/js/bafg-script.js', __FILE__ ), array('jquery','wp-color-picker','wp-color-picker-alpha'), null, true );
     wp_enqueue_style('bafg_admin_style', plugins_url( '../assets/css/bafg-admin-style.css', __FILE__ ));
 }
 
