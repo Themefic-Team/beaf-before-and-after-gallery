@@ -24,7 +24,7 @@ class BAFG_Before_After_Gallery {
         /*
         * Enqueue css and js for BAFG
         */
-        add_action( 'wp_enqueue_scripts', array($this, 'bafg_image_before_after_foucs_scripts') );
+        add_action( 'wp_enqueue_scripts', array($this, 'bafg_image_before_after_foucs_scripts'), 999 );
         add_action( 'admin_enqueue_scripts', array($this, 'bafg_image_before_after_foucs_scripts') );
         
         /*
@@ -213,9 +213,11 @@ class BAFG_Before_After_Gallery {
 		$skip_lazy_load = get_post_meta( $id, 'skip_lazy_load', true);
 		
 		if( $skip_lazy_load == 'yes' ) {
-			$skip_lazy_load = 'skip-lazy';
+			$skip_lazy = 'skip-lazy';
+			$data_skip_lazy = 'data-skip-lazy';
 		}else {
-			$skip_lazy_load = '';
+			$skip_lazy = '';
+			$data_skip_lazy = '';
 		}
 		
 		if(get_post_status($id) == 'publish' ) :
@@ -224,8 +226,8 @@ class BAFG_Before_After_Gallery {
 <?php do_action('bafg_before_slider', $id); ?>
 
 <div class="bafg-twentytwenty-container <?php echo esc_attr('slider-'.$id.''); ?> <?php if(get_post_meta($id, 'bafg_custom_color', true) == 'yes') echo 'bafg-custom-color'; ?>" bafg-orientation="<?php echo esc_attr($orientation); ?>" bafg-default-offset="<?php echo esc_attr($offset); ?>" bafg-before-label="<?php echo esc_attr($before_label); ?>" bafg-after-label="<?php echo esc_attr($after_label); ?>" bafg-overlay="<?php echo esc_attr($overlay); ?>" bafg-move-slider-on-hover="<?php echo esc_attr($move_slider_on_hover); ?>" bafg-click-to-move="<?php echo esc_attr($click_to_move); ?>">
-    <img class="<?php echo esc_attr( $skip_lazy_load ); ?>" src="<?php echo esc_url($b_image); ?>" alt="Before Image">
-    <img class="<?php echo esc_attr( $skip_lazy_load ); ?>" src="<?php echo esc_url($a_image); ?>" alt="After Image">
+    <img class="<?php echo esc_attr( $skip_lazy ); ?>" <?php echo esc_attr( $data_skip_lazy ); ?> src="<?php echo esc_url($b_image); ?>" alt="Before Image">
+    <img class="<?php echo esc_attr( $skip_lazy ); ?>" <?php echo esc_attr( $data_skip_lazy ); ?> src="<?php echo esc_url($a_image); ?>" alt="After Image">
 </div>
 
 <?php do_action('bafg_after_slider', $id); ?>
