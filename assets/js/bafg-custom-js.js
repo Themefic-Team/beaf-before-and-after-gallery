@@ -41,6 +41,15 @@
         jQuery(".bafg-twentytwenty-container").each(function () {
             var beforeImageW = jQuery(this).find('img.twentytwenty-before').width();
             jQuery(this).css( 'max-width', beforeImageW + 'px' );
+
+            var bafgLabelOutside = jQuery(this).data('label_outside');
+            if(bafgLabelOutside == true){
+                jQuery(this).css('margin', 'auto ' + 80 + 'px');
+            }else{
+                jQuery('.twentytwenty-overlay>.twentytwenty-before-label').css('display','block');
+                jQuery('.twentytwenty-overlay>.twentytwenty-after-label').css('display','block');
+            }
+            
         });
         
         jQuery(window).trigger("resize.twentytwenty");

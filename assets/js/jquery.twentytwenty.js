@@ -24,6 +24,18 @@
       if(!options.no_overlay) {
         container.append("<div class='twentytwenty-overlay'></div>");
         var overlay = container.find(".twentytwenty-overlay");
+
+        /* Prepend Overlay Label outside of image */
+        var labelOutside = $('.bafg-twentytwenty-container').data('label_outside');
+        if(labelOutside == true ){
+          var bafgWrapper = $(".twentytwenty-wrapper");
+          bafgWrapper.wrap("<div class='bafg-outside-label-wrapper twentytwenty-" + sliderOrientation + "'></div>");
+          var outsideLabel = $(".bafg-outside-label-wrapper");
+          outsideLabel.prepend("<div class='twentytwenty-after-label' data-content='"+options.after_label+"'></div>");
+          outsideLabel.prepend("<div class='twentytwenty-before-label' data-content='"+options.before_label+"'></div>");
+        }
+        /* Prepend Overlay Label outside of image end */
+
         overlay.append("<div class='twentytwenty-before-label' data-content='"+options.before_label+"'></div>");
         overlay.append("<div class='twentytwenty-after-label' data-content='"+options.after_label+"'></div>");
       }

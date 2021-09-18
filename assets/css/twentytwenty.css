@@ -282,3 +282,27 @@
 	bottom: 50%;
 	margin-bottom: -17px;
 }
+
+
+/*Test Css*/
+.bafg-outside-label-wrapper {
+    position: relative;
+}
+.bafg-outside-label-wrapper>.twentytwenty-before-label,.bafg-outside-label-wrapper>.twentytwenty-after-label {
+    opacity: 1;
+}
+.bafg-outside-label-wrapper>.twentytwenty-before-label:before {
+   left:0;
+   top: 50%;
+   z-index: 30;
+   background-color: red;
+}
+.bafg-outside-label-wrapper>.twentytwenty-after-label:before {
+   right:0;
+   top: 50%;
+   z-index: 30;
+   background-color: red;
+}
+.twentytwenty-overlay>.twentytwenty-before-label,.twentytwenty-overlay>.twentytwenty-after-label  {
+    display: none;
+}
