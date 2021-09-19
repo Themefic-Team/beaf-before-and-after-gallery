@@ -287,22 +287,21 @@
 /*Test Css*/
 .bafg-outside-label-wrapper {
     position: relative;
+	overflow: hidden;
 }
 .bafg-outside-label-wrapper>.twentytwenty-before-label,.bafg-outside-label-wrapper>.twentytwenty-after-label {
     opacity: 1;
 }
-.bafg-outside-label-wrapper>.twentytwenty-before-label:before {
-   left:0;
-   top: 50%;
-   z-index: 30;
-   background-color: red;
-}
-.bafg-outside-label-wrapper>.twentytwenty-after-label:before {
-   right:0;
-   top: 50%;
-   z-index: 30;
-   background-color: red;
-}
-.twentytwenty-overlay>.twentytwenty-before-label,.twentytwenty-overlay>.twentytwenty-after-label  {
+.bafg-outside-label-wrapper.twentytwenty-vertical .twentytwenty-overlay>.twentytwenty-before-label,.bafg-outside-label-wrapper.twentytwenty-vertical .twentytwenty-overlay .twentytwenty-after-label  {
     display: none;
+}
+.bafg-outside-label-wrapper.twentytwenty-vertical>.twentytwenty-before-label:before{
+	top:0;
+	z-index: 25;
+	width: max-content !important;
+}
+.bafg-outside-label-wrapper.twentytwenty-vertical .twentytwenty-after-label:before{
+	bottom:0;
+	z-index: 25;
+	width: max-content !important;
 }

@@ -27,7 +27,7 @@
 
         /* Prepend Overlay Label outside of image */
         var labelOutside = $('.bafg-twentytwenty-container').data('label_outside');
-        if(labelOutside == true ){
+        if(labelOutside == true && sliderOrientation == 'vertical' ){
           var bafgWrapper = $(".twentytwenty-wrapper");
           bafgWrapper.wrap("<div class='bafg-outside-label-wrapper twentytwenty-" + sliderOrientation + "'></div>");
           var outsideLabel = $(".bafg-outside-label-wrapper");

@@ -284,9 +284,9 @@ function bafg_metabox_callback($post){
                 <p><?php echo esc_html__('Set a custom label for the title "After".','bafg'); ?></p>
             </td>
         </tr>
-        
+        <!--Label Outside of Image start-->
         <?php ob_start();?>
-        <tr>
+        <tr class="bafg_option_label">
             <td class="bafg-option-label"><label for="bafg_label_outside1"><?php echo esc_html__('Show Label Outside Of Image','bafg'); ?>
                 <div class="bafg-tooltip"><span>?</span>
                     <div class="bafg-tooltip-info">Pro feature!</div>
@@ -303,6 +303,7 @@ function bafg_metabox_callback($post){
             $show_label_outside_html = ob_get_clean();
             echo apply_filters( 'bafg_show_label_outside', $show_label_outside_html, $post );
         ?>
+        <!--Label Outside of Image start-->
 
         <?php
         ob_start();

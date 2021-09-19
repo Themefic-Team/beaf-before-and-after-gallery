@@ -41,10 +41,13 @@
         jQuery(".bafg-twentytwenty-container").each(function () {
             var beforeImageW = jQuery(this).find('img.twentytwenty-before').width();
             jQuery(this).css( 'max-width', beforeImageW + 'px' );
-
+            
+            //Label OutSide
             var bafgLabelOutside = jQuery(this).data('label_outside');
-            if(bafgLabelOutside == true){
-                jQuery(this).css('margin', 'auto ' + 80 + 'px');
+            var orientation = jQuery(this).attr('bafg-orientation');
+            if(bafgLabelOutside == true && orientation == 'vertical'){
+                jQuery('.bafg-outside-label-wrapper.twentytwenty-vertical .bafg-twentytwenty-container').css('margin', 50 + 'px' + ' auto'  );
+
             }else{
                 jQuery('.twentytwenty-overlay>.twentytwenty-before-label').css('display','block');
                 jQuery('.twentytwenty-overlay>.twentytwenty-after-label').css('display','block');

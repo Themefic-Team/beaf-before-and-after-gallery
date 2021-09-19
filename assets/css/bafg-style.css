@@ -569,7 +569,7 @@
 }
 
 .twentytwenty-vertical .design-1 .handle-trnasf {
-	margin-top: -18.5px;
+	margin-top: -20px;
 }
 
 .twentytwenty-horizontal .design-1 .handle-trnasf {
@@ -578,10 +578,6 @@
 
 .twentytwenty-vertical .design-1 .twentytwenty-down-arrow {
 	transform: rotate(-45deg);
-}
-
-.twentytwenty-vertical .design-1 .twentytwenty-down-arrow {
-	/* margin-bottom: inherit !important; */
 }
 
 .twentytwenty-vertical .design-1 .twentytwenty-up-arrow {
@@ -598,7 +594,7 @@
 
 .twentytwenty-vertical .design-1 .twentytwenty-down-arrow {
 	top: 19px;
-	left: 25px;
+	left: 27px;
 }
 
 .twentytwenty-vertical .design-1 .twentytwenty-handle::before,
@@ -647,12 +643,6 @@
 	top: 19px;
 	right: 19px;
 }
-
-/*
-.elementor-widget-container .design-2 .twentytwenty-handle {
-	margin-left: -11px !important;
-}
-*/
 .elementor-widget-container .twentytwenty-right-arrow {
 	right: 50%;
 	margin-right: -17px;

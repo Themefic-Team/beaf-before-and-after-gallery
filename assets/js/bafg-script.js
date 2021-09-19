@@ -76,10 +76,25 @@ function bafg_readmore_alignment_field(){
     }
 }
 
+//label outside image condtional display
+function bafg_label_outside_conditional_display(){
+    var bafg_label_outside_option = jQuery('input:radio[name=bafg_image_styles]:checked').val();
+    if(bafg_label_outside_option == 'vertical'){
+        jQuery('.bafg_label_outside').show();
+    }else{
+        jQuery('.bafg_label_outside').hide();
+    }
+}
+
+jQuery('input:radio[name=bafg_image_styles]').on('change',function(){
+    bafg_label_outside_conditional_display();
+});
+
 jQuery(document).ready(function(){
     bafg_before_after_method_conditional_field();
     bafg_auto_slide_conditional_field();
 	bafg_readmore_alignment_field();
+    bafg_label_outside_conditional_display();
 });
 
 jQuery('input:radio[name=bafg_before_after_method]').on('change', function () {
