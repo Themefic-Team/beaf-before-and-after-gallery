@@ -240,6 +240,7 @@ function bafg_metabox_callback($post){
                     <option value=""><?php echo esc_html__('Style 5','bafg'); ?></option>
                     <option value=""><?php echo esc_html__('Style 6','bafg'); ?></option>
                     <option value=""><?php echo esc_html__('Style 7','bafg'); ?></option>
+                    <option value=""><?php echo esc_html__('Style 8','bafg'); ?></option>
                 </select>
                 <p><?php echo esc_html__('Select a style for the before and after label.','bafg'); ?></p>
             </td>
@@ -327,6 +328,36 @@ function bafg_metabox_callback($post){
         <?php
         ob_start();
         ?>
+        <tr class="bafg_on_scroll_slide">
+            <td class="bafg-option-label"><label for="bafg_on_scroll_slide">On scroll Slide <div class="bafg-tooltip"><span>?</span>
+                        <div class="bafg-tooltip-info">Pro feature!</div>
+                    </div></label></td>
+            <td class="bafg-option-content">
+                <ul>
+                    <li><input type="radio" name="bafg_on_scroll_slide" id="bafg_on_scroll_slide1" value="true"> <label for="bafg_on_scroll_slide1">Yes</label></li>
+                    <li><input type="radio" name="bafg_on_scroll_slide" id="bafg_on_scroll_slide2" value="false" checked="checked"> <label for="bafg_on_scroll_slide2">No</label></li>
+                </ul>
+                <p>The before and after image slider will slide on scroll automatically.</p>
+            </td>
+        </tr>
+        <?php
+        $bafg_on_scroll_slide_html = ob_get_clean();
+        echo apply_filters( 'bafg_on_scroll_slide', $bafg_on_scroll_slide_html, $post );
+        ?>
+        <tr class="bafg_default_offset_row">
+            <td class="bafg-option-label"><label for="bafg_default_offset"><?php echo esc_html__('Default Offset','bafg'); ?></label></td>
+            <td class="bafg-option-content">
+               <?php 
+                $bafg_default_offset = !empty(get_post_meta( $post->ID, 'bafg_default_offset', true )) ? get_post_meta( $post->ID, 'bafg_default_offset', true ) : '0.5';
+                
+                ?>
+                <input type="text" class="regular-text" name="bafg_default_offset" id="bafg_default_offset" value="<?php echo esc_attr($bafg_default_offset); ?>">
+                <p><?php echo esc_html__('How much of the before image is visible when the page loads. (e.g: 0.7)','bafg'); ?></p>
+            </td>
+        </tr>
+        <?php
+        ob_start();
+        ?>
         <tr class="bafg_slide_handle">
             <td class="bafg-option-label"><label for="bafg_slide_handle">Disable Handle <div class="bafg-tooltip"><span>?</span>
                         <div class="bafg-tooltip-info">Pro feature!</div>
@@ -379,6 +410,19 @@ function bafg_metabox_callback($post){
                     <li><input type="radio" name="bafg_no_overlay" id="bafg_no_overlay2" value="no" <?php checked( $bafg_no_overlay, 'no' ); ?>> <label for="bafg_no_overlay2"><?php echo esc_html__('No','bafg'); ?></label></li>
                 </ul>
                 <p><?php echo esc_html__('Show overlay on the before and after image.','bafg'); ?></p>
+            </td>
+        </tr>
+        <tr>
+            <td class="bafg-option-label"><label for="skip_lazy_load"><?php echo esc_html__('Skip lazy load','bafg'); ?></label></td>
+            <td class="bafg-option-content">
+                <ul>
+                   <?php 
+                    $skip_lazy_load = !empty(get_post_meta( $post->ID, 'skip_lazy_load', true )) ? get_post_meta( $post->ID, 'skip_lazy_load', true ) : 'yes';
+                    ?>
+                    <li><input type="radio" name="skip_lazy_load" id="skip_lazy_load1" value="yes" <?php checked( $skip_lazy_load, 'yes' ); ?>> <label for="skip_lazy_load1"><?php echo esc_html__('Yes','bafg'); ?></label></li>
+                    <li><input type="radio" name="skip_lazy_load" id="skip_lazy_load2" value="no" <?php checked( $skip_lazy_load, 'no' ); ?>> <label for="skip_lazy_load2"><?php echo esc_html__('No','bafg'); ?></label></li>
+                </ul>
+                <p><?php echo esc_html__('Conflicting with lazy load? Try to skip lazy load.','bafg'); ?></p>
             </td>
         </tr>
     </table>
@@ -784,6 +828,10 @@ function save_post ( $post_id ) {
     
     if( isset($_POST['bafg_slider_info_readmore_alignment']) ){
         update_post_meta( $post_id, 'bafg_slider_info_readmore_alignment', esc_attr( $_POST['bafg_slider_info_readmore_alignment'] ) );
+    }
+    
+    if( isset($_POST['skip_lazy_load']) ){
+        update_post_meta( $post_id, 'skip_lazy_load', esc_attr( $_POST['skip_lazy_load'] ) );
     }
     
     do_action( 'bafg_save_post_meta', $post_id );
