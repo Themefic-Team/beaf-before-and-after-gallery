@@ -1,7 +1,7 @@
 ;(function ($) {
 
     'use strict';
-		
+
     jQuery(".bafg-twentytwenty-container").each(function () {
 
             if (jQuery(this).attr('bafg-move-slider-on-hover') == 'no') {
@@ -32,9 +32,9 @@
                 click_to_move: clickToMove
             });
             
-    });
-	
-	jQuery(".twentytwenty-wrapper .design-1 .twentytwenty-handle").wrapInner("<div class='handle-trnasf' />");
+        });
+
+        jQuery(".twentytwenty-wrapper .design-1 .twentytwenty-handle").wrapInner("<div class='handle-trnasf' />");
         
     jQuery(window).on('load', function () {
         
