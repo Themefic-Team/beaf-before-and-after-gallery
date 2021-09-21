@@ -227,12 +227,6 @@
 .twentytwenty-vertical .design-3 .twentytwenty-up-arrow {
 	border-bottom: 6px solid #fff;
 }
-
-.twentytwenty-horizontal .design-3 .twentytwenty-before-label::before,
-	{
-	left: 0px;
-}
-
 .twentytwenty-horizontal .design-3 .twentytwenty-after-label::before {
 	right: 0px !important;
 }
