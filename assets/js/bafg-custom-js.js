@@ -48,9 +48,8 @@
             if(bafgLabelOutside == true && orientation == 'vertical'){
                 jQuery('.bafg-outside-label-wrapper.twentytwenty-vertical .bafg-twentytwenty-container').css('margin', 50 + 'px' + ' auto'  );
 
-            }else{
-                jQuery('.twentytwenty-overlay>.twentytwenty-before-label').css('display','block');
-                jQuery('.twentytwenty-overlay>.twentytwenty-after-label').css('display','block');
+                jQuery('.bafg-outside-label-wrapper.twentytwenty-vertical .twentytwenty-overlay>.twentytwenty-before-label').css('display','none');
+                jQuery('.bafg-outside-label-wrapper.twentytwenty-vertical .twentytwenty-overlay .twentytwenty-after-label').css('display','none');
             }
             
         });
