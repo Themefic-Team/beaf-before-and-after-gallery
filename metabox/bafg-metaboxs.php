@@ -489,9 +489,8 @@ function bafg_metabox_callback($post){
                 </div></label>
             </td>
             <td class="bafg-option-content">
-                <input id="bafg_overlay_color" class="bafg-color-field" type="text" name="bafg_overlay_color" value="" />
+                <input id="bafg_overlay_color" data-alpha-enabled="true" data-default-color="rgba(0, 0, 0, 0.5);" class="bafg-color-field" type="text" name="bafg_overlay_color" value="" />
                 <br>
-                <label for="bafg_overlay_opacity"><input style="width:100px" type="text" id="bafg_overlay_opacity" name="bafg_overlay_opacity" placeholder="100%"> <?php echo esc_html( "Opacity","bafg" ) ?></label>
             </td>
         </tr>
         <?php 
