@@ -160,21 +160,29 @@ add_action('admin_footer', function(){
 */
 function bafg_new_feature_notice() {
     $user_id = get_current_user_id();
-    if ( !get_user_meta( $user_id, 'bafg_new_feature_notice_dismissed', true ) ) {
-		?>
-		<div class="notice notice-success">
-           <h3><?php echo esc_html__( 'Introducing: Gallery Generator for Ultimate Before After Image Slider - BEAF', 'bafg' ); ?></h3>
-            <p>Now, you can create 2 columns, 3 columns and 4 columns Before After Gallery. <a href="<?php echo admin_url('/edit.php?post_type=bafg&page=bafg_gallery&bafg-dismissed'); ?>">Click here</a> to go to our gallery generator. <a href="https://youtu.be/Uq3qlVdD_dY" target="_blank">Check this video</a> to learn more.</p>
-            <p><a class="button" href="<?php echo admin_url('?bafg-dismissed'); ?>">Close this Notice</a></p>
-        </div>
-		<?php
+	
+	if ( class_exists( 'WooCommerce' ) && !class_exists('Before_After_Gallery_WooCommerce') ) {
+		
+		if ( !get_user_meta( $user_id, 'bafg_woo_new_feature_notice_dismissed', true ) ) {
+			?>
+			<div class="notice notice-success">
+			   <h2><?php echo esc_html__( 'It looks like you have WooCommerce plugin installed.', 'bafg' ); ?></h2>
+				<p><?php echo esc_html__( 'If you want to use before after slider on the WooCommerce product page, you can try our free plugin', 'bafg' ); ?> <a href="<?php echo admin_url('/plugin-install.php?s=ebeaf&tab=search&type=term'); ?>"> Before After for WooCommerce</a></p>
+				<p><a class="button" href="<?php echo admin_url('?bafg-woo-dismissed'); ?>">Close this Notice</a></p>
+			</div>
+			<?php
+		}
+		
 	}
 }
 add_action( 'admin_notices', 'bafg_new_feature_notice' );
 
 function bafg_new_feature_notice_dismissed() {
 	$user_id = get_current_user_id();
-    if ( isset( $_GET['bafg-dismissed'] ) )
-        add_user_meta( $user_id, 'bafg_new_feature_notice_dismissed', 'true', true );
+
+	if ( isset( $_GET['bafg-woo-dismissed'] ) ) {
+        add_user_meta( $user_id, 'bafg_woo_new_feature_notice_dismissed', 'true', true );
+	}
 }
 add_action( 'admin_init', 'bafg_new_feature_notice_dismissed' );
+
