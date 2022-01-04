@@ -174,6 +174,7 @@ function bafg_new_feature_notice() {
 		}
 		
 	}
+	
 }
 add_action( 'admin_notices', 'bafg_new_feature_notice' );
 
