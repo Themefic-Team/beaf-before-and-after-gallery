@@ -52,7 +52,7 @@ function bafg_metabox_callback($post){
         ?>
         <tr>
             <td class="bafg-option-label">
-                <p><label for="bafg_before_after_method">Before After Method</label></p>
+                <p><label for="bafg_before_after_method"><?php echo esc_html__("Before After Method","bafg-pro");?></label></p>
             </td>
             <td class="bafg-option-content">
                 <ul>
@@ -231,18 +231,21 @@ function bafg_metabox_callback($post){
             <td class="bafg-option-label"><label for="bafg_before_after_style"><?php echo esc_html__('BEAF Template Style','bafg'); ?><div class="bafg-tooltip"><span>?</span><div class="bafg-tooltip-info">Pro feature!</div>
                     </div></label>
             </td>
-            <td class="bafg-option-content">
-                <select name="bafg_before_after_style" id="bafg_before_after_style">
-                    <option value="default"><?php echo esc_html__('Default','bafg'); ?></option>
-                    <option value=""><?php echo esc_html__('Style 1','bafg'); ?></option>
-                    <option value=""><?php echo esc_html__('Style 2','bafg'); ?></option>
-                    <option value=""><?php echo esc_html__('Style 3','bafg'); ?></option>
-                    <option value=""><?php echo esc_html__('Style 4','bafg'); ?></option>
-                    <option value=""><?php echo esc_html__('Style 5','bafg'); ?></option>
-                    <option value=""><?php echo esc_html__('Style 6','bafg'); ?></option>
-                    <option value=""><?php echo esc_html__('Style 7','bafg'); ?></option>
-                    <option value=""><?php echo esc_html__('Style 8','bafg'); ?></option>
-                </select>
+            <td class="bafg_before_after_style">
+                <ul class="bafg-before-after-style">
+                    <?php 
+                    $bafg_before_after_style = trim(get_post_meta( $post->ID, 'bafg_before_after_style', true )) != '' ? get_post_meta( $post->ID, 'bafg_before_after_style', true ) : 'default';
+                    ?>
+                    <li><input type="radio" name="bafg_before_after_style" id="bafg_before_after_style_default" value="default" <?php checked( $bafg_before_after_style, 'deafult' ); ?>> <label for="bafg_before_after_style_default"><img src="<?php echo esc_url(plugin_dir_url( __FILE__ ).'../assets/image/default.png'); ?>" /></label></li>
+                    <li><input type="radio" name="bafg_before_after_style" id="bafg_before_after_style_1" value="" <?php checked( $bafg_before_after_style, '' ); ?>> <label for="bafg_before_after_style_1"><img src="<?php echo esc_url(plugin_dir_url( __FILE__ ).'../assets/image/style1.png'); ?>" /></label></li>
+                    <li><input type="radio" name="bafg_before_after_style" id="bafg_before_after_style_2" value="" <?php checked( $bafg_before_after_style, '' ); ?>> <label for="bafg_before_after_style_2"><img src="<?php echo esc_url(plugin_dir_url( __FILE__ ).'../assets/image/style2.png'); ?>" /></label></li>
+                    <li><input type="radio" name="bafg_before_after_style" id="bafg_before_after_style_3" value="" <?php checked( $bafg_before_after_style, '' ); ?>> <label for="bafg_before_after_style_3"><img src="<?php echo esc_url(plugin_dir_url( __FILE__ ).'../assets/image/style3.png'); ?>" /></label></li>
+                    <li><input type="radio" name="bafg_before_after_style" id="bafg_before_after_style_4" value="" <?php checked( $bafg_before_after_style, '' ); ?>> <label for="bafg_before_after_style_4"><img src="<?php echo esc_url(plugin_dir_url( __FILE__ ).'../assets/image/style4.png'); ?>" /></label></li>
+                    <li><input type="radio" name="bafg_before_after_style" id="bafg_before_after_style_5" value="" <?php checked( $bafg_before_after_style, '' ); ?>> <label for="bafg_before_after_style_5"><img src="<?php echo esc_url(plugin_dir_url( __FILE__ ).'../assets/image/style5.png'); ?>" /></label></li>
+                    <li><input type="radio" name="bafg_before_after_style" id="bafg_before_after_style_6" value="" <?php checked( $bafg_before_after_style, '' ); ?>> <label for="bafg_before_after_style_6"><img src="<?php echo esc_url(plugin_dir_url( __FILE__ ).'../assets/image/style6.png'); ?>" /></label></li>
+                    <li><input type="radio" name="bafg_before_after_style" id="bafg_before_after_style_7" value="" <?php checked( $bafg_before_after_style, '' ); ?>> <label for="bafg_before_after_style_7"><img src="<?php echo esc_url(plugin_dir_url( __FILE__ ).'../assets/image/style7.png'); ?>" /></label></li>
+                    <li><input type="radio" name="bafg_before_after_style" id="bafg_before_after_style_8" value="" <?php checked( $bafg_before_after_style, '' ); ?>> <label for="bafg_before_after_style_8"><img src="<?php echo esc_url(plugin_dir_url( __FILE__ ).'../assets/image/style8.png'); ?>" /></label></li>
+                </ul>
                 <p><?php echo esc_html__('Select a style for the before and after label.','bafg'); ?></p>
             </td>
         </tr>
@@ -719,6 +722,10 @@ function save_post ( $post_id ) {
     }
     if( isset($_POST['bafg_after_image']) ){
         update_post_meta( $post_id, 'bafg_after_image', esc_url_raw( $_POST['bafg_after_image'] ) );
+    }
+
+    if( isset($_POST['bafg_before_after_style']) ){
+        update_post_meta( $post_id, 'bafg_before_after_style', sanitize_text_field( $_POST['bafg_before_after_style'] ) );
     }
 	
     if( isset($_POST['bafg_slider_title']) ){

@@ -178,7 +178,7 @@
 }
 
 /* HIDE RADIO */
-input[name=bafg_image_styles] {
+input[name=bafg_image_styles],input[name=bafg_before_after_style] {
 	position: absolute;
 	opacity: 0;
 	width: 0;
@@ -186,12 +186,12 @@ input[name=bafg_image_styles] {
 }
 
 /* IMAGE STYLES */
-input[name=bafg_image_styles] + label img {
+input[name=bafg_image_styles] + label img,input[name=bafg_before_after_style] + label img {
 	cursor: pointer;
 }
 
 /* CHECKED STYLES */
-input[name=bafg_image_styles]:checked + label img {
+input[name=bafg_image_styles]:checked + label img,input[name=bafg_before_after_style]:checked + label img {
 	outline: 2px solid #0652DD;
 }
 
@@ -199,7 +199,10 @@ ul.orientation-style li {
 	display: inline-block;
 	margin-left: 15px
 }
-
+ul.bafg-before-after-style li {
+    display: inline-block;
+    margin-left: 10px;
+}
 .bafg_button {
 	border: 0;
 	padding: 8px 10px;
