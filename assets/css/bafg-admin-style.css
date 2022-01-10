@@ -157,7 +157,7 @@
 
 #bafg_before_after_image_thumbnail,
 #bafg_before_image_thumbnail,
-#bafg_after_image_thumbnail {
+#bafg_after_image_thumbnail,#bafg_bottom_image_thumbnail,#bafg_middle_image_thumbnail,#bafg_top_image_thumbnail {
 	max-width: 120px;
 	display: block;
 	margin-top: 5px;

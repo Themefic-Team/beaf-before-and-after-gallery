@@ -60,6 +60,9 @@ function bafg_metabox_callback($post){
                     <li><input type="radio" class="" name="bafg_before_after_method" id="bafg_before_after_method2" value="method_2"> <label for="bafg_before_after_method2">Method 2 (Using 1 image) <div class="bafg-tooltip"><span>?</span>
                                 <div class="bafg-tooltip-info">Pro feature! <br>You can make a slider using one image with an effect.</div>
                             </div></label></li>
+                    <li><input type="radio" class="" name="bafg_before_after_method" id="bafg_before_after_method3" value="method_3"> <label for="bafg_before_after_method2">Method 3 (Using 3 images) <div class="bafg-tooltip"><span>?</span>
+                        <div class="bafg-tooltip-info">Pro feature! <br>You can make a slider using 3 images.</div>
+                    </div></label></li>
                 </ul>
                 <p>Choose a method to make a before after slider using a single image or 2 images.</p>
             </td>
@@ -100,8 +103,48 @@ function bafg_metabox_callback($post){
             </td>
         </tr>
         <?php
-        $bafg_before_after_image = ob_get_clean();
+        $bafg_before_after_image = ob_get_clean(); 
         echo apply_filters( 'bafg_before_after_image', $bafg_before_after_image, $post );
+        ?>
+
+        <?php
+
+        //Image upload fields for 3 images slider
+        ob_start();
+        ?>
+        <tr class="bafg-row-bottom-image" style="display: none">
+            <td class="bafg-option-label"><label>Bottom image <div class="bafg-tooltip"><span>?</span>
+                        <div class="bafg-tooltip-info"><?php _e( 'Pro feature!','bafg' ); ?></div>
+                    </div></label></td>
+            <td class="bafg-option-content">
+                <input type="text" name="bafg_bottom_image" id="bafg_bottom_image" size="50" />
+                <input class="bafg_button" id="bafg_bottom_image_upload" type="button" value="Add or Upload Image">
+                <input type="hidden" name="img_txt_id" id="img_txt_id" value="" />
+            </td>
+        </tr>
+        <tr class="bafg-row-middle-image" style="display: none">
+            <td class="bafg-option-label"><label>Middle image <div class="bafg-tooltip"><span>?</span>
+                        <div class="bafg-tooltip-info"><?php _e( 'Pro feature!','bafg' ); ?></div>
+                    </div></label></td>
+            <td class="bafg-option-content">
+                <input type="text" name="bafg_middle_image" id="bafg_top_image" size="50" disabled />
+                <input class="bafg_button" id="bafg_before_after_image_upload" type="button" value="Add or Upload Image">
+                <input type="hidden" name="img_txt_id" id="img_txt_id" value="" />
+            </td>
+        </tr>
+        <tr class="bafg-row-top-image" style="display: none">
+            <td class="bafg-option-label"><label>Top image <div class="bafg-tooltip"><span>?</span>
+                        <div class="bafg-tooltip-info"><?php _e( 'Pro feature!','bafg' ); ?></div>
+                    </div></label></td>
+            <td class="bafg-option-content">
+                <input type="text" name="bafg_top_image" id="bafg_before_after_image" size="50" disabled />
+                <input class="bafg_button" id="bafg_before_after_image_upload" type="button" value="Add or Upload Image">
+                <input type="hidden" name="img_txt_id" id="img_txt_id" value="" />
+            </td>
+        </tr>
+        <?php
+        $bafg_before_after_three_image = ob_get_clean(); 
+        echo apply_filters( 'bafg_before_after_three_image', $bafg_before_after_three_image, $post );
         ?>
         
         <?php	
@@ -193,8 +236,8 @@ function bafg_metabox_callback($post){
         ?>
         <tr class="bafg_filter_apply" style="display: none">
             <td class="bafg-option-label"><label for="bafg_filter_apply">Apply filter for <div class="bafg-tooltip"><span>?</span>
-                        <div class="bafg-tooltip-info">Pro feature!</div>
-                    </div></label></td>
+            <div class="bafg-tooltip-info">Pro feature!</div>
+            </div></label></td>
             <td class="bafg-option-content">
                 <ul class="cmb2-radio-list cmb2-list">
                     <li><input type="radio" name="bafg_filter_apply" id="bafg_filter_apply1" value="none" disabled> <label for="bafg_filter_apply1">None</label></li>
@@ -348,17 +391,6 @@ function bafg_metabox_callback($post){
         $bafg_on_scroll_slide_html = ob_get_clean();
         echo apply_filters( 'bafg_on_scroll_slide', $bafg_on_scroll_slide_html, $post );
         ?>
-        <tr class="bafg_default_offset_row">
-            <td class="bafg-option-label"><label for="bafg_default_offset"><?php echo esc_html__('Default Offset','bafg'); ?></label></td>
-            <td class="bafg-option-content">
-               <?php 
-                $bafg_default_offset = !empty(get_post_meta( $post->ID, 'bafg_default_offset', true )) ? get_post_meta( $post->ID, 'bafg_default_offset', true ) : '0.5';
-                
-                ?>
-                <input type="text" class="regular-text" name="bafg_default_offset" id="bafg_default_offset" value="<?php echo esc_attr($bafg_default_offset); ?>">
-                <p><?php echo esc_html__('How much of the before image is visible when the page loads. (e.g: 0.7)','bafg'); ?></p>
-            </td>
-        </tr>
         <?php
         ob_start();
         ?>

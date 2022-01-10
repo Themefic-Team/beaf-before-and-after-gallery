@@ -48,11 +48,14 @@ Conditional fields
 function bafg_before_after_method_conditional_field(){
     var bafg_before_after_method = jQuery('input:radio[name=bafg_before_after_method]:checked').val();
     if (bafg_before_after_method == 'method_2') {
-        jQuery('.bafg-row-before-image, .bafg-row-after-image').hide();
+        jQuery('.bafg-row-before-image, .bafg-row-after-image, .bafg-row-bottom-image, .bafg-row-middle-image, .bafg-row-top-image').hide();
         jQuery('.bafg-row-before-after-image, .bafg_filter_style, .bafg_filter_apply').show();
-    } else {
+    } else if(bafg_before_after_method == 'method_1') {
         jQuery('.bafg-row-before-image, .bafg-row-after-image').show();
-        jQuery('.bafg-row-before-after-image, .bafg_filter_style, .bafg_filter_apply').hide();
+        jQuery('.bafg-row-before-after-image, .bafg_filter_style, .bafg_filter_apply,.bafg-row-bottom-image, .bafg-row-middle-image, .bafg-row-top-image').hide();
+    }else if(bafg_before_after_method == 'method_3'){
+        jQuery('.bafg-row-bottom-image, .bafg-row-middle-image, .bafg-row-top-image').show();
+        jQuery('.bafg-row-before-after-image, .bafg_filter_style, .bafg_filter_apply, .bafg-row-before-image, .bafg-row-after-image').hide();
     }
 }
 
