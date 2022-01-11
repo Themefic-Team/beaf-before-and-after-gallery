@@ -60,9 +60,13 @@ function bafg_metabox_callback($post){
                     <li><input type="radio" class="" name="bafg_before_after_method" id="bafg_before_after_method2" value="method_2"> <label for="bafg_before_after_method2">Method 2 (Using 1 image) <div class="bafg-tooltip"><span>?</span>
                                 <div class="bafg-tooltip-info">Pro feature! <br>You can make a slider using one image with an effect.</div>
                             </div></label></li>
-                    <li><input type="radio" class="" name="bafg_before_after_method" id="bafg_before_after_method3" value="method_3"> <label for="bafg_before_after_method2">Method 3 (Using 3 images) <div class="bafg-tooltip"><span>?</span>
-                        <div class="bafg-tooltip-info">Pro feature! <br>You can make a slider using 3 images.</div>
-                    </div></label></li>
+                    <li>
+                        <input type="radio" class="" name="bafg_before_after_method" id="bafg_before_after_method3" value="method_3">
+                        <label for="bafg_before_after_method3"><?php _e('Method 3 (Using 3 images)','bafg') ?> <div class="bafg-tooltip"><span>?</span>
+                            <div class="bafg-tooltip-info">Pro feature! <br>You can make a slider using 3 images.</div>
+                            </div>
+                        </label>
+                    </li>
                 </ul>
                 <p>Choose a method to make a before after slider using a single image or 2 images.</p>
             </td>
@@ -117,7 +121,7 @@ function bafg_metabox_callback($post){
                         <div class="bafg-tooltip-info"><?php _e( 'Pro feature!','bafg' ); ?></div>
                     </div></label></td>
             <td class="bafg-option-content">
-                <input type="text" name="bafg_bottom_image" id="bafg_bottom_image" size="50" />
+                <input type="text" name="bafg_bottom_image" id="bafg_bottom_image" size="50" disabled/>
                 <input class="bafg_button" id="bafg_bottom_image_upload" type="button" value="Add or Upload Image">
                 <input type="hidden" name="img_txt_id" id="img_txt_id" value="" />
             </td>
@@ -279,7 +283,7 @@ function bafg_metabox_callback($post){
                     <?php 
                     $bafg_before_after_style = trim(get_post_meta( $post->ID, 'bafg_before_after_style', true )) != '' ? get_post_meta( $post->ID, 'bafg_before_after_style', true ) : 'default';
                     ?>
-                    <li><input type="radio" name="bafg_before_after_style" id="bafg_before_after_style_default" value="default" <?php checked( $bafg_before_after_style, 'deafult' ); ?>> <label for="bafg_before_after_style_default"><img src="<?php echo esc_url(plugin_dir_url( __FILE__ ).'../assets/image/default.png'); ?>" /></label></li>
+                    <li><input type="radio" checked name="bafg_before_after_style" id="bafg_before_after_style_default" value="default" <?php checked( $bafg_before_after_style, 'default' ); ?>> <label for="bafg_before_after_style_default"><img src="<?php echo esc_url(plugin_dir_url( __FILE__ ).'../assets/image/default.png'); ?>" /></label></li>
                     <li><input type="radio" name="bafg_before_after_style" id="bafg_before_after_style_1" value="" <?php checked( $bafg_before_after_style, '' ); ?>> <label for="bafg_before_after_style_1"><img src="<?php echo esc_url(plugin_dir_url( __FILE__ ).'../assets/image/style1.png'); ?>" /></label></li>
                     <li><input type="radio" name="bafg_before_after_style" id="bafg_before_after_style_2" value="" <?php checked( $bafg_before_after_style, '' ); ?>> <label for="bafg_before_after_style_2"><img src="<?php echo esc_url(plugin_dir_url( __FILE__ ).'../assets/image/style2.png'); ?>" /></label></li>
                     <li><input type="radio" name="bafg_before_after_style" id="bafg_before_after_style_3" value="" <?php checked( $bafg_before_after_style, '' ); ?>> <label for="bafg_before_after_style_3"><img src="<?php echo esc_url(plugin_dir_url( __FILE__ ).'../assets/image/style3.png'); ?>" /></label></li>
