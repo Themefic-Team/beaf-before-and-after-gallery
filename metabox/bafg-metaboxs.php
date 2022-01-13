@@ -98,8 +98,9 @@ function bafg_metabox_callback($post){
         ?>
         <tr class="bafg-row-before-after-image" style="display: none">
             <td class="bafg-option-label"><label>Before after image <div class="bafg-tooltip"><span>?</span>
-                        <div class="bafg-tooltip-info">Pro feature!</div>
-                    </div></label></td>
+                <div class="bafg-tooltip-info">Pro feature!</div>
+                </div></label>
+            </td>
             <td class="bafg-option-content">
                 <input type="text" name="bafg_before_after_image" id="bafg_before_after_image" size="50" disabled />
                 <input class="bafg_button" id="bafg_before_after_image_upload" type="button" value="Add or Upload Image">
