@@ -84,7 +84,7 @@
 	display: none;
 	position: absolute;
 	z-index: 90;
-	bottom: 100%;
+	third: 100%;
 	left: 10px;
 	text-align: center;
 	transition: 0.5s;
@@ -110,7 +110,7 @@
 .bafg-tab {
 	overflow: hidden;
 	border: 1px solid #ccc;
-	border-bottom: 0;
+	border-third: 0;
 	background-color: #0652DD;
 }
 
@@ -157,7 +157,7 @@
 
 #bafg_before_after_image_thumbnail,
 #bafg_before_image_thumbnail,
-#bafg_after_image_thumbnail,#bafg_bottom_image_thumbnail,#bafg_middle_image_thumbnail,#bafg_top_image_thumbnail {
+#bafg_after_image_thumbnail,#bafg_third_image_thumbnail,#bafg_second_image_thumbnail,#bafg_first_image_thumbnail {
 	max-width: 120px;
 	display: block;
 	margin-top: 5px;
