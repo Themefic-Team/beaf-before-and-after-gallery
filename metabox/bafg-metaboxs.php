@@ -259,7 +259,7 @@ function bafg_metabox_callback($post){
         echo apply_filters( 'bafg_filter_apply', $bafg_filter_apply_html, $post );
         ?>
         
-        <tr>
+        <tr class="bafg-row-orientation">
             <td class="bafg-option-label"><label><?php echo esc_html__('Orientation Style','bafg'); ?></label></td>
             <td class="bafg-option-content">
                 <ul class="orientation-style">
@@ -275,7 +275,7 @@ function bafg_metabox_callback($post){
         <?php
         ob_start();
         ?>
-        <tr>
+        <tr class="">
             <td class="bafg-option-label"><label for="bafg_before_after_style"><?php echo esc_html__('BEAF Template Style','bafg'); ?><div class="bafg-tooltip"><span>?</span><div class="bafg-tooltip-info">Pro feature!</div>
                     </div></label>
             </td>
@@ -306,7 +306,7 @@ function bafg_metabox_callback($post){
 
 <div id="bafg_gallery_options" class="bafg-tabcontent">
     <table class="bafg-option-table">
-        <tr>
+        <tr class="bafg-row-offset">
             <td class="bafg-option-label"><label for="bafg_default_offset"><?php echo esc_html__('Default Offset','bafg'); ?></label></td>
             <td class="bafg-option-content">
                <?php 
@@ -317,7 +317,7 @@ function bafg_metabox_callback($post){
                 <p><?php echo esc_html__('How much of the before image is visible when the page loads. (e.g: 0.7)','bafg'); ?></p>
             </td>
         </tr>
-        <tr>
+        <tr class="bafg-row-b-label">
             <td class="bafg-option-label"><label for="bafg_before_label"><?php echo esc_html__('Before Label','bafg'); ?></label></td>
             <td class="bafg-option-content">
                <?php 
@@ -327,7 +327,17 @@ function bafg_metabox_callback($post){
                 <p><?php echo esc_html__('Set a custom label for the title "Before".','bafg'); ?></p>
             </td>
         </tr>
-        <tr>
+        <tr class="bafg-row-mid-label">
+            <td class="bafg-option-label"><label for="bafg_mid_label"><?php echo esc_html__('Middle Label','bafg'); ?></label></td>
+            <td class="bafg-option-content">
+               <?php 
+                $bafg_mid_label = !empty(get_post_meta( $post->ID, 'bafg_mid_label', true )) ? get_post_meta( $post->ID, 'bafg_mid_label', true ) : 'Middle';
+                ?>
+                <input type="text" class="regular-text" name="bafg_mid_label" id="bafg_mid_label" value="<?php echo esc_html($bafg_mid_label); ?>" >
+                <p><?php echo esc_html__('Set a custom label for the title "Before".','bafg'); ?></p>
+            </td>
+        </tr>
+        <tr class="bafg-row-a-label">
             <td class="bafg-option-label"><label for="bafg_after_label"><?php echo esc_html__('After Label','bafg'); ?></label></td>
             <td class="bafg-option-content">
                <?php 
@@ -427,7 +437,7 @@ function bafg_metabox_callback($post){
                 </ul>
             </td>
         </tr>
-        <tr>
+        <tr class="bafg-row-click-to-move">
             <td class="bafg-option-label"><label for="bafg_click_to_move"><?php echo esc_html__('Click to Move','bafg'); ?></label></td>
             <td class="bafg-option-content">
                 <ul>
@@ -440,7 +450,7 @@ function bafg_metabox_callback($post){
                 <p><?php echo esc_html__('Allow a user to click (or tap) anywhere on the image to move the slider to that location.','bafg'); ?></p>
             </td>
         </tr>
-        <tr>
+        <tr class="bafg-row-no-overlay" >
             <td class="bafg-option-label"><label for="bafg_no_overlay"><?php echo esc_html__('Show Overlay','bafg'); ?></label></td>
             <td class="bafg-option-content">
                 <ul>
@@ -453,7 +463,7 @@ function bafg_metabox_callback($post){
                 <p><?php echo esc_html__('Show overlay on the before and after image.','bafg'); ?></p>
             </td>
         </tr>
-        <tr>
+        <tr class="bafg-skip-lazy-load">
             <td class="bafg-option-label"><label for="skip_lazy_load"><?php echo esc_html__('Skip lazy load','bafg'); ?></label></td>
             <td class="bafg-option-content">
                 <ul>
@@ -471,7 +481,7 @@ function bafg_metabox_callback($post){
 
 <div id="bafg_gallery_style" class="bafg-tabcontent">
     <table class="bafg-option-table">
-        <tr>
+        <tr class="bafg-before-label-bg">
             <td class="bafg-option-label">
                 <label for="bafg_before_label_background"><?php echo esc_html__('Before Label Background','bafg'); ?></label>
             </td>
@@ -480,7 +490,7 @@ function bafg_metabox_callback($post){
             ?>
             <td class="bafg-option-content"><input id="bafg_before_label_background" class="bafg-color-field" type="text" name="bafg_before_label_background" value="<?php echo esc_attr($bafg_before_label_background); ?>" /></td>
         </tr>
-        <tr>
+        <tr class="bafg-before-label-color" >
             <td class="bafg-option-label">
                 <label for="bafg_before_label_color"><?php echo esc_html__('Before Text Color','bafg'); ?></label>
             </td>
@@ -489,7 +499,7 @@ function bafg_metabox_callback($post){
             ?>
             <td class="bafg-option-content"><input id="bafg_before_label_color" class="bafg-color-field" type="text" name="bafg_before_label_color" value="<?php echo esc_attr($bafg_before_label_color); ?>" /></td>
         </tr>
-        <tr>
+        <tr class="bafg-after-label-bg">
             <td class="bafg-option-label">
                 <label for="bafg_after_label_background"><?php echo esc_html__('After Label Background','bafg'); ?></label>
             </td>
@@ -498,7 +508,7 @@ function bafg_metabox_callback($post){
             ?>
             <td class="bafg-option-content"><input id="bafg_after_label_background" class="bafg-color-field" type="text" name="bafg_after_label_background" value="<?php echo esc_attr($bafg_after_label_background); ?>" /></td>
         </tr>
-        <tr>
+        <tr class="bafg-after-label-color">
             <td class="bafg-option-label">
                 <label for="bafg_after_label_color"><?php echo esc_html__('After Text Color','bafg'); ?></label>
             </td>
@@ -511,7 +521,7 @@ function bafg_metabox_callback($post){
         <?php
         ob_start();
         ?>
-        <tr>
+        <tr class="bafg-handle-color">
             <td class="bafg-option-label"><label for="bafg_handle_color"><?php echo esc_html__('Slider Handle Color','bafg'); ?><div class="bafg-tooltip"><span>?</span><div class="bafg-tooltip-info">Pro feature!</div>
                 </div></label>
             </td>
@@ -525,7 +535,7 @@ function bafg_metabox_callback($post){
         <?php
         ob_start();
         ?>
-        <tr>
+        <tr class="bafg-overlay-color">
             <td class="bafg-option-label"><label for="bafg_overlay_color"><?php echo esc_html__('Slider Overlay Color','bafg'); ?><div class="bafg-tooltip"><span>?</span><div class="bafg-tooltip-info">Pro feature!</div>
                 </div></label>
             </td>
@@ -542,7 +552,7 @@ function bafg_metabox_callback($post){
         <?php
         ob_start();
         ?>
-        <tr>
+        <tr class="bafg-slider-width">
             <td class="bafg-option-label"><label for="bafg_custom_height_width"><?php echo esc_html__('Custom Width_Height','bafg'); ?><div class="bafg-tooltip"><span>?</span><div class="bafg-tooltip-info">Pro feature!</div>
                     </div></label>
             </td>
@@ -563,16 +573,16 @@ function bafg_metabox_callback($post){
         <?php
         ob_start();
         ?>
-        <tr>
+        <tr class="bafg-slider-alignment">
             <td class="bafg-option-label"><label for="bafg_slider_alignment"><?php echo esc_html__('Alignment','bafg'); ?><div class="bafg-tooltip"><span>?</span><div class="bafg-tooltip-info">Pro feature!</div>
             </div></label>
             </td>
             <td class="bafg-option-content">
                 <select name="bafg_slider_alignment" id="bafg_slider_alignment">
-                    <option value="">Default</option>
-                    <option value="left">Left</option>
-                    <option value="right">Right</option>
-                    <option value="center">Center</option>
+                    <option value=""><?php echo __( 'Default','bafg' ); ?> </option>
+                    <option value="left"><?php echo __( 'Left','bafg' ); ?></option>
+                    <option value="right"><?php echo __( 'Right','bafg' ); ?></option>
+                    <option value="center"><?php echo __( 'Center','bafg' ); ?></option>
                 </select>
             </td>
         </tr>
@@ -581,32 +591,32 @@ function bafg_metabox_callback($post){
         echo apply_filters( 'bafg_slider_alignment', $bafg_slider_alignment, $post );
         ?>
         
-        <tr>
-		<td class="bafg-option-label"><label for=""><?php echo esc_html__('Heading','bafg'); ?></label>
-		</td>
-		<td class="bafg-option-content">
-			<label for="bafg_slider_info_heading_font_size">Font Size</label><br>
-			<input type="text" id="bafg_slider_info_heading_font_size" name="bafg_slider_info_heading_font_size" value="<?php echo esc_attr(get_post_meta($post->ID, 'bafg_slider_info_heading_font_size', true)); ?>"> (E.g: 22px)
-			<br>
-			<br>
-			<label for="bafg_slider_info_heading_font_color">Color</label><br>
-			<input type="text" id="bafg_slider_info_heading_font_color" name="bafg_slider_info_heading_font_color" class="bafg-color-field" value="<?php echo esc_attr(get_post_meta($post->ID, 'bafg_slider_info_heading_font_color', true)); ?>">
-			<br>
-            <br>
-            <label for="bafg_slider_info_heading_alignment">Alignment</label><br>
-            <?php 
-            $bafg_slider_info_heading_alignment = !empty(get_post_meta( $post->ID, 'bafg_slider_info_heading_alignment', true )) ? get_post_meta( $post->ID, 'bafg_slider_info_heading_alignment', true ) : '';
-            ?>
-            <select id="bafg_slider_info_heading_alignment" name="bafg_slider_info_heading_alignment">
-                <option value="">Default</option>
-                <option value="left" <?php selected( 'left', $bafg_slider_info_heading_alignment ); ?>>Left</option>
-                <option value="right" <?php selected( 'right', $bafg_slider_info_heading_alignment ); ?>>Right</option>
-                <option value="center" <?php selected( 'center', $bafg_slider_info_heading_alignment ); ?>>Center</option>
-            </select>
-		</td>
-	</tr>
+        <tr class="bafg-row-heading">
+            <td class="bafg-option-label"><label for=""><?php echo esc_html__('Heading','bafg'); ?></label>
+            </td>
+            <td class="bafg-option-content">
+                <label for="bafg_slider_info_heading_font_size">Font Size</label><br>
+                <input type="text" id="bafg_slider_info_heading_font_size" name="bafg_slider_info_heading_font_size" value="<?php echo esc_attr(get_post_meta($post->ID, 'bafg_slider_info_heading_font_size', true)); ?>"> (E.g: 22px)
+                <br>
+                <br>
+                <label for="bafg_slider_info_heading_font_color">Color</label><br>
+                <input type="text" id="bafg_slider_info_heading_font_color" name="bafg_slider_info_heading_font_color" class="bafg-color-field" value="<?php echo esc_attr(get_post_meta($post->ID, 'bafg_slider_info_heading_font_color', true)); ?>">
+                <br>
+                <br>
+                <label for="bafg_slider_info_heading_alignment">Alignment</label><br>
+                <?php 
+                $bafg_slider_info_heading_alignment = !empty(get_post_meta( $post->ID, 'bafg_slider_info_heading_alignment', true )) ? get_post_meta( $post->ID, 'bafg_slider_info_heading_alignment', true ) : '';
+                ?>
+                <select id="bafg_slider_info_heading_alignment" name="bafg_slider_info_heading_alignment">
+                    <option value="">Default</option>
+                    <option value="left" <?php selected( 'left', $bafg_slider_info_heading_alignment ); ?>>Left</option>
+                    <option value="right" <?php selected( 'right', $bafg_slider_info_heading_alignment ); ?>>Right</option>
+                    <option value="center" <?php selected( 'center', $bafg_slider_info_heading_alignment ); ?>>Center</option>
+                </select>
+            </td>
+        </tr>
 
-	<tr>
+	<tr class="bafg-row-desc">
 		<td class="bafg-option-label"><label for=""><?php echo esc_html__('Description','bafg'); ?></label>
 		</td>
 		<td class="bafg-option-content">
@@ -631,7 +641,7 @@ function bafg_metabox_callback($post){
 		</td>
 	</tr>
 
-	<tr>
+	<tr class="bafg-row-read-more">
 		<td class="bafg-option-label"><label for=""><?php echo esc_html__('Read More Button','bafg'); ?></label>
 		</td>
 		<td class="bafg-option-content">
@@ -790,6 +800,10 @@ function save_post ( $post_id ) {
     
     if( isset($_POST['bafg_before_label']) ){
         update_post_meta( $post_id, 'bafg_before_label', esc_attr( $_POST['bafg_before_label'] ) );
+    }
+    
+    if( isset($_POST['bafg_mid_label']) ){
+        update_post_meta( $post_id, 'bafg_mid_label', esc_attr( $_POST['bafg_mid_label'] ) );
     }
     
     if( isset($_POST['bafg_after_label']) ){
