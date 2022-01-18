@@ -499,6 +499,26 @@ function bafg_metabox_callback($post){
             ?>
             <td class="bafg-option-content"><input id="bafg_before_label_color" class="bafg-color-field" type="text" name="bafg_before_label_color" value="<?php echo esc_attr($bafg_before_label_color); ?>" /></td>
         </tr>
+
+        <tr class="bafg-mid-label-bg">
+            <td class="bafg-option-label">
+                <label for="bafg_mid_label_background"><?php echo esc_html__('Middle Label Background','bafg'); ?></label>
+            </td>
+            <?php 
+            $bafg_mid_label_background = !empty(get_post_meta( $post->ID, 'bafg_mid_label_background', true )) ? get_post_meta( $post->ID, 'bafg_mid_label_background', true ) : '';
+            ?>
+            <td class="bafg-option-content"><input id="bafg_mid_label_background" class="bafg-color-field" type="text" name="bafg_mid_label_background" value="<?php echo esc_attr($bafg_mid_label_background); ?>" /></td>
+        </tr>
+        <tr class="bafg-mid-label-color" >
+            <td class="bafg-option-label">
+                <label for="bafg_mid_label_color"><?php echo esc_html__('Middle label Color','bafg'); ?></label>
+            </td>
+            <?php 
+            $bafg_mid_label_color = !empty(get_post_meta( $post->ID, 'bafg_mid_label_color', true )) ? get_post_meta( $post->ID, 'bafg_mid_label_color', true ) : '';
+            ?>
+            <td class="bafg-option-content"><input id="bafg_mid_label_color" class="bafg-color-field" type="text" name="bafg_mid_label_color" value="<?php echo esc_attr($bafg_mid_label_color); ?>" /></td>
+        </tr>
+
         <tr class="bafg-after-label-bg">
             <td class="bafg-option-label">
                 <label for="bafg_after_label_background"><?php echo esc_html__('After Label Background','bafg'); ?></label>
@@ -827,6 +847,13 @@ function save_post ( $post_id ) {
     
     if( isset($_POST['bafg_before_label_color']) ){
         update_post_meta( $post_id, 'bafg_before_label_color', esc_attr( $_POST['bafg_before_label_color'] ) );
+    }
+    if( isset($_POST['bafg_mid_label_background']) ){
+        update_post_meta( $post_id, 'bafg_mid_label_background', esc_attr( $_POST['bafg_mid_label_background'] ) );
+    }
+    
+    if( isset($_POST['bafg_mid_label_color']) ){
+        update_post_meta( $post_id, 'bafg_mid_label_color', esc_attr( $_POST['bafg_mid_label_color'] ) );
     }
     
     if( isset($_POST['bafg_after_label_background']) ){
