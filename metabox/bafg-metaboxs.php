@@ -75,6 +75,11 @@ function bafg_metabox_callback($post){
         $bafg_before_after_method = ob_get_clean();
         echo apply_filters( 'bafg_before_after_method', $bafg_before_after_method, $post );
         ?>
+        <?php 
+        $before_img_alt = get_post_meta( $post->ID, 'before_img_alt', true) ? get_post_meta( $post->ID, 'before_img_alt', true) : '';
+        $after_img_alt = get_post_meta( $post->ID, 'after_img_alt', true) ? get_post_meta( $post->ID, 'after_img_alt', true) : '';
+
+        ?>
         <tr class="bafg-row-before-image">
             <td class="bafg-option-label">
                 <p><label><?php echo esc_html__('Before image','bafg'); ?></label></p>
@@ -83,6 +88,10 @@ function bafg_metabox_callback($post){
                 <input type="text" name="bafg_before_image" id="bafg_before_image" size="50" value="<?php echo esc_url(get_post_meta( $post->ID, 'bafg_before_image', true )); ?>" />
                 <input class="bafg_button" id="bafg_before_image_upload" type="button" value="Add or Upload Image">
                 <img id="bafg_before_image_thumbnail" src="<?php echo esc_url(get_post_meta( $post->ID, 'bafg_before_image', true )); ?>">
+                <div class="img-alt-tag">
+                    <span><?php _e( 'Image Alt: ' ); ?></span>
+                    <input type="text" name="before_img_alt" id="before_img_alt" value="<?php echo esc_attr( $before_img_alt ); ?>" />
+                </div>
             </td>
         </tr>
         <tr class="bafg-row-after-image">
@@ -91,6 +100,10 @@ function bafg_metabox_callback($post){
                 <input type="text" name="bafg_after_image" id="bafg_after_image" size="50" value="<?php echo esc_url(get_post_meta( $post->ID, 'bafg_after_image', true )); ?>" />
                 <input class="bafg_button" id="bafg_after_image_upload" type="button" value="Add or Upload Image">
                 <img id="bafg_after_image_thumbnail" src="<?php echo esc_url(get_post_meta( $post->ID, 'bafg_after_image', true )); ?>">
+                <div class="img-alt-tag">
+                    <span><?php _e( 'Image Alt: ' ); ?></span>
+                    <input type="text" name="after_img_alt" id="after_img_alt" value="<?php echo esc_attr( $after_img_alt ); ?>" />
+                </div>
             </td>
         </tr>
         <?php
@@ -118,7 +131,7 @@ function bafg_metabox_callback($post){
         ob_start();
         ?>
         <tr class="bafg-row-bottom-image" style="display: none">
-            <td class="bafg-option-label"><label>Bottom image <div class="bafg-tooltip"><span>?</span>
+            <td class="bafg-option-label"><label><?php _e( 'First Image','bafg' ); ?> <div class="bafg-tooltip"><span>?</span>
                         <div class="bafg-tooltip-info"><?php _e( 'Pro feature!','bafg' ); ?></div>
                     </div></label></td>
             <td class="bafg-option-content">
@@ -128,7 +141,7 @@ function bafg_metabox_callback($post){
             </td>
         </tr>
         <tr class="bafg-row-middle-image" style="display: none">
-            <td class="bafg-option-label"><label>Middle image <div class="bafg-tooltip"><span>?</span>
+            <td class="bafg-option-label"><label><?php _e( 'Second image','bafg' ); ?> <div class="bafg-tooltip"><span>?</span>
                         <div class="bafg-tooltip-info"><?php _e( 'Pro feature!','bafg' ); ?></div>
                     </div></label></td>
             <td class="bafg-option-content">
@@ -138,7 +151,7 @@ function bafg_metabox_callback($post){
             </td>
         </tr>
         <tr class="bafg-row-top-image" style="display: none">
-            <td class="bafg-option-label"><label>Top image <div class="bafg-tooltip"><span>?</span>
+            <td class="bafg-option-label"><label><?php _e( 'Third image','bafg' ); ?> <div class="bafg-tooltip"><span>?</span>
                         <div class="bafg-tooltip-info"><?php _e( 'Pro feature!','bafg' ); ?></div>
                     </div></label></td>
             <td class="bafg-option-content">
@@ -930,6 +943,12 @@ function save_post ( $post_id ) {
     
     if( isset($_POST['skip_lazy_load']) ){
         update_post_meta( $post_id, 'skip_lazy_load', esc_attr( $_POST['skip_lazy_load'] ) );
+    }
+    if( isset($_POST['before_img_alt']) ){
+        update_post_meta( $post_id, 'before_img_alt', esc_attr( $_POST['before_img_alt'] ) );
+    }
+    if( isset($_POST['after_img_alt']) ){
+        update_post_meta( $post_id, 'after_img_alt', esc_attr( $_POST['after_img_alt'] ) );
     }
     
     do_action( 'bafg_save_post_meta', $post_id );

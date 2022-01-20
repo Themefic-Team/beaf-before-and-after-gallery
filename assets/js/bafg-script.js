@@ -48,15 +48,16 @@ Conditional fields
 function bafg_before_after_method_conditional_field(){
     var bafg_before_after_method = jQuery('input:radio[name=bafg_before_after_method]:checked').val();
     if (bafg_before_after_method == 'method_2') {
-        jQuery('.bafg-slider-alignment,.bafg_move_slider_on_hover,.bafg_on_scroll_slide,.bafg-row-no-overlay,.bafg-row-click-to-move,.bafg_move_slider_on_hover,.bafg_on_scroll_slide,.bafg_auto_slide,.bafg_option_label,.bafg-row-offset,.bafg-row-beaf-style,.bafg_filter_apply,.bafg_filter_style,.bafg-row-orientation, .bafg-row-template-style, .bafg-row-before-after-image, .bafg_filter_style, .bafg_filter_apply, .bafg-row-before-image, .bafg-row-after-image').show();
+        jQuery('.bafg-slider-alignment,.bafg-row-no-overlay,.bafg-row-click-to-move,.bafg_move_slider_on_hover,.bafg_on_scroll_slide,.bafg_auto_slide,.bafg_option_label,.bafg-row-offset,.bafg-row-beaf-style,.bafg_filter_apply,.bafg_filter_style,.bafg-row-orientation, .bafg-row-template-style, .bafg-row-before-after-image, .bafg_filter_style, .bafg_filter_apply, .bafg-row-before-image, .bafg-row-after-image').show();
         jQuery('.bafg-mid-label-color,.bafg-row-mid-label,.bafg-row-before-image, .bafg-row-after-image, .bafg-row-first-image,.bafg-row-second-image, .bafg-row-third-image').hide();
     } else if(bafg_before_after_method == 'method_1') {
-        jQuery('.bafg-slider-alignment,.bafg-overlay-color,.bafg_move_slider_on_hover,.bafg_on_scroll_slide,.bafg-row-click-to-move,.bafg_move_slider_on_hover,.bafg_on_scroll_slide,.bafg_auto_slide,.bafg_option_label,.bafg-row-offset,.bafg-row-beaf-style,.bafg_filter_apply,.bafg_filter_style,.bafg-row-orientation, .bafg-row-template-style, .bafg-row-before-after-image, .bafg_filter_style, .bafg_filter_apply, .bafg-row-before-image, .bafg-row-after-image').show();
+        jQuery('.bafg-slider-alignment,.bafg-overlay-color, .bafg-row-click-to-move,.bafg_move_slider_on_hover,.bafg_on_scroll_slide,.bafg_auto_slide,.bafg_option_label,.bafg-row-offset,.bafg-row-beaf-style,.bafg_filter_apply,.bafg_filter_style,.bafg-row-orientation, .bafg-row-template-style, .bafg-row-before-after-image, .bafg_filter_style, .bafg_filter_apply, .bafg-row-before-image, .bafg-row-after-image').show();
         jQuery('.bafg-mid-label-color,.bafg-mid-label-bg,.bafg-row-mid-label,.bafg-row-before-after-image, .bafg_filter_style, .bafg_filter_apply, .bafg-row-first-image,.bafg-row-second-image, .bafg-row-third-image').hide();
     }else if(bafg_before_after_method == 'method_3'){
         jQuery('.bafg-row-mid-label,.bafg-row-first-image, .bafg-row-second-image, .bafg-row-third-image,.bafg-mid-label-color,.bafg-mid-label-bg').show();
-        jQuery('.bafg-slider-alignment,.bafg_move_slider_on_hover,.bafg_on_scroll_slide,.bafg-row-click-to-move,.bafg_move_slider_on_hover,.bafg_on_scroll_slide,.bafg_auto_slide,.bafg_option_label,.bafg-row-offset,.bafg-row-beaf-style,.bafg_filter_apply,.bafg_filter_style,.bafg-row-orientation, .bafg-row-template-style, .bafg-row-before-after-image, .bafg_filter_style, .bafg_filter_apply, .bafg-row-before-image, .bafg-row-after-image').hide();
+        jQuery('.bafg-slider-alignment,.bafg-row-click-to-move,.bafg_move_slider_on_hover,.bafg_on_scroll_slide,.bafg_auto_slide,.bafg_option_label,.bafg-row-offset,.bafg-row-beaf-style,.bafg_filter_apply,.bafg_filter_style,.bafg-row-orientation, .bafg-row-template-style, .bafg-row-before-after-image, .bafg_filter_style, .bafg_filter_apply, .bafg-row-before-image, .bafg-row-after-image').hide();
     }
+    console.log(bafg_before_after_method);
 }
 
 function bafg_auto_slide_conditional_field(){
@@ -108,14 +109,6 @@ jQuery('input:radio[name=bafg_image_styles]').on('change',function(){
     bafg_label_outside_conditional_display();
 });
 
-jQuery(document).ready(function(){
-    bafg_before_after_method_conditional_field();
-    bafg_on_scroll_slide_conditional_field();
-	bafg_auto_slide_conditional_field();
-	bafg_readmore_alignment_field();
-    bafg_label_outside_conditional_display();
-});
-
 jQuery('input:radio[name=bafg_before_after_method]').on('change', function () {
     bafg_before_after_method_conditional_field();
 });
@@ -128,7 +121,13 @@ jQuery('input:radio[name=bafg_auto_slide]').on('change', function () {
     bafg_auto_slide_conditional_field();
 	bafg_on_scroll_slide_conditional_field();
 });
-
+jQuery(document).ready(function(){
+    bafg_on_scroll_slide_conditional_field();
+	bafg_auto_slide_conditional_field();
+	bafg_readmore_alignment_field();
+    bafg_label_outside_conditional_display();
+    bafg_before_after_method_conditional_field();
+});
 
 jQuery('#bafg_slider_info_readmore_button_width').on('change', function(){
 	bafg_readmore_alignment_field();
@@ -164,7 +163,9 @@ jQuery('#bafg_before_image_upload').on('click', function (e) {
         //var field = document.getElementById("podcast_file");
         var field = document.getElementById('bafg_before_image');
         var thumbnail = document.getElementById('bafg_before_image_thumbnail');
-
+        //get and place the alter title of uploaded image
+        var alt = document.getElementById('before_img_alt');
+        alt.value = attachment.alt;
         field.value = url;
         thumbnail.setAttribute('src',url);
     });
@@ -203,7 +204,10 @@ jQuery('#bafg_after_image_upload').on('click', function (e) {
         var field = document.getElementById('bafg_after_image');
         var thumbnail = document.getElementById('bafg_after_image_thumbnail');
 
-        field.value = url;
+        //get and place the alter title of uploaded image
+        var alt = document.getElementById('after_img_alt');
+        alt.value = attachment.alt;
+                field.value = url;
         thumbnail.setAttribute('src',url);
     });
 

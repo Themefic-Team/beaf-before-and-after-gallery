@@ -344,3 +344,13 @@ ul.bafg-before-after-style li {
 	color: #e61c1c;
 	text-decoration: none
 }
+.img-alt-tag {
+    margin-top: 15px;
+}
+.img-alt-tag span {
+    margin-right: 15px;
+    font-weight: 500;
+}
+.img-alt-tag input {
+    width: 285px;
+}
