@@ -409,7 +409,7 @@
 	background-color: #fff;
 	border: 10px solid #000 !important;
 	margin-top: -28px;
-	margin-left: -29px;
+	margin-left: -28px;
 	border-color: rgba(255, 255, 255, 0.53) !important;
 	-webkit-background-clip: padding-box;
 	background-clip: padding-box;
@@ -625,7 +625,7 @@
 }
 
 .elementor-widget-container .twentytwenty-horizontal .design-1 .handle-trnasf {
-	margin-left: -19px;
+	margin-left: -22px;
 }
 
 .elementor-widget-container .twentytwenty-wrapper.twentytwenty-horizontal .handle-trnasf::after {
@@ -634,8 +634,8 @@
 }
 
 .elementor-widget-container .twentytwenty-wrapper.twentytwenty-horizontal .handle-trnasf::before {
-	top: 19px;
-	right: 19px;
+	top: 23px;
+	right: 23px;
 }
 .elementor-widget-container .twentytwenty-right-arrow {
 	right: 50%;

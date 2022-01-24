@@ -222,11 +222,6 @@
 	cursor: pointer;
 }
 
-.elementor-container .twentytwenty-handle {
-	height: 44px;
-	width: 44px;
-}
-
 .twentytwenty-horizontal .twentytwenty-handle:before {
 	bottom: 50%;
 	margin-bottom: 22px;
