@@ -107,8 +107,8 @@ if($column_name === 'second_image') {
 		}else{
 			return;
 		}
+		echo $second_image;
 	}
-	echo $second_image;
 	
 }
 
