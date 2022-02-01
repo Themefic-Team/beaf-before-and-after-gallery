@@ -573,7 +573,7 @@ function bafg_metabox_callback($post){
                 </div></label>
             </td>
             <td class="bafg-option-content">
-                <input id="bafg_overlay_color" data-alpha-enabled="true" data-default-color="rgba(0, 0, 0, 0.5);" class="bafg-color-field" type="text" name="bafg_overlay_color" value="" />
+                <input id="bafg_overlay_color" data-palette="true" data-alpha="true" data-default-color="rgba(0, 0, 0, 0.5);" class="bafg-color-field" type="text" name="bafg_overlay_color" value="" />
                 <br>
             </td>
         </tr>

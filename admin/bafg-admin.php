@@ -12,7 +12,7 @@ add_action( 'admin_enqueue_scripts', 'bafg_admin_enqueue_scripts' );
 
 //Enqueue script in admin area
 function bafg_admin_enqueue_scripts(){
-    wp_enqueue_script( 'wp-color-picker-alpha', plugins_url( '../assets/js/wp-color-picker-alpha.min.js',__FILE__ ), array( 'jquery','wp-color-picker' ), null, true );   
+    wp_enqueue_script( 'wp-color-picker-alpha', plugins_url( '../assets/js/wp-color-picker-alpha.min.js',__FILE__ ), array( 'wp-color-picker' ), null, true );   
     wp_enqueue_script( 'custom_js', plugins_url( '../assets/js/bafg-script.js', __FILE__ ), array('jquery','wp-color-picker','wp-color-picker-alpha'), null, true );
     wp_enqueue_style('bafg_admin_style', plugins_url( '../assets/css/bafg-admin-style.css', __FILE__ ));
 }
@@ -141,7 +141,7 @@ function bafg_gallery_columns($theme_columns) {
 * Gallery category column content
 */
 function bafg_gallery_column_content( $content, $column_name, $term_id ){
-	switch ($column_name) {
+	switch ( $column_name ) {
 		case 'bafg_gallery':
 			$content = '<input class="bafg_display_shortcode" type="text" value="[bafg_gallery category='.$term_id.']" readonly onclick="bafgCopyShortcode()">';
 			break;
