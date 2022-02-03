@@ -354,3 +354,39 @@ ul.bafg-before-after-style li {
 .img-alt-tag input {
     width: 285px;
 }
+/* Style the buttons inside the bafg-tab */
+.bafg-setting-tab a {
+	background-color: inherit;
+	float: left;
+	border: none;
+	outline: none;
+	cursor: pointer;
+	padding: 14px 16px;
+	transition: 0.3s;
+	font-size: 17px;
+	  color: #fff;
+	  border-right: 1px solid #fff
+  }
+  .bafg-setting-tab a:last-child {
+	  border-right: 0
+  }
+  /* Change background color of buttons on hover */
+  .bafg-setting-tab a:hover {
+	background-color: #fff;
+	  color: #444
+  }
+  
+  /* Create an active/current bafg-tablink class */
+  .bafg-setting-tab a.active {
+	background-color: #fff;
+	  color: #444
+  }
+  
+  /* Style the uacf7-tab content */
+  .bafg-tabcontent {
+	display: none;
+	padding: 6px 12px;
+	border: 1px solid #ccc;
+	border-top: none;
+	  background-color: #fff
+  }
