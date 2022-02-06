@@ -26,40 +26,37 @@ function bafg_submenu_settings_page() {
 function bafg_settings_page_callback() {
     ?>
 <div class="wrap">
+    <h1><?php _e( 'Before After Global Settings','bafg' ); ?></h1>
     <?php settings_errors();?>
     <!--Tab buttons start-->
     <div class="bafg-setting-tab">
-        <a class="tablinks active" onclick="bafg_option_tab(event, 'bafg-watermark')"><?php _e( 'Watermark', 'bafg' );?></a>
-
+        <a class="bafg-tablinks active" onclick="bafg_option_tab(event, 'bafg-watermark')"><?php _e( 'Watermark', 'bafg' );?></a>
+        <a class="bafg-tablinks" onclick="bafg_option_tab(event, 'bafg-doc')"><?php _e( 'Documentation', 'bafg' );?></a>
         <?php do_action( 'bafg_admin_tab' );?>
     </div>
     <!--Tab buttons end-->
-    <div id="bafg-watermark" class="bafg-tabcontent">
+    <div id="bafg-watermark" class="bafg-tabcontent" style="display: block;">
         <form method="post" action="options.php">
             <?php
-            settings_fields( 'bafg-global-settings' );
-            do_settings_sections( 'bafg_settings' );
-            submit_button();
+                settings_fields( 'bafg-global-settings' );
+                do_settings_sections( 'bafg_settings' );
+                submit_button();
             ?>
         </form>
+    </div>
+    <div id="bafg-doc" class="bafg-tabcontent">
+        <a href="#"><?php _e( 'Documentation','bafg' ); ?></a>
     </div>
 </div>
 
 <?php
 }
 
-function bafg_general_sections_callback() {
-    echo '<h2>Before After Global Settings</h2>';
-
-}
-function bafg_watermark_upload_callback() {
-    echo '<input type="text" value="' . get_option( "bafg_watermark" ) . '" name="bafg_watermark"><input type="button" class="button button-primary" value="Upload Watermark"> ';
-
-}
 function bafg_register_settings() {
     register_setting(
         'bafg-global-settings', // $option_group
         'bafg_watermark', // $option_name
+        'bafg_sanitize_global_options' //sanitize callback
     );
     add_settings_section(
         'bafg_global_option_header', // Section $id
@@ -69,12 +66,77 @@ function bafg_register_settings() {
     );
 
     add_settings_field(
-        'bafg_watermark', // Field $id
+        'enable_watermark', // Field $id
+        __( 'Enable Watermark', 'bafg' ), // Setting $title
+        'bafg_enable_watermark_callback',
+        'bafg_settings', // Settings Page Slug
+        'bafg_global_option_header', // Section $id
+    );
+    add_settings_field(
+        'path', // Field $id
         __( 'Watermark Image Upload', 'bafg' ), // Setting $title
         'bafg_watermark_upload_callback',
         'bafg_settings', // Settings Page Slug
         'bafg_global_option_header', // Section $id
     );
+    add_settings_field(
+        'prev', // Field $id
+        __( 'Watermark Image', 'bafg' ), // Setting $title
+        'bafg_watermark_prev_callback',
+        'bafg_settings', // Settings Page Slug
+        'bafg_global_option_header', // Section $id
+    );
+    add_settings_field(
+        'bafg_attachment_id',
+        "",
+        'bafg_attachment_id_callback',
+        'bafg_settings',
+        'bafg_global_option_header'
+    );
 
 }
 add_action( 'admin_init', 'bafg_register_settings' );
+
+function bafg_sanitize_global_options( $input ){
+
+    $sanitary_values = array();
+
+    if ( isset( $input['bafg_attachment_id'] ) ) {
+        $sanitary_values['bafg_attachment_id'] = $input['bafg_attachment_id'];
+    }
+    if ( isset( $input['prev'] ) ) {
+        $sanitary_values['prev'] = $input['prev'];
+    }
+
+    if ( isset( $input['path'] ) ) {
+        $sanitary_values['path'] = $input['path'];
+    }
+
+    return apply_filters( 'bafg_save_global_option', $sanitary_values, $input );
+}
+
+//callback functions for options
+function bafg_general_sections_callback() {
+    echo '';
+
+}
+function bafg_watermark_upload_callback() {
+    $option_value = get_option("bafg_watermark");
+    echo '
+    <input class="bafg-watermark-path" type="text" value="' . $option_value['path'] . '" name="bafg_watermark[path]">
+    <input type="button" class="button button-primary bafg-watermark-upload" value="Upload Watermark"> '
+    ;
+
+}
+function bafg_attachment_id_callback(){
+
+    printf(
+        '<input type="hidden" class="bafg-attachment-id" value="'. $option_value['bafg_attachment_id'] .'" name="bafg_watermark[bafg_attachment_id]">'
+    );
+}
+function bafg_watermark_prev_callback() {
+    echo '
+    <input type="hidden" class="bafg-watermark-prev-url"  name="bafg_watermark[prev]" value="' . get_option( "bafg_watermark[prev]" ) . '">
+    <img src="' . get_option( "bafg_watermark[prev]" ) . '" class="bafg-watermark-prev" type="text">';
+
+}

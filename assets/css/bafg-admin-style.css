@@ -375,7 +375,11 @@ ul.bafg-before-after-style li {
 	background-color: #fff;
 	  color: #444
   }
-  
+  .bafg-setting-tab {
+    background: #424242;
+    width: 100%;
+    overflow: hidden;
+}
   /* Create an active/current bafg-tablink class */
   .bafg-setting-tab a.active {
 	background-color: #fff;
@@ -389,4 +393,7 @@ ul.bafg-before-after-style li {
 	border: 1px solid #ccc;
 	border-top: none;
 	  background-color: #fff
-  }
+}
+img.bafg-watermark-prev {
+    width: 300px;
+}
