@@ -101,6 +101,10 @@ function bafg_sanitize_global_options( $input ){
 
     $sanitary_values = array();
 
+    if ( isset( $input['enable_watermark'] ) ) {
+        $sanitary_values['enable_watermark'] = $input['enable_watermark'];
+    }
+
     if ( isset( $input['bafg_attachment_id'] ) ) {
         $sanitary_values['bafg_attachment_id'] = $input['bafg_attachment_id'];
     }
@@ -121,22 +125,30 @@ function bafg_general_sections_callback() {
 
 }
 function bafg_watermark_upload_callback() {
-    $option_value = get_option("bafg_watermark");
+    
+    $attach_id = bafg_option_value('bafg_attachment_id');
     echo '
-    <input class="bafg-watermark-path" type="text" value="' . $option_value['path'] . '" name="bafg_watermark[path]">
+    <input class="bafg-watermark-path" type="text" value="' . get_attached_file( $attach_id )  . '" name="bafg_watermark[path]">
     <input type="button" class="button button-primary bafg-watermark-upload" value="Upload Watermark"> '
     ;
 
 }
+
+function bafg_enable_watermark_callback(){
+    printf(
+        '<input type="checkbox" name="bafg_watermark[enable_watermark]" id="bafg_enable_watermark" '. checked(bafg_option_value("enable_watermark"),'on',false) .' >'
+    );
+    
+}
 function bafg_attachment_id_callback(){
 
     printf(
-        '<input type="hidden" class="bafg-attachment-id" value="'. $option_value['bafg_attachment_id'] .'" name="bafg_watermark[bafg_attachment_id]">'
+        '<input type="hidden" class="bafg-attachment-id" value="'. bafg_option_value('bafg_attachment_id') .'" name="bafg_watermark[bafg_attachment_id]">'
     );
 }
 function bafg_watermark_prev_callback() {
     echo '
-    <input type="hidden" class="bafg-watermark-prev-url"  name="bafg_watermark[prev]" value="' . get_option( "bafg_watermark[prev]" ) . '">
-    <img src="' . get_option( "bafg_watermark[prev]" ) . '" class="bafg-watermark-prev" type="text">';
+    <input type="hidden" class="bafg-watermark-prev-url"  name="bafg_watermark[prev]" value="' . bafg_option_value( "prev" ) . '">
+    <img src="' .  bafg_option_value( "prev" ) . '" class="bafg-watermark-prev" type="text">';
 
 }

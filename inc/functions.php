@@ -192,3 +192,14 @@ function bafg_slider_info_styles($id){
 	<?php
 }
 
+if( ! function_exists('bafg_option_value')){
+	function bafg_option_value($name){
+		
+		$option_value = get_option('bafg_watermark');
+		if(isset($option_value[$name])){
+			return $option_value[$name];
+		}
+
+	}
+}
+
