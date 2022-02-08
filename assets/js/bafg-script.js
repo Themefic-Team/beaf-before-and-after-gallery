@@ -311,3 +311,13 @@ bagf_style_7();
 jQuery('#bafg_before_after_style').on('change', function(){
 	bagf_style_7();
 });
+
+//opacity range slider
+var slider = document.getElementById("bafg-wm-opacity");
+var output = document.querySelector(".bafg-wm-range-val");
+output.innerHTML = slider.value;
+
+slider.oninput = function() {
+  output.innerHTML = this.value;
+  slider.setAttribute( 'value',this.value);
+}

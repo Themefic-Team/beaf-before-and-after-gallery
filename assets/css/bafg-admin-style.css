@@ -397,3 +397,40 @@ ul.bafg-before-after-style li {
 img.bafg-watermark-prev {
     width: 300px;
 }
+
+.bafg-wm-range {
+	-webkit-appearance: none;
+	width: 40%;
+	height: 25px;
+	background: #d3d3d3;
+	outline: none;
+	opacity: 0.7;
+	-webkit-transition: .2s;
+	transition: opacity .2s;
+  }
+  
+  .bafg-wm-range:hover {
+	opacity: 1;
+  }
+  
+  .bafg-wm-range::-webkit-slider-thumb {
+	-webkit-appearance: none;
+	appearance: none;
+	width: 25px;
+	height: 25px;
+	background: #555;
+	cursor: pointer;
+  }
+  
+  .bafg-wm-range::-moz-range-thumb {
+	width: 25px;
+	height: 25px;
+	background: #555;
+	cursor: pointer;
+  }
+  span.bafg-wm-range-val {
+    display: block;
+    font-weight: bold;
+    margin-top: 10px;
+    font-size: 16px;
+}

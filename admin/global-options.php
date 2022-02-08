@@ -35,6 +35,7 @@ function bafg_settings_page_callback() {
         <?php do_action( 'bafg_admin_tab' );?>
     </div>
     <!--Tab buttons end-->
+    <?php ob_start(); ?>
     <div id="bafg-watermark" class="bafg-tabcontent" style="display: block;">
         <form method="post" action="options.php">
             <?php
@@ -44,6 +45,10 @@ function bafg_settings_page_callback() {
             ?>
         </form>
     </div>
+    <?php
+    $demo_html = ob_get_clean();
+    echo apply_filters( 'bafg_watermark_options_tab_watermark', $demo_html );
+    ?>
     <div id="bafg-doc" class="bafg-tabcontent">
         <a href="#"><?php _e( 'Documentation','bafg' ); ?></a>
     </div>
@@ -93,6 +98,20 @@ function bafg_register_settings() {
         'bafg_settings',
         'bafg_global_option_header'
     );
+    add_settings_field(
+        'wm_opacity_enable',
+        __( 'Enable Opacity', 'bafg' ),
+        'bafg_enable_wm_opacity_callback',
+        'bafg_settings',
+        'bafg_global_option_header'
+    );
+    add_settings_field(
+        'wm_opacity',
+        __( 'Watermark Opacity (Required PNG-8 image)', 'bafg' ),
+        'bafg_wm_opacity_callback',
+        'bafg_settings',
+        'bafg_global_option_header'
+    );
 
 }
 add_action( 'admin_init', 'bafg_register_settings' );
@@ -116,6 +135,13 @@ function bafg_sanitize_global_options( $input ){
         $sanitary_values['path'] = $input['path'];
     }
 
+    if ( isset( $input['wm_opacity'] ) ) {
+        $sanitary_values['wm_opacity'] = $input['wm_opacity'];
+    }
+    if ( isset( $input['wm_opacity_enable'] ) ) {
+        $sanitary_values['wm_opacity_enable'] = $input['wm_opacity_enable'];
+    }
+
     return apply_filters( 'bafg_save_global_option', $sanitary_values, $input );
 }
 
@@ -135,9 +161,14 @@ function bafg_watermark_upload_callback() {
 }
 
 function bafg_enable_watermark_callback(){
+
+    ob_start();
     printf(
-        '<input type="checkbox" name="bafg_watermark[enable_watermark]" id="bafg_enable_watermark" '. checked(bafg_option_value("enable_watermark"),'on',false) .' >'
+        '<input type="checkbox" disabled name="" id="bafg_enable_watermark" checked ><span style="color:red;font-weight:bold" class="bafg-pro-tt">Pro<span>'
     );
+    $enable_watermark_image = ob_get_clean();
+    echo apply_filters('bafg_enable_watermark_image',$enable_watermark_image);
+
     
 }
 function bafg_attachment_id_callback(){
@@ -151,4 +182,23 @@ function bafg_watermark_prev_callback() {
     <input type="hidden" class="bafg-watermark-prev-url"  name="bafg_watermark[prev]" value="' . bafg_option_value( "prev" ) . '">
     <img src="' .  bafg_option_value( "prev" ) . '" class="bafg-watermark-prev" type="text">';
 
+}
+
+function bafg_enable_wm_opacity_callback(){
+
+    ob_start();
+    printf(
+        '<input type="checkbox" disabled name="" id="bafg_enable_wm_opacity" checked >'
+    );
+    $enable_wm_img_opacity = ob_get_clean();
+    echo apply_filters('bafg_enable_wm_opacity',$enable_wm_img_opacity);
+
+    
+}
+function bafg_wm_opacity_callback(){
+
+    printf(
+        '<input type="range" min="1" max="100" class="bafg-wm-range" id="bafg-wm-opacity" value="'. bafg_option_value('wm_opacity') .'" name="bafg_watermark[wm_opacity]">
+         <span class="bafg-wm-range-val">'. bafg_option_value('wm_opacity') .'</span>'
+    );
 }
