@@ -75,6 +75,31 @@ function bafg_metabox_callback($post){
         $bafg_before_after_method = ob_get_clean();
         echo apply_filters( 'bafg_before_after_method', $bafg_before_after_method, $post );
         ?>
+        
+        <?php
+        ob_start();
+        ?>
+        <tr class="bafg-watermark-enable">
+            <td class="bafg-option-label">
+                <p><label for="bafg_wm_enable_disable"><?php echo esc_html__("Watermark Enable/Disable","bafg-pro");?></label></p>
+            </td>
+            <td class="bafg-option-content">
+                <ul>
+                    <li><input type="radio" class="" name="watermark_en_dis" id="bafg_wm_enable" value="yes" checked="checked"> <label for="bafg_wm_enable"><?php _e( 'Enable','bafg' ); ?></label></li>
+                    <li>
+                        <input type="radio" class="" name="watermark_en_dis" id="bafg_wm_disable" value="no"> <label for="bafg_wm_disable"><?php _e( 'Disable','bafg' ); ?><div class="bafg-tooltip"><span>?</span>
+                        <div class="bafg-tooltip-info">Pro feature! <br>You can make a slider using one image with an effect.</div>
+                            </div></label>
+                    </li>                    
+                </ul>
+                <p><?php _e( 'Enable or Disable watermark for this indiviusal slider','bafg' ); ?></p>
+            </td>
+        </tr>
+        <?php
+        $bafg_en_dis_watermark = ob_get_clean();
+        echo apply_filters( 'bafg_enable_disable_watermark', $bafg_en_dis_watermark, $post );
+        ?>
+
         <?php 
         $before_img_alt = get_post_meta( $post->ID, 'before_img_alt', true) ? get_post_meta( $post->ID, 'before_img_alt', true) : '';
         $after_img_alt = get_post_meta( $post->ID, 'after_img_alt', true) ? get_post_meta( $post->ID, 'after_img_alt', true) : '';

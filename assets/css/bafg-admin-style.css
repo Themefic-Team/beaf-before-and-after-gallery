@@ -434,3 +434,12 @@ img.bafg-watermark-prev {
     margin-top: 10px;
     font-size: 16px;
 }
+tr.bafg-watermark-enable li {
+    display: inline-block;
+    margin-right: 15px;
+    vertical-align: middle;
+}
+
+tr.bafg-watermark-enable {
+    vertical-align: top;
+}
