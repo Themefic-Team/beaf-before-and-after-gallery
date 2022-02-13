@@ -313,11 +313,13 @@ jQuery('#bafg_before_after_style').on('change', function(){
 });
 
 //opacity range slider
-var slider = document.getElementById("bafg-wm-opacity");
+var slider = document.querySelector("#bafg-wm-opacity");
 var output = document.querySelector(".bafg-wm-range-val");
-output.innerHTML = slider.value;
+if(slider){
+    output.innerHTML = slider.value;
 
-slider.oninput = function() {
-  output.innerHTML = this.value;
-  slider.setAttribute( 'value',this.value);
+    slider.oninput = function() {
+      output.innerHTML = this.value;
+      slider.setAttribute( 'value',this.value);
+    }
 }

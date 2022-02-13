@@ -57,9 +57,12 @@ function bafg_metabox_callback($post){
             <td class="bafg-option-content">
                 <ul>
                     <li><input type="radio" class="" name="bafg_before_after_method" id="bafg_before_after_method1" value="method_1" checked="checked"> <label for="bafg_before_after_method1">Method 1 (Using 2 images)</label></li>
-                    <li><input type="radio" class="" name="bafg_before_after_method" id="bafg_before_after_method2" value="method_2"> <label for="bafg_before_after_method2">Method 2 (Using 1 image) <div class="bafg-tooltip"><span>?</span>
-                                <div class="bafg-tooltip-info">Pro feature! <br>You can make a slider using one image with an effect.</div>
-                            </div></label></li>
+                    <li><input type="radio" class="" name="bafg_before_after_method" id="bafg_before_after_method2" value="method_2">
+                    <label for="bafg_before_after_method2">Method 2 (Using 1 image) <div class="bafg-tooltip"><span>?</span>
+                        <div class="bafg-tooltip-info">Pro feature! <br>You can make a slider using one image with an effect.</div>
+                        </div>
+                    </label>
+                    </li>
                     <li>
                         <input type="radio" class="" name="bafg_before_after_method" id="bafg_before_after_method3" value="method_3">
                         <label for="bafg_before_after_method3"><?php _e('Method 3 (Using 3 images)','bafg') ?> <div class="bafg-tooltip"><span>?</span>
