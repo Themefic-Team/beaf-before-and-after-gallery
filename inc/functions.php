@@ -192,6 +192,7 @@ function bafg_slider_info_styles($id){
 	<?php
 }
 
+//get the option value
 if( ! function_exists('bafg_option_value')){
 	function bafg_option_value($name){
 		

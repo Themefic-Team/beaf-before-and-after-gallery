@@ -50,7 +50,7 @@ function bafg_settings_page_callback() {
     echo apply_filters( 'bafg_watermark_options_tab_watermark', $demo_html );
     ?>
     <div id="bafg-doc" class="bafg-tabcontent">
-        <a href="#"><?php _e( 'Documentation','bafg' ); ?></a>
+        <a href="https://themefic.com/docs/beaf" target="_blank"><?php _e( 'Documentation','bafg' ); ?></a>
     </div>
 </div>
 
@@ -164,7 +164,7 @@ function bafg_enable_watermark_callback(){
 
     ob_start();
     printf(
-        '<input type="checkbox" disabled name="" id="bafg_enable_watermark" checked ><span style="color:red;font-weight:bold" class="bafg-pro-tt">Pro<span>'
+        '<input type="checkbox" disabled name="" id="bafg_enable_watermark" checked ><span style="color:red;font-weight:bold" class="bafg-pro-tt">Pro addon<span>'
     );
     $enable_watermark_image = ob_get_clean();
     echo apply_filters('bafg_enable_watermark_image',$enable_watermark_image);
