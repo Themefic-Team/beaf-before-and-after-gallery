@@ -1,10 +1,10 @@
 ﻿=== Ultimate Before After Image Slider & Gallery - BEAF ===
-Contributors: themefic, raihan143, kamrul0424, hasanet, codexa
+Contributors: themefic, raihan143, hasanet, codexa
 Donate link: 
-Tags: before after, before after elementor, before after slider, before after gallery, before after filter gallery, before after divi, before after viewer, compare images, image comparison, before after slider wordpress, before after image, twentytwenty, jquery twentytwenty, wordpress before after slider, elementor before and after slider, wordpress before after gallery, elementor before after slider, elementor before after image comparison slider, visual composer before after slider, visual composer image comparison, slider, gallery, before after wordpress, before after beaver, before after oxygen, twenty20, twenty20 image before after plugin, twenty20 wordpress plugin, twenty twenty
+Tags: before after, before after elementor, before after slider, before after gallery, before after filter gallery, before after divi, before after viewer, before after woocommerce, before after multiple image, compare images, image comparison, before after slider wordpress, before after image, twentytwenty, jquery twentytwenty, wordpress before after slider, elementor before and after slider, wordpress before after gallery, elementor before after slider, elementor before after image comparison slider, visual composer before after slider, visual composer image comparison, slider, gallery, before after wordpress, before after beaver, before after oxygen, twenty20, twenty20 image before after plugin, twenty20 wordpress plugin, twenty twenty
 Requires at least: 4.0
-Tested up to: 5.8
-Stable tag: 3.5.1
+Tested up to: 5.9
+Stable tag: 4.1.0
 Requires PHP: 5.4
 License: GPL-2.0+
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
@@ -34,7 +34,7 @@ With this Before and After WordPress plugin, You can showcase your before and af
 
 <strong>Pro Version </strong>
 
-We believe the free version is good enough for most business. However, we have a **Pro version** of this plugin which has more advanced features including **7 Awesome looking Preview Styles, Before-After with Single Image, Multi-Columns Filterable Gallery, Auto Slide, On Scroll Slide** and many more.
+We believe the free version is good enough for most business. However, we have a **Pro version** of this plugin which has more advanced features including **7 Awesome looking Preview Styles, Before-After with Single Image, Before After Slider with 3 Images, Multi-Columns Filterable Gallery, Auto Slide, On Scroll Slide** and many more.
 
 > <strong><a href="https://themefic.com/plugins/beaf/pro" target="_blank">Check BEAF Pro</a></strong>
 
@@ -91,6 +91,10 @@ You can disable the overlay from the options Panel. <a href="https://live.themef
 
 You can move slider on Mouse hover. <a href="https://live.themefic.com/beaf/#mouse-hover">Click here</a> for a quick preview.
 
+= Before After Image Alt tag = 
+
+You can add Alt tag on each images for Better SEO.
+
 = Easy-to-use Option Panel =
 
 BEAF has built in easy-to-use option panel. You can add or remove any options from this panel.
@@ -139,6 +143,7 @@ You will get more features and advantages on the pro version. Here are few featu
 
 * 8 Preview Styles
 * Filterable Before – After Gallery
+* 3 Images Before After Slider
 * Single Image Slider
 * Titles, Description & Read More Button on Single Image BEAF, Gallery and Filterable Gallery
 * Custom Width – Height – Alignment
@@ -157,6 +162,10 @@ The Pro version includes 8 Additional Awesome looking Preview Styles. <a href="h
 = Filterable Before - After Gallery = 
 
 Create 2 Columns, 3 Columns and 4 Columns Filterable Before After Gallery in WordPress with BEAF Pro. You can add as many 2-3-4 columns galleries as you want. The galleries can be combination of all the above mentioned Preview Styles & Single Image Styles. The color and padding of the filters can be edited from the options panel. <a href="https://themefic.com/plugins/beaf/pro/#filter-gallery">Click here</a> for a quick preview.
+
+= Three Images Before After Slider =
+
+Create Before After slider with 3 images.
 
 = Single Image Slider =
 
@@ -192,7 +201,6 @@ You can easily disable slider handle.
 * Customizable handle color and width
 * Customizable Background 
 * Overlay Color (Normal Color and Linear/Radial Gradient)
-* Compare more than two images
 
 > <strong><a href="https://themefic.com/plugins/beaf/pro" target="_blank">View Pro Version</a></strong>
 
@@ -206,15 +214,14 @@ This plugin doesn’t collect/store any user related information.
 
 <strong>Credit:</strong>
 
-BEAF is based on the famous <a href="https://zurb.com/playground/twentytwenty">TwentyTwenty</a> script that developed by Zurb team.
+BEAF is based on the famous <a href="https://zurb.com/playground/twentytwenty">TwentyTwenty</a> script that developed by Zurb team. Our icon is taken from <a href="https://iconfinder.com/">Iconfinder</a>.
 
 <strong>Our Other Plugins</strong>
 
+* <a href="https://wordpress.org/plugins/tourfic/">Travel and Hotel Booking Solution for WooCommerce – Tourfic</a>
 * <a href="https://wordpress.org/plugins/ultimate-addons-for-contact-form-7/">Ultimate Addons For Contact Form 7</a>
 * <a href="https://wordpress.org/plugins/instantio" target="_blank">Onepage / Direct Checkout for WooCommerce - Instantio</a>
 * <a href="https://wordpress.org/plugins/before-after-for-woocommerce">Before After Slider for WooCommerce – eBEAF</a>
-* <a href="https://wordpress.org/plugins/woosync-product-stock-synchronizer-for-woocommerce/">Syncfic - Product Stock Synchronizer for WooCommerce</a>
-* <a href="https://wordpress.org/plugins/wp-guidance-tutorial-for-beginners/">WP Guidance - Guideline/Tutorial for WordPress Beginners</a>
 
 
 == Installation ==
@@ -265,7 +272,7 @@ With <a href="https://themefic.com/plugins/beaf/pro/#filtergallery">BEAF Pro</a>
 
 = How to create a before and after slider in WooCommerce? =
 
-We have a separate plugin for that available <a href="https://wordpress.org/plugins/before-after-for-woocommerce">here</a>.
+We have a separate plugin for that available <a href="https://wordpress.org/plugins/before-after-for-woocommerce">here</a>. With this plugin, you can create a Before After WooCommerce Slider easily.
 
 = Is free version supported? =
 
@@ -302,6 +309,27 @@ Yes, We provide full support on the WordPress.org forums. You can also post ques
 
 == Changelog ==
 
+= 4.1.0 - 15/02/2022 =
+
+- Minor bug fixed
+- Watermark Feature added (Pro addon required)
+
+= 4.0.2 - 26/01/2022 =
+
+- Fixed color picker issue
+- Compatiblity Check: WordPress 5.9
+
+= 4.0.1 - 25/01/2022 =
+
+- Fixed: Minor Bugs and Stylesheet.
+
+= 4.0.0 - 21/01/2022 =
+
+- Introducing: Before After Image alt tag option
+- Introducing: 3 Images Before After Slider (Pro)
+- Fixed: Minor Bugs and Stylesheet.
+- Option Panel Update
+
 = 3.5.1 - 02/01/2022 =
 
 - Additional bug fixes
@@ -319,7 +347,6 @@ Yes, We provide full support on the WordPress.org forums. You can also post ques
 
 - Additional bug fixes
 - Removed a notice
-
 
 = 3.4.8 - 3/11/2021 =
 

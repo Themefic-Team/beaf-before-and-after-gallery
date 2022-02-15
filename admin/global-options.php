@@ -172,10 +172,12 @@ function bafg_enable_watermark_callback(){
     
 }
 function bafg_attachment_id_callback(){
-
+    ob_start();
     printf(
-        '<input type="hidden" class="bafg-attachment-id" value="'. bafg_option_value('bafg_attachment_id') .'" name="bafg_watermark[bafg_attachment_id]">'
+        '<input type="hidden" class="bafg-attachment-id" value="/var/root/...." name="bafg_watermark[bafg_attachment_id]">'
     );
+    $bafg_wm_image_path = ob_get_clean();
+    echo apply_filters('bafg_watermark_image_path',$bafg_wm_image_path);
 }
 function bafg_watermark_prev_callback() {
     echo '
@@ -191,7 +193,7 @@ function bafg_enable_wm_opacity_callback(){
         '<input type="checkbox" disabled name="" id="bafg_enable_wm_opacity" checked >'
     );
     $enable_wm_img_opacity = ob_get_clean();
-    echo apply_filters('bafg_enable_wm_opacity',$enable_wm_img_opacity);
+    echo apply_filters( 'bafg_enable_wm_opacity',$enable_wm_img_opacity );
 
     
 }
