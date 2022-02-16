@@ -344,3 +344,102 @@ ul.bafg-before-after-style li {
 	color: #e61c1c;
 	text-decoration: none
 }
+.img-alt-tag {
+    margin-top: 15px;
+}
+.img-alt-tag span {
+    margin-right: 15px;
+    font-weight: 500;
+}
+.img-alt-tag input {
+    width: 285px;
+}
+/* Style the buttons inside the bafg-tab */
+.bafg-setting-tab a {
+	background-color: inherit;
+	float: left;
+	border: none;
+	outline: none;
+	cursor: pointer;
+	padding: 14px 16px;
+	transition: 0.3s;
+	font-size: 17px;
+	  color: #fff;
+	  border-right: 1px solid #fff
+  }
+  .bafg-setting-tab a:last-child {
+	  border-right: 0
+  }
+  /* Change background color of buttons on hover */
+  .bafg-setting-tab a:hover {
+	background-color: #fff;
+	  color: #444
+  }
+  .bafg-setting-tab {
+    background: #424242;
+    width: 100%;
+    overflow: hidden;
+}
+  /* Create an active/current bafg-tablink class */
+  .bafg-setting-tab a.active {
+	background-color: #fff;
+	  color: #444
+  }
+  
+  /* Style the uacf7-tab content */
+  .bafg-tabcontent {
+	display: none;
+	padding: 6px 12px;
+	border: 1px solid #ccc;
+	border-top: none;
+	  background-color: #fff
+}
+img.bafg-watermark-prev {
+    width: 300px;
+}
+
+.bafg-wm-range {
+	-webkit-appearance: none;
+	width: 40%;
+	height: 25px;
+	background: #d3d3d3;
+	outline: none;
+	opacity: 0.7;
+	-webkit-transition: .2s;
+	transition: opacity .2s;
+  }
+  
+  .bafg-wm-range:hover {
+	opacity: 1;
+  }
+  
+  .bafg-wm-range::-webkit-slider-thumb {
+	-webkit-appearance: none;
+	appearance: none;
+	width: 25px;
+	height: 25px;
+	background: #555;
+	cursor: pointer;
+  }
+  
+  .bafg-wm-range::-moz-range-thumb {
+	width: 25px;
+	height: 25px;
+	background: #555;
+	cursor: pointer;
+  }
+  span.bafg-wm-range-val {
+    display: block;
+    font-weight: bold;
+    margin-top: 10px;
+    font-size: 16px;
+}
+tr.bafg-watermark-enable li {
+    display: inline-block;
+    margin-right: 15px;
+    vertical-align: middle;
+}
+
+tr.bafg-watermark-enable {
+    vertical-align: top;
+}

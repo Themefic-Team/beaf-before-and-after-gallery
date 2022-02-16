@@ -46,7 +46,6 @@ function bafg_metabox_callback($post){
 
 <div id="bafg_gallery_content" class="bafg-tabcontent" style="display: block;">
     <table class="bafg-option-table">
-        
         <?php
         ob_start();
         ?>
@@ -57,9 +56,12 @@ function bafg_metabox_callback($post){
             <td class="bafg-option-content">
                 <ul>
                     <li><input type="radio" class="" name="bafg_before_after_method" id="bafg_before_after_method1" value="method_1" checked="checked"> <label for="bafg_before_after_method1">Method 1 (Using 2 images)</label></li>
-                    <li><input type="radio" class="" name="bafg_before_after_method" id="bafg_before_after_method2" value="method_2"> <label for="bafg_before_after_method2">Method 2 (Using 1 image) <div class="bafg-tooltip"><span>?</span>
-                                <div class="bafg-tooltip-info">Pro feature! <br>You can make a slider using one image with an effect.</div>
-                            </div></label></li>
+                    <li><input type="radio" class="" name="bafg_before_after_method" id="bafg_before_after_method2" value="method_2">
+                    <label for="bafg_before_after_method2">Method 2 (Using 1 image) <div class="bafg-tooltip"><span>?</span>
+                        <div class="bafg-tooltip-info">Pro feature! <br>You can make a slider using one image with an effect.</div>
+                        </div>
+                    </label>
+                    </li>
                     <li>
                         <input type="radio" class="" name="bafg_before_after_method" id="bafg_before_after_method3" value="method_3">
                         <label for="bafg_before_after_method3"><?php _e('Method 3 (Using 3 images)','bafg') ?> <div class="bafg-tooltip"><span>?</span>
@@ -75,6 +77,39 @@ function bafg_metabox_callback($post){
         $bafg_before_after_method = ob_get_clean();
         echo apply_filters( 'bafg_before_after_method', $bafg_before_after_method, $post );
         ?>
+        
+        <?php
+        ob_start();
+        $enabled_wm = bafg_option_value('enable_watermark');
+        if($enabled_wm == 'on') :
+            ?>
+            <tr class="bafg-watermark-enable">
+                <td class="bafg-option-label">
+                    <p><label for="bafg_wm_enable_disable"><?php echo esc_html__("Watermark Enable/Disable","bafg-pro");?></label></p>
+                </td>
+                <td class="bafg-option-content">
+                    <ul>
+                        <li><input type="radio" class="" name="" id="bafg_wm_enable" value="yes" checked="checked"> <label for="bafg_wm_enable"><?php _e( 'Enable','bafg' ); ?></label></li>
+                        <li>
+                            <input type="radio" class="" name="" id="bafg_wm_disable" value="no"> <label for="bafg_wm_disable"><?php _e( 'Disable','bafg' ); ?><div class="bafg-tooltip"><span>?</span>
+                            <div class="bafg-tooltip-info">Pro feature! <br>You can make a slider using one image with an effect.</div>
+                                </div></label>
+                        </li>                    
+                    </ul>
+                    <p><?php _e( 'Enable or Disable watermark for this indiviusal slider','bafg' ); ?></p>
+                </td>
+            </tr>
+        <?php
+        endif;
+        $bafg_en_dis_watermark = ob_get_clean();
+        echo apply_filters( 'bafg_enable_disable_watermark', $bafg_en_dis_watermark, $post );
+        ?>
+
+        <?php 
+        $before_img_alt = get_post_meta( $post->ID, 'before_img_alt', true) ? get_post_meta( $post->ID, 'before_img_alt', true) : '';
+        $after_img_alt = get_post_meta( $post->ID, 'after_img_alt', true) ? get_post_meta( $post->ID, 'after_img_alt', true) : '';
+
+        ?>
         <tr class="bafg-row-before-image">
             <td class="bafg-option-label">
                 <p><label><?php echo esc_html__('Before image','bafg'); ?></label></p>
@@ -83,6 +118,10 @@ function bafg_metabox_callback($post){
                 <input type="text" name="bafg_before_image" id="bafg_before_image" size="50" value="<?php echo esc_url(get_post_meta( $post->ID, 'bafg_before_image', true )); ?>" />
                 <input class="bafg_button" id="bafg_before_image_upload" type="button" value="Add or Upload Image">
                 <img id="bafg_before_image_thumbnail" src="<?php echo esc_url(get_post_meta( $post->ID, 'bafg_before_image', true )); ?>">
+                <div class="img-alt-tag">
+                    <span><?php _e( 'Image Alt: ' ); ?></span>
+                    <input type="text" name="before_img_alt" id="before_img_alt" value="<?php echo esc_attr( $before_img_alt ); ?>" />
+                </div>
             </td>
         </tr>
         <tr class="bafg-row-after-image">
@@ -91,6 +130,10 @@ function bafg_metabox_callback($post){
                 <input type="text" name="bafg_after_image" id="bafg_after_image" size="50" value="<?php echo esc_url(get_post_meta( $post->ID, 'bafg_after_image', true )); ?>" />
                 <input class="bafg_button" id="bafg_after_image_upload" type="button" value="Add or Upload Image">
                 <img id="bafg_after_image_thumbnail" src="<?php echo esc_url(get_post_meta( $post->ID, 'bafg_after_image', true )); ?>">
+                <div class="img-alt-tag">
+                    <span><?php _e( 'Image Alt: ' ); ?></span>
+                    <input type="text" name="after_img_alt" id="after_img_alt" value="<?php echo esc_attr( $after_img_alt ); ?>" />
+                </div>
             </td>
         </tr>
         <?php
@@ -118,7 +161,7 @@ function bafg_metabox_callback($post){
         ob_start();
         ?>
         <tr class="bafg-row-bottom-image" style="display: none">
-            <td class="bafg-option-label"><label>Bottom image <div class="bafg-tooltip"><span>?</span>
+            <td class="bafg-option-label"><label><?php _e( 'First Image','bafg' ); ?> <div class="bafg-tooltip"><span>?</span>
                         <div class="bafg-tooltip-info"><?php _e( 'Pro feature!','bafg' ); ?></div>
                     </div></label></td>
             <td class="bafg-option-content">
@@ -128,7 +171,7 @@ function bafg_metabox_callback($post){
             </td>
         </tr>
         <tr class="bafg-row-middle-image" style="display: none">
-            <td class="bafg-option-label"><label>Middle image <div class="bafg-tooltip"><span>?</span>
+            <td class="bafg-option-label"><label><?php _e( 'Second image','bafg' ); ?> <div class="bafg-tooltip"><span>?</span>
                         <div class="bafg-tooltip-info"><?php _e( 'Pro feature!','bafg' ); ?></div>
                     </div></label></td>
             <td class="bafg-option-content">
@@ -138,7 +181,7 @@ function bafg_metabox_callback($post){
             </td>
         </tr>
         <tr class="bafg-row-top-image" style="display: none">
-            <td class="bafg-option-label"><label>Top image <div class="bafg-tooltip"><span>?</span>
+            <td class="bafg-option-label"><label><?php _e( 'Third image','bafg' ); ?> <div class="bafg-tooltip"><span>?</span>
                         <div class="bafg-tooltip-info"><?php _e( 'Pro feature!','bafg' ); ?></div>
                     </div></label></td>
             <td class="bafg-option-content">
@@ -560,7 +603,7 @@ function bafg_metabox_callback($post){
                 </div></label>
             </td>
             <td class="bafg-option-content">
-                <input id="bafg_overlay_color" data-alpha-enabled="true" data-default-color="rgba(0, 0, 0, 0.5);" class="bafg-color-field" type="text" name="bafg_overlay_color" value="" />
+                <input id="bafg_overlay_color" data-palette="true" data-alpha="true" data-default-color="rgba(0, 0, 0, 0.5);" class="bafg-color-field" type="text" name="bafg_overlay_color" value="" />
                 <br>
             </td>
         </tr>
@@ -930,6 +973,12 @@ function save_post ( $post_id ) {
     
     if( isset($_POST['skip_lazy_load']) ){
         update_post_meta( $post_id, 'skip_lazy_load', esc_attr( $_POST['skip_lazy_load'] ) );
+    }
+    if( isset($_POST['before_img_alt']) ){
+        update_post_meta( $post_id, 'before_img_alt', esc_attr( $_POST['before_img_alt'] ) );
+    }
+    if( isset($_POST['after_img_alt']) ){
+        update_post_meta( $post_id, 'after_img_alt', esc_attr( $_POST['after_img_alt'] ) );
     }
     
     do_action( 'bafg_save_post_meta', $post_id );

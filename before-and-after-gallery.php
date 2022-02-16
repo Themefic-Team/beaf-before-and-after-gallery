@@ -3,7 +3,7 @@
  * Plugin Name: Ultimate Before After Image Slider & Gallery - BEAF
  * Plugin URI: https://themefic.com/plugins/beaf/
  * Description: Want to show comparison of two images? With BEAF, you can easily create before and after image slider or image gallery. Elementor Supported.
- * Version: 3.5.2
+ * Version: 4.1.0
  * Author: Themefic
  * Author URI: https://themefic.com/
  * License: GPL-2.0+
@@ -41,6 +41,10 @@ class BAFG_Before_After_Gallery {
         * Require admin file
         */
         require_once('admin/bafg-admin.php');
+        /*
+        * Require admin global options file
+        */
+        require_once('admin/global-options.php');
         
         /*
         * Adding shortcode for bafg
@@ -115,7 +119,7 @@ class BAFG_Before_After_Gallery {
                     'not_found' => __( 'No slider found.', 'bafg' ),
                     'not_found_in_trash' => __( 'No slider found in Trash.', 'bafg' ),
                 ),
-                'has_archive' => true,
+                'has_archive' => true,                
                 'public' => false,
 				'publicly_queryable' => true,
 				'show_ui' => true,
@@ -211,7 +215,10 @@ class BAFG_Before_After_Gallery {
 		$click_to_move = !empty(get_post_meta( $id, 'bafg_click_to_move', true)) ? get_post_meta( $id, 'bafg_click_to_move', true) : 'no';
 		
 		$skip_lazy_load = get_post_meta( $id, 'skip_lazy_load', true);
-		
+
+        $before_img_alt = get_post_meta( $id, 'before_img_alt', true) ? get_post_meta( $id, 'before_img_alt', true) : '';
+        $after_img_alt = get_post_meta( $id, 'after_img_alt', true) ? get_post_meta( $id, 'after_img_alt', true) : '';
+
 		if( $skip_lazy_load == 'yes' ) {
 			$skip_lazy = 'skip-lazy';
 			$data_skip_lazy = 'data-skip-lazy';
@@ -226,8 +233,8 @@ class BAFG_Before_After_Gallery {
 <?php do_action('bafg_before_slider', $id); ?>
 
 <div class="bafg-twentytwenty-container <?php echo esc_attr('slider-'.$id.''); ?> <?php if(get_post_meta($id, 'bafg_custom_color', true) == 'yes') echo 'bafg-custom-color'; ?>" bafg-orientation="<?php echo esc_attr($orientation); ?>" bafg-default-offset="<?php echo esc_attr($offset); ?>" bafg-before-label="<?php echo esc_attr($before_label); ?>" bafg-after-label="<?php echo esc_attr($after_label); ?>" bafg-overlay="<?php echo esc_attr($overlay); ?>" bafg-move-slider-on-hover="<?php echo esc_attr($move_slider_on_hover); ?>" bafg-click-to-move="<?php echo esc_attr($click_to_move); ?>">
-    <img class="<?php echo esc_attr( $skip_lazy ); ?>" <?php echo esc_attr( $data_skip_lazy ); ?> src="<?php echo esc_url($b_image); ?>" alt="Before Image">
-    <img class="<?php echo esc_attr( $skip_lazy ); ?>" <?php echo esc_attr( $data_skip_lazy ); ?> src="<?php echo esc_url($a_image); ?>" alt="After Image">
+    <img class="<?php echo esc_attr( $skip_lazy ); ?>" <?php echo esc_attr( $data_skip_lazy ); ?> src="<?php echo esc_url($b_image); ?>" alt="<?php echo esc_attr( $before_img_alt ); ?>">
+    <img class="<?php echo esc_attr( $skip_lazy ); ?>" <?php echo esc_attr( $data_skip_lazy ); ?> src="<?php echo esc_url($a_image); ?>" alt="<?php echo esc_attr( $after_img_alt ); ?>">
 </div>
 
 <?php do_action('bafg_after_slider', $id); ?>
