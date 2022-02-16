@@ -120,7 +120,6 @@ class BAFG_Before_After_Gallery {
                     'not_found_in_trash' => __( 'No slider found in Trash.', 'bafg' ),
                 ),
                 'has_archive' => true,                
-                'hierarchical' => true,                
                 'public' => false,
 				'publicly_queryable' => true,
 				'show_ui' => true,
