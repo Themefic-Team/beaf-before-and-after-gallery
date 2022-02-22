@@ -17,7 +17,7 @@ function bafg_submenu_settings_page() {
         'manage_options', //$capability
         'bafg_settings', //$menu_slug
         'bafg_settings_page_callback', //$function
-        3,
+        3
     );
 
 }
