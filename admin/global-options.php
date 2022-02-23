@@ -75,21 +75,21 @@ function bafg_register_settings() {
         __( 'Enable Watermark', 'bafg' ), // Setting $title
         'bafg_enable_watermark_callback',
         'bafg_settings', // Settings Page Slug
-        'bafg_global_option_header', // Section $id
+        'bafg_global_option_header' // Section $id
     );
     add_settings_field(
         'path', // Field $id
         __( 'Watermark Image Upload', 'bafg' ), // Setting $title
         'bafg_watermark_upload_callback',
         'bafg_settings', // Settings Page Slug
-        'bafg_global_option_header', // Section $id
+        'bafg_global_option_header' // Section $id
     );
     add_settings_field(
         'prev', // Field $id
         __( 'Watermark Image', 'bafg' ), // Setting $title
         'bafg_watermark_prev_callback',
         'bafg_settings', // Settings Page Slug
-        'bafg_global_option_header', // Section $id
+        'bafg_global_option_header' // Section $id
     );
     add_settings_field(
         'bafg_attachment_id',
