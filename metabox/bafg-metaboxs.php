@@ -160,7 +160,7 @@ function bafg_metabox_callback($post){
         //Image upload fields for 3 images slider
         ob_start();
         ?>
-        <tr class="bafg-row-bottom-image" style="display: none">
+        <tr class="bafg-row-first-image" style="display: none">
             <td class="bafg-option-label"><label><?php _e( 'First Image','bafg' ); ?> <div class="bafg-tooltip"><span>?</span>
                         <div class="bafg-tooltip-info"><?php _e( 'Pro feature!','bafg' ); ?></div>
                     </div></label></td>
@@ -170,7 +170,7 @@ function bafg_metabox_callback($post){
                 <input type="hidden" name="img_txt_id" id="img_txt_id" value="" />
             </td>
         </tr>
-        <tr class="bafg-row-middle-image" style="display: none">
+        <tr class="bafg-row-second-image" style="display: none">
             <td class="bafg-option-label"><label><?php _e( 'Second image','bafg' ); ?> <div class="bafg-tooltip"><span>?</span>
                         <div class="bafg-tooltip-info"><?php _e( 'Pro feature!','bafg' ); ?></div>
                     </div></label></td>
@@ -180,7 +180,7 @@ function bafg_metabox_callback($post){
                 <input type="hidden" name="img_txt_id" id="img_txt_id" value="" />
             </td>
         </tr>
-        <tr class="bafg-row-top-image" style="display: none">
+        <tr class="bafg-row-third-image" style="display: none">
             <td class="bafg-option-label"><label><?php _e( 'Third image','bafg' ); ?> <div class="bafg-tooltip"><span>?</span>
                         <div class="bafg-tooltip-info"><?php _e( 'Pro feature!','bafg' ); ?></div>
                     </div></label></td>
@@ -367,19 +367,25 @@ function bafg_metabox_callback($post){
                 $bafg_before_label = !empty(get_post_meta( $post->ID, 'bafg_before_label', true )) ? get_post_meta( $post->ID, 'bafg_before_label', true ) : 'Before';
                 ?>
                 <input type="text" class="regular-text" name="bafg_before_label" id="bafg_before_label" value="<?php echo esc_html($bafg_before_label); ?>" >
-                <p><?php echo esc_html__('Set a custom label for the title "Before".','bafg'); ?></p>
+                <p><?php echo esc_html__('Set a custom label for the before image.','bafg'); ?></p>
             </td>
         </tr>
+        <!--Middle lavel html(pro)-->
+        <?php ob_start(); ?>
         <tr class="bafg-row-mid-label">
-            <td class="bafg-option-label"><label for="bafg_mid_label"><?php echo esc_html__('Middle Label','bafg'); ?></label></td>
+            <td class="bafg-option-label"><label for="bafg_mid_label"><?php echo esc_html__('Middle Label','bafg'); ?><div class="bafg-tooltip"><span>?</span>
+                    <div class="bafg-tooltip-info">Pro feature!</div>
+                </div></label></td>
             <td class="bafg-option-content">
-               <?php 
-                $bafg_mid_label = !empty(get_post_meta( $post->ID, 'bafg_mid_label', true )) ? get_post_meta( $post->ID, 'bafg_mid_label', true ) : 'Middle';
-                ?>
-                <input type="text" class="regular-text" name="bafg_mid_label" id="bafg_mid_label" value="<?php echo esc_html($bafg_mid_label); ?>" >
-                <p><?php echo esc_html__('Set a custom label for the title "Before".','bafg'); ?></p>
+                <input type="text" class="regular-text" name="bafg_mid_label" id="bafg_mid_label" value="" >
+                <p><?php echo esc_html__('Set a custom label for the middle image.','bafg'); ?></p>
             </td>
         </tr>
+        <?php 
+		$mid_label_html = ob_get_clean();
+		echo apply_filters( 'middle_label_html', $mid_label_html, $post );
+		?>
+       
         <tr class="bafg-row-a-label">
             <td class="bafg-option-label"><label for="bafg_after_label"><?php echo esc_html__('After Label','bafg'); ?></label></td>
             <td class="bafg-option-content">
@@ -387,7 +393,7 @@ function bafg_metabox_callback($post){
                 $bafg_after_label = !empty(get_post_meta( $post->ID, 'bafg_after_label', true )) ? get_post_meta( $post->ID, 'bafg_after_label', true ) : 'After';
                 ?>
                 <input type="text" class="regular-text" name="bafg_after_label" id="bafg_after_label" value="<?php echo esc_html($bafg_after_label); ?>">
-                <p><?php echo esc_html__('Set a custom label for the title "After".','bafg'); ?></p>
+                <p><?php echo esc_html__('Set a custom label for the after image.','bafg'); ?></p>
             </td>
         </tr>
         <!--Label Outside of Image start-->
@@ -542,26 +548,27 @@ function bafg_metabox_callback($post){
             ?>
             <td class="bafg-option-content"><input id="bafg_before_label_color" class="bafg-color-field" type="text" name="bafg_before_label_color" value="<?php echo esc_attr($bafg_before_label_color); ?>" /></td>
         </tr>
-
+		
+       <!--Middel label color html(pro)-->
+        <?php ob_start(); ?>
         <tr class="bafg-mid-label-bg">
             <td class="bafg-option-label">
-                <label for="bafg_mid_label_background"><?php echo esc_html__('Middle Label Background','bafg'); ?></label>
+                <label for="bafg_mid_label_background"><?php echo esc_html__('Middle Label Background','bafg'); ?><div class="bafg-tooltip"><span>?</span><div class="bafg-tooltip-info">Pro feature!</div>
+                </div></label>
             </td>
-            <?php 
-            $bafg_mid_label_background = !empty(get_post_meta( $post->ID, 'bafg_mid_label_background', true )) ? get_post_meta( $post->ID, 'bafg_mid_label_background', true ) : '';
-            ?>
-            <td class="bafg-option-content"><input id="bafg_mid_label_background" class="bafg-color-field" type="text" name="bafg_mid_label_background" value="<?php echo esc_attr($bafg_mid_label_background); ?>" /></td>
+            <td class="bafg-option-content"><input id="bafg_mid_label_background" class="bafg-color-field" type="text" name="bafg_mid_label_background" value="" /></td>
         </tr>
         <tr class="bafg-mid-label-color" >
             <td class="bafg-option-label">
-                <label for="bafg_mid_label_color"><?php echo esc_html__('Middle label Color','bafg'); ?></label>
+                <label for="bafg_mid_label_color"><?php echo esc_html__('Middle label Color','bafg'); ?><div class="bafg-tooltip"><span>?</span><div class="bafg-tooltip-info">Pro feature!</div>
+                </div></label>
             </td>
-            <?php 
-            $bafg_mid_label_color = !empty(get_post_meta( $post->ID, 'bafg_mid_label_color', true )) ? get_post_meta( $post->ID, 'bafg_mid_label_color', true ) : '';
-            ?>
-            <td class="bafg-option-content"><input id="bafg_mid_label_color" class="bafg-color-field" type="text" name="bafg_mid_label_color" value="<?php echo esc_attr($bafg_mid_label_color); ?>" /></td>
+            <td class="bafg-option-content"><input id="bafg_mid_label_color" class="bafg-color-field" type="text" name="bafg_mid_label_color" value="" /></td>
         </tr>
-
+		<?php 
+		$middle_label_colors = ob_get_clean();
+		echo apply_filters( 'middle_label_colors', $middle_label_colors, $post );
+		?>
         <tr class="bafg-after-label-bg">
             <td class="bafg-option-label">
                 <label for="bafg_after_label_background"><?php echo esc_html__('After Label Background','bafg'); ?></label>
@@ -890,13 +897,6 @@ function save_post ( $post_id ) {
     
     if( isset($_POST['bafg_before_label_color']) ){
         update_post_meta( $post_id, 'bafg_before_label_color', esc_attr( $_POST['bafg_before_label_color'] ) );
-    }
-    if( isset($_POST['bafg_mid_label_background']) ){
-        update_post_meta( $post_id, 'bafg_mid_label_background', esc_attr( $_POST['bafg_mid_label_background'] ) );
-    }
-    
-    if( isset($_POST['bafg_mid_label_color']) ){
-        update_post_meta( $post_id, 'bafg_mid_label_color', esc_attr( $_POST['bafg_mid_label_color'] ) );
     }
     
     if( isset($_POST['bafg_after_label_background']) ){

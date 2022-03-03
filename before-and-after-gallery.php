@@ -3,7 +3,7 @@
  * Plugin Name: Ultimate Before After Image Slider & Gallery - BEAF
  * Plugin URI: https://themefic.com/plugins/beaf/
  * Description: Want to show comparison of two images? With BEAF, you can easily create before and after image slider or image gallery. Elementor Supported.
- * Version: 4.1.0
+ * Version: 4.1.4
  * Author: Themefic
  * Author URI: https://themefic.com/
  * License: GPL-2.0+
@@ -25,7 +25,11 @@ class BAFG_Before_After_Gallery {
         * Enqueue css and js for BAFG
         */
         add_action( 'wp_enqueue_scripts', array($this, 'bafg_image_before_after_foucs_scripts'), 999 );
-        add_action( 'admin_enqueue_scripts', array($this, 'bafg_image_before_after_foucs_scripts') );
+        
+		// Check if Elementor installed and activated
+		if ( did_action( 'elementor/loaded' ) ) {
+			add_action( 'elementor/editor/before_enqueue_scripts', array($this, 'bafg_image_before_after_foucs_scripts') );
+		}
         
         /*
         * BAFG init
@@ -90,16 +94,9 @@ class BAFG_Before_After_Gallery {
         wp_enqueue_style( 'bafg_twentytwenty', plugin_dir_url( __FILE__ ) . 'assets/css/twentytwenty.css'); 
         wp_enqueue_style( 'bafg-style', plugin_dir_url( __FILE__ ) . 'assets/css/bafg-style.css'); 
 
-        wp_enqueue_script( 'eventMove', plugin_dir_url( __FILE__ ) . 'assets/js/jquery.event.move.js', array('jquery'), null, true );
-        wp_enqueue_script( 'bafg_twentytwenty', plugin_dir_url( __FILE__ ) . 'assets/js/jquery.twentytwenty.js', array('jquery'), null, true );
-        wp_enqueue_script( 'bafg_custom_js', plugin_dir_url( __FILE__ ) . 'assets/js/bafg-custom-js.js', array('jquery'), null, true );
-    }
-    
-    //Enqueue script in admin area
-    public function bafg_admin_enqueue_scripts(){
-        wp_enqueue_script( 'custom_js', plugin_dir_url( __FILE__ ) . 'assets/js/bafg-script.js', array('jquery'), null, true );
-
-        wp_enqueue_style('bafg_admin_style', plugin_dir_url( __FILE__ ) . 'assets/css/bafg-admin-style.css');
+        wp_enqueue_script( 'eventMove', plugin_dir_url( __FILE__ ) . 'assets/js/jquery.event.move.js', array('jquery') );
+        wp_enqueue_script( 'bafg_twentytwenty', plugin_dir_url( __FILE__ ) . 'assets/js/jquery.twentytwenty.js', array('jquery','eventMove') );
+        wp_enqueue_script( 'bafg_custom_js', plugin_dir_url( __FILE__ ) . 'assets/js/bafg-custom-js.js', array('jquery','bafg_twentytwenty'), null, true );
     }
     
     //register post type
