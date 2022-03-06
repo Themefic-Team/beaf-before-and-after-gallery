@@ -383,7 +383,7 @@ function bafg_metabox_callback($post){
         </tr>
         <?php 
 		$mid_label_html = ob_get_clean();
-		echo apply_filters( 'middle_label_html', $mid_label_html, $post );
+		echo apply_filters( 'bafg_middle_label_html', $mid_label_html, $post );
 		?>
        
         <tr class="bafg-row-a-label">
@@ -567,7 +567,7 @@ function bafg_metabox_callback($post){
         </tr>
 		<?php 
 		$middle_label_colors = ob_get_clean();
-		echo apply_filters( 'middle_label_colors', $middle_label_colors, $post );
+		echo apply_filters( 'bafg_middle_label_colors', $middle_label_colors, $post );
 		?>
         <tr class="bafg-after-label-bg">
             <td class="bafg-option-label">
