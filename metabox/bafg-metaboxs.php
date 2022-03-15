@@ -92,7 +92,7 @@ function bafg_metabox_callback($post){
                         <li><input type="radio" class="" name="" id="bafg_wm_enable" value="yes" checked="checked"> <label for="bafg_wm_enable"><?php _e( 'Enable','bafg' ); ?></label></li>
                         <li>
                             <input type="radio" class="" name="" id="bafg_wm_disable" value="no"> <label for="bafg_wm_disable"><?php _e( 'Disable','bafg' ); ?><div class="bafg-tooltip"><span>?</span>
-                            <div class="bafg-tooltip-info">Pro feature! <br>You can make a slider using one image with an effect.</div>
+                            <div class="bafg-tooltip-info">Pro feature! <br>Watermark Addon required to activate this feature</div>
                                 </div></label>
                         </li>                    
                     </ul>
