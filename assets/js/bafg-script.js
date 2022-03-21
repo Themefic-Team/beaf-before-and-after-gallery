@@ -319,6 +319,7 @@ function bafg_style_9_conditional_fields(){
     let $ = jQuery;
     $('.bafg-row-orientation').hide();
     $('.bafg-row-offset').hide();
+    $('.bafg_label_outside').hide();
     $('.bafg_auto_slide').hide();
     $('.bafg_on_scroll_slide').hide();
     $('.bafg_move_slider_on_hover').hide();
@@ -330,7 +331,6 @@ function bafg_style_9_conditional_fields(){
 jQuery('#bafg_before_after_style_9').on('change',function(){
     bafg_style_9_conditional_fields();
 });
-console.log(jQuery('input:radio[name=bafg_before_after_style]:checked').val());
 
 jQuery(document).ready(function(){
 

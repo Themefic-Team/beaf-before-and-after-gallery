@@ -399,7 +399,7 @@ function bafg_metabox_callback($post){
         </tr>
         <!--Label Outside of Image start-->
         <?php ob_start();?>
-        <tr class="bafg_option_label">
+        <tr class="bafg_label_outside">
             <td class="bafg-option-label"><label for="bafg_label_outside1"><?php echo esc_html__('Show Label Outside Of Image','bafg'); ?>
                 <div class="bafg-tooltip"><span>?</span>
                     <div class="bafg-tooltip-info">Pro feature!</div>
