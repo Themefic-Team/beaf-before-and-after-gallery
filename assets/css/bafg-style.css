@@ -682,12 +682,12 @@
 .bafg-col-6,
 .bafg-col-3,
 .bafg-col-4 {
-	padding-left: 15px;
-	padding-right: 15px;
 	margin-top: 15px;
 	margin-bottom: 15px
 }
-
+.bafg-gallery-row .twentytwenty-wrapper {
+    padding: 0 15px;
+}
 @media only screen and (max-width: 767px) {
 
 	.bafg-col-3 {

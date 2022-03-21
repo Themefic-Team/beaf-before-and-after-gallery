@@ -312,6 +312,34 @@ jQuery('#bafg_before_after_style').on('change', function(){
 	bagf_style_7();
 });
 
+/*
+BAFG style 9
+*/
+function bafg_style_9_conditional_fields(){
+    let $ = jQuery;
+    $('.bafg-row-orientation').hide();
+    $('.bafg-row-offset').hide();
+    $('.bafg_label_outside').hide();
+    $('.bafg_auto_slide').hide();
+    $('.bafg_on_scroll_slide').hide();
+    $('.bafg_move_slider_on_hover').hide();
+    $('.bafg-row-click-to-move').hide();
+    $('.bafg-handle-color').hide();
+    $('.bafg-overlay-color').hide();
+};
+
+jQuery('#bafg_before_after_style_9').on('change',function(){
+    bafg_style_9_conditional_fields();
+});
+
+jQuery(document).ready(function(){
+
+    if( jQuery('input:radio[name=bafg_before_after_style]:checked').val() == 'design-9' ) {
+
+        bafg_style_9_conditional_fields();
+    }
+});
+
 //opacity range slider
 var slider = document.querySelector("#bafg-wm-opacity");
 var output = document.querySelector(".bafg-wm-range-val");
