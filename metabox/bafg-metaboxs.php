@@ -65,7 +65,7 @@ function bafg_metabox_callback($post){
                     <li>
                         <input type="radio" class="" name="bafg_before_after_method" id="bafg_before_after_method3" value="method_3">
                         <label for="bafg_before_after_method3"><?php _e('Method 3 (Using 3 images)','bafg') ?> <div class="bafg-tooltip"><span>?</span>
-                            <div class="bafg-tooltip-info">Pro feature! <br>You can make a slider using 3 images.</div>
+                            <div class="bafg-tooltip-info">Pro addon required! <br>You can make a slider using 3 images.</div>
                             </div>
                         </label>
                     </li>
