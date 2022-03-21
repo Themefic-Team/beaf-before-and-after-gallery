@@ -4,8 +4,8 @@ Donate link:
 Tags: before after, before after elementor, before after slider, before after gallery, before after filter gallery, before after divi, before after viewer, before after woocommerce, before after multiple image, compare images, image comparison, before after slider wordpress, before after image, twentytwenty, jquery twentytwenty, wordpress before after slider, elementor before and after slider, wordpress before after gallery, elementor before after slider, elementor before after image comparison slider, visual composer before after slider, visual composer image comparison, slider, gallery, before after wordpress, before after beaver, before after oxygen, twenty20, twenty20 image before after plugin, twenty20 wordpress plugin, twenty twenty
 Requires at least: 4.0
 Tested up to: 5.9
-Stable tag: 4.1.0
-Requires PHP: 5.4
+Stable tag: 4.2.0
+Requires PHP: 5.6
 License: GPL-2.0+
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -34,7 +34,7 @@ With this Before and After WordPress plugin, You can showcase your before and af
 
 <strong>Pro Version </strong>
 
-We believe the free version is good enough for most business. However, we have a **Pro version** of this plugin which has more advanced features including **7 Awesome looking Preview Styles, Before-After with Single Image, Before After Slider with 3 Images, Multi-Columns Filterable Gallery, Auto Slide, On Scroll Slide** and many more.
+We believe the free version is good enough for most business. However, we have a **Pro version** of this plugin which has more advanced features including **8 Awesome looking Preview Styles, Before-After with Single Image, Before After Slider with 3 Images, Multi-Columns Filterable Gallery, Auto Slide, On Scroll Slide** and many more.
 
 > <strong><a href="https://themefic.com/plugins/beaf/pro" target="_blank">Check BEAF Pro</a></strong>
 
@@ -144,6 +144,7 @@ You will get more features and advantages on the pro version. Here are few featu
 * 8 Preview Styles
 * Filterable Before – After Gallery
 * 3 Images Before After Slider
+* Watermark for Before After Images
 * Single Image Slider
 * Titles, Description & Read More Button on Single Image BEAF, Gallery and Filterable Gallery
 * Custom Width – Height – Alignment
@@ -166,6 +167,10 @@ Create 2 Columns, 3 Columns and 4 Columns Filterable Before After Gallery in Wor
 = Three Images Before After Slider =
 
 Create Before After slider with 3 images.
+
+= Before After Image Watermark =
+
+Create a Before After Slider with Watermark in Images. Fully Customizable based on available options.
 
 = Single Image Slider =
 
@@ -194,13 +199,6 @@ By default, the button is "Read More". You can change it to whatever text you wa
 = Disable slider handle = 
 
 You can easily disable slider handle.
-
-= Coming Soon on Pro = 
-
-* More Preview Styles
-* Customizable handle color and width
-* Customizable Background 
-* Overlay Color (Normal Color and Linear/Radial Gradient)
 
 > <strong><a href="https://themefic.com/plugins/beaf/pro" target="_blank">View Pro Version</a></strong>
 
@@ -308,6 +306,26 @@ Yes, We provide full support on the WordPress.org forums. You can also post ques
 23. Auto Slide
 
 == Changelog ==
+
+= 4.2.0 - 03/06/2022 =
+
+- Updated options
+
+= 4.1.4 - 01/03/2022 =
+
+- Fixed: Image not loading issue due to Lazy Load / Cache Plugins.
+
+= 4.1.3 - 23/02/2022 =
+
+- Minor bug fixed
+
+= 4.1.2 - 22/02/2022 =
+
+- Minor bug fixed
+
+= 4.1.1 - 16/02/2022 =
+
+- Minor bug fixed
 
 = 4.1.0 - 15/02/2022 =
 

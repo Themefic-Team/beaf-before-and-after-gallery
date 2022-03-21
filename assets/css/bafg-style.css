@@ -753,3 +753,6 @@
 .bafg-slider-description {
 	font-size: 15px;
 }
+.bafg-method-3-wrapper img::selection {
+	background: unset;
+}
