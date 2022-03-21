@@ -307,6 +307,11 @@ Yes, We provide full support on the WordPress.org forums. You can also post ques
 
 == Changelog ==
 
+= 4.2.2 – 03/21/2022 =
+ 
+ - Fixed: Minor bug
+ - Feature: Fade effect preview added(Pro)
+ 
 = 4.2.1 - 03/07/2022 =
 
 - Fixed css issue

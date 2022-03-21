@@ -92,7 +92,7 @@ function bafg_metabox_callback($post){
                         <li><input type="radio" class="" name="" id="bafg_wm_enable" value="yes" checked="checked"> <label for="bafg_wm_enable"><?php _e( 'Enable','bafg' ); ?></label></li>
                         <li>
                             <input type="radio" class="" name="" id="bafg_wm_disable" value="no"> <label for="bafg_wm_disable"><?php _e( 'Disable','bafg' ); ?><div class="bafg-tooltip"><span>?</span>
-                            <div class="bafg-tooltip-info">Pro feature! <br>You can make a slider using one image with an effect.</div>
+                            <div class="bafg-tooltip-info">Pro feature! <br>Watermark Addon required to activate this feature</div>
                                 </div></label>
                         </li>                    
                     </ul>
@@ -336,6 +336,7 @@ function bafg_metabox_callback($post){
                     <li><input type="radio" name="bafg_before_after_style" id="bafg_before_after_style_6" value="" <?php checked( $bafg_before_after_style, '' ); ?>> <label for="bafg_before_after_style_6"><img src="<?php echo esc_url(plugin_dir_url( __FILE__ ).'../assets/image/style6.png'); ?>" /></label></li>
                     <li><input type="radio" name="bafg_before_after_style" id="bafg_before_after_style_7" value="" <?php checked( $bafg_before_after_style, '' ); ?>> <label for="bafg_before_after_style_7"><img src="<?php echo esc_url(plugin_dir_url( __FILE__ ).'../assets/image/style7.png'); ?>" /></label></li>
                     <li><input type="radio" name="bafg_before_after_style" id="bafg_before_after_style_8" value="" <?php checked( $bafg_before_after_style, '' ); ?>> <label for="bafg_before_after_style_8"><img src="<?php echo esc_url(plugin_dir_url( __FILE__ ).'../assets/image/style8.png'); ?>" /></label></li>
+                    <li><input type="radio" name="bafg_before_after_style" id="bafg_before_after_style_9" value="" <?php checked( $bafg_before_after_style, '' ); ?>> <label for="bafg_before_after_style_9"><img src="<?php echo esc_url(plugin_dir_url( __FILE__ ).'../assets/image/style9.png'); ?>" /></label></li>
                 </ul>
                 <p><?php echo esc_html__('Select a style for the before and after label.','bafg'); ?></p>
             </td>
@@ -398,7 +399,7 @@ function bafg_metabox_callback($post){
         </tr>
         <!--Label Outside of Image start-->
         <?php ob_start();?>
-        <tr class="bafg_option_label">
+        <tr class="bafg_label_outside">
             <td class="bafg-option-label"><label for="bafg_label_outside1"><?php echo esc_html__('Show Label Outside Of Image','bafg'); ?>
                 <div class="bafg-tooltip"><span>?</span>
                     <div class="bafg-tooltip-info">Pro feature!</div>
