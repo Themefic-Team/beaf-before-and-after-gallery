@@ -311,16 +311,7 @@ Yes, We provide full support on the WordPress.org forums. You can also post ques
  
  - Fixed: Minor bug
  - Feature: Fade effect preview added(Pro)
-<<<<<<< HEAD
-
-= 4.2.1 – 03/07/2022 =
  
- -Fixed css issue
-
-= 4.2.0 - 03/06/2022 =
-=======
->>>>>>> fade_effect_updated
-
 = 4.2.1 - 03/07/2022 =
 
 - Fixed css issue
