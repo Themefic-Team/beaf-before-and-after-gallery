@@ -98,7 +98,7 @@ class BAFG_Before_After_Gallery {
         wp_enqueue_script( 'bafg_twentytwenty', plugin_dir_url( __FILE__ ) . 'assets/js/jquery.twentytwenty.js', array('jquery','eventMove') );
         wp_enqueue_script( 'bafg_custom_js', plugin_dir_url( __FILE__ ) . 'assets/js/bafg-custom-js.js', array('jquery','bafg_twentytwenty'), null, true );
     }
-
+    
     //register post type
     public function bafg_image_before_after_foucs_posttype() {
         register_post_type( 'bafg',
