@@ -3,7 +3,7 @@
  * Plugin Name: BEAF - Ultimate Before After Image Slider & Gallery
  * Plugin URI: https://themefic.com/plugins/beaf/
  * Description: Want to show comparison of two images? With BEAF, you can easily create before and after image slider or image gallery. Elementor Supported.
- * Version: 4.2.0
+ * Version: 4.2.2
  * Author: Themefic
  * Author URI: https://themefic.com/
  * License: GPL-2.0+
@@ -94,9 +94,16 @@ class BAFG_Before_After_Gallery {
         wp_enqueue_style( 'bafg_twentytwenty', plugin_dir_url( __FILE__ ) . 'assets/css/twentytwenty.css'); 
         wp_enqueue_style( 'bafg-style', plugin_dir_url( __FILE__ ) . 'assets/css/bafg-style.css'); 
 
-        wp_enqueue_script( 'eventMove', plugin_dir_url( __FILE__ ) . 'assets/js/jquery.event.move.js', array('jquery') );
-        wp_enqueue_script( 'bafg_twentytwenty', plugin_dir_url( __FILE__ ) . 'assets/js/jquery.twentytwenty.js', array('jquery','eventMove') );
+        wp_enqueue_script( 'eventMove', plugin_dir_url( __FILE__ ) . 'assets/js/jquery.event.move.js', array('jquery'), null, true );
+        wp_enqueue_script( 'bafg_twentytwenty', plugin_dir_url( __FILE__ ) . 'assets/js/jquery.twentytwenty.js', array('jquery','eventMove'), null, true );
         wp_enqueue_script( 'bafg_custom_js', plugin_dir_url( __FILE__ ) . 'assets/js/bafg-custom-js.js', array('jquery','bafg_twentytwenty'), null, true );
+    }
+    
+    //Enqueue script in admin area
+    public function bafg_admin_enqueue_scripts(){
+        wp_enqueue_script( 'custom_js', plugin_dir_url( __FILE__ ) . 'assets/js/bafg-script.js', array('jquery'), null, true );
+
+        wp_enqueue_style('bafg_admin_style', plugin_dir_url( __FILE__ ) . 'assets/css/bafg-admin-style.css');
     }
     
     //register post type
