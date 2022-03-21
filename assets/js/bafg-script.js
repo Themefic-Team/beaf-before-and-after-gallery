@@ -296,7 +296,7 @@ jQuery('#bafg_gallery_generator #bafg_gallery_shortcode').on( 'click', function(
 /*
 BAFG style 7
 */
-function bafg_style_7() {
+function bagf_style_7() {
 	if( jQuery('#bafg_before_after_style').val() == 'design-7' ) {
 		jQuery('#bafg_image_styles1').removeAttr('checked').parent().disabled;
 		jQuery('#bafg_image_styles1').attr('disabled',true);
@@ -306,10 +306,10 @@ function bafg_style_7() {
 		jQuery('#bafg_image_styles1').attr('disabled',false);
 	}
 }
-bafg_style_7();
+bagf_style_7();
 
 jQuery('#bafg_before_after_style').on('change', function(){
-	bafg_style_7();
+	bagf_style_7();
 });
 
 /*
@@ -339,8 +339,6 @@ jQuery(document).ready(function(){
         bafg_style_9_conditional_fields();
     }
 });
-	
-
 
 //opacity range slider
 var slider = document.querySelector("#bafg-wm-opacity");
