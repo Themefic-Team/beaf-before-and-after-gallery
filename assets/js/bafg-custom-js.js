@@ -1,67 +1,65 @@
-;(function ($) {
+; (function ($) {
 
     'use strict';
+    $(window).on('load', function () {
+        $(".bafg-twentytwenty-container").each(function () {
 
-    jQuery(".bafg-twentytwenty-container").each(function () {
-
-            if (jQuery(this).attr('bafg-move-slider-on-hover') == 'no') {
+            if ($(this).attr('bafg-move-slider-on-hover') == 'no') {
                 var moveSliderHover = false;
             } else {
                 var moveSliderHover = true;
             }
 
-            if (jQuery(this).attr('bafg-overlay') == 'yes') {
+            if ($(this).attr('bafg-overlay') == 'yes') {
                 var overlay = false;
             } else {
                 var overlay = true;
             }
 
-            if (jQuery(this).attr('bafg-click-to-move') == 'no') {
+            if ($(this).attr('bafg-click-to-move') == 'no') {
                 var clickToMove = false;
             } else {
                 var clickToMove = true;
             }
 
-            jQuery(this).twentytwenty({
-                orientation: jQuery(this).attr('bafg-orientation'),
-                default_offset_pct: jQuery(this).attr('bafg-default-offset'),
-                before_label: jQuery(this).attr('bafg-before-label'),
-                after_label: jQuery(this).attr('bafg-after-label'),
+            $(this).twentytwenty({
+                orientation: $(this).attr('bafg-orientation'),
+                default_offset_pct: $(this).attr('bafg-default-offset'),
+                before_label: $(this).attr('bafg-before-label'),
+                after_label: $(this).attr('bafg-after-label'),
                 no_overlay: overlay,
                 move_slider_on_hover: moveSliderHover,
                 click_to_move: clickToMove
             });
-            
-        });
 
-        jQuery(".twentytwenty-wrapper .design-1 .twentytwenty-handle").wrapInner("<div class='handle-trnasf' />");
-        
-    jQuery(window).on('load', function () {
-        
-        jQuery(".bafg-twentytwenty-container").each(function () {
-            var beforeImageW = jQuery(this).find('img.twentytwenty-before').width();
-            jQuery(this).css( 'max-width', beforeImageW + 'px' );
-            
+            var beforeImageW = $(this).find('img.twentytwenty-before').width();
+            $(this).css('max-width', beforeImageW + 'px');
+
             //Label OutSide
-            var bafgLabelOutside = jQuery(this).data('label_outside');
-            var orientation = jQuery(this).attr('bafg-orientation');
-            if(bafgLabelOutside == true && orientation == 'vertical'){
-                jQuery('.bafg-outside-label-wrapper.twentytwenty-vertical .bafg-twentytwenty-container').css('margin', 50 + 'px' + ' auto'  );
+            var bafgLabelOutside = $(this).data('label_outside');
+            var orientation = $(this).attr('bafg-orientation');
+            if (bafgLabelOutside == true && orientation == 'vertical') {
+                $('.bafg-outside-label-wrapper.twentytwenty-vertical .bafg-twentytwenty-container').css('margin', 50 + 'px' + ' auto');
 
-                jQuery('.bafg-outside-label-wrapper.twentytwenty-vertical .twentytwenty-overlay>.twentytwenty-before-label').css('display','none');
-                jQuery('.bafg-outside-label-wrapper.twentytwenty-vertical .twentytwenty-overlay .twentytwenty-after-label').css('display','none');
+                $('.bafg-outside-label-wrapper.twentytwenty-vertical .twentytwenty-overlay>.twentytwenty-before-label').css('display', 'none');
+                $('.bafg-outside-label-wrapper.twentytwenty-vertical .twentytwenty-overlay .twentytwenty-after-label').css('display', 'none');
             }
-            
+
         });
-        
-        jQuery(window).trigger("resize.twentytwenty");
-        
+
+        $(".twentytwenty-wrapper .design-1 .twentytwenty-handle").wrapInner("<div class='handle-trnasf' />");
+
+
+
+
+        $(window).trigger("resize.twentytwenty");
+
     });
-	
-	jQuery(window).on('scroll', function () {
 
-		jQuery(window).trigger("resize.twentytwenty");
+    $(window).on('scroll', function () {
 
-	});
-        
+        $(window).trigger("resize.twentytwenty");
+
+    });
+
 })(jQuery);
