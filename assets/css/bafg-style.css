@@ -688,6 +688,9 @@
 .bafg-gallery-row .twentytwenty-wrapper {
     padding: 0 15px;
 }
+.bafg_gallery_filter .bafg-twentytwenty-container,.bafg-gallery-row .bafg-twentytwenty-container{
+    width: 100% !important;
+}
 @media only screen and (max-width: 767px) {
 
 	.bafg-col-3 {
