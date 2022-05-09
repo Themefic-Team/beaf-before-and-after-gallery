@@ -4,7 +4,7 @@ Donate link:
 Tags: before after, before after elementor, before after slider, before after gallery, before after filter gallery, before after divi, before after viewer, before after woocommerce, before after multiple image, compare images, image comparison, before after slider wordpress, before after image, twentytwenty, jquery twentytwenty, wordpress before after slider, elementor before and after slider, wordpress before after gallery, elementor before after slider, elementor before after image comparison slider, visual composer before after slider, visual composer image comparison, slider, gallery, before after wordpress, before after beaver, before after oxygen, twenty20, twenty20 image before after plugin, twenty20 wordpress plugin, twenty twenty
 Requires at least: 4.0
 Tested up to: 5.9
-Stable tag: 4.2.1
+Stable tag: 4.2.5
 Requires PHP: 5.6
 License: GPL-2.0+
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
@@ -15,26 +15,43 @@ Want to show comparison of two images? With BEAF, you can easily create before a
 
 = The easiest and best Before After Image Slider & Gallery for WordPress =
 
-BEAF is the Ultimate Before After WordPress Plugin with which you can easily create beautiful Before After Image comparison Slider or Gallery. 
-
-👉 Official Demo Link: [BEAF Live Preview](https://live.themefic.com/beaf/)
+👉 Official Demo Link: [BEAF Live Preview](https://themefic.com/plugins/beaf)
 👉 BEAF Pro Version: [Check Pro](https://themefic.com/plugins/beaf/pro)
 👉 Documentation: [Written Installation Guide](https://themefic.com/docs/beaf)
 👉 Video Guide: [Complete Step by Step Guide](https://www.youtube.com/playlist?list=PLY0rtvOwg0ynodV0sVmSRX1OPCSs9mzhz)
 👉 Join Our FB Community: [BEAF Facebook Group](https://facebook.com/groups/beaf.wp)
 
-= Looking for a WordPress Before and After Slider & Gallery Plugin? Want to show comparison of two images?  =
+Looking for a WordPress Before and After Slider & Gallery Plugin? Want to show comparison of two images? BEAF is the Ultimate Before After WordPress Plugin with which you can easily create beautiful Before After Image comparison Slider or Gallery. BEAF let’s you add unlimited numbers of Before After Slider & Gallery in WordPress. You heard it right, unlimited for FREE. BEAF also comes up with premium high-quality features that will help you showcase your portfolio in a better way than others. This All-in-One Before After Slider plugin consists almost all the basic to advanced options which you may need to create stunning and beautiful image comparison sliders and gallery:
 
-BEAF let’s you add unlimited numbers of Before After Slider & Gallery in WordPress. You heard it right, unlimited for FREE. BEAF also comes up with premium high-quality features that will help you showcase your portfolio in a better way than others.
+* Horizontal or Vertical layout
+* Multi-Column Before After Gallery
+* Title, Description & Read More button
+* Alt tag on each images for Better SEO
+* Label Color and background Change
+* Disable Overlay
+* Mouse Hover Options
+* Easy-to-use option panel
+* Shortcode generator
+* 10 Preview Styles (Pro)
+* Filterable Before – After Gallery (Pro)
+* 3 Images Before After Slider (Pro Addon)
+* Watermark for Before After Images (Pro Addon)
+* Single Image Slider (Pro)
+* Titles, Description & Read More Button on Single Image BEAF, Gallery and Filterable Gallery (Pro)
+* Custom Width – Height – Alignment (Pro)
+* Auto Slider (Pro)
+* On Scroll Slider (Pro)
+* Change Read More text (Pro)
+* Disable slider handle (Pro)
 
 <strong>Demo Link </strong>
-> <strong><a href="https://live.themefic.com/beaf/" target="_blank">Check out the demo</a></strong> to see it in action!
+> <strong><a href="https://themefic.com/plugins/beaf" target="_blank">Check out the demo</a></strong> to see it in action!
 
 With this Before and After WordPress plugin, You can showcase your before and after work by comparing two before and after images. 
 
 <strong>Pro Version </strong>
 
-We believe the free version is good enough for most business. However, we have a **Pro version** of this plugin which has more advanced features including **8 Awesome looking Preview Styles, Before-After with Single Image, Before After Slider with 3 Images, Multi-Columns Filterable Gallery, Auto Slide, On Scroll Slide** and many more.
+We believe the free version is good enough for most business. However, we have a **Pro version** of this plugin which has more advanced features including **10 Awesome looking Preview Styles, Before-After with Single Image, Before After Slider with 3 Images, Multi-Columns Filterable Gallery, Auto Slide, On Scroll Slide** and many more.
 
 > <strong><a href="https://themefic.com/plugins/beaf/pro" target="_blank">Check BEAF Pro</a></strong>
 
@@ -65,31 +82,31 @@ Here are the most important features of BEAF. If you need any further informatio
 
 = Multiple layout  =
 
-Display Sliders in Horizontal or Vertical layout. <a href="https://live.themefic.com/beaf/#multiple-layout">Click here</a> for a quick preview.
+Display Sliders in Horizontal or Vertical layout. <a href="https://themefic.com/plugins/beaf/#multiple-layout">Click here</a> for a quick preview.
 
 = Before - After Gallery =
 
-Create 2 Columns, 3 Columns and 4 Columns Before After Gallery in WordPress with BEAF. <a href="https://live.themefic.com/beaf/#gallery">Click here</a> for a quick preview.
+Create 2 Columns, 3 Columns and 4 Columns Before After Gallery in WordPress with BEAF. <a href="https://themefic.com/plugins/beaf/#gallery">Click here</a> for a quick preview.
 
 = Titles, Description & Read More Button =
 
-You can add Title, Description & Read More button on all the above Preview Styles. Note that, from backend, you can show/hide any/all of the 3 fields (title, description & read more). You can also edit styles (color, font size, alignment) of all 3 fields as shown below. <a href="https://live.themefic.com/beaf/#title-desc">Click here</a> for a quick preview.
+You can add Title, Description & Read More button on all the above Preview Styles. Note that, from backend, you can show/hide any/all of the 3 fields (title, description & read more). You can also edit styles (color, font size, alignment) of all 3 fields as shown below. <a href="https://themefic.com/plugins/beaf/#title-desc">Click here</a> for a quick preview.
 
 = Label Change =
 
-You can easily change the Label of Before-After to something you want from BEAF's Option panel. <a href="https://live.themefic.com/beaf/#label-change">Click here</a> for a quick preview.
+You can easily change the Label of Before-After to something you want from BEAF's Option panel. <a href="https://themefic.com/plugins/beaf/#label-change">Click here</a> for a quick preview.
 
 = Label Color Change =
 
-You can easily change the color and background of each Label. <a href="https://live.themefic.com/beaf/#color-change">Click here</a> for a quick preview.
+You can easily change the color and background of each Label. <a href="https://themefic.com/plugins/beaf/#color-change">Click here</a> for a quick preview.
 
 = Disable Overlay =
 
-You can disable the overlay from the options Panel. <a href="https://live.themefic.com/beaf/#no-overlay">Click here</a> for a quick preview.
+You can disable the overlay from the options Panel. <a href="https://themefic.com/plugins/beaf/#no-overlay">Click here</a> for a quick preview.
 
 = Mouse Hover = 
 
-You can move slider on Mouse hover. <a href="https://live.themefic.com/beaf/#mouse-hover">Click here</a> for a quick preview.
+You can move slider on Mouse hover. <a href="https://themefic.com/plugins/beaf/#mouse-hover">Click here</a> for a quick preview.
 
 = Before After Image Alt tag = 
 
@@ -141,7 +158,7 @@ After your publish, a shortcode will generate so that you can publish the slider
 
 You will get more features and advantages on the pro version. Here are few feature of the Pro Version:
 
-* 8 Preview Styles
+* 10 Preview Styles
 * Filterable Before – After Gallery
 * 3 Images Before After Slider
 * Watermark for Before After Images
@@ -156,9 +173,9 @@ You will get more features and advantages on the pro version. Here are few featu
 = All Free Features =
 The Pro version includes all the features of the Free version (as described above). Plus:
 
-= 8 Preview Styles =
+= 10 Preview Styles =
 
-The Pro version includes 8 Additional Awesome looking Preview Styles. <a href="https://themefic.com/plugins/beaf/pro/#preview-styles">Click here</a> for a quick preview.
+The Pro version includes 10 Additional Awesome looking Preview Styles. <a href="https://themefic.com/plugins/beaf/pro/#preview-styles">Click here</a> for a quick preview.
 
 = Filterable Before - After Gallery = 
 
@@ -166,11 +183,11 @@ Create 2 Columns, 3 Columns and 4 Columns Filterable Before After Gallery in Wor
 
 = Three Images Before After Slider =
 
-Create Before After slider with 3 images.
+Create Before After slider with 3 images. <a href="https://themefic.com/plugins/beaf/pro/3-images-slider/">Click here</a> for a quick preview.
 
 = Before After Image Watermark =
 
-Create a Before After Slider with Watermark in Images. Fully Customizable based on available options.
+Create a Before After Slider with Watermark in Images. Fully Customizable based on available options. <a href="https://themefic.com/plugins/beaf/pro/#watermark">Click here</a> for a quick preview.
 
 = Single Image Slider =
 
@@ -306,6 +323,17 @@ Yes, We provide full support on the WordPress.org forums. You can also post ques
 23. Auto Slide
 
 == Changelog ==
+
+= 4.2.5 – 05/09/2022 =
+ 
+ - Fixed: Some JS Bug and Gallery CSS
+
+= 4.2.4 – 04/21/2022 =
+ 
+ - Feature: 7 preview styles added for 3 Image addon(Pro)
+ - Feature: Auto slide of 3 image slider added(Pro)
+ - Multiple 3 image slider in different styles are now working on same page(Pro)
+ - Fixed: Some JS bug fixed and gallery CSS fixed
 
 = 4.2.2 – 03/21/2022 =
  
