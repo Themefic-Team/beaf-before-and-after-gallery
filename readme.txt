@@ -327,7 +327,7 @@ Yes, We provide full support on the WordPress.org forums. You can also post ques
 = 4.2.6 – 05/19/2022 =
  
  - Feature: Added debug mode
- - Updated admin panle style
+ - Updated admin panel style
 
 = 4.2.5 – 05/09/2022 =
  
