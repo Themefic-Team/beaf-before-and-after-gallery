@@ -31,6 +31,7 @@ function bafg_settings_page_callback() {
     <!--Tab buttons start-->
     <div class="bafg-setting-tab">
         <a class="bafg-tablinks active" onclick="bafg_option_tab(event, 'bafg-watermark')"><?php _e( 'Watermark', 'bafg' );?></a>
+        <a class="bafg-tablinks" onclick="bafg_option_tab(event, 'bafg-tools')"><?php _e( 'Tools', 'bafg' );?></a>
         <a class="bafg-tablinks" onclick="bafg_option_tab(event, 'bafg-doc')"><?php _e( 'Documentation', 'bafg' );?></a>
         <?php do_action( 'bafg_admin_tab' );?>
     </div>
@@ -49,8 +50,20 @@ function bafg_settings_page_callback() {
     $demo_html = ob_get_clean();
     echo apply_filters( 'bafg_watermark_options_tab_watermark', $demo_html );
     ?>
-    <div id="bafg-doc" class="bafg-tabcontent">
-        <a href="https://themefic.com/docs/beaf" target="_blank"><?php _e( 'Documentation','bafg' ); ?></a>
+    <div id="bafg-tools" class="bafg-tabcontent">
+        <?php
+        echo get_option('bafg_debug_mode');
+        ?>
+        <form method="post" action="options.php">
+            <?php
+                settings_fields( 'bafg-global-settings-tools' );
+                do_settings_sections( 'bafg_settings_tools' );
+                submit_button();
+            ?>
+        </form>
+    </div>
+    <div id="bafg-doc" class="bafg-tabcontent" style="padding:20px 10px">
+        <a href="https://themefic.com/docs/beaf" target="_blank"><?php echo esc_html__( 'Please click here to visit the Documentation page.', 'bafg' ); ?></a>
     </div>
 </div>
 
@@ -63,11 +76,22 @@ function bafg_register_settings() {
         'bafg_watermark', // $option_name
         'bafg_sanitize_global_options' //sanitize callback
     );
+    register_setting(
+        'bafg-global-settings-tools', // $option_group
+        'bafg_tools', // $option_name
+        'bafg_sanitize_global_option_tools' //sanitize callback
+    );
     add_settings_section(
         'bafg_global_option_header', // Section $id
         __( 'General', 'bafg' ),
         'bafg_general_sections_callback', // Callback
         'bafg_settings' // Settings Page Slug
+    );
+    add_settings_section(
+        'bafg_global_option_tools', // Section $id
+        __( 'Debugging', 'bafg' ),
+        'bafg_tools_sections_callback', // Callback
+        'bafg_settings_tools' // Settings Page Slug
     );
 
     add_settings_field(
@@ -112,6 +136,13 @@ function bafg_register_settings() {
         'bafg_settings',
         'bafg_global_option_header'
     );
+    add_settings_field(
+        'bafg_debug_mode',
+        __( 'Enable Debug Mode', 'bafg' ),
+        'bafg_debug_mode_callback',
+        'bafg_settings_tools',
+        'bafg_global_option_tools'
+    );
 
 }
 add_action( 'admin_init', 'bafg_register_settings' );
@@ -145,17 +176,31 @@ function bafg_sanitize_global_options( $input ){
     return apply_filters( 'bafg_save_global_option', $sanitary_values, $input );
 }
 
+function bafg_sanitize_global_option_tools( $input ){
+
+    $sanitary_values = array();
+
+    if ( isset( $input['enable_debug_mode'] ) ) {
+        $sanitary_values['enable_debug_mode'] = $input['enable_debug_mode'];
+    }
+
+    return apply_filters( 'bafg_save_global_option_tools', $sanitary_values, $input );
+}
+
 //callback functions for options
 function bafg_general_sections_callback() {
     echo '';
 
 }
+function bafg_tools_sections_callback() {
+    //
+}
 function bafg_watermark_upload_callback() {
     
     $attach_id = bafg_option_value('bafg_attachment_id');
     echo '
-    <input class="bafg-watermark-path" type="text" value="' . get_attached_file( $attach_id )  . '" name="bafg_watermark[path]">
-    <input type="button" class="button button-primary bafg-watermark-upload" value="Upload Watermark"> '
+    <input class="bafg-watermark-path" type="text" placeholder="Image URL" value="' . get_attached_file( $attach_id )  . '" name="bafg_watermark[path]">
+    <input type="button" class="button button-primary bafg-watermark-upload" value="Add/Upload"> '
     ;
 
 }
@@ -202,5 +247,16 @@ function bafg_wm_opacity_callback(){
     printf(
         '<input type="range" min="1" max="100" class="bafg-wm-range" id="bafg-wm-opacity" value="'. bafg_option_value('wm_opacity') .'" name="bafg_watermark[wm_opacity]">
          <span class="bafg-wm-range-val">'. bafg_option_value('wm_opacity') .'</span>'
+    );
+}
+function bafg_debug_mode_callback(){
+    $debug_mode = get_option('bafg_tools')['enable_debug_mode'];
+    $checked = '';
+    if( !empty($debug_mode) ){
+        $checked = 'checked';
+    }
+    printf(
+        '<input type="checkbox" class="bafg-debug_mode" id="bafg-debug_mode" name="bafg_tools[enable_debug_mode]" %s>
+        <span>'.esc_html__('Debug mode allows you to troubleshoot conflicts with the theme or other plugins.','bafg').'</span>', $checked
     );
 }
