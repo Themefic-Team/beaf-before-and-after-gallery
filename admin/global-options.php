@@ -250,7 +250,7 @@ function bafg_wm_opacity_callback(){
     );
 }
 function bafg_debug_mode_callback(){
-    $debug_mode = get_option('bafg_tools')['enable_debug_mode'];
+    $debug_mode = is_array(get_option('bafg_tools')) ? get_option('bafg_tools')['enable_debug_mode'] : '';
     $checked = '';
     if( !empty($debug_mode) ){
         $checked = 'checked';
