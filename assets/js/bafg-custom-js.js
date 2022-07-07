@@ -1,9 +1,13 @@
-; (function ($) {
-
+; (function ($) { 
     'use strict';
     $(window).on('load', function () {
-        $(".bafg-twentytwenty-container").each(function () {
+        // $( document ).ready(function() {
+            before_after_function()
+      
 
+    });
+    function before_after_function(){
+        $(".bafg-twentytwenty-container").each(function () {
             if ($(this).attr('bafg-move-slider-on-hover') == 'no') {
                 var moveSliderHover = false;
             } else {
@@ -32,7 +36,7 @@
                 click_to_move: clickToMove
             });
 
-            var beforeImageW = $(this).find('img.twentytwenty-before').width();
+            var beforeImageW = $(this).find('img.twentytwenty-before').width(); 
             $(this).css('max-width', beforeImageW + 'px');
 
             //Label OutSide
@@ -47,19 +51,44 @@
 
         });
 
-        $(".twentytwenty-wrapper .design-1 .twentytwenty-handle").wrapInner("<div class='handle-trnasf' />");
-
-
-
-
+        $(".twentytwenty-wrapper .design-1 .twentytwenty-handle").wrapInner("<div class='handle-trnasf' />"); 
         $(window).trigger("resize.twentytwenty");
-
-    });
+    }
 
     $(window).on('scroll', function () {
 
         $(window).trigger("resize.twentytwenty");
 
     });
+    $( document ).ready(function() {
+        $('.twentytwenty-wrapper').css('max-width', "100% !important");
+        $(".popup_button").click(function() {
+            // alert(bafg_ajax_url.ajax_url);
+            var id = $(this).attr("data-id"); 
+            jQuery.ajax({
+                url : bafg_ajax_url.ajax_url+'/inc/popup-load.php',
+                type : 'post',
+                data : { 
+                    id : id, 
+                },
+                success : function( response ) {  
+                    $("#bafg_popup_wrap").html(response);  
+                    $(".bafg_popup_preview .popup_button").remove();
+                    $(".bafg_popup_preview").fadeIn(10);
+                    before_after_function()  
+                }
+            }); 
+            
+
+            
+          });
+          $(".close").click(function() {
+            $(".bafg_popup_preview").fadeOut(500);
+          });
+    
+       
+    });
+
+
 
 })(jQuery);
