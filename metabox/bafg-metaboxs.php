@@ -475,6 +475,27 @@ function bafg_metabox_callback($post){
         $bafg_slide_handle_html = ob_get_clean();
         echo apply_filters( 'bafg_slide_handle', $bafg_slide_handle_html, $post );
         ?>
+        <!-- Popup Preview -->
+        <?php
+        ob_start();
+        ?>
+        <tr class="bafg_popup_preview">
+            <td class="bafg-option-label"><label for="bafg_popup_preview">Popup Preview <div class="bafg-tooltip"><span>?</span>
+                        <div class="bafg-tooltip-info">Pro feature!</div>
+                    </div></label></td>
+            <td class="bafg-option-content">
+                <ul>
+                    <li><input type="radio" name="bafg_popup_preview" id="bafg_popup_preview1" value="yes" disabled> <label for="bafg_popup_preview1">Yes</label></li>
+                    <li><input type="radio" name="bafg_popup_preview" id="bafg_popup_preview2" value="no" checked="checked" disabled> <label for="bafg_popup_preview2">No</label></li>
+                </ul>
+                <!-- <p>Disable the slider handle.</p> -->
+            </td>
+        </tr>
+        <?php
+        $bafg_popup_preview = ob_get_clean();
+        echo apply_filters( 'bafg_popup_preview_meta', $bafg_slide_handle_html, $post );
+        ?>
+        
         <tr class="bafg_move_slider_on_hover" style="display: none">
             <td class="bafg-option-label"><label for="bafg_move_slider_on_hover"><?php echo esc_html__('Move slider on mouse hover?','bafg'); ?></label></td>
             <td class="bafg-option-content">

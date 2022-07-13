@@ -24,8 +24,7 @@ class BAFG_Before_After_Gallery {
         /*
         * Enqueue css and js for BAFG
         */
-        add_action( 'wp_enqueue_scripts', array($this, 'bafg_image_before_after_foucs_scripts'), 999 );
-        add_action( 'wp_footer', array($this, 'bafg_popup_div') );
+        add_action( 'wp_enqueue_scripts', array($this, 'bafg_image_before_after_foucs_scripts'), 999 ); 
         
 		// Check if Elementor installed and activated
 		if ( did_action( 'elementor/loaded' ) ) {
@@ -106,9 +105,7 @@ class BAFG_Before_After_Gallery {
         wp_enqueue_script( 'bafg_twentytwenty', plugin_dir_url( __FILE__ ) . 'assets/js/jquery.twentytwenty.js', array('jquery','eventMove'), null, $in_footer );
         wp_enqueue_script( 'bafg_custom_js', plugin_dir_url( __FILE__ ) . 'assets/js/bafg-custom-js.js', array('jquery','bafg_twentytwenty'), null, true );
         wp_enqueue_script( 'bafg_alax_load', plugin_dir_url( __FILE__ ) . 'assets/js/bafg-load.js', array('jquery','bafg_twentytwenty'), null, true );
-        wp_localize_script( 'bafg_alax_load', 'bafg_ajax_url', array(
-            'ajax_url' => plugin_dir_url( __FILE__ )
-        ));
+       
     }
     
     //register post type
@@ -200,19 +197,7 @@ class BAFG_Before_After_Gallery {
     public function bafg_meta_fields(){
         require_once('metabox/bafg-metaboxs.php');
     }
-    public function bafg_popup_div(){
-        echo ' <section class="bafg_popup_preview">
-          <div class="bafg_popup_preview_content">
-            <div class="close">
-              <span class="close-bar"></span>
-              <span class="close-bar"></span>
-            </div>
-            <div id="bafg_popup_wrap"> 
 
-            </div>
-          </div>
-        </section>';
-    }
     /*
     * BAFG shortcode callback
     */
@@ -250,10 +235,7 @@ class BAFG_Before_After_Gallery {
 <?php do_action('bafg_before_slider', $id); ?>
 
 <div class="bafg-twentytwenty-container <?php echo esc_attr('slider-'.$id.''); ?> <?php if(get_post_meta($id, 'bafg_custom_color', true) == 'yes') echo 'bafg-custom-color'; ?>" bafg-orientation="<?php echo esc_attr($orientation); ?>" bafg-default-offset="<?php echo esc_attr($offset); ?>" bafg-before-label="<?php echo esc_attr($before_label); ?>" bafg-after-label="<?php echo esc_attr($after_label); ?>" bafg-overlay="<?php echo esc_attr($overlay); ?>" bafg-move-slider-on-hover="<?php echo esc_attr($move_slider_on_hover); ?>" bafg-click-to-move="<?php echo esc_attr($click_to_move); ?>">
-    <button class="popup_button popup_<?php echo $id; ?>" data-id="<?php echo $id; ?>">
-    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="none" d="M0 0h24v24H0V0z"/><path d="M5 16h3v3h2v-5H5v2zm3-8H5v2h5V5H8v3zm6 11h2v-3h3v-2h-5v5zm2-11V5h-2v5h5V8h-3z"/></svg>
-    </button>
-    
+   
     <img class="<?php echo esc_attr( $skip_lazy ); ?>" <?php echo esc_attr( $data_skip_lazy ); ?> src="<?php echo esc_url($b_image); ?>" alt="<?php echo esc_attr( $before_img_alt ); ?>">
     <img class="<?php echo esc_attr( $skip_lazy ); ?>" <?php echo esc_attr( $data_skip_lazy ); ?> src="<?php echo esc_url($a_image); ?>" alt="<?php echo esc_attr( $after_img_alt ); ?>">
     
