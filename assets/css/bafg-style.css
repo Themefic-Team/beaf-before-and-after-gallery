@@ -785,6 +785,20 @@
 	z-index: 999;
 	padding: 5px;
 	border-radius: 5px;
+	width: 24px;
+
+}
+
+.bafg-twentytwenty-container .popup_button img {
+	height: 25px;
+	width: 25px;
+	display: block;
+	margin-top: 5px;
+	margin-left: 5px;
+}
+
+.bafg-twentytwenty-container .popup_button:focus {
+	outline: 0 !important;
 }
 
 
@@ -806,8 +820,8 @@
 .bafg_popup_preview_content {
 	width: 100%;
 	overflow: auto;
-	background: #000000d6;
-	color: black;
+	background: rgba(0, 0, 0, 0.945);
+	color: #000;
 	position: relative;
 	box-sizing: border-box;
 	border-radius: 0;
@@ -827,7 +841,7 @@
 	right: 0;
 	top: 0;
 	display: block;
-	padding: 30px;
+	padding: 25px;
 	line-height: 0;
 	color: #fff;
 	cursor: pointer;

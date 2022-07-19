@@ -480,7 +480,7 @@ function bafg_metabox_callback($post){
         ob_start();
         ?>
         <tr class="bafg_popup_preview">
-            <td class="bafg-option-label"><label for="bafg_popup_preview">Popup Preview <div class="bafg-tooltip"><span>?</span>
+            <td class="bafg-option-label"><label for="bafg_popup_preview">Full Screen View<div class="bafg-tooltip"><span>?</span>
                         <div class="bafg-tooltip-info">Pro feature!</div>
                     </div></label></td>
             <td class="bafg-option-content">
@@ -488,12 +488,12 @@ function bafg_metabox_callback($post){
                     <li><input type="radio" name="bafg_popup_preview" id="bafg_popup_preview1" value="yes" disabled> <label for="bafg_popup_preview1">Yes</label></li>
                     <li><input type="radio" name="bafg_popup_preview" id="bafg_popup_preview2" value="no" checked="checked" disabled> <label for="bafg_popup_preview2">No</label></li>
                 </ul>
-                <!-- <p>Disable the slider handle.</p> -->
+                <p>Enable to display slider on full screen.</p>
             </td>
         </tr>
         <?php
         $bafg_popup_preview = ob_get_clean();
-        echo apply_filters( 'bafg_popup_preview_meta', $bafg_slide_handle_html, $post );
+        echo apply_filters( 'bafg_popup_preview_meta', $bafg_popup_preview, $post );
         ?>
         
         <tr class="bafg_move_slider_on_hover" style="display: none">
