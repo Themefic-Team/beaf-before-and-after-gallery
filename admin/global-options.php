@@ -102,6 +102,13 @@ function bafg_register_settings() {
         'bafg_global_option_header' // Section $id
     );
     add_settings_field(
+        'enable_popup', // Field $id
+        __( 'Enable Full Screen Popup', 'bafg' ), // Setting $title
+        'bafg_enable_popup_preview_callback',
+        'bafg_settings', // Settings Page Slug
+        'bafg_global_option_header' // Section $id
+    );
+    add_settings_field(
         'path', // Field $id
         __( 'Watermark Image Upload', 'bafg' ), // Setting $title
         'bafg_watermark_upload_callback',
@@ -214,8 +221,18 @@ function bafg_enable_watermark_callback(){
     $enable_watermark_image = ob_get_clean();
     echo apply_filters('bafg_enable_watermark_image',$enable_watermark_image);
 
+}
+function bafg_enable_popup_preview_callback(){
+    ob_start();
+    printf(
+        '<input type="checkbox" disabled name="" id="bafg_popup_preview" checked ><span style="color:red;font-weight:bold" class="bafg-pro-tt">Pro addon<span>'
+    );
+    $enable_popup_preview = ob_get_clean();
+    echo apply_filters('bafg_popup_preview',$enable_popup_preview);
+
     
 }
+
 function bafg_attachment_id_callback(){
     ob_start();
     printf(

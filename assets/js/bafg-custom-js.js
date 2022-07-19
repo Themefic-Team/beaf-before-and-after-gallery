@@ -1,9 +1,7 @@
-; (function ($) {
-
+; (function ($) { 
     'use strict';
-    $(window).on('load', function () {
+    $(window).on('load', function () { 
         $(".bafg-twentytwenty-container").each(function () {
-
             if ($(this).attr('bafg-move-slider-on-hover') == 'no') {
                 var moveSliderHover = false;
             } else {
@@ -32,7 +30,7 @@
                 click_to_move: clickToMove
             });
 
-            var beforeImageW = $(this).find('img.twentytwenty-before').width();
+            var beforeImageW = $(this).find('img.twentytwenty-before').width(); 
             $(this).css('max-width', beforeImageW + 'px');
 
             //Label OutSide
@@ -47,19 +45,14 @@
 
         });
 
-        $(".twentytwenty-wrapper .design-1 .twentytwenty-handle").wrapInner("<div class='handle-trnasf' />");
-
-
-
-
+        $(".twentytwenty-wrapper .design-1 .twentytwenty-handle").wrapInner("<div class='handle-trnasf' />"); 
         $(window).trigger("resize.twentytwenty");
-
     });
-
+    
     $(window).on('scroll', function () {
-
         $(window).trigger("resize.twentytwenty");
-
     });
+
+
 
 })(jQuery);

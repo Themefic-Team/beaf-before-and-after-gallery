@@ -1,4 +1,5 @@
 jQuery('.bafg_display_shortcode').on('click', function(){
+    
     var copyText = this;
 
     if (copyText.value != '') {

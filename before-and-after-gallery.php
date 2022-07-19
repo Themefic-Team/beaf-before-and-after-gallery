@@ -3,7 +3,7 @@
  * Plugin Name: BEAF - Ultimate Before After Image Slider & Gallery
  * Plugin URI: https://themefic.com/plugins/beaf/
  * Description: Want to show comparison of two images? With BEAF, you can easily create before and after image slider or image gallery. Elementor Supported.
- * Version: 4.2.7
+ * Version: 4.3.0
  * Author: Themefic
  * Author URI: https://themefic.com/
  * License: GPL-2.0+
@@ -24,7 +24,7 @@ class BAFG_Before_After_Gallery {
         /*
         * Enqueue css and js for BAFG
         */
-        add_action( 'wp_enqueue_scripts', array($this, 'bafg_image_before_after_foucs_scripts'), 999 );
+        add_action( 'wp_enqueue_scripts', array($this, 'bafg_image_before_after_foucs_scripts'), 999 ); 
         
 		// Check if Elementor installed and activated
 		if ( did_action( 'elementor/loaded' ) ) {
@@ -91,6 +91,7 @@ class BAFG_Before_After_Gallery {
     */
     public function bafg_image_before_after_foucs_scripts() {
         
+        wp_enqueue_style( 'fancybox', plugin_dir_url( __FILE__ ) . 'assets/css/jquery.fancybox.css'); 
         wp_enqueue_style( 'bafg_twentytwenty', plugin_dir_url( __FILE__ ) . 'assets/css/twentytwenty.css'); 
         wp_enqueue_style( 'bafg-style', plugin_dir_url( __FILE__ ) . 'assets/css/bafg-style.css'); 
 
@@ -100,8 +101,11 @@ class BAFG_Before_After_Gallery {
             $in_footer = true;
         }
         wp_enqueue_script( 'eventMove', plugin_dir_url( __FILE__ ) . 'assets/js/jquery.event.move.js', array('jquery'), null, $in_footer );
+        wp_enqueue_script( 'fancybox', plugin_dir_url( __FILE__ ) . 'assets/js/jquery.fancybox.js', array('jquery'), null, $in_footer );
         wp_enqueue_script( 'bafg_twentytwenty', plugin_dir_url( __FILE__ ) . 'assets/js/jquery.twentytwenty.js', array('jquery','eventMove'), null, $in_footer );
         wp_enqueue_script( 'bafg_custom_js', plugin_dir_url( __FILE__ ) . 'assets/js/bafg-custom-js.js', array('jquery','bafg_twentytwenty'), null, true );
+        wp_enqueue_script( 'bafg_alax_load', plugin_dir_url( __FILE__ ) . 'assets/js/bafg-load.js', array('jquery','bafg_twentytwenty'), null, true );
+       
     }
     
     //register post type
@@ -193,7 +197,7 @@ class BAFG_Before_After_Gallery {
     public function bafg_meta_fields(){
         require_once('metabox/bafg-metaboxs.php');
     }
-    
+
     /*
     * BAFG shortcode callback
     */
@@ -206,21 +210,17 @@ class BAFG_Before_After_Gallery {
 		ob_start();
 		
 		$b_image = get_post_meta( $id, 'bafg_before_image', true);
-		$a_image = get_post_meta( $id, 'bafg_after_image', true);
-
+		$a_image = get_post_meta( $id, 'bafg_after_image', true); 
 		$orientation = !empty(get_post_meta( $id, 'bafg_image_styles', true)) ? get_post_meta( $id, 'bafg_image_styles', true) : 'horizontal';
 		$offset = !empty(get_post_meta( $id, 'bafg_default_offset', true)) ? get_post_meta( $id, 'bafg_default_offset', true) : '0.5';
 		$before_label = !empty(get_post_meta( $id, 'bafg_before_label', true)) ? get_post_meta( $id, 'bafg_before_label', true) : 'Before';
 		$after_label = !empty(get_post_meta( $id, 'bafg_after_label', true)) ? get_post_meta( $id, 'bafg_after_label', true) : 'After';
 		$overlay = !empty(get_post_meta( $id, 'bafg_no_overlay', true)) ? get_post_meta( $id, 'bafg_no_overlay', true) : 'no';
 		$move_slider_on_hover = !empty(get_post_meta( $id, 'bafg_move_slider_on_hover', true)) ? get_post_meta( $id, 'bafg_move_slider_on_hover', true) : 'no';
-		$click_to_move = !empty(get_post_meta( $id, 'bafg_click_to_move', true)) ? get_post_meta( $id, 'bafg_click_to_move', true) : 'no';
-		
+		$click_to_move = !empty(get_post_meta( $id, 'bafg_click_to_move', true)) ? get_post_meta( $id, 'bafg_click_to_move', true) : 'no'; 
 		$skip_lazy_load = get_post_meta( $id, 'skip_lazy_load', true);
-
         $before_img_alt = get_post_meta( $id, 'before_img_alt', true) ? get_post_meta( $id, 'before_img_alt', true) : '';
         $after_img_alt = get_post_meta( $id, 'after_img_alt', true) ? get_post_meta( $id, 'after_img_alt', true) : '';
-
 		if( $skip_lazy_load == 'yes' ) {
 			$skip_lazy = 'skip-lazy';
 			$data_skip_lazy = 'data-skip-lazy';
@@ -232,54 +232,56 @@ class BAFG_Before_After_Gallery {
 		if(get_post_status($id) == 'publish' ) :
 		?>
 
-<?php do_action('bafg_before_slider', $id); ?>
+        <?php do_action('bafg_before_slider', $id); ?>
 
-<div class="bafg-twentytwenty-container <?php echo esc_attr('slider-'.$id.''); ?> <?php if(get_post_meta($id, 'bafg_custom_color', true) == 'yes') echo 'bafg-custom-color'; ?>" bafg-orientation="<?php echo esc_attr($orientation); ?>" bafg-default-offset="<?php echo esc_attr($offset); ?>" bafg-before-label="<?php echo esc_attr($before_label); ?>" bafg-after-label="<?php echo esc_attr($after_label); ?>" bafg-overlay="<?php echo esc_attr($overlay); ?>" bafg-move-slider-on-hover="<?php echo esc_attr($move_slider_on_hover); ?>" bafg-click-to-move="<?php echo esc_attr($click_to_move); ?>">
-    <img class="<?php echo esc_attr( $skip_lazy ); ?>" <?php echo esc_attr( $data_skip_lazy ); ?> src="<?php echo esc_url($b_image); ?>" alt="<?php echo esc_attr( $before_img_alt ); ?>">
-    <img class="<?php echo esc_attr( $skip_lazy ); ?>" <?php echo esc_attr( $data_skip_lazy ); ?> src="<?php echo esc_url($a_image); ?>" alt="<?php echo esc_attr( $after_img_alt ); ?>">
-</div>
+        <div class="bafg-twentytwenty-container <?php echo esc_attr('slider-'.$id.''); ?> <?php if(get_post_meta($id, 'bafg_custom_color', true) == 'yes') echo 'bafg-custom-color'; ?>" bafg-orientation="<?php echo esc_attr($orientation); ?>" bafg-default-offset="<?php echo esc_attr($offset); ?>" bafg-before-label="<?php echo esc_attr($before_label); ?>" bafg-after-label="<?php echo esc_attr($after_label); ?>" bafg-overlay="<?php echo esc_attr($overlay); ?>" bafg-move-slider-on-hover="<?php echo esc_attr($move_slider_on_hover); ?>" bafg-click-to-move="<?php echo esc_attr($click_to_move); ?>">
+        
+            <img class="<?php echo esc_attr( $skip_lazy ); ?>" <?php echo esc_attr( $data_skip_lazy ); ?> src="<?php echo esc_url($b_image); ?>" alt="<?php echo esc_attr( $before_img_alt ); ?>">
+            <img class="<?php echo esc_attr( $skip_lazy ); ?>" <?php echo esc_attr( $data_skip_lazy ); ?> src="<?php echo esc_url($a_image); ?>" alt="<?php echo esc_attr( $after_img_alt ); ?>">
+            
+        </div>
 
-<?php do_action('bafg_after_slider', $id); ?>
+        <?php do_action('bafg_after_slider', $id); ?>
 
-<style>
-    <?php $bafg_before_label_background= !empty(get_post_meta($id, 'bafg_before_label_background', true)) ? get_post_meta($id, 'bafg_before_label_background', true) : '';
+        <style>
+            <?php $bafg_before_label_background= !empty(get_post_meta($id, 'bafg_before_label_background', true)) ? get_post_meta($id, 'bafg_before_label_background', true) : '';
 
-    $bafg_before_label_color= !empty(get_post_meta($id, 'bafg_before_label_color', true)) ? get_post_meta($id, 'bafg_before_label_color', true) : '';
+            $bafg_before_label_color= !empty(get_post_meta($id, 'bafg_before_label_color', true)) ? get_post_meta($id, 'bafg_before_label_color', true) : '';
 
-    $bafg_after_label_background= !empty(get_post_meta($id, 'bafg_after_label_background', true)) ? get_post_meta($id, 'bafg_after_label_background', true) : '';
+            $bafg_after_label_background= !empty(get_post_meta($id, 'bafg_after_label_background', true)) ? get_post_meta($id, 'bafg_after_label_background', true) : '';
 
-    $bafg_after_label_color= !empty(get_post_meta($id, 'bafg_after_label_color', true)) ? get_post_meta($id, 'bafg_after_label_color', true) : '';
+            $bafg_after_label_color= !empty(get_post_meta($id, 'bafg_after_label_color', true)) ? get_post_meta($id, 'bafg_after_label_color', true) : '';
 
-    ?><?php if( !empty($bafg_before_label_background) || !empty($bafg_before_label_color)) {
-        ?>.<?php echo 'slider-'.$id.' ';
+            ?><?php if( !empty($bafg_before_label_background) || !empty($bafg_before_label_color)) {
+                ?>.<?php echo 'slider-'.$id.' ';
 
-        ?>.twentytwenty-before-label::before {
-            background: <?php echo esc_attr($bafg_before_label_background);
-            ?>;
-            color: <?php echo esc_attr($bafg_before_label_color);
-            ?>;
-        }
+                ?>.twentytwenty-before-label::before {
+                    background: <?php echo esc_attr($bafg_before_label_background);
+                    ?>;
+                    color: <?php echo esc_attr($bafg_before_label_color);
+                    ?>;
+                }
 
+                <?php
+            }
+
+            ?><?php if( !empty($bafg_after_label_background) || !empty($bafg_after_label_color)) {
+                ?>.<?php echo 'slider-'.$id.' ';
+
+                ?>.twentytwenty-after-label::before {
+                    background: <?php echo esc_attr($bafg_after_label_background);
+                    ?>;
+                    color: <?php echo esc_attr($bafg_after_label_color);
+                    ?>;
+                }
+
+                <?php
+            }
+
+            ?>
+
+        </style>
         <?php
-    }
-
-    ?><?php if( !empty($bafg_after_label_background) || !empty($bafg_after_label_color)) {
-        ?>.<?php echo 'slider-'.$id.' ';
-
-        ?>.twentytwenty-after-label::before {
-            background: <?php echo esc_attr($bafg_after_label_background);
-            ?>;
-            color: <?php echo esc_attr($bafg_after_label_color);
-            ?>;
-        }
-
-        <?php
-    }
-
-    ?>
-
-</style>
-<?php
 		endif;
 		
         return ob_get_clean();
