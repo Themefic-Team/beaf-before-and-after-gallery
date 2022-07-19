@@ -4,7 +4,7 @@ Donate link:
 Tags: before after, before after elementor, before after slider, before after gallery, before after filter gallery, before after divi, before after viewer, before after woocommerce, before after multiple image, compare images, image comparison, before after slider wordpress, before after image, twentytwenty, jquery twentytwenty, wordpress before after slider, elementor before and after slider, wordpress before after gallery, elementor before after slider, elementor before after image comparison slider, visual composer before after slider, visual composer image comparison, slider, gallery, before after wordpress, before after beaver, before after oxygen, twenty20, twenty20 image before after plugin, twenty20 wordpress plugin, twenty twenty
 Requires at least: 4.0
 Tested up to: 6.0
-Stable tag: 4.2.7
+Stable tag: 4.3.0
 Requires PHP: 5.6
 License: GPL-2.0+
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
@@ -175,11 +175,11 @@ The Pro version includes all the features of the Free version (as described abov
 
 = 10 Preview Styles =
 
-The Pro version includes 10 Additional Awesome looking Preview Styles. <a href="https://themefic.com/plugins/beaf/pro/#preview-styles">Click here</a> for a quick preview.
+The Pro version includes 10 Additional Awesome looking Preview Styles. <a href="https://demo.themefic.com/beaf/pro/preview-styles">Click here</a> for a quick preview.
 
 = Filterable Before - After Gallery = 
 
-Create 2 Columns, 3 Columns and 4 Columns Filterable Before After Gallery in WordPress with BEAF Pro. You can add as many 2-3-4 columns galleries as you want. The galleries can be combination of all the above mentioned Preview Styles & Single Image Styles. The color and padding of the filters can be edited from the options panel. <a href="https://themefic.com/plugins/beaf/pro/#filter-gallery">Click here</a> for a quick preview.
+Create 2 Columns, 3 Columns and 4 Columns Filterable Before After Gallery in WordPress with BEAF Pro. You can add as many 2-3-4 columns galleries as you want. The galleries can be combination of all the above mentioned Preview Styles & Single Image Styles. The color and padding of the filters can be edited from the options panel. <a href="https://demo.themefic.com/beaf/pro/filterable-gallery/">Click here</a> for a quick preview.
 
 = Three Images Before After Slider =
 
@@ -187,27 +187,27 @@ Create Before After slider with 3 images. <a href="https://themefic.com/plugins/
 
 = Before After Image Watermark =
 
-Create a Before After Slider with Watermark in Images. Fully Customizable based on available options. <a href="https://themefic.com/plugins/beaf/pro/#watermark">Click here</a> for a quick preview.
+Create a Before After Slider with Watermark in Images. Fully Customizable based on available options. <a href="https://demo.themefic.com/beaf/pro/image-watermark">Click here</a> for a quick preview.
 
 = Single Image Slider =
 
-Create Before After slider using a single image. The Single image has filter effects like <a href="https://live.themefic.com/beaf/pro/before-after-with-single-image/#grayscale">Grayscale</a>, <a href="https://live.themefic.com/beaf/pro/before-after-with-single-image/#blur">Blur</a>, <a href="https://live.themefic.com/beaf/pro/before-after-with-single-image/#saturate">Saturate</a>, <a href="https://live.themefic.com/beaf/pro/before-after-with-single-image/#sepia">Sepia</a> etc. The filter can be added on Before or After image.
+Create Before After slider using a single image. The Single image has filter effects like <a href="https://demo.themefic.com/beaf/pro/before-after-with-single-image/#grayscale">Grayscale</a>, <a href="https://demo.themefic.com/beaf/pro/before-after-with-single-image/#blur">Blur</a>, <a href="https://demo.themefic.com/beaf/pro/before-after-with-single-image/#saturate">Saturate</a>, <a href="https://demo.themefic.com/beaf/pro/before-after-with-single-image/#sepia">Sepia</a> etc. The filter can be added on Before or After image.
 
 = Titles, Description & Read More Button on Single Image BEAF, Gallery and Filterable Gallery = 
 
-You can add Title, Description & Read More button on <a href="https://live.themefic.com/beaf/pro/single-image-beaf-with-tdr">Single Image Slider</a>, <a href="https://live.themefic.com/beaf/pro/gallery-with-tdr/">Normal Gallery</a> and <a href="https://live.themefic.com/beaf/pro/filter-gallery-with-tdr/">Filterable Gallery</a>.
+You can add Title, Description & Read More button on <a href="https://demo.themefic.com/beaf/pro/single-image-beaf-with-tdr">Single Image Slider</a>, <a href="https://demo.themefic.com/beaf/pro/gallery-with-tdr/">Normal Gallery</a> and <a href="https://demo.themefic.com/beaf/pro/filter-gallery-with-tdr/">Filterable Gallery</a>.
 
 = Custom Width - Height - Alignment =
 
-Setup Custom Width - Height - Alignment for each slider. <a href="https://themefic.com/plugins/beaf/pro/#common">Click here</a> for a quick preview.
+Setup Custom Width - Height - Alignment for each slider. <a href="https://demo.themefic.com/beaf/pro/width-height-alignment">Click here</a> for a quick preview.
 
 = Auto Slider =
 
-Slider will slide automatically. Options to add Pause on hover. <a href="https://themefic.com/plugins/beaf/pro/#autoslide">Click here</a> for a quick preview.
+Slider will slide automatically. Options to add Pause on hover. <a href="https://demo.themefic.com/beaf/pro/auto-slider/">Click here</a> for a quick preview.
 
 = On Scroll Slider =
 
-Slider will slide on Scroll (based on User Scrolling). <a href="https://themefic.com/plugins/beaf/pro/#onscroll">Click here</a> for a quick preview.
+Slider will slide on Scroll (based on User Scrolling). <a href="https://demo.themefic.com/beaf/pro/on-scroll-slider/">Click here</a> for a quick preview.
 
 = Change Read More text =
 
@@ -283,7 +283,7 @@ Yes, with BEAF you can create multi-columns before after gallery.
 
 = How to create a filterable before after gallery in WordPress? =
 
-With <a href="https://themefic.com/plugins/beaf/pro/#filtergallery">BEAF Pro</a>: , you can easily do it. Create 2 Columns, 3 Columns and 4 Columns Filterable Before After Gallery in WordPress with BEAF Pro. You can add as many 2-3-4 columns galleries as you want. The galleries can be combination of all the above mentioned Preview Styles & Single Image Styles. The color and padding of the filters can be edited from the options panel.
+With <a href="https://demo.themefic.com/beaf/pro/filterable-gallery/">BEAF Pro</a>: , you can easily do it. Create 2 Columns, 3 Columns and 4 Columns Filterable Before After Gallery in WordPress with BEAF Pro. You can add as many 2-3-4 columns galleries as you want. The galleries can be combination of all the above mentioned Preview Styles & Single Image Styles. The color and padding of the filters can be edited from the options panel.
 
 = How to create a before and after slider in WooCommerce? =
 
@@ -323,6 +323,15 @@ Yes, We provide full support on the WordPress.org forums. You can also post ques
 23. Auto Slide
 
 == Changelog ==
+
+= 4.3.0 – 07/19/2022 =
+ 
+ - New feature: Added slider full screen view option
+
+= 4.2.8 – 07/10/2022 =
+ 
+ - Fixed: undefined variable
+ - Updated admin panel style
 
 = 4.2.7 – 05/23/2022 =
  
