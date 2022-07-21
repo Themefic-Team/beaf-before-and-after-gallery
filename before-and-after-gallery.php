@@ -103,9 +103,7 @@ class BAFG_Before_After_Gallery {
         wp_enqueue_script( 'eventMove', plugin_dir_url( __FILE__ ) . 'assets/js/jquery.event.move.js', array('jquery'), null, $in_footer );
         wp_enqueue_script( 'fancybox', plugin_dir_url( __FILE__ ) . 'assets/js/jquery.fancybox.js', array('jquery'), null, $in_footer );
         wp_enqueue_script( 'bafg_twentytwenty', plugin_dir_url( __FILE__ ) . 'assets/js/jquery.twentytwenty.js', array('jquery','eventMove'), null, $in_footer );
-        wp_enqueue_script( 'bafg_custom_js', plugin_dir_url( __FILE__ ) . 'assets/js/bafg-custom-js.js', array('jquery','bafg_twentytwenty'), null, true );
-        wp_enqueue_script( 'bafg_alax_load', plugin_dir_url( __FILE__ ) . 'assets/js/bafg-load.js', array('jquery','bafg_twentytwenty'), null, true );
-       
+        wp_enqueue_script( 'bafg_custom_js', plugin_dir_url( __FILE__ ) . 'assets/js/bafg-custom-js.js', array('jquery','bafg_twentytwenty'), null, true );       
     }
     
     //register post type
