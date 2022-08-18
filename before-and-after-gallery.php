@@ -90,8 +90,7 @@ class BAFG_Before_After_Gallery {
     * Enqueue css and js in frontend
     */
     public function bafg_image_before_after_foucs_scripts() {
-        
-        wp_enqueue_style( 'fancybox', plugin_dir_url( __FILE__ ) . 'assets/css/jquery.fancybox.css'); 
+         
         wp_enqueue_style( 'bafg_twentytwenty', plugin_dir_url( __FILE__ ) . 'assets/css/twentytwenty.css'); 
         wp_enqueue_style( 'bafg-style', plugin_dir_url( __FILE__ ) . 'assets/css/bafg-style.css'); 
 
@@ -100,8 +99,7 @@ class BAFG_Before_After_Gallery {
         if( !empty($debug_mode) ){
             $in_footer = true;
         }
-        wp_enqueue_script( 'eventMove', plugin_dir_url( __FILE__ ) . 'assets/js/jquery.event.move.js', array('jquery'), null, $in_footer );
-        wp_enqueue_script( 'fancybox', plugin_dir_url( __FILE__ ) . 'assets/js/jquery.fancybox.js', array('jquery'), null, $in_footer );
+        wp_enqueue_script( 'eventMove', plugin_dir_url( __FILE__ ) . 'assets/js/jquery.event.move.js', array('jquery'), null, $in_footer ); 
         wp_enqueue_script( 'bafg_twentytwenty', plugin_dir_url( __FILE__ ) . 'assets/js/jquery.twentytwenty.js', array('jquery','eventMove'), null, $in_footer );
         wp_enqueue_script( 'bafg_custom_js', plugin_dir_url( __FILE__ ) . 'assets/js/bafg-custom-js.js', array('jquery','bafg_twentytwenty'), null, true );       
     }
