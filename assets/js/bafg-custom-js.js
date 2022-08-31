@@ -44,8 +44,6 @@
             }
 
         });
-
-        $(".twentytwenty-wrapper .design-1 .twentytwenty-handle").wrapInner("<div class='handle-trnasf' />"); 
         $(window).trigger("resize.twentytwenty");
     });
     
