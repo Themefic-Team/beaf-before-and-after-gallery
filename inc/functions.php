@@ -33,7 +33,7 @@ if(!function_exists('beaf_black_friday_20222_admin_notice')){
  
 if(!function_exists('beaf_black_friday_20222')){
 	function beaf_black_friday_20222() { 
-		add_meta_box( 'beaf_black_friday_docs', __( ' ', 'tourfic' ), 'beaf_black_friday_2022_callback','bafg','side' ,'high');   
+		add_meta_box( 'beaf_black_friday_docs', ' ', 'beaf_black_friday_2022_callback','bafg','side' ,'high');   
 	}
 	add_action( 'add_meta_boxes', 'beaf_black_friday_20222' );
 	function beaf_black_friday_2022_callback(){
