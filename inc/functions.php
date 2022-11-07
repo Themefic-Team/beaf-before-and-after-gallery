@@ -1,5 +1,68 @@
 <?php
 
+/**
+ * Black Friday Deals 2022
+ */ 
+if(!function_exists('beaf_black_friday_20222_admin_notice')){
+	function beaf_black_friday_20222_admin_notice(){
+		$deal_link =sanitize_url('https://themefic.com/go/beaf-bf-deal');
+		$get_current_screen = get_current_screen(); 
+		if($get_current_screen->post_type != 'bafg' ){ 
+		?>
+			<style> 
+				.tf_black_friday_20222_admin_notice a:focus {
+					box-shadow: none;
+				} 
+				.tf_black_friday_20222_admin_notice {
+					padding: 7px;
+				}
+			</style>
+			<div class="notice notice-success tf_black_friday_20222_admin_notice">
+			
+				<a href="<?php echo $deal_link; ?>" target="_blank" >
+					<img  style="width: auto; height: 100px;" src="<?php echo BEAF_PLUGIN_URL ?>/assets/image/BLACK_FRIDAY_BACKGROUND_GRUNGE.jpg" alt="BLACK FRIDAY 2022">
+				</a> 
+			</div>
+		
+		<?php
+		}
+	} 
+	
+	// add_action( 'admin_notices', 'beaf_black_friday_20222_admin_notice' ); 
+}
+ 
+if(!function_exists('beaf_black_friday_20222')){
+	function beaf_black_friday_20222() { 
+		add_meta_box( 'beaf_black_friday_docs', __( ' ', 'tourfic' ), 'beaf_black_friday_2022_callback','bafg','side' ,'high');   
+	}
+	add_action( 'add_meta_boxes', 'beaf_black_friday_20222' );
+	function beaf_black_friday_2022_callback(){
+		$deal_link = sanitize_url('https://themefic.com/go/beaf-bf-deal');
+	?> 
+		<style> 
+			.back_friday_2022_preview a:focus {
+				box-shadow: none;
+			} 
+			.back_friday_2022_preview a {
+				display: inline-block;
+			}
+			#beaf_black_friday_docs .inside {
+				padding: 0;
+				margin-top: 0;
+			}
+		</style>
+		<div class="back_friday_2022_preview" style="text-align: center; overflow: hidden;">
+			<a href="<?php echo $deal_link; ?>" target="_blank" >
+				<img  style="width: 100%; transform: scale(1.3);" src="<?php echo BEAF_PLUGIN_URL ?>/assets/image/BLACK_FRIDAY_BACKGROUND_GRUNGE.jpg" alt=" BLACK FRIDAY 2022">
+			</a> 
+		</div>
+	<?php
+	}  
+}
+
+
+
+
 add_action( 'bafg_after_slider', 'bafg_slider_info', 10 );
 
 function bafg_slider_info($id){

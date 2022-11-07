@@ -20,7 +20,7 @@ if (!defined('ABSPATH')) {
 class BAFG_Before_After_Gallery {
     
     public function __construct(){
-        
+      
         /*
         * Enqueue css and js for BAFG
         */
@@ -35,6 +35,9 @@ class BAFG_Before_After_Gallery {
         * BAFG init
         */
         add_action( 'init', array( $this, 'bafg_image_before_after_foucs_posttype' ) );
+
+        // BEAF_PLUGIN_URL
+        define( 'BEAF_PLUGIN_URL', plugin_dir_url( __FILE__ ) );
         
         /*
         * BAFG meta fields
