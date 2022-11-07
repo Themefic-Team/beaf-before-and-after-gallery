@@ -37,7 +37,9 @@ class BAFG_Before_After_Gallery {
         add_action( 'init', array( $this, 'bafg_image_before_after_foucs_posttype' ) );
 
         // BEAF_PLUGIN_URL
-        define( 'BEAF_PLUGIN_URL', plugin_dir_url( __FILE__ ) );
+        if(!defined('BEAF_PLUGIN_URL')){ 
+            define( 'BEAF_PLUGIN_URL', plugin_dir_url( __FILE__ ) );
+        }
         
         /*
         * BAFG meta fields
