@@ -7,35 +7,73 @@ if(!function_exists('beaf_black_friday_20222_admin_notice')){
 	function beaf_black_friday_20222_admin_notice(){
 		$deal_link =sanitize_url('https://themefic.com/go/beaf-bf-deal');
 		$get_current_screen = get_current_screen(); 
-		if($get_current_screen->post_type != 'bafg' ){ 
-		?>
-			<style> 
-				.tf_black_friday_20222_admin_notice a:focus {
-					box-shadow: none;
-				} 
-				.tf_black_friday_20222_admin_notice {
-					padding: 7px;
-				}
-			</style>
-			<div class="notice notice-success tf_black_friday_20222_admin_notice">
+		if(!isset($_COOKIE['beaf_dismiss_admin_notice'])){
+			if($get_current_screen->post_type != 'bafg' ){ 
+				?>
+				<style> 
+					.tf_black_friday_20222_admin_notice a:focus {
+						box-shadow: none;
+					} 
+					.tf_black_friday_20222_admin_notice {
+						padding: 7px;
+						position: relative;
+						z-index: 10;
+					}
+				</style>
+				<div class="notice notice-success tf_black_friday_20222_admin_notice">
+				
+					<a href="<?php echo $deal_link; ?>" target="_blank" >
+						<img  style="width: auto; height: 100px;" src="<?php echo BEAF_PLUGIN_URL ?>/assets/image/BLACK_FRIDAY_BACKGROUND_GRUNGE.jpg" alt="BLACK FRIDAY 2022">
+					</a> 
+					<button type="button" class="notice-dismiss tf_black_friday_notice_dismiss"><span class="screen-reader-text">Dismiss this notice.</span></button>
+				</div>
 			
-				<a href="<?php echo $deal_link; ?>" target="_blank" >
-					<img  style="width: auto; height: 100px;" src="<?php echo BEAF_PLUGIN_URL ?>/assets/image/BLACK_FRIDAY_BACKGROUND_GRUNGE.jpg" alt="BLACK FRIDAY 2022">
-				</a> 
-			</div>
-		
-		<?php
+				<script>
+					jQuery(document).ready(function($) {
+						$(document).on('click', '.tf_black_friday_notice_dismiss', function( event ) {
+							jQuery('.tf_black_friday_20222_admin_notice').css('display', 'none')
+							data = {
+								action : 'beaf_black_friday_notice_dismiss_callback',
+							};
+
+							$.ajax({
+								url: ajaxurl,
+								type: 'post',
+								data: data,
+								success: function (data) { ;
+								},
+								error: function (data) { 
+								}
+							});
+						});
+					});
+				</script>
+			<?php
+			}
 		}
-	} 
 	
-	// add_action( 'admin_notices', 'beaf_black_friday_20222_admin_notice' ); 
+	} 
+	if (strtotime('2022-12-01') > time()) {
+		// add_action( 'admin_notices', 'beaf_black_friday_20222_admin_notice' ); 
+	}   
+	
 }
+
+function beaf_black_friday_notice_dismiss_callback() { 
+	$cookie_name = "beaf_dismiss_admin_notice";
+	$cookie_value = "1";
+	setcookie($cookie_name, $cookie_value, time() + (86400 * 3), "/"); 
+	wp_die();
+}
+add_action( 'wp_ajax_beaf_black_friday_notice_dismiss_callback', 'beaf_black_friday_notice_dismiss_callback' );
  
 if(!function_exists('beaf_black_friday_20222')){
 	function beaf_black_friday_20222() { 
 		add_meta_box( 'beaf_black_friday_docs', ' ', 'beaf_black_friday_2022_callback','bafg','side' ,'high');   
 	}
-	add_action( 'add_meta_boxes', 'beaf_black_friday_20222' );
+	if (strtotime('2022-12-01') > time()) {  
+		add_action( 'add_meta_boxes', 'beaf_black_friday_20222' );
+	}   
 	function beaf_black_friday_2022_callback(){
 		$deal_link = sanitize_url('https://themefic.com/go/beaf-bf-deal');
 	?> 
@@ -49,6 +87,10 @@ if(!function_exists('beaf_black_friday_20222')){
 			#beaf_black_friday_docs .inside {
 				padding: 0;
 				margin-top: 0;
+			}
+			#beaf_black_friday_docs .postbox-header {
+				display: none;
+				visibility: hidden;
 			}
 		</style>
 		<div class="back_friday_2022_preview" style="text-align: center; overflow: hidden;">
