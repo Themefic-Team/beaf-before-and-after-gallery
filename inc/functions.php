@@ -8,7 +8,7 @@ if(!function_exists('beaf_black_friday_20222_admin_notice')){
 		$deal_link =sanitize_url('https://themefic.com/go/beaf-bf-deal');
 		$get_current_screen = get_current_screen(); 
 		if(!isset($_COOKIE['beaf_dismiss_admin_notice'])){
-			if($get_current_screen->post_type != 'bafg' ){ 
+			if($get_current_screen->base == 'dashboard'){ 
 				?>
 				<style> 
 					.tf_black_friday_20222_admin_notice a:focus {
@@ -19,11 +19,20 @@ if(!function_exists('beaf_black_friday_20222_admin_notice')){
 						position: relative;
 						z-index: 10;
 					}
+					.tf_black_friday_20222_admin_notice { 
+						max-width: 585px;
+					}
+					.tf_black_friday_20222_admin_notice button:before {
+						color: #fff !important;
+					}
+					.tf_black_friday_20222_admin_notice button:hover::before {
+						color: #d63638 !important;
+					}
 				</style>
 				<div class="notice notice-success tf_black_friday_20222_admin_notice">
 				
 					<a href="<?php echo $deal_link; ?>" target="_blank" >
-						<img  style="width: auto; height: 100px;" src="<?php echo BEAF_PLUGIN_URL ?>/assets/image/BLACK_FRIDAY_BACKGROUND_GRUNGE.jpg" alt="BLACK FRIDAY 2022">
+						<img  style="width: auto; height: 150px;" src="<?php echo BEAF_PLUGIN_URL ?>/assets/image/BLACK_FRIDAY_BACKGROUND_GRUNGE_notice.png" alt="BLACK FRIDAY 2022">
 					</a> 
 					<button type="button" class="notice-dismiss tf_black_friday_notice_dismiss"><span class="screen-reader-text">Dismiss this notice.</span></button>
 				</div>
@@ -54,7 +63,7 @@ if(!function_exists('beaf_black_friday_20222_admin_notice')){
 	
 	} 
 	if (strtotime('2022-12-01') > time()) {
-		// add_action( 'admin_notices', 'beaf_black_friday_20222_admin_notice' ); 
+		add_action( 'admin_notices', 'beaf_black_friday_20222_admin_notice' ); 
 	}   
 	
 }
