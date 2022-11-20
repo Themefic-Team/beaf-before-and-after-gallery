@@ -89,6 +89,11 @@ class BAFG_Before_After_Gallery {
         * Filter the single_template with our custom function
         */
         add_filter('single_template', array( $this, 'bafg_custom_single_template') );
+
+        /* 
+        * Initialize the appsero
+        */
+        $this->appsero_init_tracker_beaf_before_and_after_gallery();
     }
     
     /*
@@ -378,6 +383,27 @@ class BAFG_Before_After_Gallery {
         return $single;
 
     }
+
+    
+    /**
+     * Initialize the plugin tracker
+     *
+     * @return void
+     */
+    public function appsero_init_tracker_beaf_before_and_after_gallery() {
+
+        if ( ! class_exists( 'Appsero\Client' ) ) {
+            require_once ( __DIR__ . '/inc/app/src/Client.php');
+        }
+
+        $client = new Appsero\Client( 'daee3b5d-d8a3-46f0-ae49-7b6f869f4b42', 'Ultimate Before After Image Slider & Gallery – BEAF', __FILE__ );
+
+        // Active insights
+        $client->insights()->init();
+
+    }
+
+    
 
 }
 
