@@ -383,7 +383,6 @@ class BAFG_Before_After_Gallery {
         return $single;
 
     }
-
     
     /**
      * Initialize the plugin tracker
