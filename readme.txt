@@ -330,10 +330,11 @@ Yes, We provide full support on the WordPress.org forums. You can also post ques
 
 == Changelog ==
 
-= 4.3.13 – 20/12/2022 =
+= 4.3.13 – 26/12/2022 =
 
 - Fixed: Some CSS Bug
 - Fixed: Animation Issue 
+- Fixed: Notice Issue 
 
 = 4.3.12 – 14/12/2022 =
 
