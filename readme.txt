@@ -4,7 +4,7 @@ Donate link:
 Tags: before after, before after elementor, before after slider, before after gallery, before after filter gallery, before after divi, before after viewer, before after woocommerce, before after multiple image, compare images, image comparison, before after slider wordpress, before after image, twentytwenty, jquery twentytwenty, wordpress before after slider, elementor before and after slider, wordpress before after gallery, elementor before after slider, elementor before after image comparison slider, visual composer before after slider, visual composer image comparison, slider, gallery, before after wordpress, before after beaver, before after oxygen, twenty20, twenty20 image before after plugin, twenty20 wordpress plugin, twenty twenty
 Requires at least: 4.0
 Tested up to: 6.1.1
-Stable tag: 4.3.13
+Stable tag: 4.3.14
 Requires PHP: 5.6
 License: GPL-2.0+
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
@@ -330,6 +330,11 @@ Yes, We provide full support on the WordPress.org forums. You can also post ques
 
 == Changelog ==
 
+= 4.3.14 – 11/01/2023 =
+
+- Fixed: CSS Issue
+- Fixed: Responsive issue
+
 = 4.3.13 – 26/12/2022 =
 
 - Fixed: Some CSS Bug
@@ -351,7 +356,6 @@ Yes, We provide full support on the WordPress.org forums. You can also post ques
 - Fixed: Css issue in three image addon
 - Fixed: Responive check on fullscreen option
 
-
 = 4.3.9 – 20/11/2022 =
 
 - Added: Appsero integration 
@@ -367,7 +371,6 @@ Yes, We provide full support on the WordPress.org forums. You can also post ques
 - Fixed: Compatibility check with WordPress 6.1
 - Fancybox issue fixed
 
-
 = 4.3.6 – 27/10/2022 =
 
 - Fixed: Css issue in fullscreen mode
@@ -382,11 +385,9 @@ Yes, We provide full support on the WordPress.org forums. You can also post ques
  
 - Updated: Compatibility check with WordPress
  
-
 = 4.3.3 – 09/04/2022 =
  
  - Fix: Fancybox overriding issue fixed
- 
 
 = 4.3.2 – 08/31/2022 =
  
