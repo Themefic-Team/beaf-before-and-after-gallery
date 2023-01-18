@@ -356,6 +356,8 @@ if(!function_exists('bafg_review_notice')){
                     <li><a target="_blank"  href="<?php echo esc_url('https://themefic.com/docs/beaf/') ?>" class=""><span class="dashicons dashicons-sos"></span> <?php _e('I need help', 'bafg') ?></a></li>
                     <li><a href="#" class="never" data-status="never"><span class="dashicons dashicons-dismiss"></span><?php _e('Never show again', 'bafg') ?> </a></li> 
                 </ul>
+				<button type="button" class="notice-dismiss review_notice_dismiss"><span class="screen-reader-text">Dismiss this notice.</span></button>
+
             </div>
 
             <!--   Themefic Plugin Review Admin Notice Script -->
@@ -363,7 +365,7 @@ if(!function_exists('bafg_review_notice')){
                 jQuery(document).ready(function($) {
                     $(document).on('click', '.already_done, .later, .never', function( event ) {
                         event.preventDefault();
-                        var $this = jQuery(this);
+                        var $this = $(this);
                         var status = $this.attr('data-status'); 
                         $this.closest('.themefic_review_notice').css('display', 'none')
                         data = {
@@ -380,6 +382,12 @@ if(!function_exists('bafg_review_notice')){
                             error: function (data) { 
                             }
                         });
+                    });
+					$(document).on('click', '.review_notice_dismiss', function( event ) {
+                        event.preventDefault(); 
+						var $this = $(this);
+                        $this.closest('.themefic_review_notice').css('display', 'none')
+                        
                     });
                 });
             </script>

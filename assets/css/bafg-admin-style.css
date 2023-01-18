@@ -446,3 +446,9 @@ tr.bafg-watermark-enable {
 .themefic_review_notice ul li a:hover {
 	color: #218ea6;
 }
+.themefic_review_notice {
+	position: relative;
+}
+.themefic_review_notice .review_notice_dismiss {
+	padding: 2px;
+}
