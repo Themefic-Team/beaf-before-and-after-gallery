@@ -104,7 +104,7 @@ class BAFG_Before_After_Gallery {
         wp_enqueue_style( 'bafg_twentytwenty', plugin_dir_url( __FILE__ ) . 'assets/css/twentytwenty.css'); 
         wp_enqueue_style( 'bafg-style', plugin_dir_url( __FILE__ ) . 'assets/css/bafg-style.css'); 
 
-        $debug_mode = is_array(get_option('bafg_tools')) ? get_option('bafg_tools')['enable_debug_mode'] : '';
+        $debug_mode = is_array(get_option('bafg_tools')) && !empty(get_option('bafg_tools')['enable_debug_mode']) ? get_option('bafg_tools')['enable_debug_mode'] : '';
         $in_footer = false;
         if( !empty($debug_mode) ){
             $in_footer = true;
@@ -234,17 +234,24 @@ class BAFG_Before_After_Gallery {
 			$skip_lazy = '';
 			$data_skip_lazy = '';
 		}
-		
+		$enable_preloader = is_array(get_option('bafg_tools')) && !empty(get_option('bafg_tools')['enable_preloader']) ? get_option('bafg_tools')['enable_preloader'] : '';
+
 		if(get_post_status($id) == 'publish' ) :
 		?>
 
         <?php do_action('bafg_before_slider', $id); ?>
 
         <div class="bafg-twentytwenty-container <?php echo esc_attr('slider-'.$id.''); ?> <?php if(get_post_meta($id, 'bafg_custom_color', true) == 'yes') echo 'bafg-custom-color'; ?>" bafg-orientation="<?php echo esc_attr($orientation); ?>" bafg-default-offset="<?php echo esc_attr($offset); ?>" bafg-before-label="<?php echo esc_attr($before_label); ?>" bafg-after-label="<?php echo esc_attr($after_label); ?>" bafg-overlay="<?php echo esc_attr($overlay); ?>" bafg-move-slider-on-hover="<?php echo esc_attr($move_slider_on_hover); ?>" bafg-click-to-move="<?php echo esc_attr($click_to_move); ?>">
+            
         
             <img class="<?php echo esc_attr( $skip_lazy ); ?>" <?php echo esc_attr( $data_skip_lazy ); ?> src="<?php echo esc_url($b_image); ?>" alt="<?php echo esc_attr( $before_img_alt ); ?>">
             <img class="<?php echo esc_attr( $skip_lazy ); ?>" <?php echo esc_attr( $data_skip_lazy ); ?> src="<?php echo esc_url($a_image); ?>" alt="<?php echo esc_attr( $after_img_alt ); ?>">
-            
+            <?php if( !empty( $enable_preloader ) ){ ?>
+            <!-- Activate the preloader -->
+            <div class="bafg-preloader">
+                <div class="bafg-preloader-img"></div>
+            </div>
+        <?php } ?>  
         </div>
 
         <?php do_action('bafg_after_slider', $id); ?>

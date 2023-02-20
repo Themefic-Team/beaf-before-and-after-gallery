@@ -144,6 +144,13 @@ function bafg_register_settings() {
         'bafg_global_option_header'
     );
     add_settings_field(
+        'bafg_preloader',
+        __( 'Enable Preloader', 'bafg' ),
+        'bafg_preloader_callback',
+        'bafg_settings_tools',
+        'bafg_global_option_tools'
+    );
+    add_settings_field(
         'bafg_debug_mode',
         __( 'Enable Debug Mode', 'bafg' ),
         'bafg_debug_mode_callback',
@@ -189,6 +196,10 @@ function bafg_sanitize_global_option_tools( $input ){
 
     if ( isset( $input['enable_debug_mode'] ) ) {
         $sanitary_values['enable_debug_mode'] = $input['enable_debug_mode'];
+    }
+
+    if ( isset( $input['enable_preloader'] ) ) {
+        $sanitary_values['enable_preloader'] = $input['enable_preloader'];
     }
 
     return apply_filters( 'bafg_save_global_option_tools', $sanitary_values, $input );
@@ -266,8 +277,9 @@ function bafg_wm_opacity_callback(){
          <span class="bafg-wm-range-val">'. bafg_option_value('wm_opacity') .'</span>'
     );
 }
+
 function bafg_debug_mode_callback(){
-    $debug_mode = is_array(get_option('bafg_tools')) ? get_option('bafg_tools')['enable_debug_mode'] : '';
+    $debug_mode = is_array(get_option('bafg_tools')) && !empty(get_option('bafg_tools')['enable_debug_mode']) ? get_option('bafg_tools')['enable_debug_mode'] : '';
     $checked = '';
     if( !empty($debug_mode) ){
         $checked = 'checked';
@@ -275,5 +287,17 @@ function bafg_debug_mode_callback(){
     printf(
         '<input type="checkbox" class="bafg-debug_mode" id="bafg-debug_mode" name="bafg_tools[enable_debug_mode]" %s>
         <span>'.esc_html__('Debug mode allows you to troubleshoot conflicts with the theme or other plugins.','bafg').'</span>', $checked
+    );
+}
+
+function bafg_preloader_callback(){
+    $preloader = is_array(get_option('bafg_tools')) && !empty(get_option('bafg_tools')['enable_preloader']) ? get_option('bafg_tools')['enable_preloader'] : '';
+    $checked = '';
+    if( !empty($preloader) ){
+        $checked = 'checked';
+    }
+    printf(
+        '<input type="checkbox" class="bafg-preloader" id="bafg-preloader" name="bafg_tools[enable_preloader]" %s>
+        <span>'.esc_html__('Enable preloader.','bafg').'</span>', $checked
     );
 }

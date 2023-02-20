@@ -51,6 +51,20 @@
         $(window).trigger("resize.twentytwenty");
     });
 
+    $(document).ready(function() {
+        // Select the section
+        
+        const section = $('.bafg-preloader');
+        section.each(function(){
+            // Show the preloader
+            $(this).show();
+                
+            // Hide the preloader once the page has loaded
+            $(window).on('load', function() {
+                section.hide();
+            });
+       });
+      });
 
 
 })(jQuery);
