@@ -56,6 +56,8 @@
         
         const section = $('.bafg-preloader');
         section.each(function(){
+            var imageHeight = $(".bafg-twentytwenty-container").find('img').height();
+            $(this).css('height',imageHeight);
             // Show the preloader
             $(this).show();
                 
