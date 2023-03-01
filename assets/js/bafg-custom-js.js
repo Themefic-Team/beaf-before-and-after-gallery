@@ -51,22 +51,26 @@
         $(window).trigger("resize.twentytwenty");
     });
 
-    $(document).ready(function() {
-        // Select the section
-        
-        const section = $('.bafg-preloader');
-        section.each(function(){
-            var imageHeight = $(".bafg-twentytwenty-container").find('img').height();
-            $(this).css('height',imageHeight);
-            // Show the preloader
-            $(this).show();
-                
-            // Hide the preloader once the page has loaded
-            $(window).on('load', function() {
-                section.hide();
-            });
-       });
-    });
+  
 
    
 })(jQuery);
+
+jQuery(document).ready(function($) {
+    // Select the section
+    
+    const section = $('.bafg-preloader');
+    section.each(function(){
+        var imageHeight = $(".bafg-twentytwenty-container").find('img:first').height();
+        var imageWidth = $(".bafg-twentytwenty-container").find('img:first').width();
+        $(".bafg-twentytwenty-container").css('height',imageHeight)
+        
+        $(this).css('height',imageHeight);
+        $(this).css('width',imageWidth);
+            
+        // Hide the preloader once the page has loaded
+        $(window).on('load', function() {
+            section.hide();
+        });
+   });
+});
