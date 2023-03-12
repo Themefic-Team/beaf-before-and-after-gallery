@@ -59,7 +59,7 @@
 jQuery(document).ready(function($) {
     // Select the section
     
-    const section = $('.bafg-preloader');
+    var section = $('.bafg-preloader');
     section.each(function(){
         var imageHeight = $(".bafg-twentytwenty-container").find('img:first').height();
         var imageWidth = $(".bafg-twentytwenty-container").find('img:first').width();
@@ -68,9 +68,12 @@ jQuery(document).ready(function($) {
         $(this).css('height',imageHeight);
         $(this).css('width',imageWidth);
             
-        // Hide the preloader once the page has loaded
-        $(window).on('load', function() {
-            section.hide();
-        });
+      
    });
+     
+});
+// Hide the preloader once the page has loaded
+jQuery(window).on('load', function() {
+    var section = jQuery('.bafg-preloader');
+    section.hide();
 });

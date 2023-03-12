@@ -105,8 +105,8 @@ function bafg_register_settings() {
         'enable_popup', // Field $id
         __( 'Enable Full Screen Popup', 'bafg' ), // Setting $title
         'bafg_enable_popup_preview_callback',
-        'bafg_settings', // Settings Page Slug
-        'bafg_global_option_header' // Section $id
+        'bafg_settings_tools', // Settings Page Slug
+        'bafg_global_option_tools' // Section $id
     );
     add_settings_field(
         'path', // Field $id
@@ -200,6 +200,10 @@ function bafg_sanitize_global_option_tools( $input ){
 
     if ( isset( $input['enable_preloader'] ) ) {
         $sanitary_values['enable_preloader'] = $input['enable_preloader'];
+    }
+
+    if ( isset( $input['enable_popup'] ) ) {
+        $sanitary_values['enable_popup'] = $input['enable_popup'];
     }
 
     return apply_filters( 'bafg_save_global_option_tools', $sanitary_values, $input );

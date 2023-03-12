@@ -118,8 +118,8 @@ add_action( 'bafg_after_slider', 'bafg_slider_info', 10 );
 
 function bafg_slider_info($id){
 	
-	$bafg_width = !empty(get_post_meta( $id, 'bafg_width', true )) ? get_post_meta( $id, 'bafg_width', true ) : '';
-	$bafg_height = !empty(get_post_meta( $id, 'bafg_height', true )) ? get_post_meta( $id, 'bafg_height', true ) : '';
+	$bafg_width            = !empty(get_post_meta( $id, 'bafg_width', true )) ? get_post_meta( $id, 'bafg_width', true ) : '';
+	$bafg_height           = !empty(get_post_meta( $id, 'bafg_height', true )) ? get_post_meta( $id, 'bafg_height', true ) : '';
 	$bafg_slider_alignment = !empty(get_post_meta( $id, 'bafg_slider_alignment', true )) ? get_post_meta( $id, 'bafg_slider_alignment', true ) : '';
 	
 	$bafg_pro_activated = get_option( 'bafg_pro_activated' );
@@ -153,7 +153,7 @@ function bafg_slider_info($id){
 			<div>
 			<?php
 			$bafg_readmore_link_target = get_post_meta( $id, 'bafg_readmore_link_target', true );
-			$bafg_pro_activated = get_option( 'bafg_pro_activated' );
+			$bafg_pro_activated        = get_option( 'bafg_pro_activated' );
 			
 			$bafg_readmore_text = esc_html__('Read more','bafg');
 			if($bafg_pro_activated == 'true') {
@@ -178,7 +178,7 @@ function bafg_slider_info_styles($id){
 
 	$bafg_slider_info_heading_alignment = !empty(get_post_meta( $id, 'bafg_slider_info_heading_alignment', true )) ? get_post_meta( $id, 'bafg_slider_info_heading_alignment', true ) : '';
 
-	$bafg_slider_info_desc_alignment = !empty(get_post_meta( $id, 'bafg_slider_info_desc_alignment', true )) ? get_post_meta( $id, 'bafg_slider_info_desc_alignment', true ) : '';
+	$bafg_slider_info_desc_alignment 	= !empty(get_post_meta( $id, 'bafg_slider_info_desc_alignment', true )) ? get_post_meta( $id, 'bafg_slider_info_desc_alignment', true ) : '';
 
 	$bafg_slider_info_readmore_alignment = !empty(get_post_meta( $id, 'bafg_slider_info_readmore_alignment', true )) ? get_post_meta( $id, 'bafg_slider_info_readmore_alignment', true ) : '';
 
@@ -188,14 +188,14 @@ function bafg_slider_info_styles($id){
 
 	$bafg_slider_info_readmore_button_width = !empty(get_post_meta( $id, 'bafg_slider_info_readmore_button_width', true )) ? get_post_meta( $id, 'bafg_slider_info_readmore_button_width', true ) : '';
 
-	$bafg_slider_info_heading_font_color = !empty(get_post_meta( $id, 'bafg_slider_info_heading_font_color', true )) ? get_post_meta( $id, 'bafg_slider_info_heading_font_color', true ) : '';
-	$bafg_slider_info_desc_font_size = !empty(get_post_meta( $id, 'bafg_slider_info_desc_font_size', true )) ? get_post_meta( $id, 'bafg_slider_info_desc_font_size', true ) : '';
-	$bafg_slider_info_desc_font_color = !empty(get_post_meta( $id, 'bafg_slider_info_desc_font_color', true )) ? get_post_meta( $id, 'bafg_slider_info_desc_font_color', true ) : '';
-	$bafg_slider_info_readmore_font_size = !empty(get_post_meta( $id, 'bafg_slider_info_readmore_font_size', true )) ? get_post_meta( $id, 'bafg_slider_info_readmore_font_size', true ) : '';
-	$bafg_slider_info_readmore_font_color = !empty(get_post_meta( $id, 'bafg_slider_info_readmore_font_color', true )) ? get_post_meta( $id, 'bafg_slider_info_readmore_font_color', true ) : '';
-	$bafg_slider_info_readmore_bg_color = !empty(get_post_meta( $id, 'bafg_slider_info_readmore_bg_color', true )) ? get_post_meta( $id, 'bafg_slider_info_readmore_bg_color', true ) : '';
+	$bafg_slider_info_heading_font_color        = !empty(get_post_meta( $id, 'bafg_slider_info_heading_font_color', true )) ? get_post_meta( $id, 'bafg_slider_info_heading_font_color', true ) : '';
+	$bafg_slider_info_desc_font_size            = !empty(get_post_meta( $id, 'bafg_slider_info_desc_font_size', true )) ? get_post_meta( $id, 'bafg_slider_info_desc_font_size', true ) : '';
+	$bafg_slider_info_desc_font_color           = !empty(get_post_meta( $id, 'bafg_slider_info_desc_font_color', true )) ? get_post_meta( $id, 'bafg_slider_info_desc_font_color', true ) : '';
+	$bafg_slider_info_readmore_font_size        = !empty(get_post_meta( $id, 'bafg_slider_info_readmore_font_size', true )) ? get_post_meta( $id, 'bafg_slider_info_readmore_font_size', true ) : '';
+	$bafg_slider_info_readmore_font_color       = !empty(get_post_meta( $id, 'bafg_slider_info_readmore_font_color', true )) ? get_post_meta( $id, 'bafg_slider_info_readmore_font_color', true ) : '';
+	$bafg_slider_info_readmore_bg_color         = !empty(get_post_meta( $id, 'bafg_slider_info_readmore_bg_color', true )) ? get_post_meta( $id, 'bafg_slider_info_readmore_bg_color', true ) : '';
 	$bafg_slider_info_readmore_hover_font_color = !empty(get_post_meta( $id, 'bafg_slider_info_readmore_hover_font_color', true )) ? get_post_meta( $id, 'bafg_slider_info_readmore_hover_font_color', true ) : '';
-	$bafg_slider_info_readmore_hover_bg_color = !empty(get_post_meta( $id, 'bafg_slider_info_readmore_hover_bg_color', true )) ? get_post_meta( $id, 'bafg_slider_info_readmore_hover_bg_color', true ) : '';
+	$bafg_slider_info_readmore_hover_bg_color   = !empty(get_post_meta( $id, 'bafg_slider_info_readmore_hover_bg_color', true )) ? get_post_meta( $id, 'bafg_slider_info_readmore_hover_bg_color', true ) : '';
 	
 	$bafg_slider_info_readmore_border_radius = !empty(get_post_meta( $id, 'bafg_slider_info_readmore_border_radius', true )) ? get_post_meta( $id, 'bafg_slider_info_readmore_border_radius', true ) : '';
 	
@@ -394,8 +394,8 @@ if(!function_exists('bafg_review_notice')){
         <?php  
         }
      }
-     $bafg_review_notice_status = get_option('bafg_review_notice_status'); 
-     $bafg_installation_date = get_option('bafg_installation_date'); 
+     $bafg_review_notice_status = get_option('bafg_review_notice_status');
+     $bafg_installation_date    = get_option('bafg_installation_date');
      if(isset($bafg_review_notice_status) && $bafg_review_notice_status <= 0 && $bafg_installation_date == 1 && !isset($_COOKIE['bafg_review_notice_status']) && !isset($_COOKIE['bafg_installation_date'])){ 
         add_action( 'admin_notices', 'bafg_review_notice' );  
      }
@@ -413,7 +413,7 @@ if(!function_exists('bafg_review_notice_callback')){
         }else if($status == 'never'){ 
             update_option( 'bafg_review_notice_status', '2' );
         }else if($status == 'later'){
-            $cookie_name = "bafg_review_notice_status";
+            $cookie_name  = "bafg_review_notice_status";
             $cookie_value = "1";
             setcookie($cookie_name, $cookie_value, time() + (86400 * 7), "/"); 
             update_option( 'bafg_review_notice_status', '0' ); 
@@ -423,3 +423,5 @@ if(!function_exists('bafg_review_notice_callback')){
     add_action( 'wp_ajax_bafg_review_notice_callback', 'bafg_review_notice_callback' );
 
 }
+// Enable the use of shortcodes in text widgets.
+add_filter( 'the_content', 'do_shortcode' );
