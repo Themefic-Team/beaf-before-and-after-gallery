@@ -51,6 +51,29 @@
         $(window).trigger("resize.twentytwenty");
     });
 
+  
 
-
+   
 })(jQuery);
+
+jQuery(document).ready(function($) {
+    // Select the section
+    
+    var section = $('.bafg-preloader');
+    section.each(function(){
+        var imageHeight = $(".bafg-twentytwenty-container").find('img:first').height();
+        var imageWidth = $(".bafg-twentytwenty-container").find('img:first').width();
+        $(".bafg-twentytwenty-container").css('height',imageHeight)
+        
+        $(this).css('height',imageHeight);
+        $(this).css('width',imageWidth);
+            
+      
+   });
+     
+});
+// Hide the preloader once the page has loaded
+jQuery(window).on('load', function() {
+    var section = jQuery('.bafg-preloader');
+    section.hide();
+});

@@ -160,7 +160,7 @@
         });
       }
 
-      $(window).trigger("resize.twentytwenty");
+      $(window).trigger("resize.twentytwenty");     
     });
   };
 
