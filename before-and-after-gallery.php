@@ -3,7 +3,7 @@
  * Plugin Name: BEAF - Ultimate Before After Image Slider & Gallery
  * Plugin URI: https://themefic.com/plugins/beaf/
  * Description: Want to show comparison of two images? With BEAF, you can easily create before and after image slider or image gallery. Elementor Supported.
- * Version: 4.3.15
+ * Version: 4.3.16
  * Author: Themefic
  * Author URI: https://themefic.com/
  * License: GPL-2.0+
@@ -90,10 +90,8 @@ class BAFG_Before_After_Gallery {
         */
         add_filter('single_template', array( $this, 'bafg_custom_single_template') );
 
-        /* 
-        * Initialize the appsero
-        */
-        $this->appsero_init_tracker_beaf_before_and_after_gallery();
+        
+        
     }
     
     /*
@@ -395,31 +393,6 @@ class BAFG_Before_After_Gallery {
         return $single;
 
     }
-    
-    /**
-     * Initialize the plugin tracker
-     *
-     * @return void
-     */
-    public function appsero_init_tracker_beaf_before_and_after_gallery() {
-
-        if ( ! class_exists( 'Appsero\Client' ) ) {
-            require_once ( __DIR__ . '/inc/app/src/Client.php');
-        }
-
-        $client = new Appsero\Client( 'daee3b5d-d8a3-46f0-ae49-7b6f869f4b42', 'Ultimate Before After Image Slider & Gallery – BEAF', __FILE__ );
-
-        // Change Admin notice text
-
-       	$notice = sprintf( $client->__trans( 'Want to help make <strong>%1$s</strong> even more awesome? Allow %1$s to collect non-sensitive diagnostic data and usage information. I agree to get Important Product Updates & Discount related information on my email from  %1$s (I can unsubscribe anytime).' ), $client->name );
-       	$client->insights()->notice($notice); 
-
-        
-        // Active insights
-        $client->insights()->init();
-
-    }
-
     
 
 }
