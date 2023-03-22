@@ -210,7 +210,7 @@ function bafg_watermark_upload_callback() {
     
     $attach_id = bafg_option_value('bafg_attachment_id');
     echo '
-    <input class="bafg-watermark-path" type="text" placeholder="Image URL" value="' . get_attached_file( $attach_id )  . '" name="bafg_watermark[path]">
+    <input class="bafg-watermark-path" type="text" placeholder="Image URL" value="' . wp_get_attachment_url( $attach_id )  . '" name="bafg_watermark[path]">
     <input type="button" class="button button-primary bafg-watermark-upload" value="Add/Upload"> '
     ;
 
@@ -240,7 +240,7 @@ function bafg_enable_popup_preview_callback(){
 function bafg_attachment_id_callback(){
     ob_start();
     printf(
-        '<input type="hidden" class="bafg-attachment-id" value="/var/root/...." name="bafg_watermark[bafg_attachment_id]">'
+        '<input type="hidden" class="bafg-attachment-id" value="'.bafg_option_value('bafg_attachment_id').'" name="bafg_watermark[bafg_attachment_id]">'
     );
     $bafg_wm_image_path = ob_get_clean();
     echo apply_filters('bafg_watermark_image_path',$bafg_wm_image_path);
