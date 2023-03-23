@@ -143,7 +143,8 @@ function bafg_register_settings() {
         'bafg_settings_tools',
         'bafg_global_option_tools'
     );
-    //settings field publicly_queriable
+    
+    //settings field for publicly_queriable
     add_settings_field(
         'bafg_publicly_queriable',
         __( 'Disable Publicly Queriable', 'bafg' ),
@@ -195,9 +196,7 @@ function bafg_sanitize_global_option_tools( $input ){
 
     $sanitary_values = array();
 
-    if( isset( $input['bafg_publicly_queriable'] ) ){
-        $sanitary_values['bafg_publicly_queriable'] = $input['bafg_publicly_queriable'];
-    }
+   
     if ( isset( $input['enable_debug_mode'] ) ) {
         $sanitary_values['enable_debug_mode'] = $input['enable_debug_mode'];
     }
@@ -309,12 +308,17 @@ function bafg_preloader_callback(){
 //callback function for public queryable settings
 function bafg_publicly_queriable_callback() {
     $bafg_publicly_queriable = is_array(get_option('bafg_tools')) && !empty(get_option('bafg_tools')['bafg_publicly_queriable']) ? get_option('bafg_tools')['bafg_publicly_queriable'] : '';
-    $checked = '';
-    if( !empty($bafg_publicly_queriable) ){
-        $checked = 'checked';
-    }
+   
+    //field will be filtered from pro addon
+
+   ob_start();
     printf(
-        '<input type="checkbox" class="bafg-publicly_queriable" id="bafg-publicly_queriable" name="bafg_tools[bafg_publicly_queriable]" %s>
-        <span>'.esc_html__('Tick this if you want to exlclude the public queryable indexing.','bafg').'</span>', $checked
+        '<input type="checkbox" disabled class="bafg-publicly_queriable" id="bafg-publicly_queriable" name="" %s>
+        <span>'.esc_html__('Disable public queryable. ','bafg').'</span><span style="color:red;font-weight:bold" class="bafg-pro-tt">(Pro Feature)</span>','checked'
     );
+    $bafg_publicly_queriable_html = ob_get_clean();
+    echo apply_filters( 'bafg_publicly_queriable_pro', $bafg_publicly_queriable_html, $bafg_publicly_queriable );
+
+
+    
 }
