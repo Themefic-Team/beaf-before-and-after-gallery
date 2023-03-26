@@ -3,7 +3,7 @@
  * Plugin Name: BEAF - Ultimate Before After Image Slider & Gallery
  * Plugin URI: https://themefic.com/plugins/beaf/
  * Description: Want to show comparison of two images? With BEAF, you can easily create before and after image slider or image gallery. Elementor Supported.
- * Version: 4.3.16
+ * Version: 4.3.17
  * Author: Themefic
  * Author URI: https://themefic.com/
  * License: GPL-2.0+
@@ -120,6 +120,12 @@ class BAFG_Before_After_Gallery {
     
     //register post type
     public function bafg_image_before_after_foucs_posttype() {
+        $bafg_publicly_queriable = is_array(get_option('bafg_tools')) && !empty(get_option('bafg_tools')['bafg_publicly_queriable']) ? get_option('bafg_tools')['bafg_publicly_queriable'] : '';
+        if($bafg_publicly_queriable == 'on'){
+            $bafg_publicly_queriable = false;
+        }else{
+            $bafg_publicly_queriable = true;
+        }
         register_post_type( 'bafg',
             array(
                 'labels' => array(
@@ -135,9 +141,8 @@ class BAFG_Before_After_Gallery {
                     'not_found'          => __( 'No slider found.', 'bafg' ),
                     'not_found_in_trash' => __( 'No slider found in Trash.', 'bafg' ),
                 ),
-                'has_archive'         => true,
                 'public'              => false,
-                'publicly_queryable'  => true,
+                'publicly_queryable'  => apply_filters( 'beaf_publicly_queryable', $bafg_publicly_queriable ),
                 'show_ui'             => true,
                 'exclude_from_search' => true,
                 'show_in_nav_menus'   => false,
@@ -147,7 +152,7 @@ class BAFG_Before_After_Gallery {
                 'menu_icon'           => 'dashicons-format-gallery'
             )
         );
-		
+        //die();
 		// Register Custom Taxonomy
 		$labels = array(
 			'name'                       => _x( 'Categories', 'Taxonomy General Name', 'bafg' ),

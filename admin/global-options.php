@@ -143,6 +143,15 @@ function bafg_register_settings() {
         'bafg_settings_tools',
         'bafg_global_option_tools'
     );
+    
+    //settings field for publicly_queriable
+    add_settings_field(
+        'bafg_publicly_queriable',
+        __( 'Disable Publicly Queriable', 'bafg' ),
+        'bafg_publicly_queriable_callback',
+        'bafg_settings_tools',
+        'bafg_global_option_tools'
+    );
     add_settings_field(
         'bafg_debug_mode',
         __( 'Enable Debug Mode', 'bafg' ),
@@ -187,6 +196,7 @@ function bafg_sanitize_global_option_tools( $input ){
 
     $sanitary_values = array();
 
+   
     if ( isset( $input['enable_debug_mode'] ) ) {
         $sanitary_values['enable_debug_mode'] = $input['enable_debug_mode'];
     }
@@ -210,7 +220,7 @@ function bafg_watermark_upload_callback() {
     
     $attach_id = bafg_option_value('bafg_attachment_id');
     echo '
-    <input class="bafg-watermark-path" type="text" placeholder="Image URL" value="' . get_attached_file( $attach_id )  . '" name="bafg_watermark[path]">
+    <input class="bafg-watermark-path" type="text" placeholder="Image URL" value="' . wp_get_attachment_url( $attach_id )  . '" name="bafg_watermark[path]">
     <input type="button" class="button button-primary bafg-watermark-upload" value="Add/Upload"> '
     ;
 
@@ -240,7 +250,7 @@ function bafg_enable_popup_preview_callback(){
 function bafg_attachment_id_callback(){
     ob_start();
     printf(
-        '<input type="hidden" class="bafg-attachment-id" value="/var/root/...." name="bafg_watermark[bafg_attachment_id]">'
+        '<input type="hidden" class="bafg-attachment-id" value="'.bafg_option_value('bafg_attachment_id').'" name="bafg_watermark[bafg_attachment_id]">'
     );
     $bafg_wm_image_path = ob_get_clean();
     echo apply_filters('bafg_watermark_image_path',$bafg_wm_image_path);
@@ -293,4 +303,22 @@ function bafg_preloader_callback(){
         '<input type="checkbox" class="bafg-preloader" id="bafg-preloader" name="bafg_tools[enable_preloader]" %s>
         <span>'.esc_html__('Enable preloader.','bafg').'</span>', $checked
     );
+}
+
+//callback function for public queryable settings
+function bafg_publicly_queriable_callback() {
+    $bafg_publicly_queriable = is_array(get_option('bafg_tools')) && !empty(get_option('bafg_tools')['bafg_publicly_queriable']) ? get_option('bafg_tools')['bafg_publicly_queriable'] : '';
+   
+    //field will be filtered from pro addon
+
+   ob_start();
+    printf(
+        '<input type="checkbox" disabled class="bafg-publicly_queriable" id="bafg-publicly_queriable" name="" %s>
+        <span>'.esc_html__('Disable public queryable. ','bafg').'</span><span style="color:red;font-weight:bold" class="bafg-pro-tt">(Pro Feature)</span>','checked'
+    );
+    $bafg_publicly_queriable_html = ob_get_clean();
+    echo apply_filters( 'bafg_publicly_queriable_pro', $bafg_publicly_queriable_html, $bafg_publicly_queriable );
+
+
+    
 }
