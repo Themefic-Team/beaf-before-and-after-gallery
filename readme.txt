@@ -333,7 +333,7 @@ Yes, We provide full support on the WordPress.org forums. You can also post ques
 = 4.3.17 – 26/03/2023 =
 
 - Added: Exclude the public queryable indexing ( Pro )
-- Fixed: Watermark input value url issue  ( Pro )
+- Fixed: Watermark input value URL issue  ( Pro )
 - Fixed: Header Warning issue
 
 = 4.3.16 – 16/03/2023 =
