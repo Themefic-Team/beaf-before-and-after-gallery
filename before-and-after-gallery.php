@@ -196,7 +196,7 @@ class BAFG_Before_After_Gallery {
 
 		if ( !is_plugin_active( 'beaf-before-and-after-gallery-pro/before-and-after-gallery-pro.php' ) ){
             add_submenu_page(
-                'edit.php?post_type=bafg',
+                'edit.php?post_type=baf`g',
                 'Go Pro',
                 '<span class="bafg-pro-link">★ Go Pro</span>',
                 'manage_options',
