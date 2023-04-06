@@ -57,6 +57,16 @@
       var calcOffset = function(dimensionPct) {
         var w = beforeImg.width();
         var h = beforeImg.height();
+        //set initial width and height if height is 0
+        if(h !=0){
+          nh =  h;
+          nw =  w;
+        }else{
+          h = nh;
+          w = nw;
+          container.css('max-width',nw);
+        }
+        
         return {
           w: w+"px",
           h: h+"px",

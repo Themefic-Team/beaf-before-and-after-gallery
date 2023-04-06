@@ -50,15 +50,11 @@
     $(window).on('scroll', function () {
         $(window).trigger("resize.twentytwenty");
     });
-
-  
-
-   
+ 
 })(jQuery);
 
 jQuery(document).ready(function($) {
-    // Select the section
-    
+    // Select the section    
     var section = $('.bafg-preloader');
     section.each(function(){
         var imageHeight = $(".bafg-twentytwenty-container").find('img:first').height();
