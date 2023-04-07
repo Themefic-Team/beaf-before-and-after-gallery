@@ -422,8 +422,6 @@ if(!function_exists('bafg_review_notice_callback')){
     add_action( 'wp_ajax_bafg_review_notice_callback', 'bafg_review_notice_callback' );
 
 }
-// Enable the use of shortcodes in text widgets.
-add_filter( 'the_content', 'do_shortcode' );
 
 
 /**
