@@ -55,18 +55,9 @@
       afterImg.addClass("twentytwenty-after");
       
       var calcOffset = function(dimensionPct) {
-        var w = beforeImg.width();
-        var h = beforeImg.height();
-        //set initial width and height if height is 0
-        if(h !=0){
-          nh =  h;
-          nw =  w;
-        }else{
-          h = nh;
-          w = nw;
-          container.css('max-width',nw);
-        }
-        
+        var w = beforeImg.prop('naturalWidth');
+        var h = beforeImg.prop('naturalHeight');
+        container.css('max-width',w);
         return {
           w: w+"px",
           h: h+"px",
@@ -74,7 +65,7 @@
           ch: (dimensionPct*h)+"px"
         };
       };
-
+      
       var adjustContainer = function(offset) {
       	if (sliderOrientation === 'vertical') {
           beforeImg.css("clip", "rect(0,"+offset.w+","+offset.ch+",0)");
@@ -160,9 +151,9 @@
 
       if (options.click_to_move) {
         container.on('click', function(e) {
-          offsetX = container.offset().left;
-          offsetY = container.offset().top;
-          imgWidth = beforeImg.width();
+          offsetX   = container.offset().left;
+          offsetY   = container.offset().top;
+          imgWidth  = beforeImg.width();
           imgHeight = beforeImg.height();
 
           sliderPct = getSliderPercentage(e.pageX, e.pageY);
