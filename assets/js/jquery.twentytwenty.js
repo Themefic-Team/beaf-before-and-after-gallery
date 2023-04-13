@@ -55,9 +55,8 @@
       afterImg.addClass("twentytwenty-after");
       
       var calcOffset = function(dimensionPct) {
-        var w = beforeImg.prop('naturalWidth');
-        var h = beforeImg.prop('naturalHeight');
-        container.css('max-width',w);
+        var w = beforeImg.width();
+        var h = beforeImg.height();
         return {
           w: w+"px",
           h: h+"px",
@@ -97,7 +96,6 @@
 
         return minMaxNumber(sliderPercentage, 0, 1);
       };
-
 
       $(window).on("resize.twentytwenty", function(e) {
         adjustSlider(sliderPct);
