@@ -59,8 +59,11 @@
         if(w == 0 || h == 0){
             var imageHeight = container.find('img:first').prop('naturalHeight'); 
             var imageWidth = container.find('img:first').prop('naturalWidth'); 
+            
             w = imageWidth;
             h = imageHeight;   
+            container.css('max-width', w + 'px');  
+            // container.css("max-height", (dimensionPct*h)+"px");
         }
         return {
           w: w+"px",
@@ -79,7 +82,7 @@
           beforeImg.css("clip", "rect(0,"+offset.cw+","+offset.h+",0)");
           afterImg.css("clip", "rect(0,"+offset.w+","+offset.h+","+offset.cw+")");
     	}
-        container.css("height", offset.h);
+        // container.css("height", offset.h);
       };
 
       var adjustSlider = function(pct) {

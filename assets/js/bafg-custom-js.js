@@ -58,21 +58,7 @@
                 move_slider_on_hover: moveSliderHover,
                 click_to_move: clickToMove
             });
-
-            var beforeImageW = $(this).find('img.twentytwenty-before').width();
-            if(beforeImageW == 0){ 
-                var imageHeight = $(this).find('img:first').prop('naturalHeight'); 
-                var imageWidth = $(this).find('img:first').prop('naturalWidth'); 
-                if(imageHeight != 0){ 
-                    $(this).css('max-width', imageWidth + 'px');
-                    $(this).css('max-height', imageHeight + 'px');
-                } 
-                
-                
-            }else{
-                $(this).css('max-width', beforeImageW + 'px');
-            }
-            
+ 
             
 
             //Label OutSide
@@ -102,6 +88,9 @@
     
     $(window).on('scroll', function () {
         $(window).trigger("resize.twentytwenty");
+    });
+    $(document).on('load', function () {
+        $(document).trigger("resize.twentytwenty");
     });
  
 })(jQuery);
