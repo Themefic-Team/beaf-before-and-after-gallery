@@ -82,7 +82,7 @@
           beforeImg.css("clip", "rect(0,"+offset.cw+","+offset.h+",0)");
           afterImg.css("clip", "rect(0,"+offset.w+","+offset.h+","+offset.cw+")");
     	}
-        // container.css("height", offset.h);
+        container.css("max-height", offset.h);
       };
 
       var adjustSlider = function(pct) {
