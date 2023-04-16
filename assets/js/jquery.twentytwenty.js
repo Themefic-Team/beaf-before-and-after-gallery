@@ -12,8 +12,7 @@
       click_to_move: false
     }, options);
 
-    return this.each(function() {
-
+    return this.each(function() { 
       var sliderPct = options.default_offset_pct;
       var container = $(this);
       var sliderOrientation = options.orientation;
@@ -56,7 +55,13 @@
       
       var calcOffset = function(dimensionPct) {
         var w = beforeImg.width();
-        var h = beforeImg.height();
+        var h = beforeImg.height(); 
+        if(w == 0 || h == 0){
+            var imageHeight = container.find('img:first').prop('naturalHeight'); 
+            var imageWidth = container.find('img:first').prop('naturalWidth'); 
+            w = imageWidth;
+            h = imageHeight;   
+        }
         return {
           w: w+"px",
           h: h+"px",

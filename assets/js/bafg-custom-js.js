@@ -3,17 +3,18 @@
     
     jQuery(document).ready(function($) {
         // Select the section    
-        var section = $('.bafg-preloader');
-        section.each(function(){
-            var imageHeight = $(".bafg-twentytwenty-container").find('img:first').prop('naturalHeight');
-            var imageWidth = $(".bafg-twentytwenty-container").find('img:first').prop('naturalWidth');
-            $(".bafg-twentytwenty-container").css('height',imageHeight)
-            
-            $(this).css('height',imageHeight);
-            $(this).css('width',imageWidth);
+        // var section = $('.bafg-twentytwenty-container');
+        // console.log(section);
+        // section.each(function(){
+        //     var imageHeight = $(this).find('img:first').prop('naturalHeight');
+        //     var imageWidth = $(this).find('img:first').prop('naturalWidth');
+        //     // $(this).css('height',imageHeight)
+        //     // console.log(imageWidth);
+        //     $(this).css('height',imageHeight+'px');
+        //     $(this).css('width',imageWidth+'px');
                 
         
-    });
+        // });
         
     });
     // Hide the preloader once the page has loaded
@@ -40,6 +41,13 @@
             } else {
                 var clickToMove = true;
             }
+            
+            
+            // $(this).find('img').css('min-width',imageWidth+'px');
+            // console.log($(this).find('img'));
+            // $(this).css('height',imageHeight+'px');
+            // $(this).css('width',imageWidth+'px');
+
 
             $(this).twentytwenty({
                 orientation: $(this).attr('bafg-orientation'),
@@ -51,8 +59,21 @@
                 click_to_move: clickToMove
             });
 
-            var beforeImageW = $(this).find('img.twentytwenty-before').width(); 
-            $(this).css('max-width', beforeImageW + 'px');
+            var beforeImageW = $(this).find('img.twentytwenty-before').width();
+            if(beforeImageW == 0){ 
+                var imageHeight = $(this).find('img:first').prop('naturalHeight'); 
+                var imageWidth = $(this).find('img:first').prop('naturalWidth'); 
+                if(imageHeight != 0){ 
+                    $(this).css('max-width', imageWidth + 'px');
+                    $(this).css('max-height', imageHeight + 'px');
+                } 
+                
+                
+            }else{
+                $(this).css('max-width', beforeImageW + 'px');
+            }
+            
+            
 
             //Label OutSide
             var bafgLabelOutside = $(this).data('label_outside');
@@ -63,9 +84,20 @@
                 $('.bafg-outside-label-wrapper.twentytwenty-vertical .twentytwenty-overlay>.twentytwenty-before-label').css('display', 'none');
                 $('.bafg-outside-label-wrapper.twentytwenty-vertical .twentytwenty-overlay .twentytwenty-after-label').css('display', 'none');
             }
+            
+            // var imageHeight = $(this).find('img:first').prop('naturalHeight');
+            // var imageWidth = $(this).find('img:first').prop('naturalWidth');
+            // $(this).css('min-height',imageHeight+'px');
+            // $(this).css('min-width',imageWidth+'px');
 
+
+            // $(this).find('.twentytwenty-before').css('clip','rect(0px, '+imageWidth+'px, '+imageHeight+'px, 320px)');
+            // console.log($(this).find('.twentytwenty-after'));
+            // $(this).find('.twentytwenty-after').css('clip','rect(0px, '+imageWidth+'px, '+imageHeight+'px, 320px)');
+            
+            $(window).trigger("resize.twentytwenty");
         });
-        $(window).trigger("resize.twentytwenty");
+        
     });
     
     $(window).on('scroll', function () {
