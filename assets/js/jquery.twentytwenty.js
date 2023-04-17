@@ -63,7 +63,7 @@
             w = imageWidth;
             h = imageHeight;   
             container.css('max-width', w + 'px');  
-            container.css("max-height", (dimensionPct*h)+"px");
+            // container.css("max-height", (dimensionPct*h)+"px");
         }
         return {
           w: w+"px",
@@ -82,7 +82,7 @@
           beforeImg.css("clip", "rect(0,"+offset.cw+","+offset.h+",0)");
           afterImg.css("clip", "rect(0,"+offset.w+","+offset.h+","+offset.cw+")");
     	}
-        // container.css("max-height", offset.h);
+        container.css("height", offset.h);
       };
 
       var adjustSlider = function(pct) {
