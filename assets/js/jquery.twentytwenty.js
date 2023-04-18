@@ -62,9 +62,10 @@
             
             w = imageWidth;
             h = imageHeight;   
-            container.css('max-width', w + 'px');  
+            
             // container.css("max-height", (dimensionPct*h)+"px");
         }
+        container.css('max-width', w+'px');  
         return {
           w: w+"px",
           h: h+"px",
