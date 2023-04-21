@@ -3,7 +3,7 @@
  * Plugin Name: BEAF - Ultimate Before After Image Slider & Gallery
  * Plugin URI: https://themefic.com/plugins/beaf/
  * Description: Want to show comparison of two images? With BEAF, you can easily create before and after image slider or image gallery. Elementor Supported.
- * Version: 4.3.19
+ * Version: 4.3.20
  * Author: Themefic
  * Author URI: https://themefic.com/
  * License: GPL-2.0+
@@ -196,7 +196,7 @@ class BAFG_Before_After_Gallery {
 
 		if ( !is_plugin_active( 'beaf-before-and-after-gallery-pro/before-and-after-gallery-pro.php' ) ){
             add_submenu_page(
-                'edit.php?post_type=bafg',
+                'edit.php?post_type=baf`g',
                 'Go Pro',
                 '<span class="bafg-pro-link">★ Go Pro</span>',
                 'manage_options',
@@ -251,7 +251,7 @@ class BAFG_Before_After_Gallery {
         <?php do_action('bafg_before_slider', $id); ?>
 
         <div class="bafg-twentytwenty-container <?php echo esc_attr('slider-'.$id.''); ?> <?php if(get_post_meta($id, 'bafg_custom_color', true) == 'yes') echo 'bafg-custom-color'; ?>" bafg-orientation="<?php echo esc_attr($orientation); ?>" bafg-default-offset="<?php echo esc_attr($offset); ?>" bafg-before-label="<?php echo esc_attr($before_label); ?>" bafg-after-label="<?php echo esc_attr($after_label); ?>" bafg-overlay="<?php echo esc_attr($overlay); ?>" bafg-move-slider-on-hover="<?php echo esc_attr($move_slider_on_hover); ?>" bafg-click-to-move="<?php echo esc_attr($click_to_move); ?>">
-            <?php if( !empty( $enable_preloader ) ){ ?>
+            <?php if( !empty( $enable_preloader )  && ! is_admin()){ ?>
                 <!-- the preloader -->
                 <div class="bafg-preloader">
                     <div class="bafg-preloader-img"></div>
@@ -264,7 +264,7 @@ class BAFG_Before_After_Gallery {
 
         <?php do_action('bafg_after_slider', $id); ?>
 
-        <style>
+        <style type="text/css">
             <?php $bafg_before_label_background= !empty(get_post_meta($id, 'bafg_before_label_background', true)) ? get_post_meta($id, 'bafg_before_label_background', true) : '';
 
             $bafg_before_label_color= !empty(get_post_meta($id, 'bafg_before_label_color', true)) ? get_post_meta($id, 'bafg_before_label_color', true) : '';

@@ -123,7 +123,6 @@ function bafg_slider_info($id){
 	$bafg_slider_alignment = !empty(get_post_meta( $id, 'bafg_slider_alignment', true )) ? get_post_meta( $id, 'bafg_slider_alignment', true ) : '';
 	
 	$bafg_pro_activated = get_option( 'bafg_pro_activated' );
-	
 	?>
 	<div class="bafg-slider-info-wraper">
 		<div style="<?php if( $bafg_pro_activated == 'true' ) { if($bafg_width != ''){ echo 'width: '.$bafg_width.';'; } ?> <?php if( $bafg_width != '' && $bafg_slider_alignment == 'right' ){ echo ' float: right;'; } ?> <?php if( $bafg_width == '' && $bafg_slider_alignment == 'right' ){ echo ' float: right; width: 100%;'; } ?> <?php if( $bafg_slider_alignment == 'center' ){ echo ' margin: 0 auto;'; } } ?>" class="<?php echo esc_attr('slider-info-'.$id.''); ?> bafg-slider-info">
@@ -201,7 +200,7 @@ function bafg_slider_info_styles($id){
 	
 	?>
 	
-	<style>
+	<style type="text/css">
 		.<?php echo esc_attr('slider-info-'.$id.''); ?>.bafg-slider-info .bafg-slider-title {
 			<?php if( $bafg_slider_info_heading_font_size != '' ) : ?>
 			font-size: <?php echo esc_attr($bafg_slider_info_heading_font_size); ?>;
@@ -423,8 +422,6 @@ if(!function_exists('bafg_review_notice_callback')){
     add_action( 'wp_ajax_bafg_review_notice_callback', 'bafg_review_notice_callback' );
 
 }
-// Enable the use of shortcodes in text widgets.
-add_filter( 'the_content', 'do_shortcode' );
 
 
 /**

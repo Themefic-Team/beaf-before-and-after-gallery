@@ -19,7 +19,7 @@ class bafg_widget extends WP_Widget {
         'before_title'  => '<h4 class="widgettitle">',
         'after_title'   => '</h4>',
         'before_widget' => '<div class="widget-wrap">',
-        'after_widget'  => '</div></div>'
+        'after_widget'  => '</div>'
     );
  
     public function widget( $args, $instance ) {
