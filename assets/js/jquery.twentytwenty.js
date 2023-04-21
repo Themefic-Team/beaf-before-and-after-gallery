@@ -12,8 +12,7 @@
       click_to_move: false
     }, options);
 
-    return this.each(function() {
-
+    return this.each(function() { 
       var sliderPct = options.default_offset_pct;
       var container = $(this);
       var sliderOrientation = options.orientation;
@@ -56,7 +55,18 @@
       
       var calcOffset = function(dimensionPct) {
         var w = beforeImg.width();
-        var h = beforeImg.height();
+        var h = beforeImg.height(); 
+        if(w == 0 && h == 0){
+            var imageHeight = container.find('img:first').prop('naturalHeight'); 
+            var imageWidth = container.find('img:first').prop('naturalWidth'); 
+            
+            w = imageWidth;
+            h = imageHeight;    
+            container.css("height", dimensionPct*h+"px");
+        }else{
+          container.css("height", h+"px");
+        }
+        container.css('max-width', w+'px');  
         return {
           w: w+"px",
           h: h+"px",
@@ -74,7 +84,7 @@
           beforeImg.css("clip", "rect(0,"+offset.cw+","+offset.h+",0)");
           afterImg.css("clip", "rect(0,"+offset.w+","+offset.h+","+offset.cw+")");
     	}
-        container.css("height", offset.h);
+        // container.css("height", offset.h);
       };
 
       var adjustSlider = function(pct) {
