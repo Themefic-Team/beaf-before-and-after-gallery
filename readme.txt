@@ -333,7 +333,7 @@ Yes, We provide full support on the WordPress.org forums. You can also post ques
 = 4.3.21 – 17/05/2023 =
 
 - Compatibility check with WordPress 6.2.1
-- Optimized JS
+- Fixed: Default Label Translate Issue
 
 = 4.3.20 – 21/04/2023 =
 
