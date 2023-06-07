@@ -359,7 +359,7 @@
 			enableMove: function() {
 				this.moveEnabled = true;
 				this.enableMove = noop;
-				e.preventDefault();
+				//e.preventDefault();
 			}
 		};
 
@@ -410,7 +410,7 @@
 		if (!touch) { return; }
 
 		// Stop the interface from gesturing
-		e.preventDefault();
+		//e.preventDefault();
 
 		event.targetTouches = e.targetTouches;
 		data.touch = touch;
