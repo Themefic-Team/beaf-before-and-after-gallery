@@ -136,6 +136,14 @@ function bafg_register_settings() {
         'bafg_settings',
         'bafg_global_option_header'
     );
+    //watermark position
+    add_settings_field(
+        'wm_position',
+        __( 'Watermark Position', 'bafg' ),
+        'bafg_wm_position_callback',
+        'bafg_settings',
+        'bafg_global_option_header'
+    );
     add_settings_field(
         'bafg_preloader',
         __( 'Enable Preloader', 'bafg' ),
@@ -279,6 +287,21 @@ function bafg_wm_opacity_callback(){
         '<input type="range" min="1" max="100" class="bafg-wm-range" id="bafg-wm-opacity" value="'. bafg_option_value('wm_opacity') .'" name="bafg_watermark[wm_opacity]">
          <span class="bafg-wm-range-val">'. bafg_option_value('wm_opacity') .'</span>'
     );
+}
+
+function bafg_wm_position_callback(){
+    ob_start();
+    printf(
+        '<select class="bafg-wm-position" name="">
+            <option value="top-left" >'.esc_html__( 'Top Left','bafg' ).'</option>
+            <option value="top-right" >'.esc_html__( 'Top Right','bafg' ).'</option>
+            <option value="bottom-left" >'.esc_html__( 'Bottom Left','bafg' ).'</option>
+            <option value="bottom-right" >'.esc_html__( 'Bottom Right','bafg' ).'</option>
+            <option value="center" >'.esc_html__( 'Center','bafg').'</option>
+        </select>'
+    );
+    $wm_position = ob_get_clean();
+    echo apply_filters( 'bafg_wm_position', $wm_position );
 }
 
 function bafg_debug_mode_callback(){
