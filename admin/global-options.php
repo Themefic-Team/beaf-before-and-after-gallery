@@ -331,17 +331,13 @@ function bafg_preloader_callback(){
 //callback function for public queryable settings
 function bafg_publicly_queriable_callback() {
     $bafg_publicly_queriable = is_array(get_option('bafg_tools')) && !empty(get_option('bafg_tools')['bafg_publicly_queriable']) ? get_option('bafg_tools')['bafg_publicly_queriable'] : '';
-   
-    //field will be filtered from pro addon
 
-   ob_start();
+    //field will be filtered from pro addon
+    ob_start();
     printf(
         '<input type="checkbox" disabled class="bafg-publicly_queriable" id="bafg-publicly_queriable" name="" %s>
-        <span>'.esc_html__('Disable public queryable. ','bafg').'</span><span style="color:red;font-weight:bold" class="bafg-pro-tt">(Pro Feature)</span>','checked'
+        <span>'.esc_html__( 'Disable public queryable. ','bafg' ).'</span><span style="color:red;font-weight:bold" class="bafg-pro-tt">(Pro Feature)</span>','checked'
     );
     $bafg_publicly_queriable_html = ob_get_clean();
     echo apply_filters( 'bafg_publicly_queriable_pro', $bafg_publicly_queriable_html, $bafg_publicly_queriable );
-
-
-    
 }

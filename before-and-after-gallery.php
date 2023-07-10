@@ -152,7 +152,7 @@ class BAFG_Before_After_Gallery {
                 'menu_icon'           => 'dashicons-format-gallery'
             )
         );
-        //die();
+
 		// Register Custom Taxonomy
 		$labels = array(
 			'name'                       => _x( 'Categories', 'Taxonomy General Name', 'bafg' ),
@@ -176,6 +176,7 @@ class BAFG_Before_After_Gallery {
 			'items_list'                 => __( 'Items list', 'bafg' ),
 			'items_list_navigation'      => __( 'Items list navigation', 'bafg' ),
 		);
+
 		$args = array(
 			'labels'                     => $labels,
 			'hierarchical'               => true,
@@ -185,6 +186,7 @@ class BAFG_Before_After_Gallery {
 			'show_in_nav_menus'          => true,
 			'show_tagcloud'              => true,
 		);
+
 		register_taxonomy( 'bafg_gallery', array( 'bafg' ), $args );
 		
     }
@@ -196,7 +198,7 @@ class BAFG_Before_After_Gallery {
 
 		if ( !is_plugin_active( 'beaf-before-and-after-gallery-pro/before-and-after-gallery-pro.php' ) ){
             add_submenu_page(
-                'edit.php?post_type=baf`g',
+                'edit.php?post_type=bafg',
                 'Go Pro',
                 '<span class="bafg-pro-link">★ Go Pro</span>',
                 'manage_options',
