@@ -65,7 +65,7 @@ function bafg_metabox_callback($post){
                     <li>
                         <input type="radio" class="" name="bafg_before_after_method" id="bafg_before_after_method3" value="method_3">
                         <label for="bafg_before_after_method3"><?php _e('Method 3 (Using 3 images)','bafg') ?> <div class="bafg-tooltip"><span>?</span>
-                            <div class="bafg-tooltip-info">Pro addon required! <br>You can make a slider using 3 images.</div>
+                        <div class="bafg-tooltip-info"><?php echo sprintf( __( 'Pro feature! 3 image slider addon required to activate this. <a href="%s" target="_blank"> More info</a>','bafg' ), esc_url( 'https://themefic.com/wp-content/uploads/2023/07/3-image-slider-addon.png' ) );  ?></div>
                             </div>
                         </label>
                     </li>
@@ -162,7 +162,7 @@ function bafg_metabox_callback($post){
         ?>
         <tr class="bafg-row-first-image" style="display: none">
             <td class="bafg-option-label"><label><?php _e( 'First Image','bafg' ); ?> <div class="bafg-tooltip"><span>?</span>
-                        <div class="bafg-tooltip-info"><?php _e( 'Pro feature!','bafg' ); ?></div>
+                        <div class="bafg-tooltip-info"><?php echo sprintf( __( '3 image slider addon required to activate this. <a href="%s" target="_blank"> More info</a>','bafg' ), esc_url( 'https://themefic.com/wp-content/uploads/2023/07/3-image-slider-addon.png' ) );  ?></div>
                     </div></label></td>
             <td class="bafg-option-content">
                 <input type="text" name="bafg_bottom_image" id="bafg_bottom_image" size="50" disabled/>
@@ -172,7 +172,7 @@ function bafg_metabox_callback($post){
         </tr>
         <tr class="bafg-row-second-image" style="display: none">
             <td class="bafg-option-label"><label><?php _e( 'Second image','bafg' ); ?> <div class="bafg-tooltip"><span>?</span>
-                        <div class="bafg-tooltip-info"><?php _e( 'Pro feature!','bafg' ); ?></div>
+                <div class="bafg-tooltip-info"><?php echo sprintf( __( '3 image slider addon required to activate this. <a href="%s" target="_blank"> More info</a>','bafg' ), esc_url( 'https://themefic.com/wp-content/uploads/2023/07/3-image-slider-addon.png' ) );  ?></div>
                     </div></label></td>
             <td class="bafg-option-content">
                 <input type="text" name="bafg_middle_image" id="bafg_top_image" size="50" disabled />
@@ -182,7 +182,7 @@ function bafg_metabox_callback($post){
         </tr>
         <tr class="bafg-row-third-image" style="display: none">
             <td class="bafg-option-label"><label><?php _e( 'Third image','bafg' ); ?> <div class="bafg-tooltip"><span>?</span>
-                        <div class="bafg-tooltip-info"><?php _e( 'Pro feature!','bafg' ); ?></div>
+                <div class="bafg-tooltip-info"><?php echo sprintf( __( '3 image slider addon required to activate this. <a href="%s" target="_blank"> More info</a>','bafg' ), esc_url( 'https://themefic.com/wp-content/uploads/2023/07/3-image-slider-addon.png' ) );  ?></div>
                     </div></label></td>
             <td class="bafg-option-content">
                 <input type="text" name="bafg_top_image" id="bafg_before_after_image" size="50" disabled />
