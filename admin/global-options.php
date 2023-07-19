@@ -167,6 +167,14 @@ function bafg_register_settings() {
         'bafg_settings_tools',
         'bafg_global_option_tools'
     );
+    //enable before after image link
+    add_settings_field(
+        'bafg_enable_link',
+        __( 'Enable Image Link', 'bafg' ),
+        'bafg_enable_before_after_link_callback',
+        'bafg_settings_tools',
+        'bafg_global_option_tools'
+    );
 
 }
 add_action( 'admin_init', 'bafg_register_settings' );
@@ -340,4 +348,18 @@ function bafg_publicly_queriable_callback() {
     );
     $bafg_publicly_queriable_html = ob_get_clean();
     echo apply_filters( 'bafg_publicly_queriable_pro', $bafg_publicly_queriable_html, $bafg_publicly_queriable );
+}
+
+//callback function for enable before after image link
+function bafg_enable_before_after_link_callback() {
+    $bafg_enable_before_after_link = is_array(get_option('bafg_tools')) && !empty(get_option('bafg_tools')['bafg_before_after_image_link']) ? get_option('bafg_tools')['bafg_before_after_image_link'] : '';
+
+    //field will be filtered from pro addon
+    ob_start();
+    printf(
+        '<input type="checkbox" disabled class="bafg-enable_before_after_link" id="bafg-enable_before_after_link" name="" %s>
+        <span>'.esc_html__( 'Enable before after image link. ','bafg' ).'</span><span style="color:red;font-weight:bold" class="bafg-pro-tt">(Pro Feature)</span>','checked'
+    );
+    $bafg_enable_before_after_link_html = ob_get_clean();
+    echo apply_filters( 'bafg_enable_before_after_link_pro', $bafg_enable_before_after_link_html, $bafg_enable_before_after_link );
 }

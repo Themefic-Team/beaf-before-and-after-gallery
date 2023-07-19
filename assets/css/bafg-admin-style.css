@@ -344,14 +344,14 @@ ul.bafg-before-after-style li {
 	color: #e61c1c;
 	text-decoration: none
 }
-.img-alt-tag {
+.img-alt-tag,.bafg-img-link {
     margin-top: 15px;
 }
-.img-alt-tag span {
+.img-alt-tag span,.bafg-img-link span {
     margin-right: 15px;
     font-weight: 500;
 }
-.img-alt-tag input {
+.img-alt-tag input,.bafg-img-link input {
     width: 285px;
 }
 /* Style the buttons inside the bafg-tab */
