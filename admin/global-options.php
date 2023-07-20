@@ -175,6 +175,14 @@ function bafg_register_settings() {
         'bafg_settings_tools',
         'bafg_global_option_tools'
     );
+    //bafg_open_url_new_tab_callback
+    add_settings_field(
+        'bafg_open_url_new_tab',
+        __( 'Open Link', 'bafg' ),
+        'bafg_open_url_new_tab_callback',
+        'bafg_settings_tools',
+        'bafg_global_option_tools'
+    );
 
 }
 add_action( 'admin_init', 'bafg_register_settings' );
@@ -362,4 +370,18 @@ function bafg_enable_before_after_link_callback() {
     );
     $bafg_enable_before_after_link_html = ob_get_clean();
     echo apply_filters( 'bafg_enable_before_after_link_pro', $bafg_enable_before_after_link_html, $bafg_enable_before_after_link );
+}
+
+//callback function for open url new tab or same tab
+function bafg_open_url_new_tab_callback() {
+    $bafg_open_url_new_tab = is_array(get_option('bafg_tools')) && !empty(get_option('bafg_tools')['bafg_open_url_new_tab']) ? get_option('bafg_tools')['bafg_open_url_new_tab'] : '';
+
+    //field will be filtered from pro addon
+    ob_start();
+    printf(
+        '<input type="checkbox" disabled class="bafg-open_url_new_tab" id="bafg-open_url_new_tab" name="" %s>
+        <span>'.esc_html__( 'Open url in new tab. ','bafg' ).'</span><span style="color:red;font-weight:bold" class="bafg-pro-tt">(Pro Feature)</span>','checked'
+    );
+    $bafg_open_url_new_tab_html = ob_get_clean();
+    echo apply_filters( 'bafg_open_url_new_tab_pro', $bafg_open_url_new_tab_html, $bafg_open_url_new_tab );
 }
