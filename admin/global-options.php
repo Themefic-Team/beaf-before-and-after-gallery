@@ -103,7 +103,7 @@ function bafg_register_settings() {
     );
     add_settings_field(
         'path', // Field $id
-        __( 'Watermark Image Upload', 'bafg' ), // Setting $title
+        __( 'Watermark Image Upload (PNG Recommended)', 'bafg' ), // Setting $title
         'bafg_watermark_upload_callback',
         'bafg_settings', // Settings Page Slug
         'bafg_global_option_header' // Section $id
