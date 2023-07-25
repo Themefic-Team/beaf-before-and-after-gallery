@@ -103,7 +103,7 @@ function bafg_register_settings() {
     );
     add_settings_field(
         'path', // Field $id
-        __( 'Watermark Image Upload', 'bafg' ), // Setting $title
+        __( 'Watermark Image Upload (PNG Recommended)', 'bafg' ), // Setting $title
         'bafg_watermark_upload_callback',
         'bafg_settings', // Settings Page Slug
         'bafg_global_option_header' // Section $id
@@ -136,6 +136,14 @@ function bafg_register_settings() {
         'bafg_settings',
         'bafg_global_option_header'
     );
+    //watermark position
+    add_settings_field(
+        'wm_position',
+        __( 'Watermark Position', 'bafg' ),
+        'bafg_wm_position_callback',
+        'bafg_settings',
+        'bafg_global_option_header'
+    );
     add_settings_field(
         'bafg_preloader',
         __( 'Enable Preloader', 'bafg' ),
@@ -156,6 +164,22 @@ function bafg_register_settings() {
         'bafg_debug_mode',
         __( 'Enable Debug Mode', 'bafg' ),
         'bafg_debug_mode_callback',
+        'bafg_settings_tools',
+        'bafg_global_option_tools'
+    );
+    //enable before after image link
+    add_settings_field(
+        'bafg_enable_link',
+        __( 'Enable Image Link', 'bafg' ),
+        'bafg_enable_before_after_link_callback',
+        'bafg_settings_tools',
+        'bafg_global_option_tools'
+    );
+    //bafg_open_url_new_tab_callback
+    add_settings_field(
+        'bafg_open_url_new_tab',
+        __( 'Open Link', 'bafg' ),
+        'bafg_open_url_new_tab_callback',
         'bafg_settings_tools',
         'bafg_global_option_tools'
     );
@@ -281,6 +305,21 @@ function bafg_wm_opacity_callback(){
     );
 }
 
+function bafg_wm_position_callback(){
+    ob_start();
+    printf(
+        '<select class="bafg-wm-position" name="">
+            <option value="top-left" >'.esc_html__( 'Top Left','bafg' ).'</option>
+            <option value="top-right" >'.esc_html__( 'Top Right','bafg' ).'</option>
+            <option value="bottom-left" >'.esc_html__( 'Bottom Left','bafg' ).'</option>
+            <option value="bottom-right" >'.esc_html__( 'Bottom Right','bafg' ).'</option>
+            <option value="center" >'.esc_html__( 'Center','bafg').'</option>
+        </select>'
+    );
+    $wm_position = ob_get_clean();
+    echo apply_filters( 'bafg_wm_position', $wm_position );
+}
+
 function bafg_debug_mode_callback(){
     $debug_mode = is_array(get_option('bafg_tools')) && !empty(get_option('bafg_tools')['enable_debug_mode']) ? get_option('bafg_tools')['enable_debug_mode'] : '';
     $checked = '';
@@ -308,17 +347,41 @@ function bafg_preloader_callback(){
 //callback function for public queryable settings
 function bafg_publicly_queriable_callback() {
     $bafg_publicly_queriable = is_array(get_option('bafg_tools')) && !empty(get_option('bafg_tools')['bafg_publicly_queriable']) ? get_option('bafg_tools')['bafg_publicly_queriable'] : '';
-   
-    //field will be filtered from pro addon
 
-   ob_start();
+    //field will be filtered from pro addon
+    ob_start();
     printf(
         '<input type="checkbox" disabled class="bafg-publicly_queriable" id="bafg-publicly_queriable" name="" %s>
-        <span>'.esc_html__('Disable public queryable. ','bafg').'</span><span style="color:red;font-weight:bold" class="bafg-pro-tt">(Pro Feature)</span>','checked'
+        <span>'.esc_html__( 'Disable public queryable. ','bafg' ).'</span><span style="color:red;font-weight:bold" class="bafg-pro-tt">(Pro Feature)</span>','checked'
     );
     $bafg_publicly_queriable_html = ob_get_clean();
     echo apply_filters( 'bafg_publicly_queriable_pro', $bafg_publicly_queriable_html, $bafg_publicly_queriable );
+}
 
+//callback function for enable before after image link
+function bafg_enable_before_after_link_callback() {
+    $bafg_enable_before_after_link = is_array(get_option('bafg_tools')) && !empty(get_option('bafg_tools')['bafg_before_after_image_link']) ? get_option('bafg_tools')['bafg_before_after_image_link'] : '';
 
-    
+    //field will be filtered from pro addon
+    ob_start();
+    printf(
+        '<input type="checkbox" disabled class="bafg-enable_before_after_link" id="bafg-enable_before_after_link" name="" %s>
+        <span>'.esc_html__( 'Enable before after image link. ','bafg' ).'</span><span style="color:red;font-weight:bold" class="bafg-pro-tt">(Pro Feature)</span>','checked'
+    );
+    $bafg_enable_before_after_link_html = ob_get_clean();
+    echo apply_filters( 'bafg_enable_before_after_link_pro', $bafg_enable_before_after_link_html, $bafg_enable_before_after_link );
+}
+
+//callback function for open url new tab or same tab
+function bafg_open_url_new_tab_callback() {
+    $bafg_open_url_new_tab = is_array(get_option('bafg_tools')) && !empty(get_option('bafg_tools')['bafg_open_url_new_tab']) ? get_option('bafg_tools')['bafg_open_url_new_tab'] : '';
+
+    //field will be filtered from pro addon
+    ob_start();
+    printf(
+        '<input type="checkbox" disabled class="bafg-open_url_new_tab" id="bafg-open_url_new_tab" name="" %s>
+        <span>'.esc_html__( 'Open url in new tab. ','bafg' ).'</span><span style="color:red;font-weight:bold" class="bafg-pro-tt">(Pro Feature)</span>','checked'
+    );
+    $bafg_open_url_new_tab_html = ob_get_clean();
+    echo apply_filters( 'bafg_open_url_new_tab_pro', $bafg_open_url_new_tab_html, $bafg_open_url_new_tab );
 }

@@ -65,7 +65,7 @@ function bafg_metabox_callback($post){
                     <li>
                         <input type="radio" class="" name="bafg_before_after_method" id="bafg_before_after_method3" value="method_3">
                         <label for="bafg_before_after_method3"><?php _e('Method 3 (Using 3 images)','bafg') ?> <div class="bafg-tooltip"><span>?</span>
-                            <div class="bafg-tooltip-info">Pro addon required! <br>You can make a slider using 3 images.</div>
+                        <div class="bafg-tooltip-info"><?php echo sprintf( __( 'Pro feature! 3 image slider addon required to activate this. <a href="%s" target="_blank"> More info</a>','bafg' ), esc_url( 'https://themefic.com/wp-content/uploads/2023/07/3-image-slider-addon.png' ) );  ?></div>
                             </div>
                         </label>
                     </li>
@@ -118,6 +118,22 @@ function bafg_metabox_callback($post){
                 <input type="text" name="bafg_before_image" id="bafg_before_image" size="50" value="<?php echo esc_url(get_post_meta( $post->ID, 'bafg_before_image', true )); ?>" />
                 <input class="bafg_button" id="bafg_before_image_upload" type="button" value="Add or Upload Image">
                 <img id="bafg_before_image_thumbnail" src="<?php echo esc_url(get_post_meta( $post->ID, 'bafg_before_image', true )); ?>">
+                <?php 
+                ob_start();
+                ?>
+                <div class="bafg-img-link">
+                    <span>
+                        <?php _e( 'Image Link: ' ); ?>
+                        <div class="bafg-tooltip"><span>?</span>
+                            <div class="bafg-tooltip-info"><?php _e( 'Pro feature! You need to purchase the BEAF PRO plugin to enable this feature.','bafg' ); ?></div>
+                        </div>
+                    </span>
+                    <input type="text" name="" id="before_img_link" value="" disabled />
+                </div>
+                <?php 
+                $bafg_image_link = ob_get_clean();
+                echo apply_filters( 'bafg_before_image_link', $bafg_image_link, $post );
+                ?>
                 <div class="img-alt-tag">
                     <span><?php _e( 'Image Alt: ' ); ?></span>
                     <input type="text" name="before_img_alt" id="before_img_alt" value="<?php echo esc_attr( $before_img_alt ); ?>" />
@@ -130,6 +146,22 @@ function bafg_metabox_callback($post){
                 <input type="text" name="bafg_after_image" id="bafg_after_image" size="50" value="<?php echo esc_url(get_post_meta( $post->ID, 'bafg_after_image', true )); ?>" />
                 <input class="bafg_button" id="bafg_after_image_upload" type="button" value="Add or Upload Image">
                 <img id="bafg_after_image_thumbnail" src="<?php echo esc_url(get_post_meta( $post->ID, 'bafg_after_image', true )); ?>">
+                <?php 
+                ob_start();
+                ?>
+                <div class="bafg-img-link">
+                    <span>
+                        <?php _e( 'Image Link: ' ); ?>
+                        <div class="bafg-tooltip"><span>?</span>
+                            <div class="bafg-tooltip-info"><?php _e( 'Pro feature! You need to purchase the BEAF PRO plugin to enable this feature.','bafg' ); ?></div>
+                        </div>
+                    </span>
+                    <input type="text" name="" id="after_img_link" value="" disabled />
+                </div>
+                <?php 
+                $bafg_image_link = ob_get_clean();
+                echo apply_filters( 'bafg_after_image_link', $bafg_image_link, $post );
+                ?>
                 <div class="img-alt-tag">
                     <span><?php _e( 'Image Alt: ' ); ?></span>
                     <input type="text" name="after_img_alt" id="after_img_alt" value="<?php echo esc_attr( $after_img_alt ); ?>" />
@@ -162,7 +194,7 @@ function bafg_metabox_callback($post){
         ?>
         <tr class="bafg-row-first-image" style="display: none">
             <td class="bafg-option-label"><label><?php _e( 'First Image','bafg' ); ?> <div class="bafg-tooltip"><span>?</span>
-                        <div class="bafg-tooltip-info"><?php _e( 'Pro feature!','bafg' ); ?></div>
+                        <div class="bafg-tooltip-info"><?php echo sprintf( __( '3 image slider addon required to activate this. <a href="%s" target="_blank"> More info</a>','bafg' ), esc_url( 'https://themefic.com/wp-content/uploads/2023/07/3-image-slider-addon.png' ) );  ?></div>
                     </div></label></td>
             <td class="bafg-option-content">
                 <input type="text" name="bafg_bottom_image" id="bafg_bottom_image" size="50" disabled/>
@@ -172,7 +204,7 @@ function bafg_metabox_callback($post){
         </tr>
         <tr class="bafg-row-second-image" style="display: none">
             <td class="bafg-option-label"><label><?php _e( 'Second image','bafg' ); ?> <div class="bafg-tooltip"><span>?</span>
-                        <div class="bafg-tooltip-info"><?php _e( 'Pro feature!','bafg' ); ?></div>
+                <div class="bafg-tooltip-info"><?php echo sprintf( __( '3 image slider addon required to activate this. <a href="%s" target="_blank"> More info</a>','bafg' ), esc_url( 'https://themefic.com/wp-content/uploads/2023/07/3-image-slider-addon.png' ) );  ?></div>
                     </div></label></td>
             <td class="bafg-option-content">
                 <input type="text" name="bafg_middle_image" id="bafg_top_image" size="50" disabled />
@@ -182,7 +214,7 @@ function bafg_metabox_callback($post){
         </tr>
         <tr class="bafg-row-third-image" style="display: none">
             <td class="bafg-option-label"><label><?php _e( 'Third image','bafg' ); ?> <div class="bafg-tooltip"><span>?</span>
-                        <div class="bafg-tooltip-info"><?php _e( 'Pro feature!','bafg' ); ?></div>
+                <div class="bafg-tooltip-info"><?php echo sprintf( __( '3 image slider addon required to activate this. <a href="%s" target="_blank"> More info</a>','bafg' ), esc_url( 'https://themefic.com/wp-content/uploads/2023/07/3-image-slider-addon.png' ) );  ?></div>
                     </div></label></td>
             <td class="bafg-option-content">
                 <input type="text" name="bafg_top_image" id="bafg_before_after_image" size="50" disabled />
@@ -1001,6 +1033,14 @@ function save_post ( $post_id ) {
     }
     if( isset($_POST['after_img_alt']) ){
         update_post_meta( $post_id, 'after_img_alt', esc_attr( $_POST['after_img_alt'] ) );
+    }
+    //before image link
+    if( isset($_POST['before_image_link']) ){
+        update_post_meta( $post_id, 'before_image_link', esc_attr( $_POST['before_image_link'] ) );
+    }
+    //after image link
+    if( isset($_POST['before_image_link']) ){
+        update_post_meta( $post_id, 'before_image_link', esc_attr( $_POST['before_image_link'] ) );
     }
     
     do_action( 'bafg_save_post_meta', $post_id );

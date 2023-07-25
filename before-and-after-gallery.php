@@ -3,7 +3,7 @@
  * Plugin Name: BEAF - Ultimate Before After Image Slider & Gallery
  * Plugin URI: https://themefic.com/plugins/beaf/
  * Description: Want to show comparison of two images? With BEAF, you can easily create before and after image slider or image gallery. Elementor Supported.
- * Version: 4.3.22
+ * Version: 4.3.23
  * Author: Themefic
  * Author URI: https://themefic.com/
  * License: GPL-2.0+
@@ -152,7 +152,7 @@ class BAFG_Before_After_Gallery {
                 'menu_icon'           => 'dashicons-format-gallery'
             )
         );
-        //die();
+
 		// Register Custom Taxonomy
 		$labels = array(
 			'name'                       => _x( 'Categories', 'Taxonomy General Name', 'bafg' ),
@@ -176,6 +176,7 @@ class BAFG_Before_After_Gallery {
 			'items_list'                 => __( 'Items list', 'bafg' ),
 			'items_list_navigation'      => __( 'Items list navigation', 'bafg' ),
 		);
+
 		$args = array(
 			'labels'                     => $labels,
 			'hierarchical'               => true,
@@ -185,6 +186,7 @@ class BAFG_Before_After_Gallery {
 			'show_in_nav_menus'          => true,
 			'show_tagcloud'              => true,
 		);
+
 		register_taxonomy( 'bafg_gallery', array( 'bafg' ), $args );
 		
     }
@@ -196,7 +198,7 @@ class BAFG_Before_After_Gallery {
 
 		if ( !is_plugin_active( 'beaf-before-and-after-gallery-pro/before-and-after-gallery-pro.php' ) ){
             add_submenu_page(
-                'edit.php?post_type=baf`g',
+                'edit.php?post_type=bafg',
                 'Go Pro',
                 '<span class="bafg-pro-link">★ Go Pro</span>',
                 'manage_options',
@@ -251,12 +253,19 @@ class BAFG_Before_After_Gallery {
         <?php do_action('bafg_before_slider', $id); ?>
 
         <div class="bafg-twentytwenty-container <?php echo esc_attr('slider-'.$id.''); ?> <?php if(get_post_meta($id, 'bafg_custom_color', true) == 'yes') echo 'bafg-custom-color'; ?>" bafg-orientation="<?php echo esc_attr($orientation); ?>" bafg-default-offset="<?php echo esc_attr($offset); ?>" bafg-before-label="<?php echo esc_attr__( $before_label,'bafg' ); ?>" bafg-after-label="<?php echo esc_attr__( $after_label,'bafg' ); ?>" bafg-overlay="<?php echo esc_attr($overlay); ?>" bafg-move-slider-on-hover="<?php echo esc_attr($move_slider_on_hover); ?>" bafg-click-to-move="<?php echo esc_attr($click_to_move); ?>">
-            <?php if( !empty( $enable_preloader )  && ! is_admin()){ ?>
+            
+        <?php
+            if( is_plugin_active( 'beaf-before-and-after-gallery-pro/before-and-after-gallery-pro.php' ) ){
+                if( !empty( $enable_preloader )  && ! is_admin()){ 
+        ?>
                 <!-- the preloader -->
                 <div class="bafg-preloader">
                     <div class="bafg-preloader-img"></div>
                 </div>
-            <?php } ?>  
+            <?php
+                }
+            }
+             ?>  
             <img class="<?php echo esc_attr( $skip_lazy ); ?>" <?php echo esc_attr( $data_skip_lazy ); ?> src="<?php echo esc_url($b_image); ?>" alt="<?php echo esc_attr( $before_img_alt ); ?>">
             <img class="<?php echo esc_attr( $skip_lazy ); ?>" <?php echo esc_attr( $data_skip_lazy ); ?> src="<?php echo esc_url($a_image); ?>" alt="<?php echo esc_attr( $after_img_alt ); ?>">
            
@@ -325,17 +334,25 @@ class BAFG_Before_After_Gallery {
 		
         if( $category != '' ) {
 			
-			$gallery_query = new WP_Query( array(
-				'post_type'      => 'bafg',
-				'posts_per_page' => $items,
-				'tax_query'      => array(
-					array (
-						'taxonomy' => 'bafg_gallery',
-						'field'    => 'id',
-						'terms'    => $category,
-					)
-				),
-			) );
+            if(  $category == 'all'  ){
+                $gallery_query = new WP_Query( array(
+                    'post_type'      => 'bafg',
+                    'posts_per_page' => $items,
+                ) );   
+            }else{
+                $gallery_query = new WP_Query( array(
+                    'post_type'      => 'bafg',
+                    'posts_per_page' => $items,
+                    'tax_query'      => array(
+                        array (
+                            'taxonomy' => 'bafg_gallery',
+                            'field'    => 'id',
+                            'terms'    => $category,
+                        )
+                    ),
+                ) );
+            }
+
 			$column = !empty($column) ? $column : '2';
 
 			switch ($column) {

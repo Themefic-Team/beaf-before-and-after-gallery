@@ -6,13 +6,14 @@
 		<label for="bafg_gallery_cata"><?php echo esc_html__( 'Category:', 'bafg' ); ?></label><br>
 		<select id="bafg_gallery_cata">
 			<option value=""><?php echo esc_html__( '-Select category-', 'bafg' ); ?></option>
+			<option value="all"><?php echo __( 'All','bafg' ); ?></option>
 			<?php
 			$terms = get_terms( array(
 				'taxonomy' => 'bafg_gallery',
 				'hide_empty' => false,
 			));
 			foreach( $terms as $term ) :
-			?>
+			?>			
 			<option value="<?php echo esc_attr($term->term_id); ?>"><?php echo esc_html($term->name); ?></option>
 			<?php
 			endforeach;
