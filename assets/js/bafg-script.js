@@ -366,3 +366,20 @@ if(slider){
       slider.setAttribute( 'value',this.value);
     }
 }
+
+(function($){
+    $('.bafg-update-pro').on('click', function(e){
+        e.preventDefault();
+        $.ajax({
+            url: ajaxurl,
+            type: 'POST',
+            data: {
+                action: 'bafg_update_pro',
+            },
+            success: function (response) {
+            },
+        });
+    
+    });
+})(jQuery);
+
