@@ -481,7 +481,7 @@ if( !function_exists( 'bafg_pro_version_notice' ) ){
 					}else{
 				?>
 					<div class="notice notice-warning is-dismissible bafg-update-pro">
-						<p style="font-size:16px"><?php echo sprintf( __('<b>Warning:</b> The installed version of BEAF Pro ('.$bafg_pro_version.') has not been tested on your version of WordPress ('.$wp_version.'). It has been tested up to version 5.9. <a href="%s">You should update BEAF Pro to latest version to make sure that you have a version that has been tested for compatibility.</a>', 'bafg'), "https://docs.themefic.com"  ) ?></p>
+						<p style="font-size:16px"><?php echo sprintf( __('<b>Warning:</b> The installed version of BEAF Pro ('.$bafg_pro_version.') has not been tested on your version of WordPress ('.$wp_version.'). It has been tested up to version 5.9. <a href="%s">You should update BEAF Pro to latest version to make sure that you have a version that has been tested for compatibility.</a>', 'bafg'), "https://themefic.com/docs/beaf/seeing-warning-versions-wordpress-beaf-tested/"  ) ?></p>
 					</div>
 				<?php
 					}
@@ -492,7 +492,7 @@ if( !function_exists( 'bafg_pro_version_notice' ) ){
 	add_action( 'admin_notices', 'bafg_pro_version_notice' );
 }
 /*
-* Ajax callback for update pro notice
+* Ajax callback for update pro notice closing
 */
 if( ! function_exists( 'bafg_update_pro' ) ){
 	function bafg_update_pro(){
