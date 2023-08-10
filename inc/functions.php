@@ -403,7 +403,7 @@ if(!function_exists('bafg_review_notice')){
 
  
 // Themefic Plugin Review Admin Notice Ajax Callback 
-if(!function_exists('bafg_review_notice_callback')){
+if( !function_exists( 'bafg_review_notice_callback' ) ){
 
     function bafg_review_notice_callback(){
         $status = $_POST['status'];
@@ -453,4 +453,51 @@ if(!function_exists('appsero_init_tracker_beaf_before_and_after_gallery')){
 	
 	}
 	appsero_init_tracker_beaf_before_and_after_gallery();
+}
+
+/**
+ * Admin notice if using older version BEAF PRO
+ * @since 4.3.24
+ * @author Abu Hena
+ */
+if( !function_exists( 'bafg_pro_version_notice' ) ){
+
+	function bafg_pro_version_notice(){
+		if( ! function_exists('get_plugin_data') ){
+			require_once( ABSPATH . 'wp-admin/includes/plugin.php' );
+		}
+		if ( is_plugin_active('beaf-before-and-after-gallery-pro/before-and-after-gallery-pro.php') ){
+			//get this pro plugin version
+			$plugin_data = get_plugin_data( WP_PLUGIN_DIR . '/beaf-before-and-after-gallery-pro/before-and-after-gallery-pro.php', false, false );
+			$bafg_pro_version = $plugin_data['Version'];
+
+			if( !empty( $bafg_pro_version ) && version_compare( $bafg_pro_version, '4.2.15', '<' )){
+				//get wp version
+				global $wp_version;
+				$get_current_screen = get_current_screen();  
+				if( $get_current_screen->base == 'dashboard' || $get_current_screen->base = 'plugins' ){
+					if( isset( $_COOKIE['bafg_update_pro']) && $_COOKIE['bafg_update_pro'] == '1' ){
+						return;
+					}else{
+				?>
+					<div class="notice notice-warning is-dismissible bafg-update-pro">
+						<p style="font-size:16px"><?php echo sprintf( __('<b>Warning:</b> The installed version of BEAF Pro ('.$bafg_pro_version.') has not been tested on your version of WordPress ('.$wp_version.'). It has been tested up to version 5.9. <a href="%s">You should update BEAF Pro to latest version to make sure that you have a version that has been tested for compatibility.</a>', 'bafg'), "https://themefic.com/docs/beaf/seeing-warning-versions-wordpress-beaf-tested/"  ) ?></p>
+					</div>
+				<?php
+					}
+				}
+			}
+		}
+	}
+	add_action( 'admin_notices', 'bafg_pro_version_notice' );
+}
+/*
+* Ajax callback for update pro notice closing
+*/
+if( ! function_exists( 'bafg_update_pro' ) ){
+	function bafg_update_pro(){
+		$cookie = 'bafg_update_pro';
+		setcookie( $cookie, '1', time() + (86400 * 7), "/" );
+	}
+	add_action( 'wp_ajax_bafg_update_pro', 'bafg_update_pro' );
 }
