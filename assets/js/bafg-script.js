@@ -369,7 +369,6 @@ if(slider){
 
 (function($){
     $('.bafg-update-pro').on('click', function(e){
-        e.preventDefault();
         $.ajax({
             url: ajaxurl,
             type: 'POST',
