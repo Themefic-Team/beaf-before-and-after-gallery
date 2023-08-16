@@ -81,7 +81,10 @@
 
 	<div id="bafg_filter_gallery_style">
 
-		<?php do_action('bafg_save_filter_gallery_style', $_POST); ?>
+		<?php 
+			do_action('bafg_save_filter_gallery_style', $_POST);
+			$bafg_filter_gallery_alignment =  get_option( 'bafg_filter_gallery_style_alignment' );
+		?>
 
 		<form action="" method="post">
 			<h2><?php echo esc_html__( 'BEAF Filter Buttons Style', 'bafg' ); ?></h2>
@@ -109,7 +112,14 @@
 
 			<label for="bafg_filter_gallery_style_padding_lr"><?php echo esc_html__( 'Padding(Left - Right):', 'bafg' ); ?></label>
 			<p><input id="bafg_filter_gallery_style_padding_lr" class="" type="number" name="bafg_filter_gallery_style_padding_lr" value="<?php echo esc_attr(get_option( 'bafg_filter_gallery_style_padding_lr' )); ?>" min="1"></p>
-
+			<label for="bafg_filter_gallery_style_alignment"><?php echo esc_html__( 'Alignment:', 'bafg' ); ?></label>
+			<br>
+			<select id="bafg_filter_gallery_style_alignment" name="bafg_filter_gallery_style_alignment">
+				<option value="left" <?php echo selected( $bafg_filter_gallery_alignment,'left' ) ?>><?php echo esc_html__( 'Left', 'bafg' ); ?></option>
+				<option value="center" <?php echo selected( $bafg_filter_gallery_alignment,'center' ) ?>><?php echo esc_html__( 'Center', 'bafg' ); ?></option>
+				<option value="right" <?php echo selected( $bafg_filter_gallery_alignment, 'right' ) ?>><?php echo esc_html__( 'Right', 'bafg' ); ?></option>
+			</select>
+			<br>
 			<input id="bafg_filter_gallery_shortcode_generator" class="button button-primary" type="submit" value="Save">
 
 			<div class="bafg-upgrade-to-pro"><a target="_blank" href="https://themefic.com/plugins/beaf/pro">Upgrade to pro!</a></div>

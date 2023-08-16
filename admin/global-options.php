@@ -32,6 +32,7 @@ function bafg_settings_page_callback() {
     <div class="bafg-setting-tab">
         <a class="bafg-tablinks active" onclick="bafg_option_tab(event, 'bafg-watermark')"><?php _e( 'Watermark', 'bafg' );?></a>
         <a class="bafg-tablinks" onclick="bafg_option_tab(event, 'bafg-tools')"><?php _e( 'Tools', 'bafg' );?></a>
+        <a class="bafg-tablinks" onclick="bafg_option_tab(event, 'bafg-shortcodes')"><?php _e( 'Shortcodes', 'bafg' );?></a>
         <a class="bafg-tablinks" onclick="bafg_option_tab(event, 'bafg-doc')"><?php _e( 'Documentation', 'bafg' );?></a>
         <?php do_action( 'bafg_admin_tab' );?>
     </div>
@@ -61,6 +62,17 @@ function bafg_settings_page_callback() {
                 submit_button();
             ?>
         </form>
+    </div>
+    <div id="bafg-shortcodes" class="bafg-tabcontent">
+        <h2><?php echo __( 'All the available shortcodes','bafg' ); ?></h2>
+        <ul class="bafg-option-contents">
+            <?php ob_start() ?>
+            <li> <code>[bafg_preview]</code> <strong> - <?php echo __( 'Before After Gallery Frontend Preview (Users will be able to upload images without login)','bafg' ); ?></strong> <span style="color:red;font-weight:bold">Pro Feature</span></li>
+            <?php  
+                $available_shortcodes = ob_get_clean();
+                echo apply_filters( 'bafg_available_shortcodes', $available_shortcodes );
+             ?>
+        </ul>
     </div>
     <div id="bafg-doc" class="bafg-tabcontent" style="padding:20px 10px">
         <a href="https://themefic.com/docs/beaf" target="_blank"><?php echo esc_html__( 'Please click here to visit the Documentation page.', 'bafg' ); ?></a>
