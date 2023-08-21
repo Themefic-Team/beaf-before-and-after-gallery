@@ -332,8 +332,8 @@ Yes, We provide full support on the WordPress.org forums. You can also post ques
 
 = 4.3.25 – 21/08/2023 =
 
-- Added: Upload before after Image without login, and preview 
-- Added: Gallery filter button alignment
+- Added: Upload before after Image without login, and preview ( Pro )
+- Added: Gallery filter button alignment ( Pro )
 - Fixed: Minor Bugs
 
 = 4.3.24 – 10/08/2023 =
