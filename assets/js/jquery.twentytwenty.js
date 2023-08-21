@@ -169,7 +169,17 @@
         });
       }
 
-      $(window).trigger("resize.twentytwenty");     
+      $(window).trigger("resize.twentytwenty");
+      
+      //on screen orientation change
+      window.addEventListener("orientationchange", function() {
+        let screenOrientation = screen.orientation.type;
+
+        if( screenOrientation == 'portrait-primary' || screenOrientation == 'landscape-primary' ){
+          $(window).trigger("resize.twentytwenty");
+        }
+      });
+
     });
   };
 
