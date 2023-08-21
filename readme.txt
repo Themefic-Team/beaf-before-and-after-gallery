@@ -4,7 +4,7 @@ Donate link:
 Tags: before after, before after elementor, before after slider, before after gallery, before after filter gallery, before after divi, before after viewer, before after woocommerce, before after multiple image, compare images, image comparison, before after slider wordpress, before after image, twentytwenty, jquery twentytwenty, wordpress before after slider, elementor before and after slider, wordpress before after gallery, elementor before after slider, elementor before after image comparison slider, visual composer before after slider, visual composer image comparison, slider, gallery, before after wordpress, before after beaver, before after oxygen, twenty20, twenty20 image before after plugin, twenty20 wordpress plugin, twenty twenty
 Requires at least: 4.0
 Tested up to: 6.3
-Stable tag: 4.3.24
+Stable tag: 4.3.25
 Requires PHP: 5.6
 License: GPL-2.0+
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
@@ -330,6 +330,12 @@ Yes, We provide full support on the WordPress.org forums. You can also post ques
 
 == Changelog ==
 
+= 4.3.25 – 21/08/2023 =
+
+- Added: Upload before after Image without login, and preview 
+- Added: Gallery filter button alignment
+- Fixed: Minor Bugs
+
 = 4.3.24 – 10/08/2023 =
 
 - Added: Compatible notice
@@ -359,7 +365,7 @@ Yes, We provide full support on the WordPress.org forums. You can also post ques
 
 = 4.3.20 – 21/04/2023 =
 
-- FIxed: Auto Slide Vertical view
+- Fixed: Auto Slide Vertical view
 - Fixed: br, p tag / extra spacing issue
 - Fixed: Elementor Tab issue
 - Fixed: Fullscreen View issue
