@@ -37,6 +37,7 @@
 
         overlay.append("<div class='twentytwenty-before-label' data-content='"+options.before_label+"'></div>");
         overlay.append("<div class='twentytwenty-after-label' data-content='"+options.after_label+"'></div>");
+        container.append( "<div class='bafg-play-button'><i class='fa fa-play'></i>Play</div>");
       }
       var beforeImg = container.find("img:first");
       var afterImg = container.find("img:last");
