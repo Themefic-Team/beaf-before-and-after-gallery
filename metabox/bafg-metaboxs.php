@@ -226,6 +226,8 @@ function bafg_metabox_callback($post){
         $bafg_before_after_three_image = ob_get_clean(); 
         echo apply_filters( 'bafg_before_after_three_image', $bafg_before_after_three_image, $post );
         ?>
+
+       
         
         <?php	
         $bafg_slider_title = get_post_meta( $post->ID, 'bafg_slider_title', true );
@@ -236,6 +238,30 @@ function bafg_metabox_callback($post){
 				<input type="text" class="regular-text" name="bafg_slider_title" id="bafg_slider_title"  value="<?php echo esc_html($bafg_slider_title); ?>" placeholder="<?php echo esc_html__('Optional', 'bafg'); ?>">
 			</td>
 		</tr>
+
+        <?php 
+            $bafg_before_video = get_post_meta( $post->ID, 'bafg_before_video', true);
+            $bafg_after_video = get_post_meta( $post->ID, 'bafg_after_video', true);
+            ob_start();
+        ?>
+        <tr class="bafg-row-before-after-video">
+            <td class="bafg-option-label"><label><?php echo esc_html__( 'Before Video', 'bafg' ); ?></label></td>
+            <div class="bafg-tooltip-info"><?php echo sprintf( __( '3 image slider addon required to activate this. <a href="%s" target="_blank"> More info</a>','bafg' ), esc_url( 'https://themefic.com/wp-content/uploads/2023/07/3-image-slider-addon.png' ) );  ?></div>
+            <td class="bafg-option-content">
+                <input type="text" class="regular-text" name="bafg_before_video" id="bafg_before_video" value="<?php echo esc_url($bafg_before_video); ?>" placeholder="<?php echo esc_html__('Before Video URL', 'bafg'); ?>">
+            </td>
+        </tr>
+        <tr class="bafg-row-before-after-video">
+            <td class="bafg-option-label"><label><?php echo esc_html__( 'After Video', 'bafg' ); ?></label></td>
+            <div class="bafg-tooltip-info"><?php echo sprintf( __( '3 image slider addon required to activate this. <a href="%s" target="_blank"> More info</a>','bafg' ), esc_url( 'https://themefic.com/wp-content/uploads/2023/07/3-image-slider-addon.png' ) );  ?></div>
+            <td class="bafg-option-content">
+                <input type="text" class="regular-text" name="bafg_after_video" id="bafg_after_video" value="<?php echo esc_url($bafg_after_video); ?>" placeholder="<?php echo esc_html__('After Video URL', 'bafg'); ?>">
+            </td>
+        </tr>
+        <?php 
+        $bafg_before_after_video_link = ob_get_clean();
+        echo apply_filters( 'bafg_before_after_video_link', $bafg_before_after_video_link, $post );
+        ?>
 
         <?php
         $bafg_slider_description = get_post_meta( $post->ID, 'bafg_slider_description', true );
