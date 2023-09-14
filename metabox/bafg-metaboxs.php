@@ -69,6 +69,14 @@ function bafg_metabox_callback($post){
                             </div>
                         </label>
                     </li>
+                    <li>
+                        <input type="radio" class="" name="bafg_before_after_method" id="bafg_before_after_method4" value="method_4">
+                        <label for="bafg_before_after_method4"><?php _e('Method 4 (Using Video)','bafg') ?>
+                            <div class="bafg-tooltip"><span>?</span>
+                                <div class="bafg-tooltip-info"><?php echo __( 'Pro feature!','bafg' ); ?></div>
+                            </div>
+                        </label>                        
+                    </li>
                 </ul>
                 <p>Choose a method to make a before after slider using a single image or 2 images.</p>
             </td>
@@ -240,22 +248,28 @@ function bafg_metabox_callback($post){
 		</tr>
 
         <?php 
-            $bafg_before_video = get_post_meta( $post->ID, 'bafg_before_video', true);
-            $bafg_after_video = get_post_meta( $post->ID, 'bafg_after_video', true);
             ob_start();
         ?>
         <tr class="bafg-row-before-after-video">
-            <td class="bafg-option-label"><label><?php echo esc_html__( 'Before Video', 'bafg' ); ?></label></td>
-            <div class="bafg-tooltip-info"><?php echo sprintf( __( '3 image slider addon required to activate this. <a href="%s" target="_blank"> More info</a>','bafg' ), esc_url( 'https://themefic.com/wp-content/uploads/2023/07/3-image-slider-addon.png' ) );  ?></div>
+            <td class="bafg-option-label"><label><?php echo esc_html__( 'Before Video', 'bafg' ); ?>
+                <div class="bafg-tooltip"><span>?</span>
+                    <div class="bafg-tooltip-info"><?php echo __( 'Pro feature!', 'bafg' ); ?></div>
+                </div></label>
+            </td>
+            
             <td class="bafg-option-content">
-                <input type="text" class="regular-text" name="bafg_before_video" id="bafg_before_video" value="<?php echo esc_url($bafg_before_video); ?>" placeholder="<?php echo esc_html__('Before Video URL', 'bafg'); ?>">
+                <input type="text" class="regular-text" name="bafg_before_video" id="bafg_before_video" value="" placeholder="<?php echo esc_html__('Before Video URL', 'bafg'); ?>">
             </td>
         </tr>
         <tr class="bafg-row-before-after-video">
-            <td class="bafg-option-label"><label><?php echo esc_html__( 'After Video', 'bafg' ); ?></label></td>
-            <div class="bafg-tooltip-info"><?php echo sprintf( __( '3 image slider addon required to activate this. <a href="%s" target="_blank"> More info</a>','bafg' ), esc_url( 'https://themefic.com/wp-content/uploads/2023/07/3-image-slider-addon.png' ) );  ?></div>
+            <td class="bafg-option-label"><label><?php echo esc_html__( 'After Video', 'bafg' ); ?>
+                <div class="bafg-tooltip"><span>?</span>
+                    <div class="bafg-tooltip-info"><?php echo __( 'Pro feature!', 'bafg' ); ?></div>
+                </div>
+                </label>
+            </td>            
             <td class="bafg-option-content">
-                <input type="text" class="regular-text" name="bafg_after_video" id="bafg_after_video" value="<?php echo esc_url($bafg_after_video); ?>" placeholder="<?php echo esc_html__('After Video URL', 'bafg'); ?>">
+                <input type="text" class="regular-text" name="bafg_after_video" id="bafg_after_video" value="" placeholder="<?php echo esc_html__('After Video URL', 'bafg'); ?>">
             </td>
         </tr>
         <?php 
