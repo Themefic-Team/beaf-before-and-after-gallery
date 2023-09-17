@@ -733,6 +733,27 @@ function bafg_metabox_callback($post){
         $bafg_custom_height_width = ob_get_clean();
         echo apply_filters( 'bafg_custom_height_width', $bafg_custom_height_width, $post );
         ?>
+        <?php 
+        //video widht height
+        ob_start();
+        ?>
+        <tr class="bafg-video-width">
+            <td class="bafg-option-label"><label for="bafg_video_width"><?php echo esc_html__('Video Width','bafg'); ?><div class="bafg-tooltip"><span>?</span><div class="bafg-tooltip-info">Pro feature!</div>
+                </div></label>
+            </td>
+            <td class="bafg-option-content">
+                <label for="bafg_video_width"><input style="width:100px" type="text" id="bafg_video_width" name="bafg_video_width" placeholder="100%"> Width</label>
+                <br>
+                <br>
+                <label for="bafg_video_height"><input style="width:100px" type="text" id="bafg_video_height" name="bafg_video_height" placeholder="auto"> Height</label>
+                <p><?php echo esc_html__('Set a specific width and height for this slider. (e.g: 100% or 400px)','bafg'); ?></p>
+            </td>
+        </tr>
+        <?php 
+        $bafg_video_width_height = ob_get_clean();
+        echo apply_filters( 'bafg_video_width_height', $bafg_video_width_height, $post );
+        ?>
+        
         
         <?php
         ob_start();

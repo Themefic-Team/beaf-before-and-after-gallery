@@ -232,6 +232,18 @@
           $(window).trigger("resize.twentytwenty");
         }
       });
+      
+      //player control for youtube video slider
+      container.parent().siblings('.bafg-video-control-area').find('.bafg-unmute').on('click', function(){
+        $(this).hide();
+        $('.bafg-video-sound .bafg-mute').show();
+      });
+
+      container.parent().siblings('.bafg-video-control-area').find('.bafg-mute').on('click', function(){
+        $(this).hide();
+        $('.bafg-video-sound .bafg-unmute').show();
+      })
+
 
     });
   };
