@@ -55,8 +55,8 @@ function bafg_before_after_method_conditional_field(){
         jQuery('.bafg-slider-alignment,.bafg-overlay-color, .bafg-row-click-to-move,.bafg_move_slider_on_hover,.bafg_on_scroll_slide,.bafg_auto_slide,.bafg_option_label,.bafg-row-offset,.bafg-row-beaf-style,.bafg_filter_apply,.bafg_filter_style,.bafg-row-orientation, .bafg-row-template-style, .bafg-row-before-after-image, .bafg_filter_style, .bafg_filter_apply, .bafg-row-before-image, .bafg-row-after-image').show();
         jQuery('.bafg-mid-label-color,.bafg-mid-label-bg,.bafg-row-mid-label,.bafg-row-before-after-image, .bafg_filter_style, .bafg_filter_apply, .bafg-row-first-image,.bafg-row-second-image, .bafg-row-third-image, .bafg-row-before-after-video, .bafg-video-width, .bafg-video-height').hide();
     }else if(bafg_before_after_method == 'method_3'){
-        jQuery('.bafg-row-mid-label,.bafg-row-first-image, .bafg-row-second-image, .bafg-row-third-image,.bafg-mid-label-color,.bafg-mid-label-bg, .bafg-video-width, .bafg-video-height').show();
-        jQuery('.bafg-fade,.bafg-slider-alignment,.bafg-row-click-to-move,.bafg_move_slider_on_hover,.bafg_on_scroll_slide,.bafg_option_label,.bafg-row-offset,.bafg-row-beaf-style,.bafg_filter_apply,.bafg_filter_style,.bafg-row-orientation, .bafg-row-before-after-image, .bafg_filter_style, .bafg_filter_apply, .bafg-row-before-image, .bafg-row-after-image, .bafg-row-before-after-video').hide();
+        jQuery('.bafg-row-mid-label,.bafg-row-first-image, .bafg-row-second-image, .bafg-row-third-image,.bafg-mid-label-color,.bafg-mid-label-bg').show();
+        jQuery('.bafg-fade,.bafg-slider-alignment,.bafg-row-click-to-move,.bafg_move_slider_on_hover,.bafg_on_scroll_slide,.bafg_option_label,.bafg-row-offset,.bafg-row-beaf-style,.bafg_filter_apply,.bafg_filter_style,.bafg-row-orientation, .bafg-row-before-after-image, .bafg_filter_style, .bafg_filter_apply, .bafg-row-before-image, .bafg-row-after-image, .bafg-row-before-after-video, .bafg-video-width, .bafg-video-height').hide();
         
         //hide for now 3 image
         jQuery('.bafg_slide_handle').hide();
