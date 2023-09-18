@@ -62,7 +62,7 @@ function bafg_before_after_method_conditional_field(){
         jQuery('.bafg_slide_handle').hide();
     }else if(bafg_before_after_method == 'method_4'){
         jQuery('.bafg-row-before-image, .bafg-row-after-image, .bafg-row-first-image, .bafg-row-second-image, .bafg-row-third-image').hide();
-        jQuery('.bafg-row-before-after-video').show();
+        jQuery('.bafg-row-before-after-video,.bafg-video-width, .bafg-video-height').show();
     }
 }
 
