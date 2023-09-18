@@ -64,9 +64,10 @@ function bafg_metabox_callback($post){
                     </li>
                     <li>
                         <input type="radio" class="" name="bafg_before_after_method" id="bafg_before_after_method3" value="method_3">
-                        <label for="bafg_before_after_method3"><?php _e('Method 3 (Using 3 images)','bafg') ?> <div class="bafg-tooltip"><span>?</span>
-                        <div class="bafg-tooltip-info"><?php echo sprintf( __( 'Pro feature! 3 image slider addon required to activate this. <a href="%s" target="_blank"> More info</a>','bafg' ), esc_url( 'https://themefic.com/wp-content/uploads/2023/07/3-image-slider-addon.png' ) );  ?></div>
-                            </div>
+                        <label for="bafg_before_after_method3"><?php _e('Method 3 (Using 3 images)','bafg') ?>
+                        <div class="bafg-tooltip"><span>?</span>
+                            <div class="bafg-tooltip-info"><?php echo sprintf( __( 'Pro feature! 3 image slider addon required to activate this. <a href="%s" target="_blank"> More info</a>','bafg' ), esc_url( 'https://themefic.com/wp-content/uploads/2023/07/3-image-slider-addon.png' ) );  ?></div>
+                        </div>
                         </label>
                     </li>
                     <li>
@@ -446,9 +447,11 @@ function bafg_metabox_callback($post){
         <!--Middle lavel html(pro)-->
         <?php ob_start(); ?>
         <tr class="bafg-row-mid-label">
-            <td class="bafg-option-label"><label for="bafg_mid_label"><?php echo esc_html__('Middle Label','bafg'); ?><div class="bafg-tooltip"><span>?</span>
-                    <div class="bafg-tooltip-info">Pro feature!</div>
-                </div></label></td>
+            <td class="bafg-option-label"><label for="bafg_mid_label"><?php echo esc_html__('Middle Label','bafg'); ?>
+            <div class="bafg-tooltip"><span>?</span>
+                <div class="bafg-tooltip-info"><?php echo sprintf( __( 'Pro feature! 3 image slider addon required to activate this. <a href="%s" target="_blank"> More info</a>','bafg' ), esc_url( 'https://themefic.com/wp-content/uploads/2023/07/3-image-slider-addon.png' ) );  ?></div>
+            </div>
+            </label></td>
             <td class="bafg-option-content">
                 <input type="text" class="regular-text" name="bafg_mid_label" id="bafg_mid_label" value="" >
                 <p><?php echo esc_html__('Set a custom label for the middle image.','bafg'); ?></p>
@@ -647,15 +650,21 @@ function bafg_metabox_callback($post){
         <?php ob_start(); ?>
         <tr class="bafg-mid-label-bg">
             <td class="bafg-option-label">
-                <label for="bafg_mid_label_background"><?php echo esc_html__('Middle Label Background','bafg'); ?><div class="bafg-tooltip"><span>?</span><div class="bafg-tooltip-info">Pro feature!</div>
-                </div></label>
+                <label for="bafg_mid_label_background"><?php echo esc_html__('Middle Label Background','bafg'); ?>
+                <div class="bafg-tooltip"><span>?</span>
+                    <div class="bafg-tooltip-info"><?php echo sprintf( __( 'Pro feature! 3 image slider addon required to activate this. <a href="%s" target="_blank"> More info</a>','bafg' ), esc_url( 'https://themefic.com/wp-content/uploads/2023/07/3-image-slider-addon.png' ) );  ?></div>
+                </div>
+            </label>
             </td>
             <td class="bafg-option-content"><input id="bafg_mid_label_background" class="bafg-color-field" type="text" name="bafg_mid_label_background" value="" /></td>
         </tr>
         <tr class="bafg-mid-label-color" >
             <td class="bafg-option-label">
-                <label for="bafg_mid_label_color"><?php echo esc_html__('Middle label Color','bafg'); ?><div class="bafg-tooltip"><span>?</span><div class="bafg-tooltip-info">Pro feature!</div>
-                </div></label>
+                <label for="bafg_mid_label_color"><?php echo esc_html__('Middle label Color','bafg'); ?>
+                <div class="bafg-tooltip"><span>?</span>
+                    <div class="bafg-tooltip-info"><?php echo sprintf( __( 'Pro feature! 3 image slider addon required to activate this. <a href="%s" target="_blank"> More info</a>','bafg' ), esc_url( 'https://themefic.com/wp-content/uploads/2023/07/3-image-slider-addon.png' ) );  ?></div>
+                </div>
+            </label>
             </td>
             <td class="bafg-option-content"><input id="bafg_mid_label_color" class="bafg-color-field" type="text" name="bafg_mid_label_color" value="" /></td>
         </tr>
