@@ -37,7 +37,6 @@
 
         overlay.append("<div class='twentytwenty-before-label' data-content='"+options.before_label+"'></div>");
         overlay.append("<div class='twentytwenty-after-label' data-content='"+options.after_label+"'></div>");
-        container.append( "<div class='bafg-play-button'><i class='fa fa-play'></i>Play</div>");
       }
       var beforeImg = container.find("img:first");
       var afterImg = container.find("img:last");
@@ -105,8 +104,8 @@
       	if (sliderOrientation === 'vertical') {
           beforeImg.css("clip", "rect(0,"+offset.w+","+offset.ch+",0)");
           afterImg.css("clip", "rect("+offset.ch+","+offset.w+","+offset.h+",0)");
-          beforeVdo.css("clip-path", "inset(0 "+offset.w + " " + offset.ch+" 0)");
-          afterVdo.css("clip-path", "inset("+offset.ch+" "+offset.w+" "+offset.h+" 0)");
+          beforeVdo.css("clip", "rect(0, "+offset.w + ", " + offset.ch+", 0)");
+          afterVdo.css("clip", "rect("+offset.ch+" ,"+offset.w+", "+offset.h+", 0)");
       	} else {
           beforeImg.css("clip", "rect(0,"+offset.cw+","+offset.h+",0)");
           afterImg.css("clip", "rect(0,"+offset.w+","+offset.h+","+offset.cw+")");
