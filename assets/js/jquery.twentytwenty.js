@@ -55,6 +55,10 @@
 	  if( container.hasClass('design-7') ) {
 	  	  slider.wrap("<div class='bafg-handle-wrapper'></div>");
 	  }
+
+    if(container.hasClass('design-1')){
+      slider.wrapInner( "<div class='handle-trnasf'></div>" );
+    }
 		
 	  slider.append("<span class='twentytwenty-" + beforeDirection + "-arrow'></span>");
 	  slider.append("<span class='twentytwenty-" + afterDirection + "-arrow'></span>");
