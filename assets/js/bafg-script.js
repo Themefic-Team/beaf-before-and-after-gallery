@@ -61,7 +61,7 @@ function bafg_before_after_method_conditional_field(){
         //hide for now 3 image
         jQuery('.bafg_slide_handle').hide();
     }else if(bafg_before_after_method == 'method_4'){
-        jQuery('.bafg-row-before-image, .bafg-row-after-image, .bafg-row-first-image, .bafg-row-second-image, .bafg-row-third-image,.bafg-fade, .bafg_popup_preview,.bafg-skip-lazy-load, .bafg-row-before-after-image').hide();
+        jQuery('.bafg-row-before-image, .bafg-row-after-image, .bafg-row-first-image, .bafg-row-second-image, .bafg-row-third-image,.bafg-fade, .bafg_popup_preview,.bafg-skip-lazy-load, .bafg-row-before-after-image, .bafg_filter_style, .bafg_filter_apply').hide();
         jQuery('.bafg-row-before-after-video, .bafg-video-width, .bafg-video-height').show();
     }
 }
