@@ -234,11 +234,31 @@ function bafg_metabox_callback($post){
         <?php
         $bafg_before_after_three_image = ob_get_clean(); 
         echo apply_filters( 'bafg_before_after_three_image', $bafg_before_after_three_image, $post );
-        ?>
 
-       
-        
-        <?php	
+        //Slider video type
+        ob_start();
+        ?>
+        <tr class="bafg-row-slider-video-type">
+            <td class="bafg-option-label"><label><?php echo esc_html__( 'Slider Video Type', 'bafg' ); ?>
+                <div class="bafg-tooltip"><span>?</span>
+                    <div class="bafg-tooltip-info"><?php echo sprintf( __( 'Pro feature! Video slider addon required to activate this. <a href="%s" target="_blank"> More info</a>','bafg' ), esc_url( 'https://themefic.com/wp-content/uploads/2023/10/beaf-before-after-video-slider.png' ) );  ?></div>
+                </div>
+                </label>
+            </td>
+            <td class="bafg-option-content">
+                <select name="bafg_slider_video_type" id="bafg_slider_video_type">
+                    <option value="youtube" selected="selected">Youtube</option>
+                    <option value="vimeo">Vimeo</option>
+                    <option value="self"><?php echo esc_html__( 'Self Hosted', 'bafg' ); ?></option>
+                </select>
+            </td>
+        </tr>
+        <?php
+        $bafg_slider_video_type = ob_get_clean();
+        echo apply_filters( 'bafg_slider_video_type', $bafg_slider_video_type, $post );
+
+
+
         $bafg_slider_title = get_post_meta( $post->ID, 'bafg_slider_title', true );
 		?>
 		<tr class="bafg-row-before-after-title">
@@ -251,7 +271,7 @@ function bafg_metabox_callback($post){
         <?php 
             ob_start();
         ?>
-        <tr class="bafg-row-before-after-video">
+        <tr class="bafg-row-before-after-yt-video">
             <td class="bafg-option-label"><label><?php echo esc_html__( 'Before Video', 'bafg' ); ?>
                 <div class="bafg-tooltip"><span>?</span>
                     <div class="bafg-tooltip-info"><?php echo sprintf( __( 'Pro feature! Video slider addon required to activate this. <a href="%s" target="_blank"> More info</a>','bafg' ), esc_url( 'https://themefic.com/wp-content/uploads/2023/10/beaf-before-after-video-slider.png' ) );  ?></div>
@@ -262,7 +282,7 @@ function bafg_metabox_callback($post){
                 <input type="text" class="regular-text" name="bafg_before_video" id="bafg_before_video" value="" placeholder="<?php echo esc_html__('Before Video URL', 'bafg'); ?>">
             </td>
         </tr>
-        <tr class="bafg-row-before-after-video">
+        <tr class="bafg-row-before-after-yt-video">
             <td class="bafg-option-label"><label><?php echo esc_html__( 'After Video', 'bafg' ); ?>
                 <div class="bafg-tooltip"><span>?</span>
                     <div class="bafg-tooltip-info"><?php echo sprintf( __( 'Pro feature! Video slider addon required to activate this. <a href="%s" target="_blank"> More info</a>','bafg' ), esc_url( 'https://themefic.com/wp-content/uploads/2023/10/beaf-before-after-video-slider.png' ) );  ?></div>
@@ -276,6 +296,35 @@ function bafg_metabox_callback($post){
         <?php 
         $bafg_before_after_video_link = ob_get_clean();
         echo apply_filters( 'bafg_before_after_video_link', $bafg_before_after_video_link, $post );
+        ?>
+        
+        <?php
+        ob_start();
+        ?>
+        <tr class="bafg-row-before-after-vimeo-video">
+            <td class="bafg-option-label"><label><?php echo esc_html__( 'Before Vimeo Video', 'bafg' ); ?>
+                <div class="bafg-tooltip"><span>?</span>
+                    <div class="bafg-tooltip-info"><?php echo sprintf( __( 'Pro feature! Video slider addon required to activate this. <a href="%s" target="_blank"> More info</a>','bafg' ), esc_url( 'https://themefic.com/wp-content/uploads/2023/10/beaf-before-after-video-slider.png' ) );  ?></div>
+                </div></label>
+            </td>
+            
+            <td class="bafg-option-content">
+                <input type="text" class="regular-text" name="bafg_before_vimeo_video" id="bafg_before_vimeo_video" value="" placeholder="<?php echo esc_html__('Before Vimeo Video URL', 'bafg'); ?>">
+            </td>
+        </tr>
+        <tr class="bafg-row-before-after-vimeo-video">
+            <td class="bafg-option-label"><label><?php echo esc_html__( 'After Vimeo Video', 'bafg' ); ?>
+                <div class="bafg-tooltip"><span>?</span>
+                    <div class="bafg-tooltip-info"><?php echo sprintf( __( 'Pro feature! Video slider addon required to activate this. <a href="%s" target="_blank"> More info</a>','bafg' ), esc_url( 'https://themefic.com/wp-content/uploads/2023/10/beaf-before-after-video-slider.png' ) );  ?></div>
+                </div></label>
+            </td>
+            <td class="bafg-option-content">
+                <input type="text" class="regular-text" name="bafg_after_vimeo_video" id="bafg_after_vimeo_video" value="" placeholder="<?php echo esc_html__('After Vimeo Video URL', 'bafg'); ?>">
+            </td>
+        </tr>
+        <?php
+        $bafg_before_after_vimeo_video = ob_get_clean();
+        echo apply_filters( 'bafg_before_after_vimeo_video', $bafg_before_after_vimeo_video, $post );
         ?>
 
         <?php
