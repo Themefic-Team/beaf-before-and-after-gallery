@@ -40,12 +40,25 @@
       }
       var beforeImg = container.find("img:first");
       var afterImg = container.find("img:last");
+      
+      //for video slider
+      let sliderMethod = container.data('slider-method');
+      let beforeVdo    = container.find("iframe:first");
+      let afterVdo     = container.find("iframe:last");
+      beforeVdo.addClass('twentytwenty-before');
+      afterVdo.addClass('twentytwenty-after');
+      
+      
       container.append("<div class='twentytwenty-handle'></div>");
       var slider = container.find(".twentytwenty-handle");
 
 	  if( container.hasClass('design-7') ) {
 	  	  slider.wrap("<div class='bafg-handle-wrapper'></div>");
 	  }
+
+    if(container.hasClass('design-1')){
+      slider.wrapInner( "<div class='handle-trnasf'></div>" );
+    }
 		
 	  slider.append("<span class='twentytwenty-" + beforeDirection + "-arrow'></span>");
 	  slider.append("<span class='twentytwenty-" + afterDirection + "-arrow'></span>");
@@ -54,17 +67,33 @@
       afterImg.addClass("twentytwenty-after");
       
       var calcOffset = function(dimensionPct) {
-        var w = beforeImg.width();
-        var h = beforeImg.height(); 
-        if(w == 0 && h == 0){
+        if(sliderMethod == 'method_4'){
+          var w = beforeVdo.width();
+          var h = beforeVdo.height();
+          if(w == 0 && h == 0){
+            var videoHeight = container.find('iframe:first').height();
+            var videoWidth = container.find('iframe:last').width();
+            
+            w = videoWidth;
+            h = videoHeight;    
+              container.css("height", dimensionPct*h+"px");
+          }else{
+            container.css("height", h+"px");
+          }
+        }else{
+          var w = beforeImg.width();
+          var h = beforeImg.height();
+          
+          if(w == 0 && h == 0){
             var imageHeight = container.find('img:first').prop('naturalHeight'); 
             var imageWidth = container.find('img:first').prop('naturalWidth'); 
             
             w = imageWidth;
             h = imageHeight;    
-            container.css("height", dimensionPct*h+"px");
-        }else{
-          container.css("height", h+"px");
+              container.css("height", dimensionPct*h+"px");
+          }else{
+            container.css("height", h+"px");
+          }
         }
         container.css('max-width', w+'px');  
         return {
@@ -79,12 +108,19 @@
       	if (sliderOrientation === 'vertical') {
           beforeImg.css("clip", "rect(0,"+offset.w+","+offset.ch+",0)");
           afterImg.css("clip", "rect("+offset.ch+","+offset.w+","+offset.h+",0)");
-      	}
-      	else {
+          beforeVdo.css("clip", "rect(0, "+offset.w + ", " + offset.ch+", 0)");
+          afterVdo.css("clip", "rect("+offset.ch+" ,"+offset.w+", "+offset.h+", 0)");
+      	} else {
           beforeImg.css("clip", "rect(0,"+offset.cw+","+offset.h+",0)");
           afterImg.css("clip", "rect(0,"+offset.w+","+offset.h+","+offset.cw+")");
+          // beforeVdo.css("clip-path", "inset(0 "+offset.cw+" "+offset.h+" 0)");
+          // afterVdo.css("clip-path", "inset(0 "+offset.w+" "+offset.h+" "+offset.cw+")");
+          
+          beforeVdo.css("clip", "rect(0, "+offset.cw+","+offset.h+",0)");
+          afterVdo.css("clip", "rect(0,"+offset.w+","+offset.h+","+offset.cw+")");
+           
     	}
-        // container.css("height", offset.h);
+        // container.css( "height", offset.h);
       };
 
       var adjustSlider = function(pct) {
@@ -100,9 +136,16 @@
 
       // Calculate the slider percentage based on the position.
       var getSliderPercentage = function(positionX, positionY) {
-        var sliderPercentage = (sliderOrientation === 'vertical') ?
+        if( sliderMethod === 'method_4' ){
+          var sliderPercentage = (sliderOrientation === 'vertical') ?
+          (positionY-offsetY)/videoHeight :
+          (positionX-offsetX)/videoWidth;
+
+        }else{
+          var sliderPercentage = (sliderOrientation === 'vertical') ?
           (positionY-offsetY)/imgHeight :
           (positionX-offsetX)/imgWidth;
+        }
 
         return minMaxNumber(sliderPercentage, 0, 1);
       };
@@ -115,6 +158,13 @@
       var offsetY = 0;
       var imgWidth = 0;
       var imgHeight = 0;
+      var videoHeight = 0;
+      var videoWidth = 0;
+      /**
+       * Handles the start of a move event.
+       *
+       * @param {Object} e - The event object.
+       */
       var onMoveStart = function(e) {
         if (((e.distX > e.distY && e.distX < -e.distY) || (e.distX < e.distY && e.distX > -e.distY)) && sliderOrientation !== 'vertical') {
           e.preventDefault();
@@ -126,7 +176,9 @@
         offsetX = container.offset().left;
         offsetY = container.offset().top;
         imgWidth = beforeImg.width(); 
-        imgHeight = beforeImg.height();          
+        imgHeight = beforeImg.height();
+        videoHeight = beforeVdo.height();
+        videoWidth = beforeVdo.width();
       };
       var onMove = function(e) {
         if (container.hasClass("active")) {
@@ -157,6 +209,10 @@
         event.preventDefault();
       });
 
+      container.find("iframe").on("mousedown", function(event) {
+        event.preventDefault();
+      });
+
       if (options.click_to_move) {
         container.on('click', function(e) {
           offsetX   = container.offset().left;
@@ -179,7 +235,6 @@
           $(window).trigger("resize.twentytwenty");
         }
       });
-
     });
   };
 

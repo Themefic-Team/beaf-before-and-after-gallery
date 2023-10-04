@@ -577,7 +577,7 @@
 }
 
 .twentytwenty-vertical .design-1 .twentytwenty-down-arrow {
-	transform: rotate(-45deg);
+	transform: rotate(0deg);
 }
 
 .twentytwenty-vertical .design-1 .twentytwenty-up-arrow {
@@ -587,14 +587,14 @@
 }
 
 .twentytwenty-vertical .design-1 .twentytwenty-up-arrow {
-	top: 19px !important;
-	left: 22px !important;
-	transform: rotate(-45deg);
+    top: -18px !important;
+    left: -5px !important;
+    transform: rotate(0deg);
 }
 
 .twentytwenty-vertical .design-1 .twentytwenty-down-arrow {
-	top: 19px;
-	left: 27px;
+    top: 5px;
+    left: 2px;
 }
 
 .twentytwenty-vertical .design-1 .twentytwenty-handle::before,
@@ -858,6 +858,14 @@
 }
 
 .bafg-twentytwenty-container img {
+	position: absolute;
+	left: 0;
+	-webkit-transition: opacity 1s ease-in-out;
+	-moz-transition: opacity 1s ease-in-out;
+	-o-transition: opacity 1s ease-in-out;
+	transition: opacity 1s ease-in-out;
+}
+.bafg-twentytwenty-container iframe {
 	position: absolute;
 	left: 0;
 	-webkit-transition: opacity 1s ease-in-out;
