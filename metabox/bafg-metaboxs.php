@@ -254,7 +254,7 @@ function bafg_metabox_callback($post){
         <tr class="bafg-row-before-after-video">
             <td class="bafg-option-label"><label><?php echo esc_html__( 'Before Video', 'bafg' ); ?>
                 <div class="bafg-tooltip"><span>?</span>
-                    <div class="bafg-tooltip-info"><?php echo sprintf( __( 'Pro feature! Video slider addon required to activate this. <a href="%s" target="_blank"> More info</a>','bafg' ), esc_url( 'https://themefic.com/wp-content/uploads/2023/07/3-image-slider-addon.png' ) );  ?></div>
+                    <div class="bafg-tooltip-info"><?php echo sprintf( __( 'Pro feature! Video slider addon required to activate this. <a href="%s" target="_blank"> More info</a>','bafg' ), esc_url( 'https://themefic.com/wp-content/uploads/2023/10/beaf-before-after-video-slider.png' ) );  ?></div>
                 </div></label>
             </td>
             
@@ -265,7 +265,7 @@ function bafg_metabox_callback($post){
         <tr class="bafg-row-before-after-video">
             <td class="bafg-option-label"><label><?php echo esc_html__( 'After Video', 'bafg' ); ?>
                 <div class="bafg-tooltip"><span>?</span>
-                    <div class="bafg-tooltip-info"><?php echo sprintf( __( 'Pro feature! Video slider addon required to activate this. <a href="%s" target="_blank"> More info</a>','bafg' ), esc_url( 'https://themefic.com/wp-content/uploads/2023/07/3-image-slider-addon.png' ) );  ?></div>
+                    <div class="bafg-tooltip-info"><?php echo sprintf( __( 'Pro feature! Video slider addon required to activate this. <a href="%s" target="_blank"> More info</a>','bafg' ), esc_url( 'https://themefic.com/wp-content/uploads/2023/10/beaf-before-after-video-slider.png' ) );  ?></div>
                 </div>
                 </label>
             </td>            
