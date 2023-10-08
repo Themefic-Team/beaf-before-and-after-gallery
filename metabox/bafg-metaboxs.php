@@ -256,10 +256,33 @@ function bafg_metabox_callback($post){
         <?php
         $bafg_slider_video_type = ob_get_clean();
         echo apply_filters( 'bafg_slider_video_type', $bafg_slider_video_type, $post );
+        ob_start();
+        ?>
+        <tr class="bafg-row-before-self-video">
+            <td class="bafg-option-label">
+                <p><label><?php echo esc_html__('Before Self Hosted Video','bafg'); ?></label></p>
+            </td>
+            <td class="bafg-option-content">
+                <input type="text" name="bafg_before_self_video" id="bafg_before_self_video" size="50" value="<?php echo esc_url(get_post_meta( $post->ID, 'bafg_before_self_video', true )); ?>" />
+                <input class="bafg_button" id="bafg_before_self_video_upload" type="button" value="Add or Upload Video">
+            </td>
+        </tr>
+        <tr class="bafg-row-after-self-video">
+            <td class="bafg-option-label">
+                <p><label><?php echo esc_html__('After Self Hosted Video','bafg'); ?></label></p>
+            </td>
+            <td class="bafg-option-content">
+                <input type="text" name="bafg_after_self_video" id="bafg_after_self_video" size="50" value="<?php echo esc_url(get_post_meta( $post->ID, 'bafg_after_self_video', true ));;?>" />
+                <input class="bafg_button" id="bafg_after_self_video_upload" type="button" value="Add or Upload Video">
+            </td>
+        </tr>
+        <?php
+        $bafg_before_after_self_video = ob_get_clean();
+        echo apply_filters( 'bafg_before_after_self_video', $bafg_before_after_self_video, $post );
+        ?>
 
-
-
-        $bafg_slider_title = get_post_meta( $post->ID, 'bafg_slider_title', true );
+        <?php
+            $bafg_slider_title = get_post_meta( $post->ID, 'bafg_slider_title', true );
 		?>
 		<tr class="bafg-row-before-after-title">
 			<td class="bafg-option-label"><label><?php echo esc_html__( 'Slider Title', 'bafg' ); ?></label></td>
