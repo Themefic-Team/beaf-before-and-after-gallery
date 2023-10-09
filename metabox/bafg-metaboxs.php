@@ -258,21 +258,33 @@ function bafg_metabox_callback($post){
         echo apply_filters( 'bafg_slider_video_type', $bafg_slider_video_type, $post );
         ob_start();
         ?>
-        <tr class="bafg-row-before-self-video">
+        <tr class="bafg-row-bef-aft-self-video">
             <td class="bafg-option-label">
-                <p><label><?php echo esc_html__('Before Self Hosted Video','bafg'); ?></label></p>
+                <p>
+                    <label><?php echo esc_html__('Before Self Hosted Video','bafg'); ?>
+                        <div class="bafg-tooltip"><span>?</span>
+                            <div class="bafg-tooltip-info"><?php echo sprintf( __( 'Pro feature! Video slider addon required to activate this. <a href="%s" target="_blank"> More info</a>','bafg' ), esc_url( 'https://themefic.com/wp-content/uploads/2023/10/beaf-before-after-video-slider.png' ) );  ?></div>
+                        </div>
+                    </label>
+                </p>
             </td>
             <td class="bafg-option-content">
-                <input type="text" name="bafg_before_self_video" id="bafg_before_self_video" size="50" value="<?php echo esc_url(get_post_meta( $post->ID, 'bafg_before_self_video', true )); ?>" />
+                <input type="text" name="bafg_before_self_video" id="bafg_before_self_video" size="50" value="" disabled/>
                 <input class="bafg_button" id="bafg_before_self_video_upload" type="button" value="Add or Upload Video">
             </td>
         </tr>
-        <tr class="bafg-row-after-self-video">
+        <tr class="bafg-row-bef-aft-self-video">
             <td class="bafg-option-label">
-                <p><label><?php echo esc_html__('After Self Hosted Video','bafg'); ?></label></p>
+                <p>
+                    <label><?php echo esc_html__('After Self Hosted Video','bafg'); ?>
+                        <div class="bafg-tooltip"><span>?</span>
+                            <div class="bafg-tooltip-info"><?php echo sprintf( __( 'Pro feature! Video slider addon required to activate this. <a href="%s" target="_blank"> More info</a>','bafg' ), esc_url( 'https://themefic.com/wp-content/uploads/2023/10/beaf-before-after-video-slider.png' ) );  ?></div>
+                        </div>
+                    </label>
+                </p>
             </td>
             <td class="bafg-option-content">
-                <input type="text" name="bafg_after_self_video" id="bafg_after_self_video" size="50" value="<?php echo esc_url(get_post_meta( $post->ID, 'bafg_after_self_video', true ));;?>" />
+                <input type="text" name="bafg_after_self_video" id="bafg_after_self_video" size="50" value="" disabled />
                 <input class="bafg_button" id="bafg_after_self_video_upload" type="button" value="Add or Upload Video">
             </td>
         </tr>
