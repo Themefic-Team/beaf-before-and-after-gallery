@@ -91,10 +91,12 @@
             }
             
             w = videoWidth;
-            h = videoHeight;    
-              container.css("height", dimensionPct*h+"px");
+            h = videoHeight;
+            container.css("height", dimensionPct*h+"px");
           }else{
             container.css("height", h+"px");
+            container.find('iframe').css('max-width', w+'px');
+            container.find('iframe').css('height', w/1.77+'px');
           }
         }else{
           var w = beforeImg.width();
@@ -111,7 +113,7 @@
             container.css("height", h+"px");
           }
         }
-        container.css('max-width', w+'px');  
+        container.css('max-width', w+'px');
         return {
           w: w+"px",
           h: h+"px",
