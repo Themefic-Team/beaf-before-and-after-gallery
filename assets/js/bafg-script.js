@@ -51,16 +51,17 @@ function bafg_option_tab(evt, cityName) {
      * @return void
      */
     function bafg_video_type_conditional_fields(){
-        var videoType = $('.bafg-row-slider-video-type').find(':selected').val();
-        if( videoType == 'youtube' ) {
+        let videoType       = $('.bafg-row-slider-video-type').find(':selected').val();
+        let sliderMethod    = $('input:radio[name=bafg_before_after_method]:checked').val();
+        if(sliderMethod == 'method_4' && videoType == 'youtube') {
             $('.bafg-row-before-after-yt-video').show();
             $('.bafg-row-before-after-vimeo-video').hide();
             $('.bafg-row-bef-aft-self-video').hide();
-        }else if( videoType == 'vimeo' ) {
+        }else if(sliderMethod == 'method_4' && videoType == 'vimeo') {
             $('.bafg-row-before-after-yt-video').hide();
             $('.bafg-row-bef-aft-self-video').hide();
             $('.bafg-row-before-after-vimeo-video').show();
-        }else if( videoType == 'self' ) {
+        }else if(sliderMethod == 'method_4' && videoType == 'self') {
             $('.bafg-row-before-after-yt-video').hide();
             $('.bafg-row-before-after-vimeo-video').hide();
             $('.bafg-row-bef-aft-self-video').show();

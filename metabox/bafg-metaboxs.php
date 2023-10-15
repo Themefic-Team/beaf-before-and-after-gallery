@@ -48,6 +48,7 @@ function bafg_metabox_callback($post){
     <table class="bafg-option-table">
         <?php
         ob_start();
+        $before_after_method = get_post_meta($post->ID, 'bafg_before_after_method', true);
         ?>
         <tr>
             <td class="bafg-option-label">
@@ -835,7 +836,7 @@ function bafg_metabox_callback($post){
                 </div></label>
             </td>
             <td class="bafg-option-content">
-                <label for="bafg_video_width"><input style="width:100px" type="text" id="bafg_video_width" name="bafg_video_width" placeholder="100%"> Width</label>
+                <label for="bafg_video_width"><input style="width:100px" type="text" id="bafg_video_width" name="bafg_video_width" placeholder="640px"> Width</label>
                 <br>
                 <br>
                 <label for="bafg_video_height"><input style="width:100px" type="text" id="bafg_video_height" name="bafg_video_height" placeholder="auto"> Height</label>

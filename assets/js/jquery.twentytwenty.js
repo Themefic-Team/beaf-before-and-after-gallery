@@ -96,7 +96,13 @@
           }else{
             container.css("height", h+"px");
             container.find('iframe').css('max-width', w+'px');
-            container.find('iframe').css('height', w/1.77+'px');
+            let dataWidth = container.find('iframe').attr('data-width');
+
+            //add a responsive width when in mobile devices for the video
+            const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
+            if (isMobile) {
+              container.find('iframe').css('height', w/1.77+'px');
+            }
           }
         }else{
           var w = beforeImg.width();
@@ -110,7 +116,7 @@
             h = imageHeight;    
               container.css("height", dimensionPct*h+"px");
           }else{
-            container.css("height", h+"px");
+            //container.css("height", h+"px");
           }
         }
         container.css('max-width', w+'px');
@@ -136,8 +142,6 @@
       	} else {
           beforeImg.css("clip", "rect(0,"+offset.cw+","+offset.h+",0)");
           afterImg.css("clip", "rect(0,"+offset.w+","+offset.h+","+offset.cw+")");
-          // beforeVdo.css("clip-path", "inset(0 "+offset.cw+" "+offset.h+" 0)");
-          // afterVdo.css("clip-path", "inset(0 "+offset.w+" "+offset.h+" "+offset.cw+")");
           if( videoType == 'self' ){
             beforeSelfVdo.css("clip", "rect(0, "+offset.cw+","+offset.h+",0)");
             afterSelfVdo.css("clip", "rect(0,"+offset.w+","+offset.h+","+offset.cw+")");
