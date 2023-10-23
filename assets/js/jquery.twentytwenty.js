@@ -1,4 +1,4 @@
-(function($){
+(function($){   
 
   $.fn.twentytwenty = function(options) {
     var options = $.extend({
@@ -151,7 +151,7 @@
           }
            
     	}
-        // container.css( "height", offset.h);
+        container.css( "height", offset.h);
       };
 
       var adjustSlider = function(pct) {
@@ -281,5 +281,4 @@
       });
     });
   };
-
 })(jQuery);

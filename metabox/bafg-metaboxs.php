@@ -356,6 +356,7 @@ function bafg_metabox_callback($post){
             </td>
             <td class="bafg-option-content">
                 <input type="text" class="regular-text" name="bafg_after_vimeo_video" id="bafg_after_vimeo_video" value="" placeholder="<?php echo esc_html__('After Vimeo Video URL', 'bafg'); ?>">
+                
             </td>
         </tr>
         <?php
