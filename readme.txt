@@ -4,7 +4,7 @@ Donate link:
 Tags: before after, before after elementor, before after slider, before after gallery, before after filter gallery, before after divi, before after viewer, before after woocommerce, before after multiple image, compare images, image comparison, before after slider wordpress, before after image, twentytwenty, jquery twentytwenty, wordpress before after slider, elementor before and after slider, wordpress before after gallery, elementor before after slider, elementor before after image comparison slider, visual composer before after slider, visual composer image comparison, slider, gallery, before after wordpress, before after beaver, before after oxygen, twenty20, twenty20 image before after plugin, twenty20 wordpress plugin, twenty twenty
 Requires at least: 4.0
 Tested up to: 6.3
-Stable tag: 4.4.0
+Stable tag: 4.4.1
 Requires PHP: 5.6
 License: GPL-2.0+
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
@@ -225,7 +225,7 @@ You can easily disable the slider handle.
 
 You can add videos to your before after slider
 
-> <strong><a href="https://demo.themefic.com/beaf/pro/before-after-video-slider/" target="_blank">Video Slider Preview</a></strong>
+> <strong><a href="https://themefic.com/plugins/beaf/pro/video-slider/" target="_blank">Video Slider Preview</a></strong>
 
 <strong>Premium Support</strong>
 
@@ -337,6 +337,12 @@ Yes, We provide full support on the WordPress.org forums. You can also post ques
 23. Auto Slide
 
 == Changelog ==
+
+= 4.4.1 – 25/10/2023 =
+
+- Added: Add Vimeo Video to before after slider(Pro)
+- Added: Add Self-hosted Video to before after slider(Pro)
+- Fixed: Responsive issue
 
 = 4.4.0 – 04/10/2023 =
 
