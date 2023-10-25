@@ -108,8 +108,8 @@ class BAFG_Before_After_Gallery {
         if( !empty($debug_mode) ){
             $in_footer = true;
         }
-        wp_enqueue_script( 'eventMove', plugin_dir_url( __FILE__ ) . 'assets/js/jquery.event.move.js', array('jquery','vimeo-player'), null, $in_footer );
-        wp_enqueue_script( 'bafg_twentytwenty', plugin_dir_url( __FILE__ ) . 'assets/js/jquery.twentytwenty.js', array('jquery','eventMove','vimeo-player'), $version, $in_footer );
+        wp_enqueue_script( 'eventMove', plugin_dir_url( __FILE__ ) . 'assets/js/jquery.event.move.js', array('jquery'), null, $in_footer );
+        wp_enqueue_script( 'bafg_twentytwenty', plugin_dir_url( __FILE__ ) . 'assets/js/jquery.twentytwenty.js', array('jquery','eventMove'), $version, $in_footer );
         wp_enqueue_script( 'bafg_custom_js', plugin_dir_url( __FILE__ ) . 'assets/js/bafg-custom-js.js', array('jquery','bafg_twentytwenty'), null, true );       
         wp_localize_script('bafg_custom_js','bafg_constant_obj',
             array( 
