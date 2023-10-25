@@ -152,6 +152,18 @@
            
     	}
         container.css( "height", offset.h);
+
+        //auto video pause based on slider handle position
+        if(sliderMethod == 'method_4'){
+          let totalWidth = offset.w;
+          let totalHeight = offset.h;
+          let middlePosition = replaceAll(totalWidth/2, 'px', '');
+          // beforeVdo[0].pause();
+          // beforeSelfVdo[0].pause();
+          // afterSelfVdo[0].pause();
+        }
+        
+        console.log(offset.ch,offset.cw + " " + offset.h + " " + offset.w);
       };
 
       var adjustSlider = function(pct) {
