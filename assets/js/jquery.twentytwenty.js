@@ -1,4 +1,4 @@
-(function($){
+(function($){   
 
   $.fn.twentytwenty = function(options) {
     var options = $.extend({
@@ -45,8 +45,12 @@
       let sliderMethod = container.data('slider-method');
       let beforeVdo    = container.find("iframe:first");
       let afterVdo     = container.find("iframe:last");
+      let beforeSelfVdo = container.find("video:first");
+      let afterSelfVdo = container.find("video:last");
       beforeVdo.addClass('twentytwenty-before');
       afterVdo.addClass('twentytwenty-after');
+      beforeSelfVdo.addClass('twentytwenty-before')
+      afterSelfVdo.addClass('twentytwenty-after')
       
       
       container.append("<div class='twentytwenty-handle'></div>");
@@ -66,19 +70,39 @@
       beforeImg.addClass("twentytwenty-before");
       afterImg.addClass("twentytwenty-after");
       
+      var videoType = container.data('video-type');
       var calcOffset = function(dimensionPct) {
         if(sliderMethod == 'method_4'){
-          var w = beforeVdo.width();
-          var h = beforeVdo.height();
+          if( videoType != undefined && videoType == 'self' ){
+            var w = beforeSelfVdo.width();
+            var h = beforeSelfVdo.height();
+          }else{
+            var w = beforeVdo.width();
+            var h = beforeVdo.height();
+          }
+          
           if(w == 0 && h == 0){
-            var videoHeight = container.find('iframe:first').height();
-            var videoWidth = container.find('iframe:last').width();
+            if( videoType != undefined && videoType == 'self' ){
+              var videoHeight = container.find('video:first').height();
+              var videoWidth = container.find('video:last').width();
+            }else{
+              var videoHeight = container.find('iframe:first').height();
+              var videoWidth = container.find('iframe:last').width();
+            }
             
             w = videoWidth;
-            h = videoHeight;    
-              container.css("height", dimensionPct*h+"px");
+            h = videoHeight;
+            container.css("height", dimensionPct*h+"px");
           }else{
             container.css("height", h+"px");
+            container.find('iframe').css('max-width', w+'px');
+            let dataWidth = container.find('iframe').attr('data-width');
+
+            //add a responsive width when in mobile devices for the video
+            const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
+            if (isMobile) {
+              container.find('iframe').css('height', w/1.77+'px');
+            }
           }
         }else{
           var w = beforeImg.width();
@@ -95,7 +119,7 @@
             container.css("height", h+"px");
           }
         }
-        container.css('max-width', w+'px');  
+        container.css('max-width', w+'px');
         return {
           w: w+"px",
           h: h+"px",
@@ -108,19 +132,26 @@
       	if (sliderOrientation === 'vertical') {
           beforeImg.css("clip", "rect(0,"+offset.w+","+offset.ch+",0)");
           afterImg.css("clip", "rect("+offset.ch+","+offset.w+","+offset.h+",0)");
-          beforeVdo.css("clip", "rect(0, "+offset.w + ", " + offset.ch+", 0)");
-          afterVdo.css("clip", "rect("+offset.ch+" ,"+offset.w+", "+offset.h+", 0)");
+          if( videoType == 'self' ){
+            beforeSelfVdo.css("clip", "rect(0, "+offset.w + ", " + offset.ch+", 0)");
+            afterSelfVdo.css("clip", "rect("+offset.ch+", "+offset.w+", "+offset.h+", 0)");
+          }else{
+            beforeVdo.css("clip", "rect(0, "+offset.w + ", " + offset.ch+", 0)");
+            afterVdo.css("clip", "rect("+offset.ch+" ,"+offset.w+", "+offset.h+", 0)");
+          }
       	} else {
           beforeImg.css("clip", "rect(0,"+offset.cw+","+offset.h+",0)");
           afterImg.css("clip", "rect(0,"+offset.w+","+offset.h+","+offset.cw+")");
-          // beforeVdo.css("clip-path", "inset(0 "+offset.cw+" "+offset.h+" 0)");
-          // afterVdo.css("clip-path", "inset(0 "+offset.w+" "+offset.h+" "+offset.cw+")");
-          
-          beforeVdo.css("clip", "rect(0, "+offset.cw+","+offset.h+",0)");
-          afterVdo.css("clip", "rect(0,"+offset.w+","+offset.h+","+offset.cw+")");
+          if( videoType == 'self' ){
+            beforeSelfVdo.css("clip", "rect(0, "+offset.cw+","+offset.h+",0)");
+            afterSelfVdo.css("clip", "rect(0,"+offset.w+","+offset.h+","+offset.cw+")");
+          }else{
+            beforeVdo.css("clip", "rect(0, "+offset.cw+","+offset.h+",0)");
+            afterVdo.css("clip", "rect(0,"+offset.w+","+offset.h+","+offset.cw+")");
+          }
            
     	}
-        // container.css( "height", offset.h);
+        container.css( "height", offset.h);
       };
 
       var adjustSlider = function(pct) {
@@ -137,6 +168,10 @@
       // Calculate the slider percentage based on the position.
       var getSliderPercentage = function(positionX, positionY) {
         if( sliderMethod === 'method_4' ){
+          if( videoType == 'self' ){
+            videoWidth = selfVideoWidth;
+            videoHeight = selfVideoHeight;
+          }
           var sliderPercentage = (sliderOrientation === 'vertical') ?
           (positionY-offsetY)/videoHeight :
           (positionX-offsetX)/videoWidth;
@@ -160,6 +195,8 @@
       var imgHeight = 0;
       var videoHeight = 0;
       var videoWidth = 0;
+      var selfVideoWidth = 0;
+      var selfVideoHeight = 0;
       /**
        * Handles the start of a move event.
        *
@@ -179,6 +216,9 @@
         imgHeight = beforeImg.height();
         videoHeight = beforeVdo.height();
         videoWidth = beforeVdo.width();
+        selfVideoWidth = beforeSelfVdo.width();
+        selfVideoHeight = beforeSelfVdo.height();
+
       };
       var onMove = function(e) {
         if (container.hasClass("active")) {
@@ -213,6 +253,10 @@
         event.preventDefault();
       });
 
+      container.find("video").on("mousedown", function(event) {
+        event.preventDefault();
+      });
+
       if (options.click_to_move) {
         container.on('click', function(e) {
           offsetX   = container.offset().left;
@@ -237,5 +281,4 @@
       });
     });
   };
-
 })(jQuery);

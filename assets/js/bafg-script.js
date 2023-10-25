@@ -1,31 +1,3 @@
-jQuery('.bafg_display_shortcode').on('click', function(){
-    
-    var copyText = this;
-
-    if (copyText.value != '') {
-        copyText.select();
-        copyText.setSelectionRange(0, 99999);
-        document.execCommand("copy");
-
-        var elem = document.getElementById("bafg_copy");
-        elem.style.right = '0px';
-
-        var time = 0;
-        var id = setInterval(copyAlert, 10);
-
-        function copyAlert() {
-            if (time == 200) {
-                clearInterval(id);
-                elem.style.display = 'none';
-            } else {
-                time++;
-                elem.style.display = 'block';
-            }
-        }
-    }
-
-});
-
 /*
  * Metabox tab script
  */
@@ -43,6 +15,58 @@ function bafg_option_tab(evt, cityName) {
     evt.currentTarget.className += " active";
 }
 
+;(function($){
+    $('.bafg_display_shortcode').on('click', function(){
+        
+        var copyText = this;
+
+        if (copyText.value != '') {
+            copyText.select();
+            copyText.setSelectionRange(0, 99999);
+            document.execCommand("copy");
+
+            var elem = document.getElementById("bafg_copy");
+            elem.style.right = '0px';
+
+            var time = 0;
+            var id = setInterval(copyAlert, 10);
+
+            function copyAlert() {
+                if (time == 200) {
+                    clearInterval(id);
+                    elem.style.display = 'none';
+                } else {
+                    time++;
+                    elem.style.display = 'block';
+                }
+            }
+        }
+
+    });
+
+    /**
+     * Sets the conditional fields for the video type.
+     *
+     * @since 1.0.0
+     * @return void
+     */
+    function bafg_video_type_conditional_fields(){
+        let videoType       = $('.bafg-row-slider-video-type').find(':selected').val();
+        let sliderMethod    = $('input:radio[name=bafg_before_after_method]:checked').val();
+        if(sliderMethod == 'method_4' && videoType == 'youtube') {
+            $('.bafg-row-before-after-yt-video').show();
+            $('.bafg-row-before-after-vimeo-video').hide();
+            $('.bafg-row-bef-aft-self-video').hide();
+        }else if(sliderMethod == 'method_4' && videoType == 'vimeo') {
+            $('.bafg-row-before-after-yt-video').hide();
+            $('.bafg-row-bef-aft-self-video').hide();
+            $('.bafg-row-before-after-vimeo-video').show();
+        }else if(sliderMethod == 'method_4' && videoType == 'self') {
+            $('.bafg-row-before-after-yt-video').hide();
+            $('.bafg-row-before-after-vimeo-video').hide();
+            $('.bafg-row-bef-aft-self-video').show();
+        }
+    }
 /*
 Conditional fields
 */
@@ -50,19 +74,21 @@ function bafg_before_after_method_conditional_field(){
     var bafg_before_after_method = jQuery('input:radio[name=bafg_before_after_method]:checked').val();
     if (bafg_before_after_method == 'method_2') {
         jQuery('.bafg-fade,.bafg-slider-alignment,.bafg-row-no-overlay,.bafg-row-click-to-move,.bafg_move_slider_on_hover,.bafg_on_scroll_slide,.bafg_auto_slide,.bafg_option_label,.bafg-row-offset,.bafg-row-beaf-style,.bafg_filter_apply,.bafg_filter_style,.bafg-row-orientation, .bafg-row-template-style, .bafg-row-before-after-image, .bafg_filter_style, .bafg_filter_apply, .bafg-row-before-image, .bafg-row-after-image').show();
-        jQuery('.bafg-mid-label-color,.bafg-mid-label-bg,.bafg-row-mid-label,.bafg-row-before-image, .bafg-row-after-image, .bafg-row-first-image,.bafg-row-second-image, .bafg-row-third-image, .bafg-row-before-after-video, .bafg-video-width, .bafg-video-height').hide();
+        jQuery('.bafg-mid-label-color,.bafg-mid-label-bg,.bafg-row-mid-label,.bafg-row-before-image, .bafg-row-after-image, .bafg-row-first-image,.bafg-row-second-image, .bafg-row-third-image, .bafg-row-before-after-yt-video, .bafg-video-width, .bafg-video-height, .bafg-row-slider-video-type,.bafg-row-before-after-vimeo-video, .bafg-row-bef-aft-self-video').hide();
     } else if(bafg_before_after_method == 'method_1') {
         jQuery('.bafg-slider-alignment,.bafg-overlay-color, .bafg-row-click-to-move,.bafg_move_slider_on_hover,.bafg_on_scroll_slide,.bafg_auto_slide,.bafg_option_label,.bafg-row-offset,.bafg-row-beaf-style,.bafg_filter_apply,.bafg_filter_style,.bafg-row-orientation, .bafg-row-template-style, .bafg-row-before-after-image, .bafg_filter_style, .bafg_filter_apply, .bafg-row-before-image, .bafg-row-after-image').show();
-        jQuery('.bafg-mid-label-color,.bafg-mid-label-bg,.bafg-row-mid-label,.bafg-row-before-after-image, .bafg_filter_style, .bafg_filter_apply, .bafg-row-first-image,.bafg-row-second-image, .bafg-row-third-image, .bafg-row-before-after-video, .bafg-video-width, .bafg-video-height').hide();
+        jQuery('.bafg-mid-label-color,.bafg-mid-label-bg,.bafg-row-mid-label,.bafg-row-before-after-image, .bafg_filter_style, .bafg_filter_apply, .bafg-row-first-image,.bafg-row-second-image, .bafg-row-third-image, .bafg-row-before-after-yt-video, .bafg-video-width, .bafg-video-height, .bafg-row-slider-video-type, .bafg-row-before-after-vimeo-video,.bafg-row-bef-aft-self-video').hide();
     }else if(bafg_before_after_method == 'method_3'){
         jQuery('.bafg-row-mid-label,.bafg-row-first-image, .bafg-row-second-image, .bafg-row-third-image,.bafg-mid-label-color,.bafg-mid-label-bg').show();
-        jQuery('.bafg-fade,.bafg-slider-alignment,.bafg-row-click-to-move,.bafg_move_slider_on_hover,.bafg_on_scroll_slide,.bafg_option_label,.bafg-row-offset,.bafg-row-beaf-style,.bafg_filter_apply,.bafg_filter_style,.bafg-row-orientation, .bafg-row-before-after-image, .bafg_filter_style, .bafg_filter_apply, .bafg-row-before-image, .bafg-row-after-image, .bafg-row-before-after-video, .bafg-video-width, .bafg-video-height').hide();
+        jQuery('.bafg-fade,.bafg-slider-alignment,.bafg-row-click-to-move,.bafg_move_slider_on_hover,.bafg_on_scroll_slide,.bafg_option_label,.bafg-row-offset,.bafg-row-beaf-style,.bafg_filter_apply,.bafg_filter_style,.bafg-row-orientation, .bafg-row-before-after-image, .bafg_filter_style, .bafg_filter_apply, .bafg-row-before-image, .bafg-row-after-image, .bafg-row-before-after-yt-video, .bafg-video-width, .bafg-video-height,.bafg-row-slider-video-type,.bafg-row-before-after-vimeo-video,.bafg-row-bef-aft-self-video').hide();
         
         //hide for now 3 image
         jQuery('.bafg_slide_handle').hide();
     }else if(bafg_before_after_method == 'method_4'){
         jQuery('.bafg-row-before-image, .bafg-row-after-image, .bafg-row-first-image, .bafg-row-second-image, .bafg-row-third-image,.bafg-fade, .bafg_popup_preview,.bafg-skip-lazy-load, .bafg-row-before-after-image, .bafg_filter_style, .bafg_filter_apply').hide();
-        jQuery('.bafg-row-before-after-video, .bafg-video-width, .bafg-video-height').show();
+        jQuery('.bafg-row-before-after-yt-video, .bafg-row-before-after-vimeo-video, .bafg-video-width, .bafg-video-height, .bafg-row-slider-video-type,.bafg-row-bef-aft-self-video').show();
+        bafg_video_type_conditional_fields();
+
     }
 }
 
@@ -232,6 +258,54 @@ jQuery('#bafg_after_image_upload').on('click', function (e) {
     bafg_after_file_frame.open();
 });
 
+/**
+ * Uploading video files
+ * 
+ * @since 4.4.1
+ * @author Abu Hena
+ * @returns url
+ */
+const video_fields = ['bafg_before_self_video_upload','bafg_after_self_video_upload'];
+video_fields.forEach(function(field){
+    jQuery('#'+field).on('click', function (e) {
+        e.preventDefault();
+        var bafg_video_file_frame;
+
+        // If the media frame already exists, reopen it.
+        if (bafg_video_file_frame) {
+            bafg_video_file_frame.open();
+            return;
+        }
+
+        // Create the media frame.
+        bafg_video_file_frame = wp.media.frames.bafg_video_file_frame = wp.media({
+            title: jQuery(this).data('uploader_title'),
+            button: {
+                text: jQuery(this).data('uploader_button_text'),
+            },
+            multiple: false, // Set to true to allow multiple files to be selected
+            library: {
+                type: 'video'
+            }
+
+        });
+
+        //when a file is selected, run a callback
+        bafg_video_file_frame.on('select', function () {
+            // We set multiple to false so only get one video from the uploader
+            attachment = bafg_video_file_frame.state().get('selection').first().toJSON();
+            let url = attachment.url;
+            let title = attachment.title;
+            let inputField = document.getElementById(field.replace('_upload', ''));
+            inputField.value = url;
+        })
+
+        //finally, open the modal
+        bafg_video_file_frame.open();
+
+    })
+})
+
 /*
 Color picker
 */
@@ -370,7 +444,7 @@ if(slider){
     }
 }
 
-(function($){
+
     $('.bafg-update-pro').on('click', function(e){
         $.ajax({
             url: ajaxurl,
@@ -383,5 +457,14 @@ if(slider){
         });
     
     });
-})(jQuery);
 
+    //conditional field when select video type
+    $('.bafg-row-slider-video-type').on('change',function(){
+        bafg_video_type_conditional_fields();
+    });
+
+    $(document).ready(function(){
+        bafg_video_type_conditional_fields();
+    })
+
+})(jQuery);

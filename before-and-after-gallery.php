@@ -3,7 +3,7 @@
  * Plugin Name: BEAF - Ultimate Before After Image Slider & Gallery
  * Plugin URI: https://themefic.com/plugins/beaf/
  * Description: Want to show comparison of two images? With BEAF, you can easily create before and after image slider or image gallery. Elementor Supported.
- * Version: 4.4.0
+ * Version: 4.4.1
  * Author: Themefic
  * Author URI: https://themefic.com/
  * License: GPL-2.0+
@@ -98,6 +98,7 @@ class BAFG_Before_After_Gallery {
     * Enqueue css and js in frontend
     */
     public function bafg_image_before_after_foucs_scripts() {
+        $version = time();
         
         wp_enqueue_style( 'bafg_twentytwenty', plugin_dir_url( __FILE__ ) . 'assets/css/twentytwenty.css'); 
         wp_enqueue_style( 'bafg-style', plugin_dir_url( __FILE__ ) . 'assets/css/bafg-style.css'); 
@@ -107,8 +108,8 @@ class BAFG_Before_After_Gallery {
         if( !empty($debug_mode) ){
             $in_footer = true;
         }
-        wp_enqueue_script( 'eventMove', plugin_dir_url( __FILE__ ) . 'assets/js/jquery.event.move.js', array('jquery'), null, $in_footer );
-        wp_enqueue_script( 'bafg_twentytwenty', plugin_dir_url( __FILE__ ) . 'assets/js/jquery.twentytwenty.js', array('jquery','eventMove'), null, $in_footer );
+        wp_enqueue_script( 'eventMove', plugin_dir_url( __FILE__ ) . 'assets/js/jquery.event.move.js', array('jquery','vimeo-player'), null, $in_footer );
+        wp_enqueue_script( 'bafg_twentytwenty', plugin_dir_url( __FILE__ ) . 'assets/js/jquery.twentytwenty.js', array('jquery','eventMove','vimeo-player'), $version, $in_footer );
         wp_enqueue_script( 'bafg_custom_js', plugin_dir_url( __FILE__ ) . 'assets/js/bafg-custom-js.js', array('jquery','bafg_twentytwenty'), null, true );       
         wp_localize_script('bafg_custom_js','bafg_constant_obj',
             array( 
