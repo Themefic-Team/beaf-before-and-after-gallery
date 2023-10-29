@@ -153,17 +153,49 @@
     	}
         container.css( "height", offset.h);
 
-        //auto video pause based on slider handle position
+        /*
+        * Auto video pause and sound control based on slider handle position
+        * @author : Abu Hena
+        **/ 
         if(sliderMethod == 'method_4'){
-          let totalWidth = offset.w;
-          let totalHeight = offset.h;
-          let middlePosition = replaceAll(totalWidth/2, 'px', '');
-          // beforeVdo[0].pause();
-          // beforeSelfVdo[0].pause();
-          // afterSelfVdo[0].pause();
+          let sliderVideoType = container.data('video-type');
+          let totalWidth     = offset.w;
+          let totalHeight    = offset.h;
+          totalWidth         = totalWidth.replace('px', '');
+          var middlePosition = totalWidth/2;
+          let sliderCurrentPosition = offset.cw;
+              sliderCurrentPosition = sliderCurrentPosition.replace('px', '');
+              sliderPositionPercent = sliderCurrentPosition/totalWidth * 100;
+              sliderPositionPercent = Math.round(sliderPositionPercent);        
+
+          let firstVideo  = container.children().eq(0).attr('id');
+          let secondVideo = container.children().eq(1).attr('id');
+          if(sliderVideoType == 'youtube'){
+            if(sliderPositionPercent > 60){
+              players[firstVideo].setVolume(sliderPositionPercent);
+              players[secondVideo].setVolume(100 - sliderPositionPercent);
+              players[secondVideo].pauseVideo();
+              players[firstVideo].playVideo();
+            }else if(sliderPositionPercent < 60){
+              players[firstVideo].pauseVideo();
+              players[firstVideo].setVolume(sliderPositionPercent);
+              players[secondVideo].setVolume(100 - sliderPositionPercent);
+              players[secondVideo].playVideo();
+            }
+          }else if(sliderVideoType == 'vimeo'){
+            if(sliderPositionPercent > 60){
+              vimeoPlayers[firstVideo].setVolume(sliderPositionPercent);
+              vimeoPlayers[secondVideo].setVolume(100 - sliderPositionPercent);
+              vimeoPlayers[secondVideo].pause();
+              vimeoPlayers[firstVideo].play();
+            }else if(sliderPositionPercent < 60){
+              vimeoPlayers[firstVideo].pause();
+              vimeoPlayers[firstVideo].setVolume(sliderPositionPercent);
+              vimeoPlayers[secondVideo].setVolume(100 - sliderPositionPercent);
+              vimeoPlayers[secondVideo].play();
+            }
+          }
         }
-        
-        console.log(offset.ch,offset.cw + " " + offset.h + " " + offset.w);
       };
 
       var adjustSlider = function(pct) {
