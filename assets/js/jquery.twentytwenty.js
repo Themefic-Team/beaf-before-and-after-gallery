@@ -249,8 +249,6 @@
               }
 
             }
-            //trigger play/pause button so that user can pause the video immediately after moving slider
-            container.parent().siblings().find('.bafg-video-play-pause .bafg-play-button').trigger('click');
           }
         }
       };
