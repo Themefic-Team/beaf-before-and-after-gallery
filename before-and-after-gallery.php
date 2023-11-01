@@ -19,7 +19,11 @@ if ( !defined( 'ABSPATH' ) ) {
 
 //define all necessary constants
 define( 'BEAF_PLUGIN_PATH', plugin_dir_path( __FILE__ ) );
-define( 'BEAF_OPTIONS_PATH', BEAF_PLUGIN_PATH . 'admin/tf-options/' );
+define( 'BEAF_ADMIN_PATH', BEAF_PLUGIN_PATH . 'admin/' );
+define( 'BEAF_OPTIONS_PATH', BEAF_ADMIN_PATH . 'tf-options/' );
+//define assets url
+define( 'BEAF_ASSETS_URL', plugin_dir_url( __FILE__ ) . 'assets/' );
+
 
 class BAFG_Before_After_Gallery {
     
@@ -121,6 +125,17 @@ class BAFG_Before_After_Gallery {
             }
         }
     }
+
+    
+    /**
+     * Global Admin Get Option
+     */
+    public static function beaf_opt( $option = '', $default = null ) {
+        $options = get_option( 'tf_settings' );
+
+        return ( isset( $options[ $option ] ) ) ? $options[ $option ] : $default;
+    }
+
     
     /*
     * Enqueue css and js in frontend

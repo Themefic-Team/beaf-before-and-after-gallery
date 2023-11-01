@@ -71,7 +71,7 @@ if ( ! class_exists( 'TF_Options' ) ) {
 		 */
 		public function load_metaboxes() {
 			if ( $this->is_tf_pro_active() ) {
-				$metaboxes = glob( TF_PRO_ADMIN_PATH . 'tf-options/metaboxes/*.php' );
+				$metaboxes = glob( BEAF_ADMIN_PATH . 'tf-options/metaboxes/*.php' );
 			} else {
 				$metaboxes = glob( $this->tf_options_file_path( 'metaboxes/*.php' ) );
 			}
@@ -94,7 +94,7 @@ if ( ! class_exists( 'TF_Options' ) ) {
 		 */
 		public function load_options() {
 			if ( $this->is_tf_pro_active() ) {
-				$options = glob( TF_PRO_ADMIN_PATH . 'tf-options/options/*.php' );
+				$options = glob( BEAF_ADMIN_PATH . 'tf-options/options/*.php' );
 			} else {
 				$options = glob( $this->tf_options_file_path( 'options/*.php' ) );
 			}
@@ -114,7 +114,7 @@ if ( ! class_exists( 'TF_Options' ) ) {
 		 */
 		public function load_taxonomy() {
 			if ( $this->is_tf_pro_active() ) {
-				$taxonomies = glob( TF_PRO_ADMIN_PATH . 'tf-options/taxonomies/*.php' );
+				$taxonomies = glob( BEAF_ADMIN_PATH . 'tf-options/taxonomies/*.php' );
 			} else {
 				$taxonomies = glob( $this->tf_options_file_path( 'taxonomies/*.php' ) );
 			}
@@ -151,7 +151,7 @@ if ( ! class_exists( 'TF_Options' ) ) {
 				'tf_apartment_page_tf_apartment_booking'
 			);
 			$tf_options_post_type = array( 'tf_hotel', 'tf_tours', 'tf_apartment' );
-			$admin_date_format_for_users  = !empty(tfopt( "tf-date-format-for-users")) ? tfopt( "tf-date-format-for-users") : "Y/m/d";
+			$admin_date_format_for_users  = !empty(BAFG_Before_After_Gallery::beaf_opt( "tf-date-format-for-users")) ? BAFG_Before_After_Gallery::beaf_opt( "tf-date-format-for-users") : "Y/m/d";
 			if("bafg-settings_page_tf_dashboard"==$screen){
 				//Order Data Retrive
 				$tf_old_order_limit = new WC_Order_Query( array(
@@ -314,7 +314,7 @@ if ( ! class_exists( 'TF_Options' ) ) {
 				wp_enqueue_script( 'tf-select2', '//cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js', array( 'jquery' ), $this->tf_options_version(), true );
 
 
-				$tf_google_map = function_exists( 'is_tf_pro' ) && is_tf_pro() && ! empty( tfopt( 'google-page-option' ) ) ? tfopt( 'google-page-option' ) : "false";
+				$tf_google_map = function_exists( 'is_tf_pro' ) && is_tf_pro() && ! empty( BAFG_Before_After_Gallery::beaf_opt( 'google-page-option' ) ) ? BAFG_Before_After_Gallery::beaf_opt( 'google-page-option' ) : "false";
 				if ( $tf_google_map != "googlemap" ) {
 					wp_enqueue_script( 'tf-leaflet', esc_url( '//cdn.jsdelivr.net/npm/leaflet@' . '1.9' . '/dist/leaflet.js' ), array( 'jquery' ), '1.9', true );
 					wp_enqueue_style( 'tf-leaflet', esc_url( '//cdn.jsdelivr.net/npm/leaflet@' . '1.9' . '/dist/leaflet.css' ), array(), '1.9' );
@@ -331,7 +331,7 @@ if ( ! class_exists( 'TF_Options' ) ) {
 			wp_enqueue_style( 'wp-color-picker' );
 			wp_enqueue_script( 'wp-color-picker' );
 
-			$tf_google_map = function_exists( 'is_tf_pro' ) && is_tf_pro() && ! empty( tfopt( 'google-page-option' ) ) ? tfopt( 'google-page-option' ) : "false";
+			$tf_google_map = function_exists( 'is_tf_pro' ) && is_tf_pro() && ! empty( BAFG_Before_After_Gallery::beaf_opt( 'google-page-option' ) ) ? BAFG_Before_After_Gallery::beaf_opt( 'google-page-option' ) : "false";
 			wp_localize_script( 'tf-admin', 'tf_options', array(
 				'ajax_url'          => admin_url( 'admin-ajax.php' ),
 				'nonce'             => wp_create_nonce( 'tf_options_nonce' ),
