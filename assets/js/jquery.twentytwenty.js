@@ -152,6 +152,104 @@
            
     	}
         container.css( "height", offset.h);
+
+        /*
+        * Auto video pause and sound control based on slider handle position
+        * @author : Abu Hena
+        **/ 
+        if(sliderMethod == 'method_4'){
+
+          if(container.hasClass('active')){
+            let sliderVideoType = container.data('video-type');
+            let totalWidth      = offset.w;
+            let totalHeight     = offset.h;
+            let sliderCurrentPosition;
+
+            if( sliderOrientation == 'vertical' ){
+              totalHeight           = totalHeight.replace('px', '');
+              sliderCurrentPosition = offset.ch;                  
+              sliderCurrentPosition = sliderCurrentPosition.replace('px', '');
+              sliderPositionPercent = sliderCurrentPosition/totalHeight * 100;
+            }else{                  
+              totalWidth            = totalWidth.replace('px', '');
+              sliderCurrentPosition = offset.cw;
+              sliderCurrentPosition = sliderCurrentPosition.replace('px', '');
+              sliderPositionPercent = sliderCurrentPosition/totalWidth * 100;
+            }
+            sliderPositionPercent = Math.round(sliderPositionPercent);        
+
+            let firstVideo  = container.children().eq(0).attr('id');
+            let secondVideo = container.children().eq(1).attr('id');
+
+            if(sliderVideoType == 'youtube'){
+
+              if(sliderPositionPercent > 50){
+
+                if(container.hasClass('muted') != true){
+                  players[firstVideo].setVolume(sliderPositionPercent);
+                  players[secondVideo].setVolume(100 - sliderPositionPercent);
+                }
+                players[secondVideo].pauseVideo();
+                players[firstVideo].playVideo();
+
+              }else if(sliderPositionPercent < 50){
+
+                players[firstVideo].pauseVideo();
+                players[secondVideo].playVideo();
+
+                if(container.hasClass('muted') != true){
+                  players[firstVideo].setVolume(sliderPositionPercent);
+                  players[secondVideo].setVolume(100 - sliderPositionPercent);
+                }
+
+              }
+
+            }else if(sliderVideoType == 'vimeo'){
+
+              if(sliderPositionPercent > 50){
+                vimeoPlayers[secondVideo].pause();
+                vimeoPlayers[firstVideo].play();
+
+                if(container.hasClass('muted') != true){
+                  //vimeo volume scale must be between 0 and 1
+                  vimeoPlayers[firstVideo].setVolume(sliderPositionPercent/100);
+                  vimeoPlayers[secondVideo].setVolume(1 - sliderPositionPercent/100);
+                }
+
+              }else if(sliderPositionPercent < 50){
+                vimeoPlayers[firstVideo].pause();
+                vimeoPlayers[secondVideo].play();
+
+                if(container.hasClass('muted') != true){
+                  //vimeo volume scale must be between 0 and 1
+                  vimeoPlayers[firstVideo].setVolume(sliderPositionPercent/100);
+                  vimeoPlayers[secondVideo].setVolume(1 - sliderPositionPercent/100);
+                }
+              }
+
+            }else if(sliderVideoType == 'self'){
+
+              if(sliderPositionPercent > 50){
+                beforeSelfVdo[0].play();
+                afterSelfVdo[0].pause();
+                
+                if(container.hasClass('muted') != true){
+                  beforeSelfVdo[0].volume = sliderPositionPercent/100;
+                  afterSelfVdo[0].volume  = 1 - sliderPositionPercent/100;
+                }
+              }else if(sliderPositionPercent < 50){
+                afterSelfVdo[0].play();
+                beforeSelfVdo[0].pause();
+
+                if(container.hasClass('muted') != true){
+                  beforeSelfVdo[0].volume = sliderPositionPercent/100;
+                  afterSelfVdo[0].volume  = 1 - sliderPositionPercent/100;
+                }
+              }
+
+            }
+          }
+        }
       };
 
       var adjustSlider = function(pct) {
