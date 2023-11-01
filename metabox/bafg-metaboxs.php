@@ -80,7 +80,7 @@ function bafg_metabox_callback($post){
                         </label>                        
                     </li>
                 </ul>
-                <p><?php _e('Choose a method to make a before after slider using a single image, 2 images , 3 images or Youtube video.','bafg')  ?></p>
+                <p><?php _e('Choose a method to make a before after slider using a single image, 2 images , 3 images or Video Slider.','bafg')  ?></p>
             </td>
         </tr>
         <?php
