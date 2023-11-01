@@ -341,8 +341,8 @@ Yes, We provide full support on the WordPress.org forums. You can also post ques
 
 = 4.4.3 – 01/11/2023 =
 
-- Improvement: Video Slider auto play/pause.
-- Improvement: Video sound decrease and increase as per the sliding movement.
+- Improvement: Video Slider auto play/pause(Pro)
+- Improvement: Video sound decrease and increase as per the sliding movement(Pro)
 - Improvement: Design Improvement for slider.
 
 = 4.4.2 – 25/10/2023 =
