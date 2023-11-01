@@ -13,13 +13,26 @@
  */
 
 // Exit if accessed directly
-if (!defined('ABSPATH')) {
+if ( !defined( 'ABSPATH' ) ) {
 	exit();
 }
+
+//define all necessary constants
+define( 'BEAF_PLUGIN_PATH', plugin_dir_path( __FILE__ ) );
+define( 'BEAF_OPTIONS_PATH', BEAF_PLUGIN_PATH . 'admin/tf-options/' );
 
 class BAFG_Before_After_Gallery {
     
     public function __construct(){
+
+        /**
+         * Option framework include
+         */
+        if( file_exists( BEAF_OPTIONS_PATH . 'TF_Options.php' ) ){
+            require_once BEAF_OPTIONS_PATH . 'TF_Options.php';
+        }else{
+            self::beaf_file_missing( BEAF_OPTIONS_PATH . 'TF_Options.php' );
+        }
       
         /*
         * Enqueue css and js for BAFG
@@ -92,6 +105,21 @@ class BAFG_Before_After_Gallery {
 
         
         
+    }
+
+    /**
+     * File missing notice
+     * @author Abu Hena
+     * @since 5.0.0
+     */
+    public static function beaf_file_missing( $files = '' ) {
+        if ( is_admin() ) {
+            if ( ! empty( $files ) ) {
+                $class   = 'notice notice-error';
+                $message = '<strong>' . $files . '</strong>' . __( ' file is missing! It is required to function Before After properly!', 'bafg' );
+                printf( '<div class="%1$s"><p>%2$s</p></div>', esc_attr( $class ), $message );
+            }
+        }
     }
     
     /*
