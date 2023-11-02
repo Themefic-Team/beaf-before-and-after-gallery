@@ -102,54 +102,14 @@ if ( ! class_exists( 'TF_Settings' ) ) {
 		 * @author Foysal
 		 */
 		public function tf_options() {
-			add_menu_page(
-				$this->option_title,
-				$this->option_title,
-				'manage_options',
-				$this->option_id,
-				array( $this, 'tf_options_page' ),
-				$this->option_icon,
-				$this->option_position
-			);
-
-            //Dashboard submenu
-			add_submenu_page(
-				$this->option_id,
-				__('Dashboard', 'bafg'),
-				__('Dashboard', 'bafg'),
-				'manage_options',
-				'tf_dashboard',
-				array( $this, 'tf_dashboard_page' ),
-			);
-
 			//Setting submenu
 			add_submenu_page(
-				$this->option_id,
-				__('Settings', 'bafg'),
+				'edit.php?post_type=bafg',
+				__('Beaf Settings', 'bafg'),
 				__('Settings', 'bafg'),
 				'manage_options',
-				$this->option_id . '#tab=general',
+				'beaf_settings',
 				array( $this, 'tf_options_page' ),
-			);
-
-			//Get Help submenu
-			add_submenu_page(
-				$this->option_id,
-				__('Get Help', 'bafg'),
-				__('Get Help', 'bafg'),
-				'manage_options',
-				'tf_get_help',
-				array( $this,'tf_get_help_callback'),
-			);
-
-			// Shortcode submenu
-			add_submenu_page(
-				$this->option_id,
-				__('Shortcodes', 'bafg'),
-				__('Shortcodes', 'bafg'),
-				'manage_options',
-				'tf_shortcodes',
-				array( 'TF_Shortcodes','tf_shortcode_callback'),
 			);
 
 			if ( function_exists('is_tf_pro') ) {
@@ -165,7 +125,7 @@ if ( ! class_exists( 'TF_Settings' ) ) {
 			}
 
 			// remove first submenu
-			remove_submenu_page( $this->option_id, $this->option_id );
+			//remove_submenu_page( $this->option_id, $this->option_id );
 
 		}
 
@@ -174,8 +134,8 @@ if ( ! class_exists( 'TF_Settings' ) ) {
 		?>
 		<div class="tf-setting-top-bar">
 			<div class="version">
-				<img src="<?php echo TF_ASSETS_APP_URL; ?>images/bafg-logo.webp" alt="logo">
-				<span>v<?php echo esc_attr( TOURFIC ); ?></span>
+				<img src="images/bafg-logo.webp" alt="logo">
+				<span>v 4 ?></span>
 			</div>
 			<div class="other-document">
 				<svg width="26" height="25" viewBox="0 0 26 25" fill="none" xmlns="http://www.w3.org/2000/svg" style="color: #003c79;background: ;">
@@ -212,186 +172,6 @@ if ( ! class_exists( 'TF_Settings' ) ) {
 		}
 
 		/**
-		 * Options Page HTML
-		 * @author Jahid, Foysal
-		 */
-		public function tf_dashboard_page() {
-            $current_page_url = $this->get_current_page_url();
-            $query_string = $this->get_query_string($current_page_url);
-
-			?>
-			<div class="tf-setting-dashboard">
-				<!-- dashboard-header-include -->
-				<?php echo tf_dashboard_header(); ?>
-
-				<div class="tf-setting-preview">
-				<!-- dashboard-banner-section -->
-				<div class="tf-setting-banner">
-					<div class="tf-setting-banner-content">
-						<img src="<?php echo TF_ASSETS_APP_URL; ?>images/bafg-logo-white.png" alt="logo">
-						<span>Build & Manage Your Next <b>Travel or Hotel Booking Website</b>with Tourfic</span>
-					</div>
-					<div class="tf-setting-banner-image">
-						<img src="<?php echo TF_ASSETS_APP_URL; ?>images/hotel-booking-management-system@2x.webp" alt="Banner Image">
-					</div>
-				</div>
-				<!-- dashboard-banner-section -->
-
-				<!-- dashboard-performance-section -->
-
-				<div class="tf-setting-performace-section">
-					<h2><?php _e("Overview","bafg"); ?></h2>
-					<div class="tf-performance-grid">
-						<div class="tf-single-performance-grid">
-							<div class="tf-single-performance-icon">
-							<img src="<?php echo TF_ASSETS_APP_URL; ?>images/tf-hotel.png" alt="total Hotel">
-							</div>
-							<div class="tf-single-performance-content">
-								<p><?php _e("Total Hotels","bafg"); ?></p>
-								<h3>
-									<?php
-									$tf_total_hotels = array(
-										'post_type'      => 'tf_hotel',
-										'post_status'    => 'publish',
-										'posts_per_page' => - 1
-									);
-									echo count( get_posts ($tf_total_hotels ) );
-									?>
-								</h3>
-							</div>
-						</div>
-						
-						<div class="tf-single-performance-grid">
-							<div class="tf-single-performance-icon">
-							<img src="<?php echo TF_ASSETS_APP_URL; ?>images/tf-tours.png" alt="total Tours">
-							</div>
-							<div class="tf-single-performance-content">
-								<p><?php _e("Total Tours","bafg"); ?></p>
-								<h3>
-									<?php
-									$tf_total_tours = array(
-										'post_type'      => 'tf_tours',
-										'post_status'    => 'publish',
-										'posts_per_page' => - 1
-									);
-									echo count( get_posts ($tf_total_tours ));
-									?>
-								</h3>
-							</div>
-						</div>
-
-                        <div class="tf-single-performance-grid">
-                            <div class="tf-single-performance-icon">
-                                <img src="<?php echo TF_ASSETS_APP_URL; ?>images/tf-apartment.png" alt="total apartment">
-                            </div>
-                            <div class="tf-single-performance-content">
-                                <p><?php _e("Total Apartments","bafg"); ?></p>
-                                <h3>
-									<?php
-									$tf_total_apartments = array(
-										'post_type'      => 'tf_apartment',
-										'post_status'    => 'publish',
-										'posts_per_page' => - 1
-									);
-									echo count( get_posts ($tf_total_apartments ) );
-									?>
-                                </h3>
-                            </div>
-                        </div>
-
-						<div class="tf-single-performance-grid">
-							<div class="tf-single-performance-icon">
-							<img src="<?php echo TF_ASSETS_APP_URL; ?>images/tf-booking-online.png" alt="total Booking">
-							</div>
-							<div class="tf-single-performance-content">
-								<p><?php _e("Total Bookings","bafg"); ?></p>
-								<h3>
-									<?php
-									$tf_order_query_orders = wc_get_orders( array(
-											'limit'  => - 1,
-											'type'   => 'shop_order',
-											'status' => array( 'wc-completed' ),
-										)
-									);
-									echo count( $tf_order_query_orders );
-									?>
-								</h3>
-							</div>
-						</div>
-						<div class="tf-single-performance-grid">
-							<div class="tf-single-performance-icon">
-							<img src="<?php echo TF_ASSETS_APP_URL; ?>images/tf-add-user.png" alt="total Customer">
-							</div>
-							<div class="tf-single-performance-content">
-								<p><?php _e("Total Customers","bafg"); ?></p>
-								<h3>
-									<?php
-									$tf_customer_query = new WP_User_Query(
-										array(
-											'role' => 'customer',
-										)
-									);
-									echo count( $tf_customer_query->get_results() );
-									?>
-								</h3>
-							</div>
-						</div>
-					</div>
-				</div>
-				
-				<div class="tf-setting-performace-section">
-					<div id="tf-report-loader">
-						<img src="<?php echo TF_ASSETS_APP_URL; ?>images/loader.gif" alt="Loader">
-					</div>
-					<div class="tf-report-filter">
-						<h2><?php _e("Reports","bafg"); ?></h2>
-						<div class="tf-dates-filter">
-							<div class="tf-month-filter">
-								<span><?php _e("Year","bafg"); ?></span>
-								<select name="tf-year-report" id="tf-year-report">
-									<option value="23"><?php _e("2023","bafg"); ?></option>
-									<option value="22"><?php _e("2022","bafg"); ?></option>
-									<option value="21"><?php _e("2021","bafg"); ?></option>
-									<option value="20"><?php _e("2020","bafg"); ?></option>
-									<option value="19"><?php _e("2019","bafg"); ?></option>
-									<option value="18"><?php _e("2018","bafg"); ?></option>
-									<option value="17"><?php _e("2017","bafg"); ?></option>
-								</select>
-							</div>
-							<div class="tf-month-filter">
-								<span><?php _e("Month","bafg"); ?></span>
-								<select name="tf-month-report" id="tf-month-report">
-									<option value=""><?php _e("Select Month","bafg"); ?></option>
-									<option value="1"><?php _e("January","bafg"); ?></option>
-									<option value="2"><?php _e("February","bafg"); ?></option>
-									<option value="3"><?php _e("March","bafg"); ?></option>
-									<option value="4"><?php _e("April","bafg"); ?></option>
-									<option value="5"><?php _e("May","bafg"); ?></option>
-									<option value="6"><?php _e("June","bafg"); ?></option>
-									<option value="7"><?php _e("July","bafg"); ?></option>
-									<option value="8"><?php _e("August","bafg"); ?></option>
-									<option value="9"><?php _e("September","bafg"); ?></option>
-									<option value="10"><?php _e("October","bafg"); ?></option>
-									<option value="11"><?php _e("November","bafg"); ?></option>
-									<option value="12"><?php _e("December","bafg"); ?></option>
-								</select>
-							</div>
-						</div>
-					</div>
-					<div class="tf-order-report">
-						<canvas id="tf_months" width="800" height="450"></canvas>
-					</div>
-				</div>
-
-				<!-- deshboar-performance-section -->
-
-				</div>
-			</div>
-            
-			<?php
-		}
-
-		/**
 		 * Get Help Page
 		 * @author Jahid
 		 */
@@ -410,7 +190,7 @@ if ( ! class_exists( 'TF_Settings' ) ) {
                         <a href="<?php echo esc_url(admin_url( 'admin.php?page=tf-setup-wizard' )) ?>" class="tf-admin-btn tf-btn-secondary"><?php _e("Setup Wizard","bafg"); ?></a>
 					</div>
 					<div class="tf-help-center-image">
-						<img src="<?php echo TF_ASSETS_APP_URL; ?>images/setup_wizard.png" alt="setup wizard">
+						<img src="<?php echo BEAF_ASSETS_URL; ?>images/setup_wizard.png" alt="setup wizard">
 					</div>
 				</div>
 
@@ -420,21 +200,21 @@ if ( ! class_exists( 'TF_Settings' ) ) {
                         <p><?php _e("To help you to get started, we put together the documentation, support link, videos and FAQs here.","bafg"); ?></p>
                     </div>
                     <div class="tf-help-center-image">
-                        <img src="<?php echo TF_ASSETS_APP_URL; ?>images/help-center.jpg" alt="HELP Center Image">
+                        <img src="<?php echo BEAF_ASSETS_URL; ?>images/help-center.jpg" alt="HELP Center Image">
                     </div>
                 </div>
 
 				<div class="tf-support-document">
 					<div class="tf-single-support">
 						<a href="https://themefic.com/docs/bafg/" target="_blank">
-							<img src="<?php echo TF_ASSETS_APP_URL; ?>images/tf-documents.png" alt="Document">
+							<img src="<?php echo BEAF_ASSETS_URL; ?>images/tf-documents.png" alt="Document">
 							<h3><?php _e("Documentation","bafg"); ?></h3>
 							<span><?php _e("Read More","bafg"); ?></span>
 						</a>
 					</div>
 					<div class="tf-single-support">
 						<a href="https://portal.themefic.com/support/" target="_blank">
-							<img src="<?php echo TF_ASSETS_APP_URL; ?>images/tf-mail.png" alt="Document">
+							<img src="<?php echo BEAF_ASSETS_URL; ?>images/tf-mail.png" alt="Document">
 							<h3><?php _e("Email Support","bafg"); ?></h3>
 							<span><?php _e("Contact Us","bafg"); ?></span>
 						</a>
@@ -442,7 +222,7 @@ if ( ! class_exists( 'TF_Settings' ) ) {
 					
 					<div class="tf-single-support">
 						<a href="https://themefic.com/bafg/" target="_blank">
-							<img src="<?php echo TF_ASSETS_APP_URL; ?>images/tf-comment.png" alt="Document">
+							<img src="<?php echo BEAF_ASSETS_URL; ?>images/tf-comment.png" alt="Document">
 							<h3><?php _e("Live Chat","bafg"); ?></h3>
 							<span><?php _e("Chat Now","bafg"); ?></span>
 						</a>
@@ -450,7 +230,7 @@ if ( ! class_exists( 'TF_Settings' ) ) {
 					
 					<div class="tf-single-support">
 						<a href="https://www.youtube.com/playlist?list=PLY0rtvOwg0ylCl7NTwNHUPq-eY1qwUH_N" target="_blank">
-							<img src="<?php echo TF_ASSETS_APP_URL; ?>images/tf-tutorial.png" alt="Document">
+							<img src="<?php echo BEAF_ASSETS_URL; ?>images/tf-tutorial.png" alt="Document">
 							<h3><?php _e("Video Tutorials","bafg"); ?></h3>
 							<span><?php _e("Watch Video","bafg"); ?></span>
 						</a>

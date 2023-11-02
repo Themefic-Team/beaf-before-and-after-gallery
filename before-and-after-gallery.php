@@ -28,6 +28,20 @@ define( 'BEAF_ASSETS_URL', plugin_dir_url( __FILE__ ) . 'assets/' );
 class BAFG_Before_After_Gallery {
     
     public function __construct(){
+        
+        /**
+         * Include wp plugin.php file
+         */
+        if( ! function_exists( 'is_plugin_active' ) ){
+            require_once ABSPATH . 'wp-admin/includes/plugin.php';
+        }
+
+        /**
+         * Include admin function file
+         */
+        if( file_exists( BEAF_ADMIN_PATH . 'inc/functions.php' ) ){
+            require_once BEAF_ADMIN_PATH . 'inc/functions.php';
+        }
 
         /**
          * Option framework include

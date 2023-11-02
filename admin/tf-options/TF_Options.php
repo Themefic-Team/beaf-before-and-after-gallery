@@ -135,163 +135,10 @@ if ( ! class_exists( 'TF_Options' ) ) {
 		public function tf_options_admin_enqueue_scripts( $screen ) {
 			global $post_type;
 			$tf_options_screens   = array(
-				'toplevel_page_tf_settings',
-				'bafg-settings_page_tf_get_help',
-				'bafg-settings_page_tf_license_info',
-				'bafg-settings_page_tf_dashboard',
-				'bafg-settings_page_tf_shortcodes',
-				'bafg-vendor_page_tf_vendor_reports',
-				'bafg-vendor_page_tf_vendor_list',
-				'bafg-vendor_page_tf_vendor_commissions',
-				'bafg-vendor_page_tf_vendor_withdraw',
-				'tf_hotel_page_tf-hotel-backend-booking',
-				'tf_tours_page_tf-tour-backend-booking',
-				'tf_tours_page_tf_tours_booking',
-				'tf_hotel_page_tf_hotel_booking',
-				'tf_apartment_page_tf_apartment_booking'
+				'bafg_page_beaf_settings',
 			);
-			$tf_options_post_type = array( 'tf_hotel', 'tf_tours', 'tf_apartment' );
+			$tf_options_post_type = array( 'bafg' );
 			$admin_date_format_for_users  = !empty(BAFG_Before_After_Gallery::beaf_opt( "tf-date-format-for-users")) ? BAFG_Before_After_Gallery::beaf_opt( "tf-date-format-for-users") : "Y/m/d";
-			if("bafg-settings_page_tf_dashboard"==$screen){
-				//Order Data Retrive
-				$tf_old_order_limit = new WC_Order_Query( array(
-					'limit'   => - 1,
-					'orderby' => 'date',
-					'order'   => 'ASC',
-					'return'  => 'ids',
-				) );
-				$order              = $tf_old_order_limit->get_orders();
-				// Booking Month
-				$tf_co1  = 0;
-				$tf_co2  = 0;
-				$tf_co3  = 0;
-				$tf_co4  = 0;
-				$tf_co5  = 0;
-				$tf_co6  = 0;
-				$tf_co7  = 0;
-				$tf_co8  = 0;
-				$tf_co9  = 0;
-				$tf_co10 = 0;
-				$tf_co11 = 0;
-				$tf_co12 = 0;
-				// Booking Cancel Month
-				$tf_cr1  = 0;
-				$tf_cr2  = 0;
-				$tf_cr3  = 0;
-				$tf_cr4  = 0;
-				$tf_cr5  = 0;
-				$tf_cr6  = 0;
-				$tf_cr7  = 0;
-				$tf_cr8  = 0;
-				$tf_cr9  = 0;
-				$tf_cr10 = 0;
-				$tf_cr11 = 0;
-				$tf_cr12 = 0;
-				foreach ( $order as $item_id => $item ) {
-					$itemmeta         = wc_get_order( $item );
-					$tf_ordering_date = $itemmeta->get_date_created();
-					if ( $tf_ordering_date->date( 'n-y' ) == '1-' . date( 'y' ) ) {
-						if ( "completed" == $itemmeta->get_status() ) {
-							$tf_co1 += 1;
-						}
-						if ( "cancelled" == $itemmeta->get_status() || "refunded" == $itemmeta->get_status() ) {
-							$tf_cr1 += 1;
-						}
-					}
-					if ( $tf_ordering_date->date( 'n-y' ) == '2-' . date( 'y' ) ) {
-						if ( "completed" == $itemmeta->get_status() ) {
-							$tf_co2 += 1;
-						}
-						if ( "cancelled" == $itemmeta->get_status() || "refunded" == $itemmeta->get_status() ) {
-							$tf_cr2 += 1;
-						}
-					}
-					if ( $tf_ordering_date->date( 'n-y' ) == '3-' . date( 'y' ) ) {
-						if ( "completed" == $itemmeta->get_status() ) {
-							$tf_co3 += 1;
-						}
-						if ( "cancelled" == $itemmeta->get_status() || "refunded" == $itemmeta->get_status() ) {
-							$tf_cr3 += 1;
-						}
-					}
-					if ( $tf_ordering_date->date( 'n-y' ) == '4-' . date( 'y' ) ) {
-						if ( "completed" == $itemmeta->get_status() ) {
-							$tf_co4 += 1;
-						}
-						if ( "cancelled" == $itemmeta->get_status() || "refunded" == $itemmeta->get_status() ) {
-							$tf_cr4 += 1;
-						}
-					}
-					if ( $tf_ordering_date->date( 'n-y' ) == '5-' . date( 'y' ) ) {
-						if ( "completed" == $itemmeta->get_status() ) {
-							$tf_co5 += 1;
-						}
-						if ( "cancelled" == $itemmeta->get_status() || "refunded" == $itemmeta->get_status() ) {
-							$tf_cr5 += 1;
-						}
-					}
-					if ( $tf_ordering_date->date( 'n-y' ) == '6-' . date( 'y' ) ) {
-						if ( "completed" == $itemmeta->get_status() ) {
-							$tf_co6 += 1;
-						}
-						if ( "cancelled" == $itemmeta->get_status() || "refunded" == $itemmeta->get_status() ) {
-							$tf_cr6 += 1;
-						}
-					}
-					if ( $tf_ordering_date->date( 'n-y' ) == '7-' . date( 'y' ) ) {
-						if ( "completed" == $itemmeta->get_status() ) {
-							$tf_co7 += 1;
-						}
-						if ( "cancelled" == $itemmeta->get_status() || "refunded" == $itemmeta->get_status() ) {
-							$tf_cr7 += 1;
-						}
-					}
-					if ( $tf_ordering_date->date( 'n-y' ) == '8-' . date( 'y' ) ) {
-						if ( "completed" == $itemmeta->get_status() ) {
-							$tf_co8 += 1;
-						}
-						if ( "cancelled" == $itemmeta->get_status() || "refunded" == $itemmeta->get_status() ) {
-							$tf_cr8 += 1;
-						}
-					}
-					if ( $tf_ordering_date->date( 'n-y' ) == '9-' . date( 'y' ) ) {
-						if ( "completed" == $itemmeta->get_status() ) {
-							$tf_co9 += 1;
-						}
-						if ( "cancelled" == $itemmeta->get_status() || "refunded" == $itemmeta->get_status() ) {
-							$tf_cr9 += 1;
-						}
-					}
-					if ( $tf_ordering_date->date( 'n-y' ) == '10-' . date( 'y' ) ) {
-						if ( "completed" == $itemmeta->get_status() ) {
-							$tf_co10 += 1;
-						}
-						if ( "cancelled" == $itemmeta->get_status() || "refunded" == $itemmeta->get_status() ) {
-							$tf_cr10 += 1;
-						}
-					}
-					if ( $tf_ordering_date->date( 'n-y' ) == '11-' . date( 'y' ) ) {
-						if ( "completed" == $itemmeta->get_status() ) {
-							$tf_co11 += 1;
-						}
-						if ( "cancelled" == $itemmeta->get_status() || "refunded" == $itemmeta->get_status() ) {
-							$tf_cr11 += 1;
-						}
-					}
-					if ( $tf_ordering_date->date( 'n-y' ) == '12-' . date( 'y' ) ) {
-						if ( "completed" == $itemmeta->get_status() ) {
-							$tf_co12 += 1;
-						}
-						if ( "cancelled" == $itemmeta->get_status() || "refunded" == $itemmeta->get_status() ) {
-							$tf_cr12 += 1;
-						}
-					}
-				}
-				$tf_complete_orders = [ $tf_co1, $tf_co2, $tf_co3, $tf_co4, $tf_co5, $tf_co6, $tf_co7, $tf_co8, $tf_co9, $tf_co10, $tf_co11, $tf_co12 ];
-				$tf_cancel_orders   = [ $tf_cr1, $tf_cr2, $tf_cr3, $tf_cr4, $tf_cr5, $tf_cr6, $tf_cr7, $tf_cr8, $tf_cr9, $tf_cr10, $tf_cr11, $tf_cr12 ];
-				$tf_chart_enable    = 1;
-			}
-
 
 			//Css
 
@@ -336,9 +183,6 @@ if ( ! class_exists( 'TF_Options' ) ) {
 				'ajax_url'          => admin_url( 'admin-ajax.php' ),
 				'nonce'             => wp_create_nonce( 'tf_options_nonce' ),
 				'gmaps'             => $tf_google_map,
-				'tf_complete_order' => isset( $tf_complete_orders ) ? $tf_complete_orders : '',
-				'tf_cancel_orders'  => isset( $tf_cancel_orders ) ? $tf_cancel_orders : '',
-				'tf_chart_enable'   => isset( $tf_chart_enable ) ? $tf_chart_enable : '',
 				'tf_admin_date_format' => $admin_date_format_for_users
 			) );
 		}
