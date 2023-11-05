@@ -182,5 +182,82 @@ TF_Metabox::metabox( 'beaf_meta', array(
 			),
 
 		),
+        'options' => array(
+            'title' => __( 'Options', 'bafg' ),
+            'icon'  => 'fa fa-cog',
+            'fields' => array(
+                array(
+                    'id'       => 'bafg_default_offset',
+                    'type'     => 'text',
+                    'label'    => __( 'Default offset', 'bafg' ),
+                    'default'  => '0.5',
+                    'subtitle' => __( 'How much of the before image is visible when the page loads. (e.g: 0.7)', 'bafg' ),
+                ),
+                array(
+                    'id'       => 'bafg_before_label',
+                    'type'     => 'text',
+                    'label'    => __( 'Before Label', 'bafg' ),
+                    'default'  => 'Before',
+                    'subtitle' => __( 'Set a custom label for the before image.', 'bafg' ),
+                ),
+                array(
+                    'id'       => 'bafg_after_label',
+                    'type'     => 'text',
+                    'label'    => __( 'After Label', 'bafg' ),
+                    'default'  => 'After',
+                    'subtitle' => __( 'Set a custom label for the after image.', 'bafg' ),
+                ),
+                array(
+                    'id'       => 'bafg_auto_slide',
+                    'type'     => 'switch',
+                    'label'    => __( 'Auto Slide', 'bafg' ),
+                    'default'  => false,
+                    'subtitle' => __( 'The before and after image will slide automatically.', 'bafg' ),
+                ),
+                array(
+                    'id'       => 'bafg_on_scroll_slide',
+                    'type'     => 'switch',
+                    'label'    => __( 'On Scroll Slide', 'bafg' ),
+                    'default'  => false,
+                    'subtitle' => __( 'The before and after image slider will slide on scroll automatically.', 'bafg' ),
+                    'dependency' => array( 'bafg_auto_slide', '==', false ),
+                ),
+                array(
+                    'id'       => 'bafg_slide_handle',
+                    'type'     => 'switch',
+                    'label'    => __( 'Disable Handle', 'bafg' ),
+                    'default'  => false,
+                    'subtitle' => __( 'Disable the slider handle.', 'bafg' ),
+                ),                
+                array(
+                    'id'       => 'bafg_popup_preview',
+                    'type'     => 'switch',
+                    'label'    => __( 'Full Screen View', 'bafg' ),
+                    'default'  => false,
+                ),               
+                array(
+                    'id'       => 'bafg_click_to_move',
+                    'type'     => 'switch',
+                    'label'    => __( 'Click To Move', 'bafg' ),
+                    'default'  => false,
+                    'subtitle' => __( 'Allow a user to click (or tap) anywhere on the image to move the slider to that location.', 'bafg' ),
+                ),
+                array(
+                    'id'       => 'bafg_no_overlay',
+                    'type'     => 'switch',
+                    'label'    => __( 'Show Overlay', 'bafg' ),
+                    'default'  => true,
+                    'subtitle' => __( 'Show overlay on the before and after image.', 'bafg' ),
+                ),
+                array(
+                    'id'       => 'skip_lazy_load',
+                    'type'     => 'switch',
+                    'label'    => __( 'Skip Lazy Load', 'bafg' ),
+                    'default'  => true,
+                    'subtitle' => __( 'Conflicting with lazy load? Try to skip lazy load.', 'bafg' ),
+                ),
+            )
+            
+        )
 	),
 ));
