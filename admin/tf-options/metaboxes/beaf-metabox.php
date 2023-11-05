@@ -258,6 +258,33 @@ TF_Metabox::metabox( 'beaf_meta', array(
                 ),
             )
             
+        ),
+        'style' => array(
+            'title' => __( 'Style', 'bafg' ),
+            'icon'  => 'fa fa-paint-brush',
+            'fields' => array(
+                array(
+                    'id'       => 'bafg_before_label_background',
+                    'type'     => 'color',
+                    'label'    => __( 'Before Label Background', 'bafg' ),
+                ),
+                array(
+                    'id'       => 'bafg_before_label_color',
+                    'type'     => 'color',
+                    'label'    => __( 'Before Label Color', 'bafg' ),
+                ),
+                array(
+                    'id'       => 'bafg_after_label_background',
+                    'type'     => 'color',
+                    'label'    => __( 'After Label Background', 'bafg' ),
+                ),
+                array(
+                    'id'       => 'bafg_after_label_color',
+                    'type'     => 'color',
+                    'label'    => __( 'After Label Color', 'bafg' ),
+                )
+            )
         )
+
 	),
 ));
