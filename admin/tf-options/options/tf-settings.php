@@ -64,7 +64,54 @@ TF_Settings::option( 'beaf_settings', array(
 						'label'    => __( 'Enable Watermark', 'bafg' ),
 						'is_pro'   => true,
 					),
+					array(
+						'id'       => 'path',
+						'type'     => 'image',
+						'title'    => __( 'Watermark Image Upload (PNG Recommended)', 'bafg' ),
+						'label'    => __( 'Upload Watermark Image', 'bafg' ),
+					),
+					array(
+						'id'       => 'enable_opacity',
+						'type'     => 'checkbox',
+						'title'    => __( 'Enable Watermark Opacity', 'bafg' ),
+						'label'    => __( 'Enable Watermark Opacity', 'bafg' ),						
+					),
+					array(
+						'id'       => 'watermark_position',
+						'type'     => 'select',
+						'title'    => __( 'Enable Watermark Opacity', 'bafg' ),
+						'label'    => __( 'Enable Watermark Opacity', 'bafg' ),
+						'options'  => array(
+							'top-left'    => 'Top Left',
+							'top-right'   => 'Top Right',
+							'bottom-left' => 'Bottom Left',
+							'bottom-right' => 'Bottom Right',
+						)				
+					),
 				)
 			),
+			'shortcodes' => array(
+				'title' => __( 'Shortcodes', 'bafg' ),
+				'fields' => array(
+					array(
+						'id'       => 'bafg_before_after_shortcode',
+						'title'    => __( 'All the available shortcodes', 'bafg' ),
+						'type' => 'notice',
+						'content' => "<code>[bafg_preview]</code> - Before After Gallery Frontend Preview (Users will be able to upload images without login)",
+
+					)
+				)
+			),
+			'documentation' => array(
+				'title' => __( 'Documentation', 'bafg' ),
+				'fields' => array(
+					array(
+						'id'       => 'bafg_documentation',
+						'title'    => __( 'Documentation', 'bafg' ),
+						'type' => 'notice',
+						'content' => '<a href="https://themefic.com/docs/beaf" target="_blank">Please click here to visit the Documentation page.</a>',
+					)
+				)
+			)
 	),
 ) );

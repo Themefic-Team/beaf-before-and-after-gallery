@@ -179,12 +179,7 @@ if ( ! class_exists( 'TF_Options' ) ) {
 			wp_enqueue_script( 'wp-color-picker' );
 
 			$tf_google_map = function_exists( 'is_tf_pro' ) && is_tf_pro() && ! empty( BAFG_Before_After_Gallery::beaf_opt( 'google-page-option' ) ) ? BAFG_Before_After_Gallery::beaf_opt( 'google-page-option' ) : "false";
-			wp_localize_script( 'tf-admin', 'tf_options', array(
-				'ajax_url'          => admin_url( 'admin-ajax.php' ),
-				'nonce'             => wp_create_nonce( 'tf_options_nonce' ),
-				'gmaps'             => $tf_google_map,
-				'tf_admin_date_format' => $admin_date_format_for_users
-			) );
+			
 		}
 
 		/**

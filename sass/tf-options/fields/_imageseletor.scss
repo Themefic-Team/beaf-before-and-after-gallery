@@ -1,6 +1,7 @@
 .tf-image-radio-group {
     display: flex;
     align-items: initial;
+    flex-wrap: wrap;
 
     li {
         display: inline-block;
@@ -9,15 +10,10 @@
         border-radius: 5px;
 
         .tf-image-checkbox img {
-            width: 240px;
+            width: 80px;
             object-fit: cover;
             object-position: top;
-            height: 180px;
-            transition: object-position 2s ease-in-out, border-color 0.3s ease-in-out;
-
-            &:hover {
-                object-position: bottom;
-            }
+            height: 80px;
         }
 
         .tf-image-checkbox > input {

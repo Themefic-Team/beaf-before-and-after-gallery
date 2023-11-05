@@ -15,10 +15,15 @@ if ( ! class_exists( 'TF_imageselect' ) ) {
 				echo '<ul class="tf-image-radio-group ' . esc_attr( $inline ) . '">';
 				foreach ( $this->field['options'] as $key => $value ) {
 					$checked = $key == $this->value ? ' checked' : '';
+					if(isset($value['is_pro']) && $value['is_pro'] == true){
+						$disabled = 'disabled';
+					}else{
+						$disabled = '';
+					}
                     ?>
                     <li>
                     <label class="tf-image-checkbox">
-                    <?php echo '<input type="radio" id="' . $this->field_name() . '[' . $key . ']" name="' . $this->field_name() . '" data-depend-id="' . esc_attr( $this->field['id'] ) . '' . $this->parent_field . '" value="' . esc_attr( $key ) . '" ' . $checked . ' '. $this->field_attributes() .'/>';
+                    <?php echo '<input '.$disabled.' type="radio" id="' . $this->field_name() . '[' . $key . ']" name="' . $this->field_name() . '" data-depend-id="' . esc_attr( $this->field['id'] ) . '' . $this->parent_field . '" value="' . esc_attr( $key ) . '" ' . $checked . ' '. $this->field_attributes() .'/>';
                     ?>
                         <img src="<?php echo esc_url($value['url']); ?>" alt="<?php echo esc_attr($value['title']); ?>">
                     </label>  

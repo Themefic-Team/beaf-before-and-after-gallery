@@ -2855,6 +2855,7 @@ table.tf-table tr:last-child {
 .tf-image-radio-group {
   display: flex;
   align-items: initial;
+  flex-wrap: wrap;
 }
 .tf-image-radio-group li {
   display: inline-block;
@@ -2863,14 +2864,10 @@ table.tf-table tr:last-child {
   border-radius: 5px;
 }
 .tf-image-radio-group li .tf-image-checkbox img {
-  width: 240px;
+  width: 80px;
   object-fit: cover;
   object-position: top;
-  height: 180px;
-  transition: object-position 2s ease-in-out, border-color 0.3s ease-in-out;
-}
-.tf-image-radio-group li .tf-image-checkbox img:hover {
-  object-position: bottom;
+  height: 80px;
 }
 .tf-image-radio-group li .tf-image-checkbox > input {
   display: none;
