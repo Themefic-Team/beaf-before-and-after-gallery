@@ -356,7 +356,7 @@ if ( ! class_exists( 'TF_Settings' ) ) {
 		<div class="tf-setting-dashboard">
 
 			<!-- deshboard-header-include -->
-			<?php echo tf_dashboard_header(); ?>
+			<?php echo beaf_dashboard_header(); ?>
 			
 			<div class="tf-setting-license">
 				<div class="tf-setting-license-tabs">

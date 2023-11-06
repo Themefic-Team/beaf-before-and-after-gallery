@@ -3,7 +3,7 @@
  * Dashboard header section
  * @author Jahid,Hena
  */
-function tf_dashboard_header() {
+function beaf_dashboard_header() {
 	?>
     <!-- deshboard-top-section -->
     <div class="tf-setting-top-bar">

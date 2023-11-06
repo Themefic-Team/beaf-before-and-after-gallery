@@ -1621,6 +1621,15 @@ table.tf-table tr:last-child {
   margin-bottom: 0px;
   display: block;
 }
+.tf-field .tf-field-label .tf-csf-badge {
+  margin-left: 13px;
+}
+.tf-field .tf-field-label .tf-csf-badge .tf-pro {
+  background-color: #F44336 !important;
+  margin: 0;
+  padding: 0 5px;
+  border-radius: 5px;
+}
 
 .tf-field.tf-field-heading .tf-fieldset {
   margin-top: 0px;
@@ -1632,6 +1641,24 @@ table.tf-table tr:last-child {
 
 .tf-inline-list {
   display: inline-block;
+}
+
+.tf-field-disable {
+  user-select: none;
+  opacity: 0.6;
+}
+
+.tf-csf-badge .tf-pro {
+  display: inline-block;
+  color: #fff;
+  padding: 3px 10px 3px 10px;
+  border-radius: 3px;
+  text-align: center;
+  margin: 5px 0 0 0;
+  font-size: 12px;
+  font-weight: 600;
+  line-height: 13px;
+  background: #b30000;
 }
 
 .tf-field-ical input,
