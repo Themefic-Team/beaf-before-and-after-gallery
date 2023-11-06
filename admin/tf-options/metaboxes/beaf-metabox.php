@@ -282,7 +282,182 @@ TF_Metabox::metabox( 'beaf_meta', array(
                     'id'       => 'bafg_after_label_color',
                     'type'     => 'color',
                     'label'    => __( 'After Label Color', 'bafg' ),
-                )
+                ),
+                'bafg_handle_color' => array(
+                    'id'       => 'bafg_handle_color',
+                    'type'     => 'color',
+                    'label'    => __( 'Handle Color', 'bafg' ),
+                    'is_pro'   => true               
+                ),
+                'bafg_overlay_color' => array(
+                    'id'       => 'bafg_overlay_color',
+                    'type'     => 'color',
+                    'label'    => __( 'Overlay Color', 'bafg' ),
+                    'is_pro'   => true
+                ),
+                'bafg_width' => array(
+                    'id'       => 'bafg_width',
+                    'type'     => 'text',
+                    'label'    => __( 'Slider Width', 'bafg' ),
+                    'is_pro'   => true
+                ),
+                'bafg_height' => array(
+                    'id'       => 'bafg_height',
+                    'type'     => 'text',
+                    'label'    => __( 'Slider Height', 'bafg' ),
+                    'is_pro'   => true
+                ),
+               'bafg_video_width' =>  array(
+                    'id'       => 'bafg_video_width',
+                    'type'     => 'text',
+                    'label'    => __( 'Video Width', 'bafg' ),
+                    'is_pro'   => true
+                ),
+                'bafg_video_height' =>  array(
+                    'id'       => 'bafg_video_height',
+                    'type'     => 'text',
+                    'label'    => __( 'Video Height', 'bafg' ),
+                    'is_pro'   => true
+                ),
+                'bafg_slider_alignment' =>  array(
+                    'id'       => 'bafg_slider_alignment',
+                    'type'     => 'select',
+                    'label'    => __( 'Slider Alignment', 'bafg' ),
+                    'is_pro'   => true,
+                    'options'  => array(
+                        '' => 'Default',
+                        'left' => 'Left',
+                        'center' => 'Center',
+                        'right' => 'Right'
+                    )
+                ),
+                array(
+                    'id' => 'bafg_heading',
+                    'type' => 'heading',
+                    'title' => __( 'Heading Styles', 'bafg' ),
+                ),
+                array(
+                    'id' => 'bafg_slider_info_heading_font_size',
+                    'type' => 'text',
+                    'label' => __( 'Font Size', 'bafg' ),
+                ),
+                array(
+                    'id' => 'bafg_slider_info_heading_font_color',
+                    'type' => 'color',
+                    'label' => __( 'Font Color', 'bafg' ),
+                ),
+                array(
+                    'id'      => 'bafg_slider_info_heading_alignment',
+                    'type'    => 'select',
+                    'label'   => __( 'Alignment', 'bafg' ),
+                    'options' => array(
+                            ''       => 'Default',
+                            'left'   => 'Left',
+                            'center' => 'Center',
+                            'right'  => 'Right'
+                        )
+                    ),
+                    array(
+                        'id'    => 'bafg_desc',
+                        'type'  => 'heading',
+                        'title' => __( 'Description Styles', 'bafg' ),
+                    ),
+                    array(
+                        'id'    => 'bafg_slider_info_desc_font_size',
+                        'type'  => 'text',
+                        'label' => __( 'Font Size', 'bafg' ),
+                    ),
+                    array(
+                        'id'    => 'bafg_slider_info_desc_font_color',
+                        'type'  => 'color',
+                        'label' => __( 'Font Color', 'bafg' ),
+                    ),
+                    array(
+                        'id'      => 'bafg_slider_info_desc_alignment',
+                        'type'    => 'select',
+                        'label'   => __( 'Alignment', 'bafg' ),
+                        'options' => array(
+                            ''       => 'Default',
+                            'left'   => 'Left',
+                            'center' => 'Center',
+                            'right'  => 'Right'
+                        )
+                    ),                        
+                    array(
+                        'id'    => 'bafg_readmore',
+                        'type'  => 'heading',
+                        'title' => __( 'Read more Styles', 'bafg' ),
+                    ),
+                    array(
+                        'id'      => 'bafg_slider_info_readmore_font_size',
+                        'type'    => 'text',
+                        'label'   => __( 'Font Size', 'bafg' ),
+                        'default' => 'eg. 14px'
+                    ),
+                    array(
+                        'id'      => 'bafg_slider_info_readmore_font_color',
+                        'type'    => 'color',
+                        'label'   => __( 'Font Color', 'bafg' ),                        
+                    ),
+                    array(
+                        'id'      => 'bafg_slider_info_readmore_bg_color',
+                        'type'    => 'color',
+                        'label'   => __( 'Background Color', 'bafg' ),
+                    ),
+                    //hover color
+                    array(
+                        'id'      => 'bafg_slider_info_readmore_hover_font_color',
+                        'type'    => 'color',
+                        'label'   => __( 'Hover Color', 'bafg' ),
+                    ),
+                    array(
+                        'id'      => 'bafg_slider_info_readmore_hover_bg_color',
+                        'type'    => 'color',
+                        'label'   => __( 'Hover Background Color', 'bafg' ),
+                    ),
+                    array(
+                        'id'      => 'bafg_slider_info_readmore_button_padding_top_bottom',
+                        'type'    => 'text',
+                        'label'   => __( 'Padding Top Bottom', 'bafg' ),
+                        'default' => 'eg. 14px'
+                    ),
+                    array(
+                        'id'      => 'bafg_slider_info_readmore_button_padding_left_right',
+                        'type'    => 'text',
+                        'label'   => __( 'Padding Left Right', 'bafg' ),
+                        'default' => 'eg. 14px'
+                    ),
+                    //border radius
+                    array(
+                        'id'      => 'bafg_slider_info_readmore_border_radius',
+                        'type'    => 'text',
+                        'label'   => __( 'Border Radius', 'bafg' ),
+                        'default' => 'eg. 14px'
+                    ),
+                    //button width
+                    array(
+                        'id'      => 'bafg_slider_info_readmore_button_width',
+                        'type'    => 'select',
+                        'label'   => __( 'Button Width', 'bafg' ),
+                        'options' => array(
+                            ''       => 'Default',
+                            'full-width'   => 'Full width',
+                        )
+                        ),
+                        //alignment
+                        array(
+                            'id'      => 'bafg_slider_info_readmore_alignment',
+                            'type'    => 'select',
+                            'label'   => __( 'Alignment', 'bafg' ),
+                            'options' => array(
+                                ''       => 'Default',
+                                'left'   => 'Left',
+                                'center' => 'Center',
+                                'right'  => 'Right'
+                            )
+                        )
+                    
+
             )
         )
 
