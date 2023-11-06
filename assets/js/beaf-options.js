@@ -13,6 +13,15 @@
             },
         });
 
+        $(window).on('load', function() {
+            $('.tf-field-disable').find('input, select, textarea, button, div, span').attr('disabled', 'disabled');
+        });
+
+        $(document).on('click', '.tf-field-pro', function(e) {
+            e.preventDefault();
+            window.open('https://themefic.com/plugins/beaf/pro/');
+        });
+
         /*
         * window url on change tab click
         * @author: Foysal

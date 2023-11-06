@@ -283,8 +283,12 @@ class BAFG_Before_After_Gallery {
         ), $atts) );
         
 		ob_start();
+
+        $meta = get_post_meta( $id, 'beaf_meta', true );
+        echo "<pre>";
+        var_dump($meta);
 		
-        $b_image              = get_post_meta( $id, 'bafg_before_image', true);
+        $b_image              = ! empty( $meta['bafg_before_image'] ) ? $meta['bafg_before_image'] : "";
         $a_image              = get_post_meta( $id, 'bafg_after_image', true);
         $orientation          = !empty(get_post_meta( $id, 'bafg_image_styles', true)) ? get_post_meta( $id, 'bafg_image_styles', true) : 'horizontal';
         $offset               = !empty(get_post_meta( $id, 'bafg_default_offset', true)) ? get_post_meta( $id, 'bafg_default_offset', true) : '0.5';
