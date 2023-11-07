@@ -7,7 +7,6 @@ if ( file_exists( BEAF_ADMIN_PATH . 'tf-options/options/tf-menu-icon.php' ) ) {
 } else {
 	$menu_icon = 'dashicons-palmtree';
 }
-
 TF_Settings::option( 'beaf_settings', array(
 	'title'    => __( 'Beaf Settings ', 'bafg' ),
 	'icon'     => $menu_icon,
@@ -23,13 +22,14 @@ TF_Settings::option( 'beaf_settings', array(
 					'label'   => __( 'Enable Preloader', 'bafg' ),
 					'default' => false
 				),
-				array(
-					'id'       => 'bafg_publicly_queriable',
-					'type'     => 'checkbox',
-					'title'    => __( 'Disable publicly queryable', 'bafg' ),
-					'label'    => __( 'Disable publicly queryable', 'bafg' ),
-					'subtitle' => __( 'Disable publicly queryable', 'bafg' ),
-				),
+				apply_filters( 'bafg_publicly_queriable',				
+					array(
+						'id'       => 'bafg_publicly_queriable',
+						'type'     => 'checkbox',
+						'title'    => __( 'Disable publicly queryable', 'bafg' ),
+						'label'    => __( 'Disable publicly queryable', 'bafg' ),
+						'is_pro'   => true,
+					) ),
 				array(
 					'id'       => 'enable_debug_mode',
 					'type'     => 'checkbox',
@@ -115,3 +115,15 @@ TF_Settings::option( 'beaf_settings', array(
 			)
 	),
 ) );
+function bafg_publicly_queriable( $options  ) {
+    $options = array(
+        'id'       => 'bafg_publicly_queriable',
+        'type'     => 'checkbox',
+        'title'    => __( 'Disable publicly queryable', 'bafg' ),
+        'label'    => __( 'Disable publicly queryable', 'bafg' ),
+        'is_pro'   => false,
+    );
+    return $options;
+    
+}
+add_filter( 'bafg_publicly_queriable', 'bafg_publicly_queriable', 30, 1 );

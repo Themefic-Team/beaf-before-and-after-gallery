@@ -284,22 +284,26 @@ class BAFG_Before_After_Gallery {
         
 		ob_start();
 
-        $meta = get_post_meta( $id, 'beaf_meta', true );
+        $meta = get_post_meta($id);
+        $newmeta = array();
+        foreach ($meta as $key => $value) {
+            $newmeta[] = $key;
+        }
         echo "<pre>";
-        var_dump($meta);
-		
-        $b_image              = ! empty( $meta['bafg_before_image'] ) ? $meta['bafg_before_image'] : "";
-        $a_image              = get_post_meta( $id, 'bafg_after_image', true);
-        $orientation          = !empty(get_post_meta( $id, 'bafg_image_styles', true)) ? get_post_meta( $id, 'bafg_image_styles', true) : 'horizontal';
-        $offset               = !empty(get_post_meta( $id, 'bafg_default_offset', true)) ? get_post_meta( $id, 'bafg_default_offset', true) : '0.5';
-        $before_label         = !empty(get_post_meta( $id, 'bafg_before_label', true)) ? get_post_meta( $id, 'bafg_before_label', true) : 'Before';
-        $after_label          = !empty(get_post_meta( $id, 'bafg_after_label', true)) ? get_post_meta( $id, 'bafg_after_label', true) : 'After';
-        $overlay              = !empty(get_post_meta( $id, 'bafg_no_overlay', true)) ? get_post_meta( $id, 'bafg_no_overlay', true) : 'no';
-        $move_slider_on_hover = !empty(get_post_meta( $id, 'bafg_move_slider_on_hover', true)) ? get_post_meta( $id, 'bafg_move_slider_on_hover', true) : 'no';
-        $click_to_move        = !empty(get_post_meta( $id, 'bafg_click_to_move', true)) ? get_post_meta( $id, 'bafg_click_to_move', true) : 'no';
-        $skip_lazy_load       = get_post_meta( $id, 'skip_lazy_load', true);
-        $before_img_alt       = get_post_meta( $id, 'before_img_alt', true) ? get_post_meta( $id, 'before_img_alt', true) : '';
-        $after_img_alt        = get_post_meta( $id, 'after_img_alt', true) ? get_post_meta( $id, 'after_img_alt', true) : '';
+        var_dump($newmeta);
+        
+        $b_image              = !empty($meta['bafg_before_image']) ? $meta['bafg_before_image'] : '';
+        $a_image              = !empty($meta['bafg_after_image']) ? $meta['bafg_after_image'] : '';
+        $orientation          = !empty($meta['bafg_image_styles']) ? $meta['bafg_image_styles'] : 'horizontal';
+        $offset               = !empty($meta['bafg_default_offset']) ? $meta['bafg_default_offset'] : '0.5';
+        $before_label         = !empty($meta['bafg_before_label']) ? $meta['bafg_before_label'] : 'Before';
+        $after_label          = !empty($meta['bafg_after_label']) ? $meta['bafg_after_label'] : 'After';
+        $overlay              = !empty($meta['bafg_no_overlay']) ? $meta['bafg_no_overlay'] : 'no';
+        $move_slider_on_hover = !empty($meta['bafg_move_slider_on_hover']) ? $meta['bafg_move_slider_on_hover'] : 'no';
+        $click_to_move        = !empty($meta['bafg_click_to_move']) ? $meta['bafg_click_to_move'] : 'no';
+        $skip_lazy_load       = !empty($meta['skip_lazy_load']) ? $meta['skip_lazy_load'] : '';
+        $before_img_alt       = !empty($meta['before_img_alt']) ? $meta['before_img_alt'] : '';
+        $after_img_alt        = !empty($meta['after_img_alt']) ? $meta['after_img_alt'] : '';
 		if( $skip_lazy_load == 'yes' ) {
 			$skip_lazy      = 'skip-lazy';
 			$data_skip_lazy = 'data-skip-lazy';
@@ -308,7 +312,8 @@ class BAFG_Before_After_Gallery {
 			$data_skip_lazy = '';
 		}
 		$enable_preloader = is_array(get_option('bafg_tools')) && !empty(get_option('bafg_tools')['enable_preloader']) ? get_option('bafg_tools')['enable_preloader'] : '';
-
+        echo "<hr>";
+        var_dump($enable_preloader);
 		if(get_post_status($id) == 'publish' ) :
 		?>
 
@@ -336,15 +341,13 @@ class BAFG_Before_After_Gallery {
         <?php do_action('bafg_after_slider', $id); ?>
 
         <style type="text/css">
-            <?php $bafg_before_label_background= !empty(get_post_meta($id, 'bafg_before_label_background', true)) ? get_post_meta($id, 'bafg_before_label_background', true) : '';
-
-            $bafg_before_label_color= !empty(get_post_meta($id, 'bafg_before_label_color', true)) ? get_post_meta($id, 'bafg_before_label_color', true) : '';
-
-            $bafg_after_label_background= !empty(get_post_meta($id, 'bafg_after_label_background', true)) ? get_post_meta($id, 'bafg_after_label_background', true) : '';
-
-            $bafg_after_label_color= !empty(get_post_meta($id, 'bafg_after_label_color', true)) ? get_post_meta($id, 'bafg_after_label_color', true) : '';
-
-            ?><?php if( !empty($bafg_before_label_background) || !empty($bafg_before_label_color)) {
+            <?php
+            $bafg_before_label_background = ! empty( get_post_meta( $id, 'bafg_before_label_background', true ) ) ? get_post_meta( $id, 'bafg_before_label_background', true ) : '';
+            $bafg_before_label_color      = ! empty( get_post_meta( $id, 'bafg_before_label_color', true ) ) ? get_post_meta( $id, 'bafg_before_label_color', true ) : '';
+            $bafg_after_label_background  = ! empty( get_post_meta( $id, 'bafg_after_label_background', true ) ) ? get_post_meta( $id, 'bafg_after_label_background', true ) : '';
+            $bafg_after_label_color       = ! empty( get_post_meta( $id, 'bafg_after_label_color', true ) ) ? get_post_meta( $id, 'bafg_after_label_color', true ) : '';
+            
+            if( !empty($bafg_before_label_background) || !empty($bafg_before_label_color)) {
                 ?>.<?php echo 'slider-'.$id.' ';
 
                 ?>.twentytwenty-before-label::before {

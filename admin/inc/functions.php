@@ -52,3 +52,72 @@ function beaf_dashboard_header() {
     <!-- deshboard-top-section -->
 	<?php
 }
+/**
+ * Migrate all the existing data to new data format like options, meta data
+ * 
+ * @param $post_id
+ * @param $post
+ * @since 4.0.0
+ * 
+ * @author Abu Hena
+ */
+function beaf_migrate_all_existing_option_data() {
+    $watermark_options = array('enable_watermark', 'path', 'enable_opacity', 'wm_opacity','prev', 'watermark_position');
+    $bafg_tools_option = array('enable_preloader', 'bafg_publicly_queriable', 'enable_debug_mode', 'bafg_before_after_image_link','bafg_open_url_new_tab');
+    $new_option        = get_option('beaf_settings');
+    foreach ( $watermark_options as $option ) {
+        $old_option_value = get_option('bafg_watermark');
+        if( $old_option_value[$option] == 'on' ) {
+            $old_option_value[$option] = "1";
+        } else if( empty($old_option_value[$option] )) {
+            $old_option_value[$option] = "";
+        }
+        $new_option[$option] = $old_option_value[$option];
+    }
+
+    foreach ( $bafg_tools_option as $option ) {
+        $old_option_value = get_option('bafg_tools');
+        if( $old_option_value[$option] == 'on' ) {
+            $old_option_value[$option] = "1";
+        } else if( empty($old_option_value[$option] )) {
+            $old_option_value[$option] = "";
+        }
+        $new_option[$option] = $old_option_value[$option];
+    }
+    update_option( 'beaf_settings', $new_option );
+
+    //migrate beaf meta
+    $args = array(
+        'post_type' => 'bafg',
+        'posts_per_page' => -1, // Get all posts
+    );
+
+    $posts = get_posts( $args );
+
+    foreach ( $posts as $post) {
+
+        $old_meta = array();
+        foreach ( $old_meta as $key => $value ) {
+            $old_meta[] = $key;
+        }
+        $new_meta = get_post_meta($post->ID, 'beaf_meta', true);
+
+        if (!empty($old_meta) && is_array($old_meta)) {
+            foreach ($old_meta as $field) {
+                $old_value = get_post_meta($post->ID, $field, true);
+                //if (!empty($old_value)) {
+                    $new_meta[$field] = $old_value;
+                    //delete_post_meta($post->ID, $field); // Remove the old individual field
+                //}
+            }
+
+            update_post_meta( $post->ID, 'beaf_meta', $new_meta ); // Update the 'beaf_meta' key
+        }
+    }
+}
+
+//add_action('init', 'beaf_migrate_all_existing_option_data', 10);
+
+// Hook the migration function to run once (e.g., on plugin activation)
+//register_activation_hook(BEAF_PLUGIN_PATH . 'before-and-after-gallery.php', 'beaf_migrate_all_existing_option_data');
+

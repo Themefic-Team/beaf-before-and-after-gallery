@@ -455,8 +455,7 @@ TF_Metabox::metabox( 'beaf_meta', array(
                                 'center' => 'Center',
                                 'right'  => 'Right'
                             )
-                        )
-                    
+                        )                   
 
             )
         )

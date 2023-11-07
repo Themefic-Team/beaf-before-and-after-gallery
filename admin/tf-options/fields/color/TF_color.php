@@ -10,7 +10,7 @@ if ( ! class_exists( 'TF_color' ) ) {
 		}
 
 		public function render() {
-			$color_value  = ( ! is_array( $this->value ) ) ? unserialize( $this->value ) : $this->value;
+			$color_value  = $this->value;
 
 			if ( isset( $this->field['colors'] ) && $this->field['multiple'] ) {
 				$inline = ( isset( $this->field['inline'] ) && $this->field['inline'] ) ? 'tf-inline' : '';
@@ -27,6 +27,9 @@ if ( ! class_exists( 'TF_color' ) ) {
 			} else {
 				echo '<input type="text" name="' . esc_attr( $this->field_name() ) . '" id="' . esc_attr( $this->field_name() ) . '" value="' . esc_attr( $color_value ) . '" class="tf-color" '. $this->field_attributes() .'/>';
 			}
+		}
+		public function sanitize() {
+			return $this->value;
 		}
 
 	}

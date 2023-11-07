@@ -442,7 +442,7 @@ if ( ! class_exists( 'TF_Settings' ) ) {
 				?>
 				<div class="tf-setting-dashboard">
 				<!-- dashboard-header-include -->
-				<?php echo tf_dashboard_header(); ?>
+				<?php echo beaf_dashboard_header(); ?>
 
                 <div class="tf-option-wrapper tf-setting-wrapper">
                     <form method="post" action="" class="tf-option-form <?php echo esc_attr($ajax_save_class) ?>" enctype="multipart/form-data">
@@ -585,7 +585,7 @@ if ( ! class_exists( 'TF_Settings' ) ) {
                                 }
 
 								if($fieldClass != 'TF_file'){
-									$data       = $fieldClass == 'TF_repeater' || $fieldClass == 'TF_map'  || $fieldClass == 'TF_color' ? serialize( $data ) : $data;
+									$data       = $fieldClass == 'TF_repeater' || $fieldClass == 'TF_map'  ? serialize( $data ) : $data;
 								}
 								if(isset($_FILES) && !empty($_FILES['file'])){
 									$tf_upload_dir = wp_upload_dir();
