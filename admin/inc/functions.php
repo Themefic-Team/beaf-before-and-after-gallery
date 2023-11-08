@@ -95,20 +95,19 @@ function beaf_migrate_all_existing_option_data() {
     $posts = get_posts( $args );
 
     foreach ( $posts as $post) {
-
-        $old_meta = array();
+        $new_meta = array();
+        $old_meta = get_post_meta( $post->ID );
         foreach ( $old_meta as $key => $value ) {
-            $old_meta[] = $key;
+            $new_meta[] = $key;
         }
-        $new_meta = get_post_meta($post->ID, 'beaf_meta', true);
+        echo "<pre>";
+        var_dump($new_meta); 
 
-        if (!empty($old_meta) && is_array($old_meta)) {
-            foreach ($old_meta as $field) {
+        if (!empty($new_meta) && is_array($new_meta)) {
+            foreach ($new_meta as $field) {
                 $old_value = get_post_meta($post->ID, $field, true);
-                //if (!empty($old_value)) {
-                    $new_meta[$field] = $old_value;
-                    //delete_post_meta($post->ID, $field); // Remove the old individual field
-                //}
+                $new_meta[$field] = $old_value;
+                //delete_post_meta($post->ID, $field); // Remove the old individual field                
             }
 
             update_post_meta( $post->ID, 'beaf_meta', $new_meta ); // Update the 'beaf_meta' key
