@@ -342,6 +342,7 @@ Yes, We provide full support on the WordPress.org forums. You can also post ques
 = 4.4.6 – 14/11/2023 =
 
 - Notice: Black Friday Notice
+- Removed: unused CSS 
 
 = 4.4.5 – 09/11/2023 =
 
