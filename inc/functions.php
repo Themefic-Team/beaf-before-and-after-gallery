@@ -20,6 +20,7 @@ if(!function_exists('tf_black_friday_2023_admin_notice') &&  !is_plugin_active('
                     padding: 7px;
                     position: relative;
                     z-index: 10;
+					max-width: 825px;
                 } 
                 .tf_black_friday_20222_admin_notice button:before {
                     color: #fff !important;
@@ -79,7 +80,7 @@ add_action( 'wp_ajax_beaf_black_friday_notice_dismiss_callback', 'beaf_black_fri
 if(!function_exists('beaf_black_friday_20222')){
 	function beaf_black_friday_20222() { 
 		if ( ! isset( $_COOKIE['beaf_tour_friday_sidbar_notice'] ) ) {
-			add_meta_box( 'beaf_black_friday_docs', ' ', 'beaf_black_friday_2022_callback','bafg','side' ,'high');   
+			add_meta_box( 'beaf_black_friday_docs', ' ', 'beaf_black_friday_2022_callback','bafg','side' );   
 		}
 		
 	}
