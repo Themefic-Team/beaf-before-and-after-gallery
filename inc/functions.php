@@ -8,9 +8,17 @@
 include_once(ABSPATH . 'wp-admin/includes/plugin.php');
 if(!function_exists('tf_black_friday_2023_admin_notice') &&  !is_plugin_active('beaf-before-and-after-gallery-pro/before-and-after-gallery-pro.php')){
 	function tf_black_friday_2023_admin_notice(){
+
+		// Set the expiration time to 3 hours from the current time
+        $expiration_time = time() + 3 * 60 * 60;  
+        $tf_display_admin_notice_time = get_option( 'tf_display_admin_notice_time' );
+        if($tf_display_admin_notice_time == ''){
+            update_option( 'tf_display_admin_notice_time', $expiration_time );
+        }
+
 		$deal_link =sanitize_url('https://themefic.com/deals/');
 		$get_current_screen = get_current_screen();  
-		if(!isset($_COOKIE['tf_dismiss_admin_notice']) && $get_current_screen->base == 'dashboard'){ 
+		if(!isset($_COOKIE['tf_dismiss_admin_notice']) && $get_current_screen->base == 'dashboard' && time() > $tf_display_admin_notice_time ){ 
             ?>
             <style> 
                 .tf_black_friday_20222_admin_notice a:focus {
@@ -70,6 +78,7 @@ if(!function_exists('tf_black_friday_notice_dismiss_callback')){
 		$cookie_name = "tf_dismiss_admin_notice";
 		$cookie_value = "1"; 
 		setcookie($cookie_name, $cookie_value, strtotime('2023-12-01'), "/"); 
+		update_option( 'tf_display_admin_notice_time', '1' );
 		wp_die();
 	}
 	add_action( 'wp_ajax_tf_black_friday_notice_dismiss_callback', 'tf_black_friday_notice_dismiss_callback' );
