@@ -38,7 +38,7 @@ if(!function_exists('tf_black_friday_2023_admin_notice') &&  !is_plugin_active('
                 }
             </style>
             <div class="notice notice-success tf_black_friday_20222_admin_notice"> 
-                <a href="<?php echo $deal_link; ?>" target="_blank" >
+                <a href="<?php echo $deal_link; ?>" style="display: block; line-height: 0;" target="_blank" >
                     <img  style="width: 100%;" src="<?php echo plugin_dir_url(__FILE__) ?>../assets/image/BLACK_FRIDAY_BACKGROUND_GRUNGE_notice.png" alt="">
                 </a> 
                 <button type="button" class="notice-dismiss tf_black_friday_notice_dismiss"><span class="screen-reader-text"><?php echo __('Dismiss this notice.', 'ultimate-addons-cf7' ) ?></span></button>
