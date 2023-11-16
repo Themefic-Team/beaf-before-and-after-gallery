@@ -74,7 +74,7 @@ function beaf_black_friday_notice_dismiss_callback() {
 	setcookie($cookie_name, $cookie_value, time() + (86400 * 3), "/"); 
 	wp_die();
 }
-add_action( 'wp_ajax_beaf_black_friday_notice_dismiss_callback', 'beaf_black_friday_notice_dismiss_callback' );
+//add_action( 'wp_ajax_beaf_black_friday_notice_dismiss_callback', 'beaf_black_friday_notice_dismiss_callback' );
  
 if(!function_exists('beaf_black_friday_20222')){
 	function beaf_black_friday_20222() { 
