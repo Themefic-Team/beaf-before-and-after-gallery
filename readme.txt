@@ -281,13 +281,13 @@ If you want to create a slider to show before and after in WordPress, please che
 
 = Can we use BEAF for Elementor? =
 
-Yes, you can. Open your elementor editor, search BEAF, you will find our addon. Just add it, select the gallery, that's it. You can also create elementor before and after slider using our Shortcode.
+Yes, you can. Open your Elementor editor, and search BEAF, you will find our addon. Just add it, select the gallery, and that's it. You can also create elementor before and after slider using our Shortcode.
 
 = How to install BEAF? =
 
 See the installation tab.
 
-= Is Free version fully free or there is a gap? =
+= Is the Free version fully free or there is a gap? =
 
 Yes, BEAF is fully free which is available on WordPress.org. This free version will always be free. It also has a pro version with additional features which you can purchase from our official website.
 
