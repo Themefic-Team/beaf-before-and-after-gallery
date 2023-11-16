@@ -343,7 +343,7 @@ Yes, We provide full support on the WordPress.org forums. You can also post ques
 
 - Improvement: System stability Improved
 - Updated: readme.txt
-- Updated: Black Friday Announcements Banner
+- Updated: Black Friday Banner
 
 = 4.4.6 – 15/11/2023 =
 
