@@ -4,7 +4,7 @@ Donate link:
 Tags: before after, before after elementor, before after slider, before after gallery, before after filter gallery, before after divi, before after viewer, before after woocommerce, before after multiple image, compare images, image comparison, before after slider wordpress, before after image, twentytwenty, jquery twentytwenty, wordpress before after slider, elementor before and after slider, wordpress before after gallery, elementor before after slider, elementor before after image comparison slider, visual composer before after slider, visual composer image comparison, slider, gallery, before after wordpress, before after beaver, before after oxygen, twenty20, twenty20 image before after plugin, twenty20 wordpress plugin, twenty twenty
 Requires at least: 4.0
 Tested up to: 6.4
-Stable tag: 4.4.6
+Stable tag: 4.4.7
 Requires PHP: 7.4
 License: GPL-2.0+
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
@@ -281,13 +281,13 @@ If you want to create a slider to show before and after in WordPress, please che
 
 = Can we use BEAF for Elementor? =
 
-Yes, you can. Open your elementor editor, search BEAF, you will find our addon. Just add it, select the gallery, that's it. You can also create elementor before and after slider using our Shortcode.
+Yes, you can. Open your Elementor editor, and search BEAF, you will find our addon. Just add it, select the gallery, and that's it. You can also create elementor before and after slider using our Shortcode.
 
 = How to install BEAF? =
 
 See the installation tab.
 
-= Is Free version fully free or there is a gap? =
+= Is the Free version fully free or there is a gap? =
 
 Yes, BEAF is fully free which is available on WordPress.org. This free version will always be free. It also has a pro version with additional features which you can purchase from our official website.
 
@@ -338,6 +338,12 @@ Yes, We provide full support on the WordPress.org forums. You can also post ques
 24. Before After Video Slider
 
 == Changelog ==
+
+= 4.4.7 – 16/11/2023 =
+
+- Improvement: System stability Improved
+- Updated: readme.txt
+- Updated: Black Friday Banner
 
 = 4.4.6 – 15/11/2023 =
 
