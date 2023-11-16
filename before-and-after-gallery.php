@@ -81,10 +81,6 @@ class BAFG_Before_After_Gallery {
         * Require admin file
         */
         require_once('admin/bafg-admin.php');
-        /*
-        * Require admin global options file
-        */
-        require_once('admin/global-options.php');
         
         /*
         * Adding shortcode for bafg
