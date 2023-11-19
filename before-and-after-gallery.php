@@ -281,12 +281,6 @@ class BAFG_Before_After_Gallery {
 		ob_start();
 
         $meta = get_post_meta($id);
-        $newmeta = array();
-        foreach ($meta as $key => $value) {
-            $newmeta[] = $key;
-        }
-        echo "<pre>";
-        var_dump($newmeta);
         
         $b_image              = !empty($meta['bafg_before_image']) ? $meta['bafg_before_image'] : '';
         $a_image              = !empty($meta['bafg_after_image']) ? $meta['bafg_after_image'] : '';
@@ -308,8 +302,7 @@ class BAFG_Before_After_Gallery {
 			$data_skip_lazy = '';
 		}
 		$enable_preloader = is_array(get_option('bafg_tools')) && !empty(get_option('bafg_tools')['enable_preloader']) ? get_option('bafg_tools')['enable_preloader'] : '';
-        echo "<hr>";
-        var_dump($enable_preloader);
+       
 		if(get_post_status($id) == 'publish' ) :
 		?>
 

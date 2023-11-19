@@ -74,14 +74,14 @@ TF_Settings::option( 'beaf_settings', array(
 						'label'    => __( 'Upload Watermark Image', 'bafg' ),
 					),
 					apply_filters( 'bafg_enable_opacity',array(
-						'id'       => 'enable_opacity',
+						'id'       => '',
 						'type'     => 'checkbox',
 						'title'    => __( 'Enable Watermark Opacity', 'bafg' ),
 						'label'    => __( 'Enable Watermark Opacity', 'bafg' ),
 						'is_pro'   => true,					
 					)),
 					apply_filters( 'bafg_watermark_position', array(
-						'id'       => 'watermark_position',
+						'id'       => '',
 						'type'     => 'select',
 						'title'    => __( 'Enable Watermark Opacity', 'bafg' ),
 						'label'    => __( 'Enable Watermark Opacity', 'bafg' ),
