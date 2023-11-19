@@ -13,13 +13,14 @@ TF_Metabox::metabox( 'beaf_meta', array(
 			'title'  => __( 'Content', 'bafg' ),
 			'icon'   => 'fa fa-cog',
 			'fields' => array(
+                apply_filters( 'beaf_before_after_method',
 				array(
-					'id'        => 'bafg_before_after_method',
+					'id'        => '',
 					'type'      => 'radio',
 					'label'     => __( 'Before After Method', 'bafg' ),
                     'title'     => __( 'Before After Method', 'bafg' ),
                     'subtitle'  => __( 'Choose a method to make a before after slider using a single image, 2 images, 3 images and Videos.', 'bafg' ),
-                    'options'   => apply_filters( 'beaf_before_after_method', array(
+                    'options'   =>  array(
                         'bafg_before_after_method1' => __( 'Method 1 (Using 2 images)', 'bafg' ),
                         'bafg_before_after_method2' => array(
                             'label'  => __( 'Method 2 (Using 1 image )<div class="bafg-tooltip method-3-tooltip"><span>?</span><div class="bafg-tooltip-info">Pro feature!</div></div>', 'bafg' ),
@@ -33,8 +34,18 @@ TF_Metabox::metabox( 'beaf_meta', array(
                             'label'  => __( 'Method 4 (Using Video) <div class="bafg-tooltip method-3-tooltip"><span>?</span><div class="bafg-tooltip-info">Pro feature! 3 image slider addon required to activate this. <a href="https://themefic.com/wp-content/uploads/2023/07/3-image-slider-addon.png" target="_blank"> More info</a></div></div>', 'bafg' ),
                             'is_pro' => true
                         ),
-                    ), $post ),
-				),
+                    ),
+				), $post ),
+
+                apply_filters( 'bafg_before_after_image', array(
+                    'id'         => '',
+                    'type'       => 'image',
+                    'label'      => __( 'Before After Image', 'bafg' ),
+                    'subtitle'   => __( 'Upload before and after image for the slider', 'bafg' ),
+                    'dependency' => array( 'bafg_before_after_method', '==', 'bafg_before_after_method2' ),
+                    'is_pro'     => true
+                ),$post),
+
                 array(
                     'id'         => 'bafg_before_image',
                     'type'       => 'image',
@@ -48,12 +59,14 @@ TF_Metabox::metabox( 'beaf_meta', array(
 					'label' => __( 'Before Image Alter text', 'bafg' ),
                     'dependency' => array( 'bafg_before_after_method', '==', 'bafg_before_after_method1' ),
                 ),                
-                array(
-					'id'    => 'before_image_link',
-					'type'  => 'text',
-					'label' => __( 'Before Image link', 'bafg' ),
-                    'dependency' => array( 'bafg_before_after_method', '==', 'bafg_before_after_method1' ),
-                ),
+                apply_filters( 'before_image_link',
+                    array(
+                        'id'         => '',
+                        'type'       => 'text',
+                        'label'      => __( 'Before Image link', 'bafg' ),
+                        'dependency' => array( 'bafg_before_after_method', '==', 'bafg_before_after_method1' ),
+                        'is_pro'     => true
+                    ), $post ),
                 array(
                     'id'       => 'bafg_after_image',
                     'type'     => 'image',
@@ -67,12 +80,106 @@ TF_Metabox::metabox( 'beaf_meta', array(
 					'label' => __( 'After Image Alter text', 'bafg' ),
                     'dependency' => array( 'bafg_before_after_method', '==', 'bafg_before_after_method1' ),
                 ),                   
-                array(
-					'id'    => 'after_image_link',
-					'type'  => 'text',
-					'label' => __( 'After Image link', 'bafg' ),
-                    'dependency' => array( 'bafg_before_after_method', '==', 'bafg_before_after_method1' ),
+                apply_filters( 'after_image_link',
+                    array(
+                        'id'    => '',
+                        'type'  => 'text',
+                        'label' => __( 'After Image link', 'bafg' ),
+                        'dependency' => array( 'bafg_before_after_method', '==', 'bafg_before_after_method1' ),
+                    ), $post 
                 ),
+
+                apply_filters( 'bafg_bottom_image', array(
+                    'id'         => '',
+                    'type'       => 'image',
+                    'label'      => __( 'First Image', 'bafg' ),
+                    'dependency' => array( 'bafg_before_after_method', '==', 'bafg_before_after_method3' ),
+                    'is_pro'     => true
+                ), $post ),
+
+                apply_filters( 'bafg_middle_image', array(
+                    'id'         => '',
+                    'type'       => 'image',
+                    'label'      => __( 'Second Image', 'bafg' ),
+                    'dependency' => array( 'bafg_before_after_method', '==', 'bafg_before_after_method3' ),
+                    'is_pro'     => true                    
+                ), $post ),
+
+                apply_filters( 'bafg_top_image', array(
+                    'id'         => '',
+                    'type'       => 'image',
+                    'label'      => __( 'Third Image', 'bafg' ),
+                    'dependency' => array( 'bafg_before_after_method', '==', 'bafg_before_after_method3' ),
+                    'is_pro'     => true
+                ), $post ),
+
+                apply_filters( 'bafg_slider_video_type', array(
+                    'id'          => '',
+                    'type'        => 'select',
+                    'label'       => __( 'Slider Video Type', 'bafg' ),
+                    'options'     => array(
+                        'youtube' => __( 'Youtube', 'bafg' ),
+                        'vimeo'   => __( 'Vimeo', 'bafg' ),
+                        'self'    => __( 'Self Hosted', 'bafg' ),
+                    ),
+                    'is_pro'      => true,
+                    'dependency'  => array( 'bafg_before_after_method', '==', 'bafg_before_after_method4' ),
+                ), $post ),
+
+                apply_filters( 'bafg_before_video', array(
+                    'id'          => '',
+                    'type'        => 'text',
+                    'label'       => __( 'Before Video', 'bafg' ),
+                    'placeholder' => __( 'Before Video URL', 'bafg' ),
+                    'dependency'  => array( 'bafg_before_after_method', '==', 'bafg_before_after_method4' ),
+                    'is_pro'      => true
+                ), $post ),
+
+                apply_filters( 'bafg_after_video', array(
+                    'id'          => '',
+                    'type'        => 'text',
+                    'label'       => __( 'After Video', 'bafg' ),
+                    'placeholder' => __( 'After Video URL', 'bafg' ),
+                    'dependency'  => array( 'bafg_before_after_method', '==', 'bafg_before_after_method4' ),
+                    'is_pro'      => true
+                ), $post ),
+
+                apply_filters( 'bafg_before_vimeo_video', array(
+                    'id'          => '',
+                    'type'        => 'text',
+                    'label'       => __( 'Before Vimeo Video', 'bafg' ),
+                    'placeholder' => __( 'Before Vimeo Video URL', 'bafg' ),
+                    'dependency'  => array( 'bafg_slider_video_type', '==', 'vimeo' ),
+                    'is_pro'      => true
+                )),
+
+                apply_filters( 'bafg_after_vimeo_video', array(
+                    'id'          => '',
+                    'type'        => 'text',
+                    'label'       => __( 'After Vimeo Video', 'bafg' ),
+                    'placeholder' => __( 'After Vimeo Video URL', 'bafg' ),
+                    'dependency'  => array( 'bafg_slider_video_type', '==', 'vimeo' ),
+                    'is_pro'      => true
+                )),
+
+                apply_filters( 'bafg_before_self_video', array(
+                    'id'          => '',
+                    'type'        => 'text',
+                    'label'       => __( 'Before Self Hosted Video', 'bafg' ),
+                    'placeholder' => __( 'Before Self Hosted Video URL', 'bafg' ),
+                    'dependency'  => array( 'bafg_slider_video_type', '==', 'self' ),
+                    'is_pro'      => true
+                )),
+
+                apply_filters( 'bafg_after_self_video', array(
+                    'id'          => '',
+                    'type'        => 'text',
+                    'label'       => __( 'After Self Hosted Video', 'bafg' ),
+                    'placeholder' => __( 'After Self Hosted Video URL', 'bafg' ),
+                    'dependency'  => array( 'bafg_slider_video_type', '==', 'self' ),
+                    'is_pro'      => true
+                )),
+
                 array(
                     'id'          => 'bafg_slider_title',
                     'type'        => 'text',
@@ -100,12 +207,46 @@ TF_Metabox::metabox( 'beaf_meta', array(
                         '_blank' => __( 'New Tab', 'bafg' ),
                     ),
                 ),
-                array(
-                    'id'          => 'bafg_readmore_text',
-                    'type'        => 'text',
-                    'label'       => __( 'Read More Text', 'bafg' ),
-                    'placeholder' => __( 'Optional', 'bafg' ),
+                apply_filters( 'bafg_readmore_text',
+                    array(
+                        'id'          => 'bafg_readmore_text',
+                        'type'        => 'text',
+                        'label'       => __( 'Read More Text', 'bafg' ),
+                        'placeholder' => __( 'Optional', 'bafg' ),
+                    ), $post
                 ),
+
+                apply_filters( 'bafg_filter_style', array(
+                    'id'          => '',
+                    'type'        => 'radio',
+                    'label'       => __( 'Select Filter Effect', 'bafg' ),
+                    'subtitle'    => __( 'Select a filtering effect to use on the before or after image.', 'bafg' ),
+                    'options'     => array(
+                        'none' => __( 'None', 'bafg' ),
+                        'grayscale' => __( 'Grayscale', 'bafg' ),
+                        'blur' => __( 'Blur', 'bafg' ),
+                        'sepia' => __( 'Sepia', 'bafg' ),
+                        'saturate' => __( 'Saturate', 'bafg' ),
+                    ),
+                    'dependency' => array( 'bafg_before_after_method', '==', 'bafg_before_after_method2' ),
+                    'is_pro'      => true
+                    ), $post 
+                ),
+
+                apply_filters( 'bafg_filter_apply', array(
+                    'id'          => '',
+                    'type'        => 'radio',
+                    'label'       => __( 'Apply Filter For', 'bafg' ),
+                    'subtitle'    => __( 'Filtering will applicable on selected image.', 'bafg' ),
+                    'options'     => array(
+                        'none' => __( 'None', 'bafg' ),
+                        'apply_before' => __( 'Before Image', 'bafg' ),
+                        'apply_after' => __( 'After Image', 'bafg' ),
+                    ),
+                    'dependency' => array( 'bafg_before_after_method', '==', 'bafg_before_after_method2' ),
+                    'is_pro'      => true
+                )),
+
                 array(
                    'id'          => 'bafg_image_styles',
                    'type'        => 'imageselect',
@@ -120,66 +261,65 @@ TF_Metabox::metabox( 'beaf_meta', array(
                         'url'   => BEAF_ASSETS_URL . 'image/h.jpg',
                      )
                     )
-                ),                
-                array(
-                    'id'          => 'bafg_before_after_style',
-                    'type'        => 'imageselect',
-                    'label'       => __( 'BEAF template style', 'bafg' ),
-                    'options'     => array(
-                      'default' => array(
-                         'title' => __( 'Default', 'bafg' ),
-                         'url'   => BEAF_ASSETS_URL . 'image/default.png',
-                      ),
-                      'design-1' => array(
-                         'title'  => __( 'Design 1', 'bafg' ),
-                         'url'    => BEAF_ASSETS_URL . 'image/style1.png',
-                         'is_pro' => true
-                      ),
-                      'design-2' => array(
-                         'title'  => __( 'Design 2', 'bafg' ),
-                         'url'    => BEAF_ASSETS_URL . 'image/style2.png',
-                         'is_pro' => true
-                      ),
-                      'design-3' => array(
-                         'title'  => __( 'Design 3', 'bafg' ),
-                         'url'    => BEAF_ASSETS_URL . 'image/style3.png',
-                         'is_pro' => true
-                      ),
-                      'design-4' => array(
-                         'title'  => __( 'Design 4', 'bafg' ),
-                         'url'    => BEAF_ASSETS_URL . 'image/style4.png',
-                         'is_pro' => true
-                      ),                      
-                      'design-5' => array(
-                        'title'  => __( 'Design 5', 'bafg' ),
-                        'url'    => BEAF_ASSETS_URL . 'image/style5.png',
-                        'is_pro' => true
-                     ),
-                      'design-6' => array(
-                        'title'  => __( 'Design 6', 'bafg' ),
-                        'url'    => BEAF_ASSETS_URL . 'image/style6.png',
-                        'is_pro' => true
-                      ),
-                      'design-7' => array(
-                        'title'  => __( 'Design 7', 'bafg' ),
-                        'url'    => BEAF_ASSETS_URL . 'image/style7.png',
-                        'is_pro' => true
-                      ),
-                      'design-8' => array(                          
-                        'title'  => __( 'Design 8', 'bafg' ),
-                        'url'    => BEAF_ASSETS_URL . 'image/style8.png',
-                        'is_pro' => true
-                      ),
-                      'design-9' => array(
-                        'title' => __( 'Design 9', 'bafg' ),
-                        'url'   => BEAF_ASSETS_URL . 'image/style9.png',
-                        'is_pro' => true                          
-                      )
-                    )
-                 ),
-
-                
-			),
+                ),
+                apply_filters( 'bafg_before_after_style',                 
+                    array(
+                        'id'          => 'bafg_before_after_style',
+                        'type'        => 'imageselect',
+                        'label'       => __( 'BEAF template style', 'bafg' ),
+                        'options'     => array(
+                            'default' => array(
+                                'title' => __( 'Default', 'bafg' ),
+                                'url'   => BEAF_ASSETS_URL . 'image/default.png',
+                            ),
+                            'design-1' => array(
+                                'title'  => __( 'Design 1', 'bafg' ),
+                                'url'    => BEAF_ASSETS_URL . 'image/style1.png',
+                                'is_pro' => true
+                            ),
+                            'design-2' => array(
+                                'title'  => __( 'Design 2', 'bafg' ),
+                                'url'    => BEAF_ASSETS_URL . 'image/style2.png',
+                                'is_pro' => true
+                            ),
+                            'design-3' => array(
+                                'title'  => __( 'Design 3', 'bafg' ),
+                                'url'    => BEAF_ASSETS_URL . 'image/style3.png',
+                                'is_pro' => true
+                            ),
+                            'design-4' => array(
+                                'title'  => __( 'Design 4', 'bafg' ),
+                                'url'    => BEAF_ASSETS_URL . 'image/style4.png',
+                                'is_pro' => true
+                            ),                      
+                            'design-5' => array(
+                                'title'  => __( 'Design 5', 'bafg' ),
+                                'url'    => BEAF_ASSETS_URL . 'image/style5.png',
+                                'is_pro' => true
+                            ),
+                            'design-6' => array(
+                                'title'  => __( 'Design 6', 'bafg' ),
+                                'url'    => BEAF_ASSETS_URL . 'image/style6.png',
+                                'is_pro' => true
+                                ),
+                            'design-7' => array(
+                                'title'  => __( 'Design 7', 'bafg' ),
+                                'url'    => BEAF_ASSETS_URL . 'image/style7.png',
+                                'is_pro' => true
+                                ),
+                            'design-8' => array(                          
+                                'title'  => __( 'Design 8', 'bafg' ),
+                                'url'    => BEAF_ASSETS_URL . 'image/style8.png',
+                                'is_pro' => true
+                                ),
+                            'design-9' => array(
+                                'title' => __( 'Design 9', 'bafg' ),
+                                'url'   => BEAF_ASSETS_URL . 'image/style9.png',
+                                'is_pro' => true                          
+                            )
+                        ),
+                    ), $post ),
+            ),
 
 		),
         'options' => array(
@@ -207,21 +347,32 @@ TF_Metabox::metabox( 'beaf_meta', array(
                     'default'  => 'After',
                     'subtitle' => __( 'Set a custom label for the after image.', 'bafg' ),
                 ),
-                array(
-                    'id'       => 'bafg_auto_slide',
+                apply_filters( 'show_label_outside_image', array(
+                    'id'       => '',
+                    'type'     => 'switch',
+                    'label'    => __( 'Show Label Outside Of Image', 'bafg' ),
+                    'default'  => false,
+                    'subtitle' => __( 'Show Label Outside of Image', 'bafg' ),
+                    'is_pro'   => true
+                ), $post ),
+                apply_filters( 'bafg_auto_slide',array(
+                    'id'       => '',
                     'type'     => 'switch',
                     'label'    => __( 'Auto Slide', 'bafg' ),
                     'default'  => false,
                     'subtitle' => __( 'The before and after image will slide automatically.', 'bafg' ),
-                ),
-                array(
-                    'id'       => 'bafg_on_scroll_slide',
-                    'type'     => 'switch',
-                    'label'    => __( 'On Scroll Slide', 'bafg' ),
-                    'default'  => false,
-                    'subtitle' => __( 'The before and after image slider will slide on scroll automatically.', 'bafg' ),
+                    'is_pro'   => true
+                ), $post ),
+
+               apply_filters( 'bafg_on_scroll_slide', array(
+                    'id'         => '',
+                    'type'       => 'switch',
+                    'label'      => __( 'On Scroll Slide', 'bafg' ),
+                    'default'    => false,
+                    'subtitle'   => __( 'The before and after image slider will slide on scroll automatically.', 'bafg' ),
                     'dependency' => array( 'bafg_auto_slide', '==', false ),
-                ),
+                ), $post ),
+
                 array(
                     'id'       => 'bafg_slide_handle',
                     'type'     => 'switch',
@@ -229,12 +380,15 @@ TF_Metabox::metabox( 'beaf_meta', array(
                     'default'  => false,
                     'subtitle' => __( 'Disable the slider handle.', 'bafg' ),
                 ),                
-                array(
-                    'id'       => 'bafg_popup_preview',
+                apply_filters( 'bafg_popup_preview', array(
+                    'id'       => '',
                     'type'     => 'switch',
                     'label'    => __( 'Full Screen View', 'bafg' ),
                     'default'  => false,
-                ),               
+                    'subtitle' => __( 'Enable to display slider on full screen.', 'bafg' ),
+                    'is_pro'   => true
+                ), $post ),
+
                 array(
                     'id'       => 'bafg_click_to_move',
                     'type'     => 'switch',
@@ -283,44 +437,52 @@ TF_Metabox::metabox( 'beaf_meta', array(
                     'type'     => 'color',
                     'label'    => __( 'After Label Color', 'bafg' ),
                 ),
-                'bafg_handle_color' => array(
-                    'id'       => 'bafg_handle_color',
+
+                apply_filters( 'bafg_handle_color', array(
+                    'id'       => '',
                     'type'     => 'color',
-                    'label'    => __( 'Handle Color', 'bafg' ),
+                    'label'    => __( 'Slider Handle Color', 'bafg' ),
                     'is_pro'   => true               
-                ),
-                'bafg_overlay_color' => array(
-                    'id'       => 'bafg_overlay_color',
+                ), $post ),
+
+                apply_filters( 'bafg_overlay_color', array(
+                    'id'       => '',
                     'type'     => 'color',
-                    'label'    => __( 'Overlay Color', 'bafg' ),
+                    'label'    => __( 'Slider Overlay Color', 'bafg' ),
                     'is_pro'   => true
-                ),
-                'bafg_width' => array(
-                    'id'       => 'bafg_width',
+                ), $post ),
+
+                apply_filters( 'bafg_width',  array(
+                    'id'       => '',
                     'type'     => 'text',
                     'label'    => __( 'Slider Width', 'bafg' ),
                     'is_pro'   => true
-                ),
-                'bafg_height' => array(
-                    'id'       => 'bafg_height',
+                ), $post ),
+
+                apply_filters( 'bafg_height', array(
+                    'id'       => '',
                     'type'     => 'text',
                     'label'    => __( 'Slider Height', 'bafg' ),
                     'is_pro'   => true
-                ),
-               'bafg_video_width' =>  array(
-                    'id'       => 'bafg_video_width',
+                ), $post ),
+
+               apply_filters( 'bafg_video_width',  array(
+                    'id'       => '',
                     'type'     => 'text',
                     'label'    => __( 'Video Width', 'bafg' ),
                     'is_pro'   => true
-                ),
-                'bafg_video_height' =>  array(
-                    'id'       => 'bafg_video_height',
+                ), $post ),
+
+                apply_filters( 'bafg_video_height', array(
+                    'id'       => '',
                     'type'     => 'text',
                     'label'    => __( 'Video Height', 'bafg' ),
                     'is_pro'   => true
-                ),
-                'bafg_slider_alignment' =>  array(
-                    'id'       => 'bafg_slider_alignment',
+                ), $post ),
+
+
+                apply_filters( 'bafg_slider_alignment', array(
+                    'id'       => '',
                     'type'     => 'select',
                     'label'    => __( 'Slider Alignment', 'bafg' ),
                     'is_pro'   => true,
@@ -330,7 +492,8 @@ TF_Metabox::metabox( 'beaf_meta', array(
                         'center' => 'Center',
                         'right' => 'Right'
                     )
-                ),
+                ), $post ),
+                
                 array(
                     'id' => 'bafg_heading',
                     'type' => 'heading',

@@ -38,47 +38,50 @@ TF_Settings::option( 'beaf_settings', array(
 					'label'    => __( 'Enable Debug Mode', 'bafg' ),
 					'subtitle' => __( 'Debug mode allows you to troubleshoot conflicts with the theme or other plugins.', 'bafg' ),
 				),
-				array(
-					'id'       => 'bafg_before_after_image_link',
+				apply_filters( 'bafg_before_after_image_link', array(
+					'id'       => '',
 					'type'     => 'checkbox',
 					'title'    => __( 'Enable Image Link', 'bafg' ),
 					'label'    => __( 'Enable Image Link', 'bafg' ),
 					'subtitle' => __( ' Enable before after image link', 'bafg' ),
-				),
-				array(
-					'id'       => 'bafg_open_url_new_tab',
+					'is_pro'   => true,
+				)),
+				apply_filters( 'bafg_open_url_new_tab', array(
+					'id'       => '',
 					'type'     => 'checkbox',
 					'title'    => __( 'Open Link', 'bafg' ),
 					'label'    => __( 'Open Link', 'bafg' ),
 					'subtitle' => __( 'Open URL in new tab', 'bafg' ),
-				),
+					'is_pro'   => true,
+				)),
 				
 			)
 			),
 			'watermark' => array(
 				'title' => __( 'Watermark', 'bafg' ),
 				'fields' => array(
-					array(
+					apply_filters( 'bafg_enable_watermark',array(
 						'id'       => 'bafg_enable_watermark',
 						'type'     => 'checkbox',
 						'title'    => __( 'Enable Watermark', 'bafg' ),
 						'label'    => __( 'Enable Watermark', 'bafg' ),
 						'is_pro'   => true,
-					),
+					)),
 					array(
 						'id'       => 'path',
 						'type'     => 'image',
 						'title'    => __( 'Watermark Image Upload (PNG Recommended)', 'bafg' ),
 						'label'    => __( 'Upload Watermark Image', 'bafg' ),
 					),
-					array(
-						'id'       => 'enable_opacity',
+					apply_filters( 'bafg_enable_opacity',array(
+						'id'       => '',
 						'type'     => 'checkbox',
 						'title'    => __( 'Enable Watermark Opacity', 'bafg' ),
-						'label'    => __( 'Enable Watermark Opacity', 'bafg' ),						
-					),
-					array(
-						'id'       => 'watermark_position',
+						'label'    => __( 'Enable Watermark Opacity', 'bafg' ),
+						'is_pro'   => true,					
+					)),
+					apply_filters( 'bafg_watermark_position', array(
+						'id'       => '',
 						'type'     => 'select',
 						'title'    => __( 'Enable Watermark Opacity', 'bafg' ),
 						'label'    => __( 'Enable Watermark Opacity', 'bafg' ),
@@ -88,7 +91,7 @@ TF_Settings::option( 'beaf_settings', array(
 							'bottom-left' => 'Bottom Left',
 							'bottom-right' => 'Bottom Right',
 						)				
-					),
+					)),
 				)
 			),
 			'shortcodes' => array(
