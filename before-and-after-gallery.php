@@ -156,7 +156,7 @@ class BAFG_Before_After_Gallery {
         wp_enqueue_style( 'bafg_twentytwenty', plugin_dir_url( __FILE__ ) . 'assets/css/twentytwenty.css'); 
         wp_enqueue_style( 'bafg-style', plugin_dir_url( __FILE__ ) . 'assets/css/bafg-style.css'); 
 
-        $debug_mode = is_array(get_option('bafg_tools')) && !empty(get_option('bafg_tools')['enable_debug_mode']) ? get_option('bafg_tools')['enable_debug_mode'] : '';
+        $debug_mode = is_array(get_option('beaf_settings')) && !empty(get_option('beaf_settings')['enable_debug_mode']) ? get_option('beaf_settings')['enable_debug_mode'] : '';
         $in_footer  = false;
         if( !empty($debug_mode) ){
             $in_footer = true;

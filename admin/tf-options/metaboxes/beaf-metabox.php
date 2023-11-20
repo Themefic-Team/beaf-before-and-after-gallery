@@ -21,20 +21,21 @@ TF_Metabox::metabox( 'beaf_meta', array(
                     'title'     => __( 'Before After Method', 'bafg' ),
                     'subtitle'  => __( 'Choose a method to make a before after slider using a single image, 2 images, 3 images and Videos.', 'bafg' ),
                     'options'   =>  array(
-                        'bafg_before_after_method1' => __( 'Method 1 (Using 2 images)', 'bafg' ),
-                        'bafg_before_after_method2' => array(
+                        'method_1' => __( 'Method 1 (Using 2 images)', 'bafg' ),
+                        'method_2' => array(
                             'label'  => __( 'Method 2 (Using 1 image )<div class="bafg-tooltip method-3-tooltip"><span>?</span><div class="bafg-tooltip-info">Pro feature!</div></div>', 'bafg' ),
                             'is_pro' => true
                          ),
-                        'bafg_before_after_method3' => array(
+                        'method_3' => array(
                            'label'  => __( 'Method 3 (Using 3 images )<div class="bafg-tooltip method-3-tooltip"><span>?</span><div class="bafg-tooltip-info">Pro feature! 3 image slider addon required to activate this. <a href="https://themefic.com/wp-content/uploads/2023/07/3-image-slider-addon.png" target="_blank"> More info</a></div></div>', 'bafg' ),
                            'is_pro' => true
                         ),
-                        'bafg_before_after_method4' => array(
+                        'method_4' => array(
                             'label'  => __( 'Method 4 (Using Video) <div class="bafg-tooltip method-3-tooltip"><span>?</span><div class="bafg-tooltip-info">Pro feature! 3 image slider addon required to activate this. <a href="https://themefic.com/wp-content/uploads/2023/07/3-image-slider-addon.png" target="_blank"> More info</a></div></div>', 'bafg' ),
                             'is_pro' => true
                         ),
                     ),
+                    'default'   => 'method_1',
 				), $post ),
 
                 apply_filters( 'bafg_before_after_image', array(
@@ -42,7 +43,7 @@ TF_Metabox::metabox( 'beaf_meta', array(
                     'type'       => 'image',
                     'label'      => __( 'Before After Image', 'bafg' ),
                     'subtitle'   => __( 'Upload before and after image for the slider', 'bafg' ),
-                    'dependency' => array( 'bafg_before_after_method', '==', 'bafg_before_after_method2' ),
+                    'dependency' => array( 'bafg_before_after_method', '==', 'method_2' ),
                     'is_pro'     => true
                 ),$post),
 
@@ -51,20 +52,20 @@ TF_Metabox::metabox( 'beaf_meta', array(
                     'type'       => 'image',
                     'label'      => __( 'Before Image', 'bafg' ),
                     'subtitle'   => __( 'Upload before image for the slider', 'bafg' ),
-                    'dependency' => array( 'bafg_before_after_method', '==', 'bafg_before_after_method1' ),
+                    'dependency' => array( 'bafg_before_after_method', '==', 'method_1' ),
                 ),                                
                 array(
 					'id'    => 'before_img_alt',
 					'type'  => 'text',
 					'label' => __( 'Before Image Alter text', 'bafg' ),
-                    'dependency' => array( 'bafg_before_after_method', '==', 'bafg_before_after_method1' ),
+                    'dependency' => array( 'bafg_before_after_method', '==', 'method_1' ),
                 ),                
                 apply_filters( 'before_image_link',
                     array(
                         'id'         => '',
                         'type'       => 'text',
                         'label'      => __( 'Before Image link', 'bafg' ),
-                        'dependency' => array( 'bafg_before_after_method', '==', 'bafg_before_after_method1' ),
+                        'dependency' => array( 'bafg_before_after_method', '==', 'method_1' ),
                         'is_pro'     => true
                     ), $post ),
                 array(
@@ -72,20 +73,20 @@ TF_Metabox::metabox( 'beaf_meta', array(
                     'type'     => 'image',
                     'label'    => __( 'After Image', 'bafg' ),
                     'subtitle' => __( 'Upload after image for the slider', 'bafg' ),
-                    'dependency' => array( 'bafg_before_after_method', '==', 'bafg_before_after_method1' ),
+                    'dependency' => array( 'bafg_before_after_method', '==', 'method_1' ),
                 ),                                               
                 array(
 					'id'    => 'after_img_alt',
 					'type'  => 'text',
 					'label' => __( 'After Image Alter text', 'bafg' ),
-                    'dependency' => array( 'bafg_before_after_method', '==', 'bafg_before_after_method1' ),
+                    'dependency' => array( 'bafg_before_after_method', '==', 'method_1' ),
                 ),                   
                 apply_filters( 'after_image_link',
                     array(
                         'id'    => '',
                         'type'  => 'text',
                         'label' => __( 'After Image link', 'bafg' ),
-                        'dependency' => array( 'bafg_before_after_method', '==', 'bafg_before_after_method1' ),
+                        'dependency' => array( 'bafg_before_after_method', '==', 'method_1' ),
                     ), $post 
                 ),
 
@@ -93,7 +94,7 @@ TF_Metabox::metabox( 'beaf_meta', array(
                     'id'         => '',
                     'type'       => 'image',
                     'label'      => __( 'First Image', 'bafg' ),
-                    'dependency' => array( 'bafg_before_after_method', '==', 'bafg_before_after_method3' ),
+                    'dependency' => array( 'bafg_before_after_method', '==', 'method_3' ),
                     'is_pro'     => true
                 ), $post ),
 
@@ -101,7 +102,7 @@ TF_Metabox::metabox( 'beaf_meta', array(
                     'id'         => '',
                     'type'       => 'image',
                     'label'      => __( 'Second Image', 'bafg' ),
-                    'dependency' => array( 'bafg_before_after_method', '==', 'bafg_before_after_method3' ),
+                    'dependency' => array( 'bafg_before_after_method', '==', 'method_3' ),
                     'is_pro'     => true                    
                 ), $post ),
 
@@ -109,7 +110,7 @@ TF_Metabox::metabox( 'beaf_meta', array(
                     'id'         => '',
                     'type'       => 'image',
                     'label'      => __( 'Third Image', 'bafg' ),
-                    'dependency' => array( 'bafg_before_after_method', '==', 'bafg_before_after_method3' ),
+                    'dependency' => array( 'bafg_before_after_method', '==', 'method_3' ),
                     'is_pro'     => true
                 ), $post ),
 
@@ -123,7 +124,7 @@ TF_Metabox::metabox( 'beaf_meta', array(
                         'self'    => __( 'Self Hosted', 'bafg' ),
                     ),
                     'is_pro'      => true,
-                    'dependency'  => array( 'bafg_before_after_method', '==', 'bafg_before_after_method4' ),
+                    'dependency'  => array( 'bafg_before_after_method', '==', 'method_4' ),
                 ), $post ),
 
                 apply_filters( 'bafg_before_video', array(
@@ -131,7 +132,7 @@ TF_Metabox::metabox( 'beaf_meta', array(
                     'type'        => 'text',
                     'label'       => __( 'Before Video', 'bafg' ),
                     'placeholder' => __( 'Before Video URL', 'bafg' ),
-                    'dependency'  => array( 'bafg_before_after_method', '==', 'bafg_before_after_method4' ),
+                    'dependency'  => array( 'bafg_before_after_method', '==', 'method_4' ),
                     'is_pro'      => true
                 ), $post ),
 
@@ -140,7 +141,7 @@ TF_Metabox::metabox( 'beaf_meta', array(
                     'type'        => 'text',
                     'label'       => __( 'After Video', 'bafg' ),
                     'placeholder' => __( 'After Video URL', 'bafg' ),
-                    'dependency'  => array( 'bafg_before_after_method', '==', 'bafg_before_after_method4' ),
+                    'dependency'  => array( 'bafg_before_after_method', '==', 'method_4' ),
                     'is_pro'      => true
                 ), $post ),
 
@@ -228,7 +229,7 @@ TF_Metabox::metabox( 'beaf_meta', array(
                         'sepia' => __( 'Sepia', 'bafg' ),
                         'saturate' => __( 'Saturate', 'bafg' ),
                     ),
-                    'dependency' => array( 'bafg_before_after_method', '==', 'bafg_before_after_method2' ),
+                    'dependency' => array( 'bafg_before_after_method', '==', 'method_2' ),
                     'is_pro'      => true
                     ), $post 
                 ),
@@ -243,7 +244,7 @@ TF_Metabox::metabox( 'beaf_meta', array(
                         'apply_before' => __( 'Before Image', 'bafg' ),
                         'apply_after' => __( 'After Image', 'bafg' ),
                     ),
-                    'dependency' => array( 'bafg_before_after_method', '==', 'bafg_before_after_method2' ),
+                    'dependency' => array( 'bafg_before_after_method', '==', 'method_2' ),
                     'is_pro'      => true
                 )),
 
@@ -470,14 +471,16 @@ TF_Metabox::metabox( 'beaf_meta', array(
                     'id'       => '',
                     'type'     => 'text',
                     'label'    => __( 'Video Width', 'bafg' ),
-                    'is_pro'   => true
+                    'is_pro'   => true,
+                    'dependency'  => array( 'bafg_before_after_method', '==', 'method_4' ),
                 ), $post ),
 
                 apply_filters( 'bafg_video_height', array(
                     'id'       => '',
                     'type'     => 'text',
                     'label'    => __( 'Video Height', 'bafg' ),
-                    'is_pro'   => true
+                    'is_pro'   => true,
+                    'dependency'  => array( 'bafg_before_after_method', '==', 'method_4' ),
                 ), $post ),
 
 

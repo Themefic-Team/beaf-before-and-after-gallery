@@ -14,6 +14,10 @@ if ( ! class_exists( 'TF_radio' ) ) {
 				$inline = ( isset( $this->field['inline'] ) && $this->field['inline'] ) ? 'tf-inline' : '';
 				echo '<ul class="tf-radio-group ' . esc_attr( $inline ) . '">';
 				foreach ( $this->field['options'] as $key => $value ) {
+					//var_dump( $this->value );
+					// if( empty($this->value) ){
+					// 	$this->value = $this->field['default'];
+					// }
 					$checked = $key == $this->value ? ' checked' : '';
 					//check if field is pro
 					if( is_array( $value ) ){

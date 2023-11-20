@@ -35,20 +35,20 @@ add_action('manage_posts_custom_column', 'bafg_custom_columns_shortcode', 10, 2)
 
 function bafg_custom_columns($columns) {
    $columns = array(
-      'cb' => '<input type="checkbox" />',
-      'title' => esc_html__('Title', 'bafg'),
+      'cb'             => '<input type="checkbox" />',
+      'title'          => esc_html__('Title', 'bafg'),
       'bafg_shortcode' => esc_html__('Shortcode', 'bafg'),
-      'bimage' => esc_html__('Before Image', 'bafg'),
-      'second_image' => esc_html__('Middle Image', 'bafg'),
-      'aimage' => esc_html__('After Image', 'bafg'),
-      'date' => __( 'Date' )
+      'bimage'         => esc_html__('Before Image', 'bafg'),
+      'second_image'   => esc_html__('Middle Image', 'bafg'),
+      'aimage'         => esc_html__('After Image', 'bafg'),
+      'date'           => __( 'Date' )
    );
   return $columns;
 }
 
 function bafg_custom_columns_image($column_name, $id){
 
-	$meta = ! empty( get_post_meta( $id, 'beaf_meta', true ) ) ? get_post_meta( $id, 'beaf_meta', true ) : '';
+  $meta = ! empty( get_post_meta( $id, 'beaf_meta', true ) ) ? get_post_meta( $id, 'beaf_meta', true ) : '';
 
   //After Image column in posts
   if($column_name === 'bimage') {
@@ -72,9 +72,9 @@ function bafg_custom_columns_image($column_name, $id){
           $image_url = $meta['bafg_before_image'];
       }
   	
-  	 $image_id = attachment_url_to_postid( $image_url );
-  	 $before_image = wp_get_attachment_image( $image_id, 'thumbnail');
-  	 echo $before_image;
+    $image_id     = attachment_url_to_postid( $image_url );
+    $before_image = wp_get_attachment_image( $image_id, 'thumbnail');
+  	echo $before_image;
   }
 
   //After Image column in posts
@@ -98,9 +98,9 @@ function bafg_custom_columns_image($column_name, $id){
 		$image_url = $meta['bafg_after_image'];
 	}
 	
-	 $image_id = attachment_url_to_postid( $image_url );
-	 $after_image = wp_get_attachment_image( $image_id, 'thumbnail');
-	 echo $after_image;
+	$image_id = attachment_url_to_postid( $image_url );
+	$after_image = wp_get_attachment_image( $image_id, 'thumbnail');
+	echo $after_image;
 }
 
 

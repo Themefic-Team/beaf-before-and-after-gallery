@@ -49,8 +49,8 @@ class bafg_widget extends WP_Widget {
  
     public function form( $instance ) {
  
-        $title = ! empty( $instance['title'] ) ? $instance['title'] : esc_html__( '', 'bafg' );
-        $bafg_post_id = ! empty( $instance['bafg_post_id'] ) ? $instance['bafg_post_id'] : esc_html__( '', 'bafg' );
+        $title          = ! empty( $instance['title'] ) ? $instance['title'] : esc_html__( '', 'bafg' );
+        $bafg_post_id   = ! empty( $instance['bafg_post_id'] ) ? $instance['bafg_post_id'] : esc_html__( '', 'bafg' );
         $bafg_shortcode = ! empty( $instance['bafg_shortcode'] ) ? $instance['bafg_shortcode'] : esc_html__( '', 'bafg' );
         ?>
         <p>
@@ -95,8 +95,8 @@ class bafg_widget extends WP_Widget {
  
         $instance = array();
  
-        $instance['title'] = ( !empty( $new_instance['title'] ) ) ? strip_tags( $new_instance['title'] ) : '';
-        $instance['bafg_post_id'] = ( !empty( $new_instance['bafg_post_id'] ) ) ? $new_instance['bafg_post_id'] : '';
+        $instance['title']          = ( !empty( $new_instance['title'] ) ) ? strip_tags( $new_instance['title'] ) : '';
+        $instance['bafg_post_id']   = ( !empty( $new_instance['bafg_post_id'] ) ) ? $new_instance['bafg_post_id'] : '';
         $instance['bafg_shortcode'] = ( !empty( $new_instance['bafg_shortcode'] ) ) ? $new_instance['bafg_shortcode'] : '';
  
         return $instance;

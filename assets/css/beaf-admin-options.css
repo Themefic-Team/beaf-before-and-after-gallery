@@ -1661,6 +1661,14 @@ table.tf-table tr:last-child {
   background: #b30000;
 }
 
+.tf-depend-hidden.tf-depend-on {
+  display: none;
+}
+
+.tf-depend-hidden {
+  display: block;
+}
+
 .tf-field-ical input,
 .tf-field-text input {
   width: 100%;

@@ -187,7 +187,7 @@ if ( ! class_exists( 'TF_Options' ) ) {
 		 */
 		public function tf_options_admin_dequeue_scripts( $screen ) {
 			global $post_type;
-			$tf_options_post_type = array( 'tf_hotel', 'tf_tours', 'tf_apartment' );
+			$tf_options_post_type = array( 'bafg');
 
 			if ( $screen == 'toplevel_page_tf_settings' || in_array( $post_type, $tf_options_post_type ) ) {
 				wp_dequeue_script( 'theplus-admin-js-pro' );

@@ -1,7 +1,6 @@
 <?php
 /**
  * Dashboard header section
- * @author Jahid,Hena
  */
 function beaf_dashboard_header() {
 	?>
@@ -100,8 +99,6 @@ function beaf_migrate_all_existing_option_data() {
         foreach ( $old_meta as $key => $value ) {
             $new_meta[] = $key;
         }
-        echo "<pre>";
-        var_dump($new_meta); 
 
         if (!empty($new_meta) && is_array($new_meta)) {
             foreach ($new_meta as $field) {
@@ -118,5 +115,5 @@ function beaf_migrate_all_existing_option_data() {
 //add_action('init', 'beaf_migrate_all_existing_option_data', 10);
 
 // Hook the migration function to run once (e.g., on plugin activation)
-//register_activation_hook(BEAF_PLUGIN_PATH . 'before-and-after-gallery.php', 'beaf_migrate_all_existing_option_data');
+register_activation_hook(BEAF_PLUGIN_PATH . 'before-and-after-gallery.php', 'beaf_migrate_all_existing_option_data');
 
