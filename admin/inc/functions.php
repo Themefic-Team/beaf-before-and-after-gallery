@@ -60,10 +60,9 @@ function beaf_dashboard_header() {
  * 
  * @author Abu Hena
  */
-function beaf_migrate_all_existing_option_data( $upgrader, $options ) {
+function beaf_migrate_all_existing_option_data( ) {
 
-    //check if plugin is updated
-    if( $options['action'] == 'update' && $options['type'] == 'plugin' ){
+    if( get_option('bafg_migrated') != 'migrated' ) {
         $watermark_options = array('enable_watermark', 'path', 'enable_opacity', 'wm_opacity','prev', 'watermark_position');
         $bafg_tools_option = array('enable_preloader', 'bafg_publicly_queriable', 'enable_debug_mode', 'bafg_before_after_image_link','bafg_open_url_new_tab');
         $new_option        = get_option('beaf_settings');
@@ -113,11 +112,9 @@ function beaf_migrate_all_existing_option_data( $upgrader, $options ) {
                 update_post_meta( $post->ID, 'beaf_meta', $new_meta ); // Update the 'beaf_meta' key
             }
         }
+
+        update_option('bafg_migrated', 'migrated');
     }
 }
 
-add_action( 'upgrader_process_complete', 'beaf_migrate_all_existing_option_data', 10, 2 );
-
-// Hook the migration function to run once (e.g., on plugin activation)
-//register_activation_hook(BEAF_PLUGIN_PATH . 'before-and-after-gallery.php', 'beaf_migrate_all_existing_option_data');
-
+add_action( 'admin_init', 'beaf_migrate_all_existing_option_data', 10 );
