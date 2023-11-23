@@ -253,12 +253,12 @@ TF_Metabox::metabox( 'beaf_meta', array(
                    'type'        => 'imageselect',
                    'label'       => __( 'Orientation Styles', 'bafg' ),
                    'options'     => array(
-                     'horizontal' => array(
-                        'title' => __( 'Horizontal', 'bafg' ),
-                        'url'   => BEAF_ASSETS_URL . 'image/v.jpg',
-                     ),
                      'vertical' => array(
                         'title' => __( 'Vertical', 'bafg' ),
+                        'url'   => BEAF_ASSETS_URL . 'image/v.jpg',
+                     ),
+                     'horizontal' => array(
+                        'title' => __( 'Horizontal', 'bafg' ),
                         'url'   => BEAF_ASSETS_URL . 'image/h.jpg',
                      )
                     )
