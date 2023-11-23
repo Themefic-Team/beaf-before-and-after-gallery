@@ -295,7 +295,7 @@ class BAFG_Before_After_Gallery {
         $skip_lazy_load       = !empty($meta['skip_lazy_load']) ? $meta['skip_lazy_load'] : '';
         $before_img_alt       = !empty($meta['before_img_alt']) ? $meta['before_img_alt'] : '';
         $after_img_alt        = !empty($meta['after_img_alt']) ? $meta['after_img_alt'] : '';
-		if( $skip_lazy_load == 'yes' ) {
+		if( $skip_lazy_load == '1' ) {
 			$skip_lazy      = 'skip-lazy';
 			$data_skip_lazy = 'data-skip-lazy';
 		}else {

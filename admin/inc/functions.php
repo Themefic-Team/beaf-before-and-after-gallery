@@ -67,7 +67,7 @@ function beaf_migrate_all_existing_option_data( ) {
         $new_option        = get_option('beaf_settings');
         foreach ( $watermark_options as $option ) {
             $old_option_value = get_option('bafg_watermark');
-            if( isset( $old_option_value[$option] ) && $old_option_value[$option] == 'on' ) {
+            if( isset( $old_option_value[$option] ) && ( $old_option_value[$option] == 'on' || $old_option_value[$option] == 'yes' ) ) {
                 $old_option_value[$option] = "1";
             } else if( empty($old_option_value[$option] )) {
                 $old_option_value[$option] = "";
@@ -77,7 +77,7 @@ function beaf_migrate_all_existing_option_data( ) {
 
         foreach ( $bafg_tools_option as $option ) {
             $old_option_value = get_option('bafg_tools');
-            if( isset( $old_option_value[$option] ) && $old_option_value[$option] == 'on' ) {
+            if( isset( $old_option_value[$option] ) && ( $old_option_value[$option] == 'on' || $old_option_value[$option] == 'yes' ) ) {
                 $old_option_value[$option] = "1";
             } else if( empty($old_option_value[$option] )) {
                 $old_option_value[$option] = "";
@@ -88,8 +88,8 @@ function beaf_migrate_all_existing_option_data( ) {
 
         //migrate beaf meta
         $args = array(
-            'post_type' => 'bafg',
-            'posts_per_page' => -1, // Get all posts
+            'post_type'      => 'bafg',
+            'posts_per_page' => -1,       // Get all posts
         );
 
         $posts = get_posts( $args );
