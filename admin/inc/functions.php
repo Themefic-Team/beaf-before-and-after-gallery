@@ -61,14 +61,13 @@ function beaf_dashboard_header() {
  * @author Abu Hena
  */
 function beaf_migrate_all_existing_option_data( ) {
-
     if( get_option('bafg_migrated') != 'migrated' ) {
         $watermark_options = array('enable_watermark', 'path', 'enable_opacity', 'wm_opacity','prev', 'watermark_position');
         $bafg_tools_option = array('enable_preloader', 'bafg_publicly_queriable', 'enable_debug_mode', 'bafg_before_after_image_link','bafg_open_url_new_tab');
         $new_option        = get_option('beaf_settings');
         foreach ( $watermark_options as $option ) {
             $old_option_value = get_option('bafg_watermark');
-            if( $old_option_value[$option] == 'on' ) {
+            if( isset( $old_option_value[$option] ) && $old_option_value[$option] == 'on' ) {
                 $old_option_value[$option] = "1";
             } else if( empty($old_option_value[$option] )) {
                 $old_option_value[$option] = "";
@@ -78,7 +77,7 @@ function beaf_migrate_all_existing_option_data( ) {
 
         foreach ( $bafg_tools_option as $option ) {
             $old_option_value = get_option('bafg_tools');
-            if( $old_option_value[$option] == 'on' ) {
+            if( isset( $old_option_value[$option] ) && $old_option_value[$option] == 'on' ) {
                 $old_option_value[$option] = "1";
             } else if( empty($old_option_value[$option] )) {
                 $old_option_value[$option] = "";
