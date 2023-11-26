@@ -14,7 +14,7 @@ if ( ! class_exists( 'TF_imageselect' ) ) {
 				$inline = ( isset( $this->field['inline'] ) && $this->field['inline'] ) ? 'tf-inline' : '';
 				echo '<ul class="tf-image-radio-group ' . esc_attr( $inline ) . '">';
 				foreach ( $this->field['options'] as $key => $value ) {
-					$checked = $key == $this->value ? ' checked' : '';
+					$checked = $key == $this->value || $key == $this->field['default'] ? ' checked' : '';
 					if(isset($value['is_pro']) && $value['is_pro'] == true){
 						$disabled = 'disabled';
 					}else{

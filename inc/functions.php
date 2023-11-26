@@ -118,8 +118,7 @@ add_action( 'bafg_after_slider', 'bafg_slider_info', 10 );
 
 function bafg_slider_info($id){
 
-	$meta = ! empty( get_post_meta( 'beaf_meta' ) ) ? get_post_meta( 'beaf_meta' ) : '';
-	
+	$meta = ! empty( get_post_meta( $id, 'beaf_meta', true ) ) ? get_post_meta( $id, 'beaf_meta', true ) : '';
 	$bafg_width            = ! empty( $meta['bafg_width'] ) ? $meta['bafg_width'] : '';
 	$bafg_height           = ! empty( $meta['bafg_height'] ) ? $meta['bafg_height'] : '';
 	$bafg_slider_alignment = ! empty( $meta['bafg_slider_alignment'] ) ? $meta['bafg_slider_alignment'] : '';
@@ -129,7 +128,7 @@ function bafg_slider_info($id){
 	<div class="bafg-slider-info-wraper">
 		<div style="<?php if( $bafg_pro_activated == 'true' ) { if($bafg_width != ''){ echo 'width: '.$bafg_width.';'; } ?> <?php if( $bafg_width != '' && $bafg_slider_alignment == 'right' ){ echo ' float: right;'; } ?> <?php if( $bafg_width == '' && $bafg_slider_alignment == 'right' ){ echo ' float: right; width: 100%;'; } ?> <?php if( $bafg_slider_alignment == 'center' ){ echo ' margin: 0 auto;'; } } ?>" class="<?php echo esc_attr('slider-info-'.$id.''); ?> bafg-slider-info">
 			<?php
-			$bafg_slider_title = get_post_meta($id,'bafg_slider_title',true);
+			$bafg_slider_title =  ! empty( $meta['bafg_slider_title'] ) ? $meta['bafg_slider_title'] : '';
 			if( trim($bafg_slider_title) != '' ) :
 			?>
 			<h2 class="bafg-slider-title"><?php echo esc_html($bafg_slider_title); ?></h2>

@@ -1149,7 +1149,7 @@ var frame, gframe;
 
     $(document).ready(function () {
 
-        // Single Image Upload
+        // Single Image and video Upload
 
         $('body').on('click', '.tf-media-upload', function (e) {
             var $this            = $(this);
@@ -1157,15 +1157,19 @@ var frame, gframe;
             var tf_preview_class = fieldname.replace(/[.[\]_-]/g, '_');
 
             //check if it's video uploader
-            var type = 'image';
+            var type  = 'image';
+            var title = 'Select Image';
+            var text  = 'Insert Image';
             if($this.hasClass('bafg-video-upload') ){
                 type = 'video';
+                title = 'Select Video';
+                text = 'Insert Video';
             }
 
             frame = wp.media({
-                title: "Select Image",
+                title: title,
                 button: {
-                    text: "Insert Image"
+                    text: text
                 },
                 multiple: false,
                 library: {

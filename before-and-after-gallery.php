@@ -176,7 +176,7 @@ class BAFG_Before_After_Gallery {
     public function bafg_image_before_after_foucs_posttype() {
         $beaf_opt                = ! empty( get_option('beaf_settings') ) ? get_option('beaf_settings') : '';
         $bafg_publicly_queriable = ! empty( $beaf_opt['publicly_queriable'] ) ? $beaf_opt['publicly_queriable'] : '';
-        if($bafg_publicly_queriable == 'on'){
+        if($bafg_publicly_queriable == '1'){
             $bafg_publicly_queriable = false;
         }else{
             $bafg_publicly_queriable = true;
@@ -281,7 +281,7 @@ class BAFG_Before_After_Gallery {
         
 		ob_start();
 
-        $meta = ! empty( get_post_meta( $id, 'beaf_meta', true ) ) ? get_post_meta( $id, 'beaf_meta', true ) : '';       
+        $meta = ! empty( get_post_meta( $id, 'beaf_meta', true ) ) ? get_post_meta( $id, 'beaf_meta', true ) : '';
         
         $b_image              = !empty($meta['bafg_before_image']) ? $meta['bafg_before_image'] : '';
         $a_image              = !empty($meta['bafg_after_image']) ? $meta['bafg_after_image'] : '';
@@ -289,9 +289,9 @@ class BAFG_Before_After_Gallery {
         $offset               = !empty($meta['bafg_default_offset']) ? $meta['bafg_default_offset'] : '0.5';
         $before_label         = !empty($meta['bafg_before_label']) ? $meta['bafg_before_label'] : 'Before';
         $after_label          = !empty($meta['bafg_after_label']) ? $meta['bafg_after_label'] : 'After';
-        $overlay              = !empty($meta['bafg_no_overlay']) ? $meta['bafg_no_overlay'] : 'no';
-        $move_slider_on_hover = !empty($meta['bafg_move_slider_on_hover']) ? $meta['bafg_move_slider_on_hover'] : 'no';
-        $click_to_move        = !empty($meta['bafg_click_to_move']) ? $meta['bafg_click_to_move'] : 'no';
+        $overlay              = !empty($meta['bafg_no_overlay']) ? $meta['bafg_no_overlay'] : '1';
+        $move_slider_on_hover = !empty($meta['bafg_move_slider_on_hover']) ? $meta['bafg_move_slider_on_hover'] : '';
+        $click_to_move        = !empty($meta['bafg_click_to_move']) ? $meta['bafg_click_to_move'] : '';
         $skip_lazy_load       = !empty($meta['skip_lazy_load']) ? $meta['skip_lazy_load'] : '';
         $before_img_alt       = !empty($meta['before_img_alt']) ? $meta['before_img_alt'] : '';
         $after_img_alt        = !empty($meta['after_img_alt']) ? $meta['after_img_alt'] : '';
@@ -304,13 +304,19 @@ class BAFG_Before_After_Gallery {
 		}
 		$beaf_opt         = ! empty( get_option('beaf_settings') ) ? get_option('beaf_settings') : '';
 		$enable_preloader = ! empty( $beaf_opt['enable_preloader'] ) ? $beaf_opt['enable_preloader'] : '';
+
+        if( ! empty( $meta['bafg_custom_color'] ) && $meta['bafg_custom_color'] == '1'){
+             $bafg_custom_color = 'bafg-custom-color';
+        }else{
+             $bafg_custom_color = '';
+        }
        
 		if(get_post_status($id) == 'publish' ) :
 		?>
 
         <?php do_action('bafg_before_slider', $id); ?>
 
-        <div class="bafg-twentytwenty-container <?php echo esc_attr('slider-'.$id.''); ?> <?php if(get_post_meta($id, 'bafg_custom_color', true) == 'yes') echo 'bafg-custom-color'; ?>" bafg-orientation="<?php echo esc_attr($orientation); ?>" bafg-default-offset="<?php echo esc_attr($offset); ?>" bafg-before-label="<?php echo esc_attr__( $before_label,'bafg' ); ?>" bafg-after-label="<?php echo esc_attr__( $after_label,'bafg' ); ?>" bafg-overlay="<?php echo esc_attr($overlay); ?>" bafg-move-slider-on-hover="<?php echo esc_attr($move_slider_on_hover); ?>" bafg-click-to-move="<?php echo esc_attr($click_to_move); ?>">
+        <div class="bafg-twentytwenty-container <?php echo esc_attr('slider-'.$id.''); ?> <?php echo esc_attr($bafg_custom_color) ?> " bafg-orientation="<?php echo esc_attr($orientation); ?>" bafg-default-offset="<?php echo esc_attr($offset); ?>" bafg-before-label="<?php echo esc_attr__( $before_label,'bafg' ); ?>" bafg-after-label="<?php echo esc_attr__( $after_label,'bafg' ); ?>" bafg-overlay="<?php echo esc_attr($overlay); ?>" bafg-move-slider-on-hover="<?php echo esc_attr($move_slider_on_hover); ?>" bafg-click-to-move="<?php echo esc_attr($click_to_move); ?>">
             
         <?php
             if( is_plugin_active( 'beaf-before-and-after-gallery-pro/before-and-after-gallery-pro.php' ) ){
