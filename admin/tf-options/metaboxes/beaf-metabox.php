@@ -15,7 +15,7 @@ TF_Metabox::metabox( 'beaf_meta', array(
 			'fields' => array(
                 apply_filters( 'beaf_before_after_method',
 				array(
-					'id'        => '',
+					'id'        => 'bafg_before_after_method',
 					'type'      => 'radio',
 					'label'     => __( 'Before After Method', 'bafg' ),
                     'title'     => __( 'Before After Method', 'bafg' ),
@@ -87,6 +87,7 @@ TF_Metabox::metabox( 'beaf_meta', array(
                         'type'  => 'text',
                         'label' => __( 'After Image link', 'bafg' ),
                         'dependency' => array( 'bafg_before_after_method', '==', 'method_1' ),
+                        'is_pro' => true
                     ), $post 
                 ),
 
