@@ -1152,22 +1152,33 @@ var frame, gframe;
         // Single Image Upload
 
         $('body').on('click', '.tf-media-upload', function (e) {
-            var $this = $(this);
-            var fieldname = $(this).attr("tf-field-name");
+            var $this            = $(this);
+            var fieldname        = $(this).attr("tf-field-name");
             var tf_preview_class = fieldname.replace(/[.[\]_-]/g, '_');
+
+            //check if it's video uploader
+            var type = 'image';
+            if($this.hasClass('bafg-video-upload') ){
+                type = 'video';
+            }
 
             frame = wp.media({
                 title: "Select Image",
                 button: {
                     text: "Insert Image"
                 },
-                multiple: false
+                multiple: false,
+                library: {
+                    type: type
+                }
             });
             frame.on('select', function () {
 
                 var attachment = frame.state().get('selection').first().toJSON();
                 $this.parent().parent().find('input').val(attachment.url);
-                $this.parent().parent().find('.tf-fieldset-media-preview').html(`<div class="tf-image-close" tf-field-name='${fieldname}'>✖</div><img src='${attachment.url}' />`);
+                if(!$this.hasClass('bafg-video-upload')) {
+                    $this.parent().parent().find('.tf-fieldset-media-preview').html(`<div class="tf-image-close" tf-field-name='${fieldname}'>✖</div><img src='${attachment.url}' />`);
+                }
             });
             frame.open();
             return false;

@@ -132,7 +132,8 @@ TF_Metabox::metabox( 'beaf_meta', array(
                     'type'        => 'text',
                     'label'       => __( 'Before Video', 'bafg' ),
                     'placeholder' => __( 'Before Video URL', 'bafg' ),
-                    'dependency'  => array( 'bafg_before_after_method', '==', 'method_4' ),
+                    'subtitle'    => __( '<small>Use video url eg. <code>https://www.youtube.com/watch?v=aR8vA8BY0oA</code></small>', 'bafg' ),
+                    'dependency'  => array( 'bafg_slider_video_type', '==', 'youtube' ),
                     'is_pro'      => true
                 ), $post ),
 
@@ -141,7 +142,8 @@ TF_Metabox::metabox( 'beaf_meta', array(
                     'type'        => 'text',
                     'label'       => __( 'After Video', 'bafg' ),
                     'placeholder' => __( 'After Video URL', 'bafg' ),
-                    'dependency'  => array( 'bafg_before_after_method', '==', 'method_4' ),
+                    'subtitle'    => __( '<small>Use video url eg. <code>https://www.youtube.com/watch?v=aR8vA8BY0oA</code></small>', 'bafg' ),
+                    'dependency'  => array( 'bafg_slider_video_type', '==', 'youtube' ),
                     'is_pro'      => true
                 ), $post ),
 
@@ -150,6 +152,7 @@ TF_Metabox::metabox( 'beaf_meta', array(
                     'type'        => 'text',
                     'label'       => __( 'Before Vimeo Video', 'bafg' ),
                     'placeholder' => __( 'Before Vimeo Video URL', 'bafg' ),
+                    'subtitle'    => __( '<small>Use video url eg. <code>https://vimeo.com/186470604</code></small>', 'bafg' ),
                     'dependency'  => array( 'bafg_slider_video_type', '==', 'vimeo' ),
                     'is_pro'      => true
                 )),
@@ -159,24 +162,26 @@ TF_Metabox::metabox( 'beaf_meta', array(
                     'type'        => 'text',
                     'label'       => __( 'After Vimeo Video', 'bafg' ),
                     'placeholder' => __( 'After Vimeo Video URL', 'bafg' ),
+                    'subtitle'    => __( '<small>Use video url eg. <code>https://vimeo.com/294247197</code></small>', 'bafg' ),
                     'dependency'  => array( 'bafg_slider_video_type', '==', 'vimeo' ),
                     'is_pro'      => true
                 )),
 
                 apply_filters( 'bafg_before_self_video', array(
                     'id'          => '',
-                    'type'        => 'text',
+                    'type'        => 'video',
                     'label'       => __( 'Before Self Hosted Video', 'bafg' ),
                     'placeholder' => __( 'Before Self Hosted Video URL', 'bafg' ),
-                    'dependency'  => array( 'bafg_slider_video_type', '==', 'self' ),
+                    'subtitle'    => __( '<small>HTML5 video player supports only <code>MP4, WebM, and Ogg</code> formats.</small>','bafg'),                    'dependency'  => array( 'bafg_slider_video_type', '==', 'self' ),
                     'is_pro'      => true
                 )),
 
                 apply_filters( 'bafg_after_self_video', array(
                     'id'          => '',
-                    'type'        => 'text',
+                    'type'        => 'video',
                     'label'       => __( 'After Self Hosted Video', 'bafg' ),
                     'placeholder' => __( 'After Self Hosted Video URL', 'bafg' ),
+                    'subtitle'    => __( '<small>HTML5 video player supports only <code>MP4, WebM, and Ogg</code> formats.</small>','bafg'),
                     'dependency'  => array( 'bafg_slider_video_type', '==', 'self' ),
                     'is_pro'      => true
                 )),
