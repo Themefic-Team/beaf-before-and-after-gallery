@@ -51,6 +51,7 @@ function beaf_dashboard_header() {
     <!-- deshboard-top-section -->
 	<?php
 }
+
 /**
  * Migrate all the existing data to new data format like options, meta data
  * 
@@ -64,26 +65,31 @@ function beaf_migrate_all_existing_option_data( ) {
     if( get_option('bafg_migrated') != 'migrated' ) {
         $watermark_options = array('enable_watermark', 'path', 'enable_opacity', 'wm_opacity','prev', 'watermark_position');
         $bafg_tools_option = array('enable_preloader', 'bafg_publicly_queriable', 'enable_debug_mode', 'bafg_before_after_image_link','bafg_open_url_new_tab');
-        $new_option        = get_option('beaf_settings');
+        $new_option        = array();
         foreach ( $watermark_options as $option ) {
             $old_option_value = get_option('bafg_watermark');
-            if( isset( $old_option_value[$option] ) && ( $old_option_value[$option] == 'on' || $old_option_value[$option] == 'yes' ) ) {
-                $old_option_value[$option] = "1";
-            } else if( $old_option_value[$option] == '' || $old_option_value[$option] == 'no' ) {
-                $old_option_value[$option] = "";
-            }else{
+            if( isset( $old_option_value[$option] )){
+                if( $old_option_value[$option] == 'on' || $old_option_value[$option] == 'yes' ) {
+                    $old_option_value[$option] = "1";
+                } else if( $old_option_value[$option] == '' || $old_option_value[$option] == 'no' ) {
+                    $old_option_value[$option] = "";
+                }
+
                 $new_option[$option] = $old_option_value[$option];
             }
         }
 
         foreach ( $bafg_tools_option as $option ) {
             $old_option_value = get_option('bafg_tools');
-            if( isset( $old_option_value[$option] ) && ( $old_option_value[$option] == 'on' || $old_option_value[$option] == 'yes' ) ) {
-                $old_option_value[$option] = "1";
-            } else if( $old_option_value[$option] == '' || $old_option_value[$option] || $old_option_value[$option] == 'no' ) {
-                $old_option_value[$option] = "";
-            }else{
+            if( isset( $old_option_value[$option] )){
+                if( $old_option_value[$option] == 'on' || $old_option_value[$option] == 'yes' ) {
+                    $old_option_value[$option] = "1";
+                } else if( $old_option_value[$option] == '' || $old_option_value[$option] || $old_option_value[$option] == 'no' ) {
+                    $old_option_value[$option] = "";
+                }
+
                 $new_option[$option] = $old_option_value[$option];
+                
             }
         }
         update_option( 'beaf_settings', $new_option );
@@ -125,4 +131,4 @@ function beaf_migrate_all_existing_option_data( ) {
     }
 }
 
-add_action( 'admin_init', 'beaf_migrate_all_existing_option_data', 10 );
+add_action( 'admin_init', 'beaf_migrate_all_existing_option_data', 30 );
