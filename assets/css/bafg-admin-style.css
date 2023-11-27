@@ -175,6 +175,7 @@
 
 .bafg-option-label label {
 	font-weight: 600;
+	text-transform: capitalize;
 }
 
 /* HIDE RADIO */

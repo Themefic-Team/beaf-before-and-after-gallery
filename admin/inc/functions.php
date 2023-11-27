@@ -7,7 +7,7 @@ function beaf_dashboard_header() {
     <!-- deshboard-top-section -->
     <div class="tf-setting-top-bar">
         <div class="version">
-            <img src="<?php echo BEAF_ASSETS_URL; ?>images/tourfic-logo.webp" alt="logo">
+            <img src="<?php echo BEAF_ASSETS_URL; ?>image/beaf-logo.webp" alt="logo">
             <span>v 4</span>
         </div>
         <div class="other-document">
@@ -28,7 +28,7 @@ function beaf_dashboard_header() {
                         </svg>
                         <span><?php _e( "Need Help?", "tourfic" ); ?></span>
                     </a>
-                    <a href="https://themefic.com/docs/tourfic/" target="_blank">
+                    <a href="https://themefic.com/docs/beaf/" target="_blank">
                         <svg width="18" height="19" viewBox="0 0 18 19" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <path d="M16.1896 7.57803H13.5902C11.4586 7.57803 9.72274 5.84103 9.72274 3.70803V1.10703C9.72274 0.612031 9.318 0.207031 8.82332 0.207031H5.00977C2.23956 0.207031 0 2.00703 0 5.22003V13.194C0 16.407 2.23956 18.207 5.00977 18.207H12.0792C14.8494 18.207 17.089 16.407 17.089 13.194V8.47803C17.089 7.98303 16.6843 7.57803 16.1896 7.57803ZM8.09478 14.382H4.4971C4.12834 14.382 3.82254 14.076 3.82254 13.707C3.82254 13.338 4.12834 13.032 4.4971 13.032H8.09478C8.46355 13.032 8.76935 13.338 8.76935 13.707C8.76935 14.076 8.46355 14.382 8.09478 14.382ZM9.89363 10.782H4.4971C4.12834 10.782 3.82254 10.476 3.82254 10.107C3.82254 9.73803 4.12834 9.43203 4.4971 9.43203H9.89363C10.2624 9.43203 10.5682 9.73803 10.5682 10.107C10.5682 10.476 10.2624 10.782 9.89363 10.782Z"
                                   fill="#003c79"></path>
@@ -69,20 +69,22 @@ function beaf_migrate_all_existing_option_data( ) {
             $old_option_value = get_option('bafg_watermark');
             if( isset( $old_option_value[$option] ) && ( $old_option_value[$option] == 'on' || $old_option_value[$option] == 'yes' ) ) {
                 $old_option_value[$option] = "1";
-            } else if( empty($old_option_value[$option] )) {
+            } else if( $old_option_value[$option] == '' || $old_option_value[$option] == 'no' ) {
                 $old_option_value[$option] = "";
+            }else{
+                $new_option[$option] = $old_option_value[$option];
             }
-            $new_option[$option] = $old_option_value[$option];
         }
 
         foreach ( $bafg_tools_option as $option ) {
             $old_option_value = get_option('bafg_tools');
             if( isset( $old_option_value[$option] ) && ( $old_option_value[$option] == 'on' || $old_option_value[$option] == 'yes' ) ) {
                 $old_option_value[$option] = "1";
-            } else if( empty($old_option_value[$option] )) {
+            } else if( $old_option_value[$option] == '' || $old_option_value[$option] || $old_option_value[$option] == 'no' ) {
                 $old_option_value[$option] = "";
+            }else{
+                $new_option[$option] = $old_option_value[$option];
             }
-            $new_option[$option] = $old_option_value[$option];
         }
         update_option( 'beaf_settings', $new_option );
 
@@ -104,6 +106,13 @@ function beaf_migrate_all_existing_option_data( ) {
             if (!empty($new_meta) && is_array($new_meta)) {
                 foreach ($new_meta as $field) {
                     $old_value = get_post_meta($post->ID, $field, true);
+                    if($old_value == 'on' || $old_value == 'yes'){
+                        $old_value = "1";
+                    }else if($old_value == '' || $old_value == 'no'){
+                        $old_value = "";
+                    }else {
+                        $old_value = $old_value;
+                    }
                     $new_meta[$field] = $old_value;
                     //delete_post_meta($post->ID, $field); // Remove the old individual field                
                 }

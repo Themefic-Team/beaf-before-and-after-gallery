@@ -222,7 +222,7 @@ TF_Metabox::metabox( 'beaf_meta', array(
                     'id'          => 'bafg_readmore_link',
                     'type'        => 'text',
                     'label'       => __( 'Read More Link', 'bafg' ),
-                    'placeholder' => __( 'Optional', 'bafg' ),
+                    'placeholder' => __( 'https://example.com', 'bafg' ),
                 ),
                 array(
                     'id'          => 'bafg_readmore_link_target',
@@ -295,6 +295,7 @@ TF_Metabox::metabox( 'beaf_meta', array(
                         'id'          => 'bafg_before_after_style',
                         'type'        => 'imageselect',
                         'label'       => __( 'BEAF template style', 'bafg' ),
+                        'subtitle'    => __( 'Select a style for the before and after label.', 'bafg' ),
                         'options'     => array(
                             'default' => array(
                                 'title' => __( 'Default', 'bafg' ),
@@ -408,6 +409,7 @@ TF_Metabox::metabox( 'beaf_meta', array(
                     'label'    => __( 'Disable Handle', 'bafg' ),
                     'default'  => false,
                     'subtitle' => __( 'Disable the slider handle.', 'bafg' ),
+                    'dependency' => array( 'bafg_auto_slide', '==', true ),
                 ),                
                 apply_filters( 'bafg_popup_preview', array(
                     'id'       => '',
