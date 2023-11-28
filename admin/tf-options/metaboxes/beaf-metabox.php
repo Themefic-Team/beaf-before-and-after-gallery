@@ -229,8 +229,8 @@ TF_Metabox::metabox( 'beaf_meta', array(
                     'type'        => 'select',
                     'label'       => __( 'Read More Link Target', 'bafg' ),
                     'options'     => array(
-                        '_self'  => __( 'Same Page', 'bafg' ),
-                        '_blank' => __( 'New Tab', 'bafg' ),
+                        ''  => __( 'Same Page', 'bafg' ),
+                        'new_tab' => __( 'New Tab', 'bafg' ),
                     ),
                 ),
                 apply_filters( 'bafg_readmore_text',
