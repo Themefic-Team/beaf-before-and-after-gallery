@@ -1594,6 +1594,7 @@ table.tf-table tr:last-child {
   display: flex !important;
   align-items: center;
   line-height: 20px;
+  text-transform: capitalize;
 }
 .tf-field .tf-field-label .tf-csf-badge {
   margin-left: 13px;

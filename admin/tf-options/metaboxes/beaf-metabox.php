@@ -643,8 +643,8 @@ TF_Metabox::metabox( 'beaf_meta', array(
                         'type'    => 'select',
                         'label'   => __( 'Button Width', 'bafg' ),
                         'options' => array(
-                            ''       => 'Default',
-                            'full-width'   => 'Full width',
+                            ''           => 'Default',
+                            'full-width' => 'Full width',
                         )
                         ),
                         //alignment
@@ -657,7 +657,8 @@ TF_Metabox::metabox( 'beaf_meta', array(
                                 'left'   => 'Left',
                                 'center' => 'Center',
                                 'right'  => 'Right'
-                            )
+                            ),
+                            'dependency'  => array( 'bafg_slider_info_readmore_button_width', '==', '' ),
                         )                   
 
             )
