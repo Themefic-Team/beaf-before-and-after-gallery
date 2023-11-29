@@ -47,7 +47,12 @@ TF_Metabox::metabox( 'beaf_meta', array(
                     'class' => 'watermark-in-free-version',
                     'is_pro' => true
                 ), $post ),
-
+                array(
+                    'id'         => 'heading_before_after',
+                    'type'       => 'heading',
+                    'label'      => __( 'Before After Image', 'bafg' ),
+                    'dependency' => array( 'bafg_before_after_method', '==', 'method_2' ),
+                ),
                 apply_filters( 'bafg_before_after_image', array(
                     'id'         => '',
                     'type'       => 'image',
@@ -56,7 +61,12 @@ TF_Metabox::metabox( 'beaf_meta', array(
                     'dependency' => array( 'bafg_before_after_method', '==', 'method_2' ),
                     'is_pro'     => true
                 ),$post),
-
+                array(
+                    'id'         => 'heading_before_image',
+                    'type'       => 'heading',
+                    'label'      => __( 'Before Image', 'bafg' ),
+                    'dependency' => array( 'bafg_before_after_method', '==', 'method_1' ),
+                ),
                 array(
                     'id'         => 'bafg_before_image',
                     'type'       => 'image',
@@ -77,7 +87,14 @@ TF_Metabox::metabox( 'beaf_meta', array(
                         'label'      => __( 'Before Image link', 'bafg' ),
                         'dependency' => array( 'bafg_before_after_method', '==', 'method_1' ),
                         'is_pro'     => true
-                    ), $post ),
+                    ), $post 
+                ),
+                array(
+                    'id'         => 'heading_after_image',
+                    'type'       => 'heading',
+                    'label'      => __( 'After Image', 'bafg' ),
+                    'dependency' => array( 'bafg_before_after_method', '==', 'method_1' ),
+                ),
                 array(
                     'id'       => 'bafg_after_image',
                     'type'     => 'image',
@@ -100,7 +117,12 @@ TF_Metabox::metabox( 'beaf_meta', array(
                         'is_pro' => true
                     ), $post 
                 ),
-
+                array(
+                    'id'         => 'heading_three_image',
+                    'type'       => 'heading',
+                    'label'      => __( 'Three Image', 'bafg' ),
+                    'dependency' => array( 'bafg_before_after_method', '==', 'method_3' ),
+                ),
                 apply_filters( 'bafg_bottom_image', array(
                     'id'         => '',
                     'type'       => 'image',
@@ -124,7 +146,12 @@ TF_Metabox::metabox( 'beaf_meta', array(
                     'dependency' => array( 'bafg_before_after_method', '==', 'method_3' ),
                     'is_pro'     => true
                 ), $post ),
-
+                array(
+                    'id'         => 'heading_video',
+                    'type'       => 'heading',
+                    'label'      => __( 'Video Slider Option', 'bafg' ),
+                    'dependency' => array( 'bafg_before_after_method', '==', 'method_4' ),
+                ),
                 apply_filters( 'bafg_slider_video_type', array(
                     'id'          => '',
                     'type'        => 'select',
@@ -215,7 +242,11 @@ TF_Metabox::metabox( 'beaf_meta', array(
                     ),
                     'is_pro'      => true
                 )),
-
+                array(
+                    'id'         => 'heading_information',
+                    'type'       => 'heading',
+                    'label'      => __( 'Slider Information', 'bafg' ),
+                ),
                 array(
                     'id'          => 'bafg_slider_title',
                     'type'        => 'text',
