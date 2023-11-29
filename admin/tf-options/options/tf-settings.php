@@ -61,8 +61,8 @@ TF_Settings::option( 'beaf_settings', array(
 				'title' => __( 'Watermark', 'bafg' ),
 				'fields' => array(
 					apply_filters( 'bafg_enable_watermark',array(
-						'id'       => 'bafg_enable_watermark',
-						'type'     => 'checkbox',
+						'id'       => 'enable_watermark',
+						'type'     => 'switch',
 						'title'    => __( 'Enable Watermark', 'bafg' ),
 						'label'    => __( 'Enable Watermark', 'bafg' ),
 						'is_pro'   => true,
@@ -75,16 +75,24 @@ TF_Settings::option( 'beaf_settings', array(
 					),
 					apply_filters( 'bafg_enable_opacity',array(
 						'id'       => '',
-						'type'     => 'checkbox',
+						'type'     => 'switch',
 						'title'    => __( 'Enable Watermark Opacity', 'bafg' ),
-						'label'    => __( 'Enable Watermark Opacity', 'bafg' ),
+						'label'    => __( 'Watermark Opacity (Required PNG-8 image)', 'bafg' ),
 						'is_pro'   => true,					
 					)),
+					apply_filters( 'bafg_watermark_opacity', array(
+						'id'       => 'wm_opacity',
+						'type'     => 'number',
+						'title'    => __( 'Watermark Opacity', 'bafg' ),
+						'label'    => __( 'Watermark Opacity', 'bafg' ),
+						'subtitle' => __( 'Input opacity value between 0 and 100', 'bafg' ),
+						'dependency' => array( 'wm_opacity_enable', '==', '1' ),
+					) ),
 					apply_filters( 'bafg_watermark_position', array(
 						'id'       => '',
 						'type'     => 'select',
-						'title'    => __( 'Enable Watermark Opacity', 'bafg' ),
-						'label'    => __( 'Enable Watermark Opacity', 'bafg' ),
+						'title'    => __( 'Watermark Position', 'bafg' ),
+						'label'    => __( 'Watermark Position', 'bafg' ),
 						'options'  => array(
 							'top-left'    => 'Top Left',
 							'top-right'   => 'Top Right',

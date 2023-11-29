@@ -1180,6 +1180,7 @@ var frame, gframe;
 
                 var attachment = frame.state().get('selection').first().toJSON();
                 $this.parent().parent().find('input').val(attachment.url);
+                $this.parent().parent().find('.tf-media-attachment-id').val(attachment.id);
                 if(!$this.hasClass('bafg-video-upload')) {
                     $this.parent().parent().find('.tf-fieldset-media-preview').html(`<div class="tf-image-close" tf-field-name='${fieldname}'>✖</div><img src='${attachment.url}' />`);
                 }

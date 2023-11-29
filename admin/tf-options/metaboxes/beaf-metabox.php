@@ -38,6 +38,16 @@ TF_Metabox::metabox( 'beaf_meta', array(
                     'default'   => 'method_1',
 				), $post ),
 
+                apply_filters( 'bafg_watermark_enable_field_meta', array(
+                    'id'    => '',
+                    'type'  => 'switch',
+                    'label' => __( 'Enable Watermark', 'bafg' ),
+                    'title' => __( 'Enable Watermark', 'bafg' ),
+                    'subtitle' => __( 'Enable or Disable watermark for this indiviusal slider (Page will reload to save data)', 'bafg' ),
+                    'class' => 'watermark-in-free-version',
+                    'is_pro' => true
+                ), $post ),
+
                 apply_filters( 'bafg_before_after_image', array(
                     'id'         => '',
                     'type'       => 'image',
