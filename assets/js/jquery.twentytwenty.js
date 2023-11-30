@@ -13,11 +13,11 @@
     }, options);
 
     return this.each(function() { 
-      var sliderPct = options.default_offset_pct;
-      var container = $(this);
+      var sliderPct         = options.default_offset_pct;
+      var container         = $(this);
       var sliderOrientation = options.orientation;
-      var beforeDirection = (sliderOrientation === 'vertical') ? 'down' : 'left';
-      var afterDirection = (sliderOrientation === 'vertical') ? 'up' : 'right';
+      var beforeDirection   = (sliderOrientation === 'vertical') ? 'down' : 'left';
+      var afterDirection    = (sliderOrientation === 'vertical') ? 'up' : 'right';
 
       container.wrap("<div class='twentytwenty-wrapper bafg-twentytwenty-wrapper twentytwenty-" + sliderOrientation + "'></div>");
       if(!options.no_overlay) {
@@ -39,14 +39,14 @@
         overlay.append("<div class='twentytwenty-after-label' data-content='"+options.after_label+"'></div>");
       }
       var beforeImg = container.find("img:first");
-      var afterImg = container.find("img:last");
+      var afterImg  = container.find("img:last");
       
       //for video slider
-      let sliderMethod = container.data('slider-method');
-      let beforeVdo    = container.find("iframe:first");
-      let afterVdo     = container.find("iframe:last");
+      let sliderMethod  = container.data('slider-method');
+      let beforeVdo     = container.find("iframe:first");
+      let afterVdo      = container.find("iframe:last");
       let beforeSelfVdo = container.find("video:first");
-      let afterSelfVdo = container.find("video:last");
+      let afterSelfVdo  = container.find("video:last");
       beforeVdo.addClass('twentytwenty-before');
       afterVdo.addClass('twentytwenty-after');
       beforeSelfVdo.addClass('twentytwenty-before')
@@ -84,10 +84,10 @@
           if(w == 0 && h == 0){
             if( videoType != undefined && videoType == 'self' ){
               var videoHeight = container.find('video:first').height();
-              var videoWidth = container.find('video:last').width();
+              var videoWidth  = container.find('video:last').width();
             }else{
               var videoHeight = container.find('iframe:first').height();
-              var videoWidth = container.find('iframe:last').width();
+              var videoWidth  = container.find('iframe:last').width();
             }
             
             w = videoWidth;

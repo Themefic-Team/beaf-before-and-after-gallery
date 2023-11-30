@@ -45,7 +45,8 @@ TF_Metabox::metabox( 'beaf_meta', array(
                     'title' => __( 'Enable Watermark', 'bafg' ),
                     'subtitle' => __( 'Enable or Disable watermark for this indiviusal slider (Page will reload to save data)', 'bafg' ),
                     'class' => 'watermark-in-free-version',
-                    'is_pro' => true
+                    'is_pro' => true,
+                    'default' => true
                 ), $post ),
                 array(
                     'id'         => 'heading_before_after',
@@ -584,6 +585,7 @@ TF_Metabox::metabox( 'beaf_meta', array(
                     'id' => 'bafg_slider_info_heading_font_size',
                     'type' => 'text',
                     'label' => __( 'Font Size', 'bafg' ),
+                    'placeholder' => '16px'
                 ),
                 array(
                     'id' => 'bafg_slider_info_heading_font_color',
@@ -610,6 +612,7 @@ TF_Metabox::metabox( 'beaf_meta', array(
                         'id'    => 'bafg_slider_info_desc_font_size',
                         'type'  => 'text',
                         'label' => __( 'Font Size', 'bafg' ),
+                        'placeholder' => '14px'
                     ),
                     array(
                         'id'    => 'bafg_slider_info_desc_font_color',
@@ -636,7 +639,7 @@ TF_Metabox::metabox( 'beaf_meta', array(
                         'id'      => 'bafg_slider_info_readmore_font_size',
                         'type'    => 'text',
                         'label'   => __( 'Font Size', 'bafg' ),
-                        'default' => 'eg. 14px'
+                        'placeholder' => 'eg. 14px'
                     ),
                     array(
                         'id'      => 'bafg_slider_info_readmore_font_color',
@@ -663,20 +666,20 @@ TF_Metabox::metabox( 'beaf_meta', array(
                         'id'      => 'bafg_slider_info_readmore_button_padding_top_bottom',
                         'type'    => 'text',
                         'label'   => __( 'Padding Top Bottom', 'bafg' ),
-                        'default' => 'eg. 14px'
+                        'placeholder' => 'eg. 14px'
                     ),
                     array(
                         'id'      => 'bafg_slider_info_readmore_button_padding_left_right',
                         'type'    => 'text',
                         'label'   => __( 'Padding Left Right', 'bafg' ),
-                        'default' => 'eg. 14px'
+                        'placeholder' => 'eg. 14px'
                     ),
                     //border radius
                     array(
                         'id'      => 'bafg_slider_info_readmore_border_radius',
                         'type'    => 'text',
                         'label'   => __( 'Border Radius', 'bafg' ),
-                        'default' => 'eg. 14px'
+                        'placeholder' => 'eg. 14px'
                     ),
                     //button width
                     array(

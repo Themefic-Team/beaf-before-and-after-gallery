@@ -46,12 +46,7 @@ if ( ! class_exists( 'TF_select' ) ) {
 				echo '<option value="">' . esc_html( $this->field['placeholder'] ) . '</option>';
 			}
 			foreach ( $this->field['options'] as $key => $value ) {
-				if($key !== '') {
-					echo '<option value="' . esc_attr( $key ) . '" ' . selected( $this->value, $key, false ) . '>' . esc_html( $value ) . '</option>';
-				} else {
-					//disable empty value
-					echo '<option value="" disabled ' . selected( $this->value, $key, false ) . '>' . esc_html( $value ) . '</option>';
-				}
+				echo '<option value="' . esc_attr( $key ) . '" ' . selected( $this->value, $key, false ) . '>' . esc_html( $value ) . '</option>';
 			}
 			echo '</select>';
 		}

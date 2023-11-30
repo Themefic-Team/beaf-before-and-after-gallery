@@ -72,13 +72,16 @@ TF_Settings::option( 'beaf_settings', array(
 						'type'     => 'image',
 						'title'    => __( 'Watermark Image Upload (PNG Recommended)', 'bafg' ),
 						'label'    => __( 'Upload Watermark Image', 'bafg' ),
+						'dependency' => array( 'enable_watermark', '==', '1' ),
+						'subtitle' => __( 'PNG image recommended', 'bafg' ),
 					),
 					apply_filters( 'bafg_enable_opacity',array(
 						'id'       => '',
 						'type'     => 'switch',
 						'title'    => __( 'Enable Watermark Opacity', 'bafg' ),
 						'label'    => __( 'Watermark Opacity (Required PNG-8 image)', 'bafg' ),
-						'is_pro'   => true,					
+						'is_pro'   => true,
+						'dependency' => array( 'enable_watermark', '==', '1' ),				
 					)),
 					apply_filters( 'bafg_watermark_opacity', array(
 						'id'       => 'wm_opacity',
@@ -87,6 +90,7 @@ TF_Settings::option( 'beaf_settings', array(
 						'label'    => __( 'Watermark Opacity', 'bafg' ),
 						'subtitle' => __( 'Input opacity value between 0 and 100', 'bafg' ),
 						'dependency' => array( 'wm_opacity_enable', '==', '1' ),
+						'default'  => 50
 					) ),
 					apply_filters( 'bafg_watermark_position', array(
 						'id'       => '',
@@ -98,7 +102,8 @@ TF_Settings::option( 'beaf_settings', array(
 							'top-right'   => 'Top Right',
 							'bottom-left' => 'Bottom Left',
 							'bottom-right' => 'Bottom Right',
-						)				
+						),
+						'dependency' => array( 'enable_watermark', '==', '1' ),				
 					)),
 				)
 			),

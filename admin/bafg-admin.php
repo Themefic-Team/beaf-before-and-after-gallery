@@ -14,8 +14,8 @@ add_action( 'admin_enqueue_scripts', 'bafg_admin_enqueue_scripts' );
 function bafg_admin_enqueue_scripts(){   
 	//enqueue styles
 	wp_enqueue_style( 'notyf', BEAF_ASSETS_URL . 'libs/notyf/notyf.min.css' );
-	wp_enqueue_style('bafg_admin_style', plugins_url( '../assets/css/bafg-admin-style.css', __FILE__ ));
-	wp_enqueue_style('beaf-admin-options', BEAF_ASSETS_URL . 'css/beaf-admin-options.css');
+	wp_enqueue_style( 'bafg_admin_style', plugins_url( '../assets/css/bafg-admin-style.css', __FILE__ ));
+	wp_enqueue_style( 'beaf-admin-options', BEAF_ASSETS_URL . 'css/beaf-admin-options.css');
 
 	//enqueue scripts
 	wp_enqueue_script( 'wp-color-picker-alpha', plugins_url( '../assets/js/wp-color-picker-alpha.min.js',__FILE__ ), array( 'wp-color-picker' ), null, true );

@@ -580,6 +580,9 @@ table.tf-table tr:last-child {
 .tf-option-wrapper .tf-option-footer button {
   padding: 10px 25px;
   font-size: 1rem;
+  background: #003c79;
+  color: #fff;
+  cursor: pointer;
 }
 .tf-option-wrapper .tf-option-footer span {
   display: block;

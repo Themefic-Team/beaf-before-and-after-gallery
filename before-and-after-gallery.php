@@ -289,7 +289,7 @@ class BAFG_Before_After_Gallery {
         $offset               = !empty($meta['bafg_default_offset']) ? $meta['bafg_default_offset'] : '0.5';
         $before_label         = !empty($meta['bafg_before_label']) ? $meta['bafg_before_label'] : 'Before';
         $after_label          = !empty($meta['bafg_after_label']) ? $meta['bafg_after_label'] : 'After';
-        $overlay              = !empty($meta['bafg_no_overlay']) ? $meta['bafg_no_overlay'] : '1';
+        $overlay              = !empty($meta['bafg_no_overlay']) ? $meta['bafg_no_overlay'] : '';
         $move_slider_on_hover = !empty($meta['bafg_move_slider_on_hover']) ? $meta['bafg_move_slider_on_hover'] : '';
         $click_to_move        = !empty($meta['bafg_click_to_move']) ? $meta['bafg_click_to_move'] : '';
         $skip_lazy_load       = !empty($meta['skip_lazy_load']) ? $meta['skip_lazy_load'] : '';
@@ -339,10 +339,10 @@ class BAFG_Before_After_Gallery {
 
         <style type="text/css">
             <?php
-            $bafg_before_label_background = ! empty( $beaf_opt['bafg_before_label_background'] ) ? $beaf_opt['bafg_before_label_background'] : '';
-            $bafg_before_label_color      = ! empty( $beaf_opt['bafg_before_label_color'] ) ? $beaf_opt['bafg_before_label_color'] : '';
-            $bafg_after_label_background  = ! empty( $beaf_opt['bafg_after_label_background'] ) ? $beaf_opt['bafg_after_label_background'] : '';
-            $bafg_after_label_color       = ! empty( $beaf_opt['bafg_after_label_color'] ) ? $beaf_opt['bafg_after_label_color'] : '';
+            $bafg_before_label_background = ! empty( $meta['bafg_before_label_background'] ) ? $meta['bafg_before_label_background'] : '';
+            $bafg_before_label_color      = ! empty( $meta['bafg_before_label_color'] ) ? $meta['bafg_before_label_color'] : '';
+            $bafg_after_label_background  = ! empty( $meta['bafg_after_label_background'] ) ? $meta['bafg_after_label_background'] : '';
+            $bafg_after_label_color       = ! empty( $meta['bafg_after_label_color'] ) ? $meta['bafg_after_label_color'] : '';
             
             if( !empty($bafg_before_label_background) || !empty($bafg_before_label_color)) {
                 ?>.<?php echo 'slider-'.$id.' ';
