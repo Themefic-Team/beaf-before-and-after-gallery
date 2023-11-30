@@ -93,3 +93,17 @@
 .tf-depend-hidden {
   display: block;
 }
+
+.tf-image-checkbox:hover .bafg-imageselect-tooltip .bafg-tooltip-info {
+  display: block !important;
+  position: absolute;
+  bottom: 3px;
+  background: black;
+  color: #fff;
+  padding: 10px;
+  border-radius: 5px;
+}
+
+.bafg-imageselect-tooltip {
+  position: relative;
+}
