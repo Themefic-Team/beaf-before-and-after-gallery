@@ -51,7 +51,7 @@ TF_Settings::option( 'beaf_settings', array(
 					'type'     => 'checkbox',
 					'title'    => __( 'Open Link', 'bafg' ),
 					'label'    => __( 'Open Link', 'bafg' ),
-					'subtitle' => __( 'Open URL in new tab', 'bafg' ),
+					'subtitle' => __( 'Open Before After image URL to a new tab', 'bafg' ),
 					'is_pro'   => true,
 				)),
 				
