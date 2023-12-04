@@ -97,12 +97,12 @@ TF_Settings::option( 'beaf_settings', array(
 						'type'     => 'select',
 						'title'    => __( 'Watermark Position', 'bafg' ),
 						'label'    => __( 'Watermark Position', 'bafg' ),
-						'options'  => array(
-							'top-left'     => 'Top Left',
-							'top-right'    => 'Top Right',
-							'bottom-left'  => 'Bottom Left',
-							'bottom-right' => 'Bottom Right',
+						'options'  => array( 
 							'center'       => 'Center',
+							'top_left'     => 'Top Left',
+							'top_right'    => 'Top Right',
+							'bottom_left'  => 'Bottom Left',
+							'bottom_right' => 'Bottom Right',
 						),
 						'dependency' => array( 'enable_watermark', '==', '1' ),				
 					)),
