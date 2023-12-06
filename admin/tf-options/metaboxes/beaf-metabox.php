@@ -428,6 +428,7 @@ TF_Metabox::metabox( 'beaf_meta', array(
                     'label'    => __( 'Default offset', 'bafg' ),
                     'default'  => '0.5',
                     'subtitle' => __( 'How much of the before image is visible when the page loads. (e.g: 0.7)', 'bafg' ),
+                    'field_width' => 50,
                 ),
                 array(
                     'id'       => 'bafg_before_label',
@@ -435,6 +436,7 @@ TF_Metabox::metabox( 'beaf_meta', array(
                     'label'    => __( 'Before Label', 'bafg' ),
                     'default'  => 'Before',
                     'subtitle' => __( 'Set a custom label for the before image.', 'bafg' ),
+                    'field_width' => 50,
                 ),
                 apply_filters( 'bafg_middle_label',array(
                     'id'       => '',
@@ -442,7 +444,8 @@ TF_Metabox::metabox( 'beaf_meta', array(
                     'label'    => __( 'Middle Label', 'bafg' ),
                     'default'  => 'Middle',
                     'subtitle' => __( 'Set a custom label for the middle image.', 'bafg' ),
-                    'is_pro'   => true
+                    'is_pro'   => true,
+                    'field_width' => 50,
                 ), $post ),
                 array(
                     'id'       => 'bafg_after_label',
@@ -450,6 +453,7 @@ TF_Metabox::metabox( 'beaf_meta', array(
                     'label'    => __( 'After Label', 'bafg' ),
                     'default'  => 'After',
                     'subtitle' => __( 'Set a custom label for the after image.', 'bafg' ),
+                    'field_width' => 50,
                 ),
                 apply_filters( 'show_label_outside_image', array(
                     'id'       => '',
@@ -457,7 +461,8 @@ TF_Metabox::metabox( 'beaf_meta', array(
                     'label'    => __( 'Show Label Outside Of Image', 'bafg' ),
                     'default'  => false,
                     'subtitle' => __( 'Show Label Outside of Image', 'bafg' ),
-                    'is_pro'   => true
+                    'is_pro'   => true,
+                    'field_width' => 50,
                 ), $post ),
                 apply_filters( 'bafg_auto_slide',array(
                     'id'       => '',
@@ -465,7 +470,8 @@ TF_Metabox::metabox( 'beaf_meta', array(
                     'label'    => __( 'Auto Slide', 'bafg' ),
                     'default'  => false,
                     'subtitle' => __( 'The before and after image will slide automatically.', 'bafg' ),
-                    'is_pro'   => true
+                    'is_pro'   => true,
+                    'field_width' => 50,
                 ), $post ),
 
                apply_filters( 'bafg_on_scroll_slide', array(
@@ -475,6 +481,7 @@ TF_Metabox::metabox( 'beaf_meta', array(
                     'default'    => false,
                     'subtitle'   => __( 'The before and after image slider will slide on scroll automatically.', 'bafg' ),
                     'dependency' => array( 'bafg_auto_slide', '==', false ),
+                    'field_width' => 50,
                 ), $post ),
 
                 array(
@@ -484,6 +491,7 @@ TF_Metabox::metabox( 'beaf_meta', array(
                     'default'  => false,
                     'subtitle' => __( 'Disable the slider handle.', 'bafg' ),
                     'dependency' => array( 'bafg_auto_slide', '==', true ),
+                    'field_width' => 50,
                 ),                
                 apply_filters( 'bafg_popup_preview', array(
                     'id'       => '',
@@ -491,7 +499,8 @@ TF_Metabox::metabox( 'beaf_meta', array(
                     'label'    => __( 'Full Screen View', 'bafg' ),
                     'default'  => false,
                     'subtitle' => __( 'Enable to display slider on full screen.', 'bafg' ),
-                    'is_pro'   => true
+                    'is_pro'   => true,
+                    'field_width' => 50,
                 ), $post ),
 
                 array(
@@ -499,6 +508,7 @@ TF_Metabox::metabox( 'beaf_meta', array(
                     'type'     => 'switch',
                     'label'    => __( 'Move slider on mouse hover?', 'bafg' ),
                     'default'  => false,
+                    'field_width' => 50,
                 ),
 
                 array(
@@ -507,6 +517,7 @@ TF_Metabox::metabox( 'beaf_meta', array(
                     'label'    => __( 'Click To Move', 'bafg' ),
                     'default'  => false,
                     'subtitle' => __( 'Allow a user to click (or tap) anywhere on the image to move the slider to that location.', 'bafg' ),
+                    'field_width' => 50,
                 ),
                 array(
                     'id'       => 'bafg_no_overlay',
@@ -514,6 +525,7 @@ TF_Metabox::metabox( 'beaf_meta', array(
                     'label'    => __( 'Show Overlay', 'bafg' ),
                     'default'  => true,
                     'subtitle' => __( 'Show overlay on the before and after image.', 'bafg' ),
+                    'field_width' => 50,
                 ),
                 array(
                     'id'       => 'skip_lazy_load',
@@ -521,6 +533,7 @@ TF_Metabox::metabox( 'beaf_meta', array(
                     'label'    => __( 'Skip Lazy Load', 'bafg' ),
                     'default'  => true,
                     'subtitle' => __( 'Conflicting with lazy load? Try to skip lazy load.', 'bafg' ),
+                    'field_width' => 50,
                 ),
             )
             
@@ -533,49 +546,65 @@ TF_Metabox::metabox( 'beaf_meta', array(
                     'id'       => 'bafg_before_label_background',
                     'type'     => 'color',
                     'label'    => __( 'Before Label Background', 'bafg' ),
+                    'field_width' => 33,
                 ),
                 array(
                     'id'       => 'bafg_before_label_color',
                     'type'     => 'color',
                     'label'    => __( 'Before Label Color', 'bafg' ),
+                    'field_width' => 33,
                 ),
                 array(
                     'id'       => 'bafg_after_label_background',
                     'type'     => 'color',
                     'label'    => __( 'After Label Background', 'bafg' ),
+                    'field_width' => 33,
                 ),
                 array(
                     'id'       => 'bafg_after_label_color',
                     'type'     => 'color',
                     'label'    => __( 'After Label Color', 'bafg' ),
+                    'field_width' => 33,
                 ),
 
                 apply_filters( 'bafg_handle_color', array(
                     'id'       => '',
                     'type'     => 'color',
                     'label'    => __( 'Slider Handle Color', 'bafg' ),
-                    'is_pro'   => true               
+                    'is_pro'   => true,
+                    'field_width' => 33,               
                 ), $post ),
 
                 apply_filters( 'bafg_overlay_color', array(
                     'id'       => '',
                     'type'     => 'color',
                     'label'    => __( 'Slider Overlay Color', 'bafg' ),
-                    'is_pro'   => true
+                    'is_pro'   => true, 
+                    'field_width' => 33,
+                ), $post ),
+                apply_filters( 'bafg_overlay_color_opacity', array(
+                    'id'       => '',
+                    'type'     => 'text',
+                    'label'    => __( 'Slider Overlay Opacity', 'bafg' ),
+                    'is_pro'   => true,
+                    'placeholder' => __( 'Set a value between 0 to 100. (e.g: 50)', 'bafg' ),
+                    'field_width' => 50,
                 ), $post ),
 
                 apply_filters( 'bafg_width',  array(
                     'id'       => '',
                     'type'     => 'text',
                     'label'    => __( 'Slider Width', 'bafg' ),
-                    'is_pro'   => true
+                    'is_pro'   => true,
+                    'field_width' => 50,
                 ), $post ),
 
                 apply_filters( 'bafg_height', array(
                     'id'       => '',
                     'type'     => 'text',
                     'label'    => __( 'Slider Height', 'bafg' ),
-                    'is_pro'   => true
+                    'is_pro'   => true,
+                    'field_width' => 50,
                 ), $post ),
 
                apply_filters( 'bafg_video_width',  array(
@@ -583,6 +612,7 @@ TF_Metabox::metabox( 'beaf_meta', array(
                     'type'     => 'text',
                     'label'    => __( 'Video Width', 'bafg' ),
                     'is_pro'   => true,
+                    'field_width' => 50,
                     'dependency'  => array( 'bafg_before_after_method', '==', 'method_4' ),
                 ), $post ),
 
@@ -591,6 +621,7 @@ TF_Metabox::metabox( 'beaf_meta', array(
                     'type'     => 'text',
                     'label'    => __( 'Video Height', 'bafg' ),
                     'is_pro'   => true,
+                    'field_width' => 50,
                     'dependency'  => array( 'bafg_before_after_method', '==', 'method_4' ),
                 ), $post ),
 
@@ -600,6 +631,7 @@ TF_Metabox::metabox( 'beaf_meta', array(
                     'type'     => 'select',
                     'label'    => __( 'Slider Alignment', 'bafg' ),
                     'is_pro'   => true,
+                    'field_width' => 50,
                     'options'  => array(
                         '' => 'Default',
                         'left' => 'Left',
@@ -617,125 +649,144 @@ TF_Metabox::metabox( 'beaf_meta', array(
                     'id' => 'bafg_slider_info_heading_font_size',
                     'type' => 'text',
                     'label' => __( 'Font Size', 'bafg' ),
-                    'placeholder' => '16px'
-                ),
-                array(
-                    'id' => 'bafg_slider_info_heading_font_color',
-                    'type' => 'color',
-                    'label' => __( 'Font Color', 'bafg' ),
+                    'placeholder' => '16px',
+                    'field_width' => 33,
                 ),
                 array(
                     'id'      => 'bafg_slider_info_heading_alignment',
                     'type'    => 'select',
                     'label'   => __( 'Alignment', 'bafg' ),
                     'options' => array(
-                            ''       => 'Default',
-                            'left'   => 'Left',
-                            'center' => 'Center',
-                            'right'  => 'Right'
-                        )
+                        ''       => 'Default',
+                        'left'   => 'Left',
+                        'center' => 'Center',
+                        'right'  => 'Right'
+                    ), 
+                    'field_width' => 33,
+                ), 
+                array(
+                    'id' => 'bafg_slider_info_heading_font_color',
+                    'type' => 'color',
+                    'label' => __( 'Font Color', 'bafg' ),
+                    'field_width' => 33,
+                ),
+                array(
+                    'id'    => 'bafg_desc',
+                    'type'  => 'heading',
+                    'title' => __( 'Description Styles', 'bafg' ),
+                ),
+                array(
+                    'id'    => 'bafg_slider_info_desc_font_size',
+                    'type'  => 'text',
+                    'label' => __( 'Font Size', 'bafg' ),
+                    'placeholder' => '14px',
+                    'field_width' => 33,
+                ),
+                array(
+                    'id'      => 'bafg_slider_info_desc_alignment',
+                    'type'    => 'select',
+                    'label'   => __( 'Alignment', 'bafg' ),
+                    'options' => array(
+                        ''       => 'Default',
+                        'left'   => 'Left',
+                        'center' => 'Center',
+                        'right'  => 'Right'
                     ),
-                    array(
-                        'id'    => 'bafg_desc',
-                        'type'  => 'heading',
-                        'title' => __( 'Description Styles', 'bafg' ),
+                    'field_width' => 33,
+                ),
+                array(
+                    'id'    => 'bafg_slider_info_desc_font_color',
+                    'type'  => 'color',
+                    'label' => __( 'Font Color', 'bafg' ),
+                    'field_width' => 33,
+                ),                        
+                array(
+                    'id'    => 'bafg_readmore',
+                    'type'  => 'heading',
+                    'title' => __( 'Read more Styles', 'bafg' ),
+                ),
+                 
+                array(
+                    'id'      => 'bafg_slider_info_readmore_font_color',
+                    'type'    => 'color',
+                    'label'   => __( 'Font Color', 'bafg' ),
+                    'field_width' => 25,                        
+                ),
+                 //hover color
+                 array(
+                    'id'      => 'bafg_slider_info_readmore_hover_font_color',
+                    'type'    => 'color',
+                    'label'   => __( 'Hover Color', 'bafg' ),
+                    'field_width' => 25,  
+                ),
+                array(
+                    'id'      => 'bafg_slider_info_readmore_bg_color',
+                    'type'    => 'color',
+                    'label'   => __( 'Background Color', 'bafg' ),
+                    'field_width' => 25,  
+                ),
+               
+                array(
+                    'id'      => 'bafg_slider_info_readmore_hover_bg_color',
+                    'type'    => 'color',
+                    'label'   => __( 'Hover Background Color', 'bafg' ),
+                    'field_width' => 25,  
+                ),    
+                array(
+                    'id'      => 'bafg_slider_info_readmore_font_size',
+                    'type'    => 'text',
+                    'label'   => __( 'Font Size', 'bafg' ),
+                    'placeholder' => 'eg. 14px', 
+                    'field_width' => 33,
+                ),
+                array(
+                    'id'      => 'bafg_slider_info_readmore_button_padding_top_bottom',
+                    'type'    => 'text',
+                    'label'   => __( 'Padding Top Bottom', 'bafg' ),
+                    'placeholder' => 'eg. 14px',
+                    'field_width' => 33,
+                ),
+                array(
+                    'id'      => 'bafg_slider_info_readmore_button_padding_left_right',
+                    'type'    => 'text',
+                    'label'   => __( 'Padding Left Right', 'bafg' ),
+                    'placeholder' => 'eg. 14px',
+                    'field_width' => 33,
+                ),
+                //border radius
+                array(
+                    'id'      => 'bafg_slider_info_readmore_border_radius',
+                    'type'    => 'text',
+                    'label'   => __( 'Border Radius', 'bafg' ),
+                    'placeholder' => 'eg. 14px',
+                    'field_width' => 33,
+                ),
+                //button width
+                array(
+                    'id'      => 'bafg_slider_info_readmore_button_width',
+                    'type'    => 'select',
+                    'label'   => __( 'Button Width', 'bafg' ),
+                    'options' => array(
+                        ''           => 'Default',
+                        'full-width' => 'Full width',
                     ),
-                    array(
-                        'id'    => 'bafg_slider_info_desc_font_size',
-                        'type'  => 'text',
-                        'label' => __( 'Font Size', 'bafg' ),
-                        'placeholder' => '14px'
+                    'field_width' => 33,
+                ),
+                //alignment
+                array(
+                    'id'      => 'bafg_slider_info_readmore_alignment',
+                    'type'    => 'select',
+                    'label'   => __( 'Alignment', 'bafg' ),
+                    'options' => array(
+                        ''       => 'Default',
+                        'left'   => 'Left',
+                        'center' => 'Center',
+                        'right'  => 'Right'
                     ),
-                    array(
-                        'id'    => 'bafg_slider_info_desc_font_color',
-                        'type'  => 'color',
-                        'label' => __( 'Font Color', 'bafg' ),
-                    ),
-                    array(
-                        'id'      => 'bafg_slider_info_desc_alignment',
-                        'type'    => 'select',
-                        'label'   => __( 'Alignment', 'bafg' ),
-                        'options' => array(
-                            ''       => 'Default',
-                            'left'   => 'Left',
-                            'center' => 'Center',
-                            'right'  => 'Right'
-                        )
-                    ),                        
-                    array(
-                        'id'    => 'bafg_readmore',
-                        'type'  => 'heading',
-                        'title' => __( 'Read more Styles', 'bafg' ),
-                    ),
-                    array(
-                        'id'      => 'bafg_slider_info_readmore_font_size',
-                        'type'    => 'text',
-                        'label'   => __( 'Font Size', 'bafg' ),
-                        'placeholder' => 'eg. 14px'
-                    ),
-                    array(
-                        'id'      => 'bafg_slider_info_readmore_font_color',
-                        'type'    => 'color',
-                        'label'   => __( 'Font Color', 'bafg' ),                        
-                    ),
-                    array(
-                        'id'      => 'bafg_slider_info_readmore_bg_color',
-                        'type'    => 'color',
-                        'label'   => __( 'Background Color', 'bafg' ),
-                    ),
-                    //hover color
-                    array(
-                        'id'      => 'bafg_slider_info_readmore_hover_font_color',
-                        'type'    => 'color',
-                        'label'   => __( 'Hover Color', 'bafg' ),
-                    ),
-                    array(
-                        'id'      => 'bafg_slider_info_readmore_hover_bg_color',
-                        'type'    => 'color',
-                        'label'   => __( 'Hover Background Color', 'bafg' ),
-                    ),
-                    array(
-                        'id'      => 'bafg_slider_info_readmore_button_padding_top_bottom',
-                        'type'    => 'text',
-                        'label'   => __( 'Padding Top Bottom', 'bafg' ),
-                        'placeholder' => 'eg. 14px'
-                    ),
-                    array(
-                        'id'      => 'bafg_slider_info_readmore_button_padding_left_right',
-                        'type'    => 'text',
-                        'label'   => __( 'Padding Left Right', 'bafg' ),
-                        'placeholder' => 'eg. 14px'
-                    ),
-                    //border radius
-                    array(
-                        'id'      => 'bafg_slider_info_readmore_border_radius',
-                        'type'    => 'text',
-                        'label'   => __( 'Border Radius', 'bafg' ),
-                        'placeholder' => 'eg. 14px'
-                    ),
-                    //button width
-                    array(
-                        'id'      => 'bafg_slider_info_readmore_button_width',
-                        'type'    => 'select',
-                        'label'   => __( 'Button Width', 'bafg' ),
-                        'options' => array(
-                            ''           => 'Default',
-                            'full-width' => 'Full width',
-                        )
-                        ),
-                        //alignment
-                        array(
-                            'id'      => 'bafg_slider_info_readmore_alignment',
-                            'type'    => 'select',
-                            'label'   => __( 'Alignment', 'bafg' ),
-                            'options' => array(
-                                ''       => 'Default',
-                                'left'   => 'Left',
-                                'center' => 'Center',
-                                'right'  => 'Right'
-                            ),
-                            'dependency'  => array( 'bafg_slider_info_readmore_button_width', '==', '' ),
-                        )                   
+                    'field_width' => 33,
+                    'dependency'  => array( 'bafg_slider_info_readmore_button_width', '==', '' ),
+                ),
+                              
 
             )
         )
