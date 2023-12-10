@@ -38,7 +38,11 @@ class BAFG_Before_After_Gallery {
 
         // BEAF_PLUGIN_URL
         if(!defined('BEAF_PLUGIN_URL')){ 
-            define( 'BEAF_PLUGIN_URL', plugin_dir_url( __FILE__ ) );
+            define( 'BAFG_PLUGIN_URL', plugin_dir_url( __FILE__ ) );
+        }
+        
+        if(!defined('BEAF_PLUGIN_PATH')){ 
+            define( 'BEAF_PLUGIN_PATH', plugin_dir_path( __FILE__ ) );
         }
         
         /*
