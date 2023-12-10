@@ -63,7 +63,7 @@ function bafg_custom_columns_image($column_name, $id){
 
           }else if( $bafg_before_after_method == 'method_3' ){
 
-              $image_url = ! empty( $meta['bafg_bottom_image'] ) ? $meta['bafg_bottom_image'] : '';
+              $image_url = ! empty( $meta['bafg_first_image'] ) ? $meta['bafg_first_image'] : '';
           }else{
 			$image_url = ! empty( $meta['bafg_before_image'] ) ? $meta['bafg_before_image'] : '';
 
@@ -90,7 +90,7 @@ function bafg_custom_columns_image($column_name, $id){
 
 		}else if( $bafg_before_after_method == 'method_3' ){
 
-			$image_url = ! empty( $meta['bafg_top_image'] ) ? $meta['bafg_top_image'] : '';
+			$image_url = ! empty( $meta['bafg_third_image'] ) ? $meta['bafg_third_image'] : '';
 		}else{
 			$image_url = ! empty( $meta['bafg_after_image'] ) ? $meta['bafg_after_image'] : '';
 		}
@@ -114,7 +114,7 @@ if($column_name === 'second_image') {
 		
 		if($bafg_before_after_method == 'method_3'){
 		
-			$image_url    = ! empty( $meta['bafg_middle_image'] ) ? $meta['bafg_middle_image'] : '';
+			$image_url    = ! empty( $meta['bafg_second_image'] ) ? $meta['bafg_second_image'] : '';
 			$image_id     = attachment_url_to_postid( $image_url );
 			$second_image = wp_get_attachment_image( $image_id, 'thumbnail');
 		}else{

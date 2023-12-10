@@ -256,7 +256,7 @@ function bafg_slider_info_styles($id){
 	$bafg_slider_info_readmore_hover_font_color = !empty($meta['bafg_slider_info_readmore_hover_font_color']) ? $meta['bafg_slider_info_readmore_hover_font_color'] : '';
 	$bafg_slider_info_readmore_hover_bg_color   = !empty($meta['bafg_slider_info_readmore_hover_bg_color']) ? $meta['bafg_slider_info_readmore_hover_bg_color'] : '';
 	
-	$bafg_slider_info_readmore_border_radius = !empty($meta['bafg_slider_info_readmore_border_radius']) ? $meta['bafg_slider_info_readmore_hover_bg_color'] : '';
+	$bafg_slider_info_readmore_border_radius = !empty($meta['bafg_slider_info_readmore_border_radius']) ? $meta['bafg_slider_info_readmore_border_radius'] : '';
 	
 	?>
 	
@@ -816,11 +816,11 @@ if( ! function_exists( 'bafg_before_after_image_cb') ){
         return $options;
     }
 }
-if( ! function_exists( 'bafg_bottom_image_cb' ) ){
-    add_filter( 'bafg_bottom_image', 'bafg_bottom_image_cb', 30 );
-    function bafg_bottom_image_cb( $options ) {
+if( ! function_exists( 'bafg_first_image_cb' ) ){
+    add_filter( 'bafg_first_image', 'bafg_first_image_cb', 30 );
+    function bafg_first_image_cb( $options ) {
         $pro_options = array(
-            'id'         => 'bafg_bottom_image',
+            'id'         => 'bafg_first_image',
             'is_pro'     => false
         );
 
@@ -832,11 +832,11 @@ if( ! function_exists( 'bafg_bottom_image_cb' ) ){
     }
 }
 
-if( ! function_exists( 'bafg_middle_image_cb' ) ) {
-    add_filter( 'bafg_middle_image', 'bafg_middle_image_cb', 30 );
-    function bafg_middle_image_cb( $options ) {
+if( ! function_exists( 'bafg_second_image_cb' ) ) {
+    add_filter( 'bafg_second_image', 'bafg_second_image_cb', 30 );
+    function bafg_second_image_cb( $options ) {
         $pro_options = array(
-            'id'         => 'bafg_middle_image',
+            'id'         => 'bafg_second_image',
             'is_pro'     => false
         );
 
@@ -848,11 +848,11 @@ if( ! function_exists( 'bafg_middle_image_cb' ) ) {
     }    
 }
 
-if( ! function_exists( 'bafg_top_image_cb' ) ) {
-    add_filter( 'bafg_top_image', 'bafg_top_image_cb', 30 );
-    function bafg_top_image_cb( $options ) {
+if( ! function_exists( 'bafg_third_image_cb' ) ) {
+    add_filter( 'bafg_third_image', 'bafg_third_image_cb', 30 );
+    function bafg_third_image_cb( $options ) {
         $pro_options = array(
-            'id'         => 'bafg_top_image',
+            'id'         => 'bafg_third_image',
             'is_pro'     => false
         );
 

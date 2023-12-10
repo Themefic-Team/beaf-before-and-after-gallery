@@ -124,7 +124,7 @@ TF_Metabox::metabox( 'beaf_meta', array(
                     'label'      => __( 'Three Image', 'bafg' ),
                     'dependency' => array( 'bafg_before_after_method', '==', 'method_3' ),
                 ),
-                apply_filters( 'bafg_bottom_image', array(
+                apply_filters( 'bafg_first_image', array(
                     'id'         => '',
                     'type'       => 'image',
                     'label'      => __( 'First Image', 'bafg' ),
@@ -132,7 +132,7 @@ TF_Metabox::metabox( 'beaf_meta', array(
                     'is_pro'     => true
                 ), $post ),
 
-                apply_filters( 'bafg_bottom_image_alt', array(
+                apply_filters( 'first_img_alt', array(
                     'id'         => '',
                     'type'       => 'text',
                     'label'      => __( 'First Image Alter text', 'bafg' ),
@@ -140,7 +140,7 @@ TF_Metabox::metabox( 'beaf_meta', array(
                     'is_pro'     => true
                 ), $post ),
 
-                apply_filters( 'bafg_middle_image', array(
+                apply_filters( 'bafg_second_image', array(
                     'id'         => '',
                     'type'       => 'image',
                     'label'      => __( 'Second Image', 'bafg' ),
@@ -148,7 +148,7 @@ TF_Metabox::metabox( 'beaf_meta', array(
                     'is_pro'     => true                    
                 ), $post ),
 
-                apply_filters( 'bafg_middle_image_alt', array(
+                apply_filters( 'second_img_alt', array(
                     'id'         => '',
                     'type'       => 'text',
                     'label'      => __( 'Second Image Alter text', 'bafg' ),
@@ -156,7 +156,7 @@ TF_Metabox::metabox( 'beaf_meta', array(
                     'is_pro'     => true
                 ), $post ),
 
-                apply_filters( 'bafg_top_image', array(
+                apply_filters( 'bafg_third_image', array(
                     'id'         => '',
                     'type'       => 'image',
                     'label'      => __( 'Third Image', 'bafg' ),
@@ -164,7 +164,7 @@ TF_Metabox::metabox( 'beaf_meta', array(
                     'is_pro'     => true
                 ), $post ),
 
-                apply_filters( 'bafg_top_image_alt', array(
+                apply_filters( 'third_img_alt', array(
                     'id'         => '',
                     'type'       => 'text',
                     'label'      => __( 'Third Image Alter text', 'bafg' ),
