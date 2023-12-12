@@ -18,7 +18,7 @@ class bafg_PROMO_NOTICE {
 
     public function __construct() {
 
-        if(in_array(date('F'), $this->months) && !class_exists('WOObafg')){   
+        if(in_array(date('F'), $this->months) &&  !is_plugin_active( 'beaf-before-and-after-gallery-pro/before-and-after-gallery-pro.php' )){   
             add_filter('cron_schedules', array($this, 'bafg_custom_cron_interval'));
              
             if (!wp_next_scheduled('bafg_promo__schudle')) {
