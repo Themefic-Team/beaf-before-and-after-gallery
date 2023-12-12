@@ -52,7 +52,7 @@ class bafg_PROMO_NOTICE {
             } 
             
 			
-            register_deactivation_hook( BEAF_PLUGIN_PATH . 'before-and-after-gallery.php', array($this, 'bafg_promo_notice_deactivation_hook') );
+            register_deactivation_hook( BAFG_PLUGIN_PATH . 'before-and-after-gallery.php', array($this, 'bafg_promo_notice_deactivation_hook') );
              
             
         }
