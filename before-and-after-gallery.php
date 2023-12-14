@@ -13,13 +13,45 @@
  */
 
 // Exit if accessed directly
-if (!defined('ABSPATH')) {
+if ( !defined( 'ABSPATH' ) ) {
 	exit();
 }
+
+//define all necessary constants
+define( 'BEAF_PLUGIN_PATH', plugin_dir_path( __FILE__ ) );
+define( 'BEAF_VERSION', '4.4.8' );
+define( 'BEAF_ADMIN_PATH', BEAF_PLUGIN_PATH . 'admin/' );
+define( 'BEAF_OPTIONS_PATH', BEAF_ADMIN_PATH . 'tf-options/' );
+//define assets url
+define( 'BEAF_ASSETS_URL', plugin_dir_url( __FILE__ ) . 'assets/' );
+
 
 class BAFG_Before_After_Gallery {
     
     public function __construct(){
+        
+        /**
+         * Include wp plugin.php file
+         */
+        if( ! function_exists( 'is_plugin_active' ) ){
+            require_once ABSPATH . 'wp-admin/includes/plugin.php';
+        }
+
+        /**
+         * Include admin function file
+         */
+        if( file_exists( BEAF_ADMIN_PATH . 'inc/functions.php' ) ){
+            require_once BEAF_ADMIN_PATH . 'inc/functions.php';
+        }
+
+        /**
+         * Option framework include
+         */
+        if( file_exists( BEAF_OPTIONS_PATH . 'TF_Options.php' ) ){
+            require_once BEAF_OPTIONS_PATH . 'TF_Options.php';
+        }else{
+            self::beaf_file_missing( BEAF_OPTIONS_PATH . 'TF_Options.php' );
+        }
       
         /*
         * Enqueue css and js for BAFG
@@ -50,10 +82,6 @@ class BAFG_Before_After_Gallery {
         * Require admin file
         */
         require_once('admin/bafg-admin.php');
-        /*
-        * Require admin global options file
-        */
-        require_once('admin/global-options.php');
         
         /*
         * Adding shortcode for bafg
@@ -93,6 +121,32 @@ class BAFG_Before_After_Gallery {
         
         
     }
+
+    /**
+     * File missing notice
+     * @author Abu Hena
+     * @since 5.0.0
+     */
+    public static function beaf_file_missing( $files = '' ) {
+        if ( is_admin() ) {
+            if ( ! empty( $files ) ) {
+                $class   = 'notice notice-error';
+                $message = '<strong>' . $files . '</strong>' . __( ' file is missing! It is required to function Before After properly!', 'bafg' );
+                printf( '<div class="%1$s"><p>%2$s</p></div>', esc_attr( $class ), $message );
+            }
+        }
+    }
+
+    
+    /**
+     * Global Admin Get Option
+     */
+    public static function beaf_opt( $option = '', $default = null ) {
+        $options = get_option( 'beaf_settings' );
+
+        return ( isset( $options[ $option ] ) ) ? $options[ $option ] : $default;
+    }
+
     
     /*
     * Enqueue css and js in frontend
@@ -103,7 +157,7 @@ class BAFG_Before_After_Gallery {
         wp_enqueue_style( 'bafg_twentytwenty', plugin_dir_url( __FILE__ ) . 'assets/css/twentytwenty.css'); 
         wp_enqueue_style( 'bafg-style', plugin_dir_url( __FILE__ ) . 'assets/css/bafg-style.css'); 
 
-        $debug_mode = is_array(get_option('bafg_tools')) && !empty(get_option('bafg_tools')['enable_debug_mode']) ? get_option('bafg_tools')['enable_debug_mode'] : '';
+        $debug_mode = is_array(get_option('beaf_settings')) && !empty(get_option('beaf_settings')['enable_debug_mode']) ? get_option('beaf_settings')['enable_debug_mode'] : '';
         $in_footer  = false;
         if( !empty($debug_mode) ){
             $in_footer = true;
@@ -121,8 +175,9 @@ class BAFG_Before_After_Gallery {
     
     //register post type
     public function bafg_image_before_after_foucs_posttype() {
-        $bafg_publicly_queriable = is_array(get_option('bafg_tools')) && !empty(get_option('bafg_tools')['bafg_publicly_queriable']) ? get_option('bafg_tools')['bafg_publicly_queriable'] : '';
-        if($bafg_publicly_queriable == 'on'){
+        $beaf_opt                = ! empty( get_option('beaf_settings') ) ? get_option('beaf_settings') : '';
+        $bafg_publicly_queriable = ! empty( $beaf_opt['publicly_queriable'] ) ? $beaf_opt['publicly_queriable'] : '';
+        if($bafg_publicly_queriable == '1'){
             $bafg_publicly_queriable = false;
         }else{
             $bafg_publicly_queriable = true;
@@ -226,34 +281,43 @@ class BAFG_Before_After_Gallery {
         ), $atts) );
         
 		ob_start();
-		
-        $b_image              = get_post_meta( $id, 'bafg_before_image', true);
-        $a_image              = get_post_meta( $id, 'bafg_after_image', true);
-        $orientation          = !empty(get_post_meta( $id, 'bafg_image_styles', true)) ? get_post_meta( $id, 'bafg_image_styles', true) : 'horizontal';
-        $offset               = !empty(get_post_meta( $id, 'bafg_default_offset', true)) ? get_post_meta( $id, 'bafg_default_offset', true) : '0.5';
-        $before_label         = !empty(get_post_meta( $id, 'bafg_before_label', true)) ? get_post_meta( $id, 'bafg_before_label', true) : 'Before';
-        $after_label          = !empty(get_post_meta( $id, 'bafg_after_label', true)) ? get_post_meta( $id, 'bafg_after_label', true) : 'After';
-        $overlay              = !empty(get_post_meta( $id, 'bafg_no_overlay', true)) ? get_post_meta( $id, 'bafg_no_overlay', true) : 'no';
-        $move_slider_on_hover = !empty(get_post_meta( $id, 'bafg_move_slider_on_hover', true)) ? get_post_meta( $id, 'bafg_move_slider_on_hover', true) : 'no';
-        $click_to_move        = !empty(get_post_meta( $id, 'bafg_click_to_move', true)) ? get_post_meta( $id, 'bafg_click_to_move', true) : 'no';
-        $skip_lazy_load       = get_post_meta( $id, 'skip_lazy_load', true);
-        $before_img_alt       = get_post_meta( $id, 'before_img_alt', true) ? get_post_meta( $id, 'before_img_alt', true) : '';
-        $after_img_alt        = get_post_meta( $id, 'after_img_alt', true) ? get_post_meta( $id, 'after_img_alt', true) : '';
-		if( $skip_lazy_load == 'yes' ) {
+
+        $meta = ! empty( get_post_meta( $id, 'beaf_meta', true ) ) ? get_post_meta( $id, 'beaf_meta', true ) : '';
+        
+        $b_image              = !empty($meta['bafg_before_image']) ? $meta['bafg_before_image'] : '';
+        $a_image              = !empty($meta['bafg_after_image']) ? $meta['bafg_after_image'] : '';
+        $orientation          = !empty($meta['bafg_image_styles']) ? $meta['bafg_image_styles'] : 'horizontal';
+        $offset               = !empty($meta['bafg_default_offset']) ? $meta['bafg_default_offset'] : '0.5';
+        $before_label         = !empty($meta['bafg_before_label']) ? $meta['bafg_before_label'] : 'Before';
+        $after_label          = !empty($meta['bafg_after_label']) ? $meta['bafg_after_label'] : 'After';
+        $overlay              = !empty($meta['bafg_no_overlay']) ? $meta['bafg_no_overlay'] : '';
+        $move_slider_on_hover = !empty($meta['bafg_move_slider_on_hover']) ? $meta['bafg_move_slider_on_hover'] : '';
+        $click_to_move        = !empty($meta['bafg_click_to_move']) ? $meta['bafg_click_to_move'] : '';
+        $skip_lazy_load       = !empty($meta['skip_lazy_load']) ? $meta['skip_lazy_load'] : '';
+        $before_img_alt       = !empty($meta['before_img_alt']) ? $meta['before_img_alt'] : '';
+        $after_img_alt        = !empty($meta['after_img_alt']) ? $meta['after_img_alt'] : '';
+		if( $skip_lazy_load == '1' ) {
 			$skip_lazy      = 'skip-lazy';
 			$data_skip_lazy = 'data-skip-lazy';
 		}else {
 			$skip_lazy      = '';
 			$data_skip_lazy = '';
 		}
-		$enable_preloader = is_array(get_option('bafg_tools')) && !empty(get_option('bafg_tools')['enable_preloader']) ? get_option('bafg_tools')['enable_preloader'] : '';
+		$beaf_opt         = ! empty( get_option('beaf_settings') ) ? get_option('beaf_settings') : '';
+		$enable_preloader = ! empty( $beaf_opt['enable_preloader'] ) ? $beaf_opt['enable_preloader'] : '';
 
+        if( ! empty( $meta['bafg_custom_color'] ) && $meta['bafg_custom_color'] == '1'){
+             $bafg_custom_color = 'bafg-custom-color';
+        }else{
+             $bafg_custom_color = '';
+        }
+       
 		if(get_post_status($id) == 'publish' ) :
 		?>
 
         <?php do_action('bafg_before_slider', $id); ?>
 
-        <div class="bafg-twentytwenty-container <?php echo esc_attr('slider-'.$id.''); ?> <?php if(get_post_meta($id, 'bafg_custom_color', true) == 'yes') echo 'bafg-custom-color'; ?>" bafg-orientation="<?php echo esc_attr($orientation); ?>" bafg-default-offset="<?php echo esc_attr($offset); ?>" bafg-before-label="<?php echo esc_attr__( $before_label,'bafg' ); ?>" bafg-after-label="<?php echo esc_attr__( $after_label,'bafg' ); ?>" bafg-overlay="<?php echo esc_attr($overlay); ?>" bafg-move-slider-on-hover="<?php echo esc_attr($move_slider_on_hover); ?>" bafg-click-to-move="<?php echo esc_attr($click_to_move); ?>">
+        <div class="bafg-twentytwenty-container <?php echo esc_attr('slider-'.$id.''); ?> <?php echo esc_attr($bafg_custom_color) ?> " bafg-orientation="<?php echo esc_attr($orientation); ?>" bafg-default-offset="<?php echo esc_attr($offset); ?>" bafg-before-label="<?php echo esc_attr__( $before_label,'bafg' ); ?>" bafg-after-label="<?php echo esc_attr__( $after_label,'bafg' ); ?>" bafg-overlay="<?php echo esc_attr($overlay); ?>" bafg-move-slider-on-hover="<?php echo esc_attr($move_slider_on_hover); ?>" bafg-click-to-move="<?php echo esc_attr($click_to_move); ?>">
             
         <?php
             if( is_plugin_active( 'beaf-before-and-after-gallery-pro/before-and-after-gallery-pro.php' ) ){
@@ -275,15 +339,13 @@ class BAFG_Before_After_Gallery {
         <?php do_action('bafg_after_slider', $id); ?>
 
         <style type="text/css">
-            <?php $bafg_before_label_background= !empty(get_post_meta($id, 'bafg_before_label_background', true)) ? get_post_meta($id, 'bafg_before_label_background', true) : '';
-
-            $bafg_before_label_color= !empty(get_post_meta($id, 'bafg_before_label_color', true)) ? get_post_meta($id, 'bafg_before_label_color', true) : '';
-
-            $bafg_after_label_background= !empty(get_post_meta($id, 'bafg_after_label_background', true)) ? get_post_meta($id, 'bafg_after_label_background', true) : '';
-
-            $bafg_after_label_color= !empty(get_post_meta($id, 'bafg_after_label_color', true)) ? get_post_meta($id, 'bafg_after_label_color', true) : '';
-
-            ?><?php if( !empty($bafg_before_label_background) || !empty($bafg_before_label_color)) {
+            <?php
+            $bafg_before_label_background = ! empty( $meta['bafg_before_label_background'] ) ? $meta['bafg_before_label_background'] : '';
+            $bafg_before_label_color      = ! empty( $meta['bafg_before_label_color'] ) ? $meta['bafg_before_label_color'] : '';
+            $bafg_after_label_background  = ! empty( $meta['bafg_after_label_background'] ) ? $meta['bafg_after_label_background'] : '';
+            $bafg_after_label_color       = ! empty( $meta['bafg_after_label_color'] ) ? $meta['bafg_after_label_color'] : '';
+            
+            if( !empty($bafg_before_label_background) || !empty($bafg_before_label_color)) {
                 ?>.<?php echo 'slider-'.$id.' ';
 
                 ?>.twentytwenty-before-label::before {

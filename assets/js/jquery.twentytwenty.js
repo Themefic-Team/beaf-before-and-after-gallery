@@ -13,11 +13,11 @@
     }, options);
 
     return this.each(function() { 
-      var sliderPct = options.default_offset_pct;
-      var container = $(this);
+      var sliderPct         = options.default_offset_pct;
+      var container         = $(this);
       var sliderOrientation = options.orientation;
-      var beforeDirection = (sliderOrientation === 'vertical') ? 'down' : 'left';
-      var afterDirection = (sliderOrientation === 'vertical') ? 'up' : 'right';
+      var beforeDirection   = (sliderOrientation === 'vertical') ? 'down' : 'left';
+      var afterDirection    = (sliderOrientation === 'vertical') ? 'up' : 'right';
 
       container.wrap("<div class='twentytwenty-wrapper bafg-twentytwenty-wrapper twentytwenty-" + sliderOrientation + "'></div>");
       if(!options.no_overlay) {
@@ -39,14 +39,14 @@
         overlay.append("<div class='twentytwenty-after-label' data-content='"+options.after_label+"'></div>");
       }
       var beforeImg = container.find("img:first");
-      var afterImg = container.find("img:last");
+      var afterImg  = container.find("img:last");
       
       //for video slider
-      let sliderMethod = container.data('slider-method');
-      let beforeVdo    = container.find("iframe:first");
-      let afterVdo     = container.find("iframe:last");
+      let sliderMethod  = container.data('slider-method');
+      let beforeVdo     = container.find("iframe:first");
+      let afterVdo      = container.find("iframe:last");
       let beforeSelfVdo = container.find("video:first");
-      let afterSelfVdo = container.find("video:last");
+      let afterSelfVdo  = container.find("video:last");
       beforeVdo.addClass('twentytwenty-before');
       afterVdo.addClass('twentytwenty-after');
       beforeSelfVdo.addClass('twentytwenty-before')
@@ -84,10 +84,10 @@
           if(w == 0 && h == 0){
             if( videoType != undefined && videoType == 'self' ){
               var videoHeight = container.find('video:first').height();
-              var videoWidth = container.find('video:last').width();
+              var videoWidth  = container.find('video:last').width();
             }else{
               var videoHeight = container.find('iframe:first').height();
-              var videoWidth = container.find('iframe:last').width();
+              var videoWidth  = container.find('iframe:last').width();
             }
             
             w = videoWidth;
@@ -153,105 +153,104 @@
     	}
         container.css( "height", offset.h);
 
-        /*
+      /*
         * Auto video pause and sound control based on slider handle position
         * @author : Abu Hena
         **/ 
-        if(sliderMethod == 'method_4'){
+      if(sliderMethod == 'method_4'){
 
-          if(container.hasClass('active')){
-            let sliderVideoType = container.data('video-type');
-            let totalWidth      = offset.w;
-            let totalHeight     = offset.h;
-            let sliderCurrentPosition;
+        if(container.hasClass('active')){
+          let sliderVideoType = container.data('video-type');
+          let totalWidth      = offset.w;
+          let totalHeight     = offset.h;
+          let sliderCurrentPosition;
 
-            if( sliderOrientation == 'vertical' ){
-              totalHeight           = totalHeight.replace('px', '');
-              sliderCurrentPosition = offset.ch;                  
-              sliderCurrentPosition = sliderCurrentPosition.replace('px', '');
-              sliderPositionPercent = sliderCurrentPosition/totalHeight * 100;
-            }else{                  
-              totalWidth            = totalWidth.replace('px', '');
-              sliderCurrentPosition = offset.cw;
-              sliderCurrentPosition = sliderCurrentPosition.replace('px', '');
-              sliderPositionPercent = sliderCurrentPosition/totalWidth * 100;
-            }
-            sliderPositionPercent = Math.round(sliderPositionPercent);        
+          if( sliderOrientation == 'vertical' ){
+            totalHeight           = totalHeight.replace('px', '');
+            sliderCurrentPosition = offset.ch;                  
+            sliderCurrentPosition = sliderCurrentPosition.replace('px', '');
+            sliderPositionPercent = sliderCurrentPosition/totalHeight * 100;
+          }else{                  
+            totalWidth            = totalWidth.replace('px', '');
+            sliderCurrentPosition = offset.cw;
+            sliderCurrentPosition = sliderCurrentPosition.replace('px', '');
+            sliderPositionPercent = sliderCurrentPosition/totalWidth * 100;
+          }
+          sliderPositionPercent = Math.round(sliderPositionPercent);        
 
-            let firstVideo  = container.children().eq(0).attr('id');
-            let secondVideo = container.children().eq(1).attr('id');
+          let firstVideo  = container.children().eq(0).attr('id');
+          let secondVideo = container.children().eq(1).attr('id');
 
-            if(sliderVideoType == 'youtube'){
+          if(sliderVideoType == 'youtube'){
 
-              if(sliderPositionPercent > 50){
+            if(sliderPositionPercent > 50){
 
-                if(container.hasClass('muted') != true){
-                  players[firstVideo].setVolume(sliderPositionPercent);
-                  players[secondVideo].setVolume(100 - sliderPositionPercent);
-                }
-                players[secondVideo].pauseVideo();
-                players[firstVideo].playVideo();
-
-              }else if(sliderPositionPercent < 50){
-
-                players[firstVideo].pauseVideo();
-                players[secondVideo].playVideo();
-
-                if(container.hasClass('muted') != true){
-                  players[firstVideo].setVolume(sliderPositionPercent);
-                  players[secondVideo].setVolume(100 - sliderPositionPercent);
-                }
-
+              if(container.hasClass('muted') != true){
+                players[firstVideo].setVolume(sliderPositionPercent);
+                players[secondVideo].setVolume(100 - sliderPositionPercent);
               }
+              players[secondVideo].pauseVideo();
+              players[firstVideo].playVideo();
 
-            }else if(sliderVideoType == 'vimeo'){
+            }else if(sliderPositionPercent < 50){
 
-              if(sliderPositionPercent > 50){
-                vimeoPlayers[secondVideo].pause();
-                vimeoPlayers[firstVideo].play();
+              players[firstVideo].pauseVideo();
+              players[secondVideo].playVideo();
 
-                if(container.hasClass('muted') != true){
-                  //vimeo volume scale must be between 0 and 1
-                  vimeoPlayers[firstVideo].setVolume(sliderPositionPercent/100);
-                  vimeoPlayers[secondVideo].setVolume(1 - sliderPositionPercent/100);
-                }
-
-              }else if(sliderPositionPercent < 50){
-                vimeoPlayers[firstVideo].pause();
-                vimeoPlayers[secondVideo].play();
-
-                if(container.hasClass('muted') != true){
-                  //vimeo volume scale must be between 0 and 1
-                  vimeoPlayers[firstVideo].setVolume(sliderPositionPercent/100);
-                  vimeoPlayers[secondVideo].setVolume(1 - sliderPositionPercent/100);
-                }
-              }
-
-            }else if(sliderVideoType == 'self'){
-
-              if(sliderPositionPercent > 50){
-                beforeSelfVdo[0].play();
-                afterSelfVdo[0].pause();
-                
-                if(container.hasClass('muted') != true){
-                  beforeSelfVdo[0].volume = sliderPositionPercent/100;
-                  afterSelfVdo[0].volume  = 1 - sliderPositionPercent/100;
-                }
-              }else if(sliderPositionPercent < 50){
-                afterSelfVdo[0].play();
-                beforeSelfVdo[0].pause();
-
-                if(container.hasClass('muted') != true){
-                  beforeSelfVdo[0].volume = sliderPositionPercent/100;
-                  afterSelfVdo[0].volume  = 1 - sliderPositionPercent/100;
-                }
+              if(container.hasClass('muted') != true){
+                players[firstVideo].setVolume(sliderPositionPercent);
+                players[secondVideo].setVolume(100 - sliderPositionPercent);
               }
 
             }
+
+          }else if(sliderVideoType == 'vimeo'){
+
+            if(sliderPositionPercent > 50){
+              vimeoPlayers[secondVideo].pause();
+              vimeoPlayers[firstVideo].play();
+
+              if(container.hasClass('muted') != true){
+                //vimeo volume scale must be between 0 and 1
+                vimeoPlayers[firstVideo].setVolume(sliderPositionPercent/100);
+                vimeoPlayers[secondVideo].setVolume(1 - sliderPositionPercent/100);
+              }
+
+            }else if(sliderPositionPercent < 50){
+              vimeoPlayers[firstVideo].pause();
+              vimeoPlayers[secondVideo].play();
+
+              if(container.hasClass('muted') != true){
+                //vimeo volume scale must be between 0 and 1
+                vimeoPlayers[firstVideo].setVolume(sliderPositionPercent/100);
+                vimeoPlayers[secondVideo].setVolume(1 - sliderPositionPercent/100);
+              }
+            }
+
+          }else if(sliderVideoType == 'self'){
+
+            if(sliderPositionPercent > 50){
+              beforeSelfVdo[0].play();
+              afterSelfVdo[0].pause();
+              
+              if(container.hasClass('muted') != true){
+                beforeSelfVdo[0].volume = sliderPositionPercent/100;
+                afterSelfVdo[0].volume  = 1 - sliderPositionPercent/100;
+              }
+            }else if(sliderPositionPercent < 50){
+              afterSelfVdo[0].play();
+              beforeSelfVdo[0].pause();
+
+              if(container.hasClass('muted') != true){
+                beforeSelfVdo[0].volume = sliderPositionPercent/100;
+                afterSelfVdo[0].volume  = 1 - sliderPositionPercent/100;
+              }
+            }
+
           }
         }
-      };
-
+      }
+    };
       var adjustSlider = function(pct) {
         var offset = calcOffset(pct);
         slider.css((sliderOrientation==="vertical") ? "top" : "left", (sliderOrientation==="vertical") ? offset.ch : offset.cw);
