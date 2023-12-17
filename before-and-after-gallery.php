@@ -27,9 +27,9 @@ define( 'BEAF_ASSETS_URL', plugin_dir_url( __FILE__ ) . 'assets/' );
 
 
 class BAFG_Before_After_Gallery {
-    
+
     public function __construct(){
-        
+
         /**
          * Include wp plugin.php file
          */
@@ -52,74 +52,74 @@ class BAFG_Before_After_Gallery {
         }else{
             self::beaf_file_missing( BEAF_OPTIONS_PATH . 'TF_Options.php' );
         }
-      
+
         /*
         * Enqueue css and js for BAFG
         */
-        add_action( 'wp_enqueue_scripts', array($this, 'bafg_image_before_after_foucs_scripts'), 999 ); 
-        
+        add_action( 'wp_enqueue_scripts', array($this, 'bafg_image_before_after_foucs_scripts'), 999 );
+
 		// Check if Elementor installed and activated
 		if ( did_action( 'elementor/loaded' ) ) {
 			add_action( 'elementor/editor/before_enqueue_scripts', array($this, 'bafg_image_before_after_foucs_scripts') );
 		}
-        
+
         /*
         * BAFG init
         */
         add_action( 'init', array( $this, 'bafg_image_before_after_foucs_posttype' ) );
 
         // BEAF_PLUGIN_URL
-        if(!defined('BEAF_PLUGIN_URL')){ 
+        if(!defined('BEAF_PLUGIN_URL')){
             define( 'BEAF_PLUGIN_URL', plugin_dir_url( __FILE__ ) );
         }
-        
+
         /*
         * BAFG meta fields
         */
         $this->bafg_meta_fields();
-        
+
         /*
         * Require admin file
         */
         require_once('admin/bafg-admin.php');
-        
+
         /*
         * Adding shortcode for bafg
         */
         add_shortcode('bafg', array( $this, 'bafg_post_shortcode' ));
-		
+
 		/*
 		* Gallery shortcode
 		*/
         add_shortcode('bafg_gallery', array( $this, 'bafg_gallery_shortcode' ));
-        
+
         /*
         * Submenu for pro version
         */
         add_action('admin_menu', array( $this, 'bafg_register_submenu_page' ) );
-        
+
         /*
         * Require bafg wp widget
         */
         require_once('inc/widget/bafg-widget.php');
-		
+
         /*
         * Require function file
         */
         require_once('inc/functions.php');
-        
+
         /*
         * Require elementor widget
         */
         require_once('inc/bafg-elementor/bafg-elementor.php');
-        
-        /* 
+
+        /*
         * Filter the single_template with our custom function
         */
         add_filter('single_template', array( $this, 'bafg_custom_single_template') );
 
-        
-        
+
+
     }
 
     /**
@@ -137,7 +137,7 @@ class BAFG_Before_After_Gallery {
         }
     }
 
-    
+
     /**
      * Global Admin Get Option
      */
@@ -147,15 +147,15 @@ class BAFG_Before_After_Gallery {
         return ( isset( $options[ $option ] ) ) ? $options[ $option ] : $default;
     }
 
-    
+
     /*
     * Enqueue css and js in frontend
     */
     public function bafg_image_before_after_foucs_scripts() {
         $version = time();
-        
-        wp_enqueue_style( 'bafg_twentytwenty', plugin_dir_url( __FILE__ ) . 'assets/css/twentytwenty.css'); 
-        wp_enqueue_style( 'bafg-style', plugin_dir_url( __FILE__ ) . 'assets/css/bafg-style.css'); 
+
+        wp_enqueue_style( 'bafg_twentytwenty', plugin_dir_url( __FILE__ ) . 'assets/css/twentytwenty.css');
+        wp_enqueue_style( 'bafg-style', plugin_dir_url( __FILE__ ) . 'assets/css/bafg-style.css', array(), BEAF_VERSION, 'all');
 
         $debug_mode = is_array(get_option('beaf_settings')) && !empty(get_option('beaf_settings')['enable_debug_mode']) ? get_option('beaf_settings')['enable_debug_mode'] : '';
         $in_footer  = false;
@@ -164,15 +164,15 @@ class BAFG_Before_After_Gallery {
         }
         wp_enqueue_script( 'eventMove', plugin_dir_url( __FILE__ ) . 'assets/js/jquery.event.move.js', array('jquery'), null, $in_footer );
         wp_enqueue_script( 'bafg_twentytwenty', plugin_dir_url( __FILE__ ) . 'assets/js/jquery.twentytwenty.js', array('jquery','eventMove'), $version, $in_footer );
-        wp_enqueue_script( 'bafg_custom_js', plugin_dir_url( __FILE__ ) . 'assets/js/bafg-custom-js.js', array('jquery','bafg_twentytwenty'), null, true );       
+        wp_enqueue_script( 'bafg_custom_js', plugin_dir_url( __FILE__ ) . 'assets/js/bafg-custom-js.js', array('jquery','bafg_twentytwenty'), BEAF_VERSION, true );
         wp_localize_script('bafg_custom_js','bafg_constant_obj',
-            array( 
+            array(
                 'ajax_url'  => admin_url( 'admin-ajax.php' ),
                 'site_url' => plugin_dir_url(__FILE__)
             )
         );
     }
-    
+
     //register post type
     public function bafg_image_before_after_foucs_posttype() {
         $beaf_opt                = ! empty( get_option('beaf_settings') ) ? get_option('beaf_settings') : '';
@@ -244,9 +244,9 @@ class BAFG_Before_After_Gallery {
 		);
 
 		register_taxonomy( 'bafg_gallery', array( 'bafg' ), $args );
-		
+
     }
-	
+
     /*
     * Adding submenu for pro version
     */
@@ -261,7 +261,7 @@ class BAFG_Before_After_Gallery {
                 'https://themefic.com/plugins/beaf/pro/'
             );
         }
-		
+
     }
 
     /*
@@ -279,11 +279,11 @@ class BAFG_Before_After_Gallery {
         extract( shortcode_atts(array(
             'id' => ''
         ), $atts) );
-        
+
 		ob_start();
 
         $meta = ! empty( get_post_meta( $id, 'beaf_meta', true ) ) ? get_post_meta( $id, 'beaf_meta', true ) : '';
-        
+
         $b_image              = !empty($meta['bafg_before_image']) ? $meta['bafg_before_image'] : '';
         $a_image              = !empty($meta['bafg_after_image']) ? $meta['bafg_after_image'] : '';
         $orientation          = !empty($meta['bafg_image_styles']) ? $meta['bafg_image_styles'] : 'horizontal';
@@ -311,17 +311,17 @@ class BAFG_Before_After_Gallery {
         }else{
              $bafg_custom_color = '';
         }
-       
+
 		if(get_post_status($id) == 'publish' ) :
 		?>
 
         <?php do_action('bafg_before_slider', $id); ?>
 
         <div class="bafg-twentytwenty-container <?php echo esc_attr('slider-'.$id.''); ?> <?php echo esc_attr($bafg_custom_color) ?> " bafg-orientation="<?php echo esc_attr($orientation); ?>" bafg-default-offset="<?php echo esc_attr($offset); ?>" bafg-before-label="<?php echo esc_attr__( $before_label,'bafg' ); ?>" bafg-after-label="<?php echo esc_attr__( $after_label,'bafg' ); ?>" bafg-overlay="<?php echo esc_attr($overlay); ?>" bafg-move-slider-on-hover="<?php echo esc_attr($move_slider_on_hover); ?>" bafg-click-to-move="<?php echo esc_attr($click_to_move); ?>">
-            
+
         <?php
             if( is_plugin_active( 'beaf-before-and-after-gallery-pro/before-and-after-gallery-pro.php' ) ){
-                if( !empty( $enable_preloader )  && ! is_admin()){ 
+                if( !empty( $enable_preloader )  && ! is_admin()){
         ?>
                 <!-- the preloader -->
                 <div class="bafg-preloader">
@@ -330,10 +330,10 @@ class BAFG_Before_After_Gallery {
             <?php
                 }
             }
-             ?>  
+             ?>
             <img class="<?php echo esc_attr( $skip_lazy ); ?>" <?php echo esc_attr( $data_skip_lazy ); ?> src="<?php echo esc_url($b_image); ?>" alt="<?php echo esc_attr( $before_img_alt ); ?>">
             <img class="<?php echo esc_attr( $skip_lazy ); ?>" <?php echo esc_attr( $data_skip_lazy ); ?> src="<?php echo esc_url($a_image); ?>" alt="<?php echo esc_attr( $after_img_alt ); ?>">
-           
+
         </div>
 
         <?php do_action('bafg_after_slider', $id); ?>
@@ -344,7 +344,7 @@ class BAFG_Before_After_Gallery {
             $bafg_before_label_color      = ! empty( $meta['bafg_before_label_color'] ) ? $meta['bafg_before_label_color'] : '';
             $bafg_after_label_background  = ! empty( $meta['bafg_after_label_background'] ) ? $meta['bafg_after_label_background'] : '';
             $bafg_after_label_color       = ! empty( $meta['bafg_after_label_color'] ) ? $meta['bafg_after_label_color'] : '';
-            
+
             if( !empty($bafg_before_label_background) || !empty($bafg_before_label_color)) {
                 ?>.<?php echo 'slider-'.$id.' ';
 
@@ -376,32 +376,32 @@ class BAFG_Before_After_Gallery {
         </style>
         <?php
 		endif;
-		
+
         return ob_get_clean();
     }
-	
+
 	/*
     * BAFG Gallery shortcode callback
     */
     public function bafg_gallery_shortcode( $atts, $content = null ){
 
 		ob_start();
-		
+
         extract( shortcode_atts(array(
             'category' => '',
             'column' => '',
             'items' => -1,
 			'info'	=> ''
         ), $atts) );
-		
-		
+
+
         if( $category != '' ) {
-			
+
             if(  $category == 'all'  ){
                 $gallery_query = new WP_Query( array(
                     'post_type'      => 'bafg',
                     'posts_per_page' => $items,
-                ) );   
+                ) );
             }else{
                 $gallery_query = new WP_Query( array(
                     'post_type'      => 'bafg',
@@ -460,7 +460,7 @@ class BAFG_Before_After_Gallery {
 		<?php
 			wp_reset_postdata();
 		}
-		
+
         return ob_get_clean();
     }
 
@@ -478,7 +478,7 @@ class BAFG_Before_After_Gallery {
         return $single;
 
     }
-    
+
 
 }
 
