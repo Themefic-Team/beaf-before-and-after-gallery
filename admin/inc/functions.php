@@ -76,6 +76,11 @@ function beaf_migrate_all_existing_option_data( ) {
                 }
 
                 $new_option[$option] = $old_option_value[$option];
+
+                
+                if( $option == 'path' && $old_option_value['path'] == '' )  { 
+                    $new_option[$option] = $old_option_value['prev'];
+                }
             }
         }
 
