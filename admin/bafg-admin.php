@@ -11,10 +11,21 @@ if (!defined('ABSPATH')) {
 add_action( 'admin_enqueue_scripts', 'bafg_admin_enqueue_scripts' );
 
 //Enqueue script in admin area
-function bafg_admin_enqueue_scripts(){
-    wp_enqueue_script( 'wp-color-picker-alpha', plugins_url( '../assets/js/wp-color-picker-alpha.min.js',__FILE__ ), array( 'wp-color-picker' ), null, true );   
-    wp_enqueue_script( 'custom_js', plugins_url( '../assets/js/bafg-script.js', __FILE__ ), array('jquery','wp-color-picker','wp-color-picker-alpha'), null, true );
-    wp_enqueue_style('bafg_admin_style', plugins_url( '../assets/css/bafg-admin-style.css', __FILE__ ));
+function bafg_admin_enqueue_scripts(){   
+	//enqueue styles
+	wp_enqueue_style( 'notyf', BEAF_ASSETS_URL . 'libs/notyf/notyf.min.css' );
+	wp_enqueue_style( 'bafg_admin_style', plugins_url( '../assets/css/bafg-admin-style.css', __FILE__ ));
+	wp_enqueue_style( 'beaf-admin-options', BEAF_ASSETS_URL . 'css/beaf-admin-options.css');
+
+	//enqueue scripts
+	wp_enqueue_script( 'wp-color-picker-alpha', plugins_url( '../assets/js/wp-color-picker-alpha.min.js',__FILE__ ), array( 'wp-color-picker' ), null, true );
+    wp_enqueue_script( 'notyf', BEAF_ASSETS_URL . 'libs/notyf/notyf.min.js', array('jquery'), null, false );
+    wp_enqueue_script( 'beaf-admin', plugins_url( '../assets/js/bafg-script.js', __FILE__ ), array('jquery','wp-color-picker','wp-color-picker-alpha'), null, true );
+	wp_enqueue_script( 'beaf-options', BEAF_ASSETS_URL . 'js/beaf-options.js', array('jquery'), null, true );
+	wp_localize_script( 'beaf-admin', 'tf_options', array(
+		'ajax_url'          => admin_url( 'admin-ajax.php' ),
+		'nonce'             => wp_create_nonce( 'tf_options_nonce' ),
+	) );
 }
 
 // admin column
@@ -24,70 +35,72 @@ add_action('manage_posts_custom_column', 'bafg_custom_columns_shortcode', 10, 2)
 
 function bafg_custom_columns($columns) {
    $columns = array(
-      'cb' => '<input type="checkbox" />',
-      'title' => esc_html__('Title', 'bafg'),
+      'cb'             => '<input type="checkbox" />',
+      'title'          => esc_html__('Title', 'bafg'),
       'bafg_shortcode' => esc_html__('Shortcode', 'bafg'),
-      'bimage' => esc_html__('Before Image', 'bafg'),
-      'second_image' => esc_html__('Middle Image', 'bafg'),
-      'aimage' => esc_html__('After Image', 'bafg'),
-      'date' => __( 'Date' )
+      'bimage'         => esc_html__('Before Image', 'bafg'),
+      'second_image'   => esc_html__('Middle Image', 'bafg'),
+      'aimage'         => esc_html__('After Image', 'bafg'),
+      'date'           => __( 'Date' )
    );
   return $columns;
 }
 
-function bafg_custom_columns_image($column_name, $id){ 
+function bafg_custom_columns_image($column_name, $id){
+
+  $meta = ! empty( get_post_meta( $id, 'beaf_meta', true ) ) ? get_post_meta( $id, 'beaf_meta', true ) : '';
 
   //After Image column in posts
   if($column_name === 'bimage') {
       
-      $bafg_before_after_method = !empty(get_post_meta($id, 'bafg_before_after_method', true)) ? get_post_meta($id, 'bafg_before_after_method', true) : 'method_1';
+      $bafg_before_after_method = !empty( $meta['bafg_before_after_method'] ) ? $meta['bafg_before_after_method'] : 'method_1';
       
       if( is_plugin_active( 'beaf-before-and-after-gallery-pro/before-and-after-gallery-pro.php' ) ){
           
           if($bafg_before_after_method == 'method_2'){
           
-              $image_url = get_post_meta($id, 'bafg_before_after_image', true);
+              $image_url = ! empty( $meta['bafg_before_after_image'] ) ? $meta['bafg_before_after_image'] : '';
 
           }else if( $bafg_before_after_method == 'method_3' ){
 
-              $image_url = get_post_meta($id, 'bafg_first_image', true);
+              $image_url = ! empty( $meta['bafg_first_image'] ) ? $meta['bafg_first_image'] : '';
           }else{
-			$image_url = get_post_meta($id, 'bafg_before_image', true);
+			$image_url = ! empty( $meta['bafg_before_image'] ) ? $meta['bafg_before_image'] : '';
 
 		  }
       }else{
-          $image_url = get_post_meta($id, 'bafg_before_image', true);
+          $image_url = ! empty( $meta['bafg_before_image'] ) ? $meta['bafg_before_image'] : '';
       }
   	
-  	 $image_id = attachment_url_to_postid( $image_url );
-  	 $before_image = wp_get_attachment_image( $image_id, 'thumbnail');
-  	 echo $before_image;
+    $image_id     = attachment_url_to_postid( $image_url );
+    $before_image = wp_get_attachment_image( $image_id, 'thumbnail');
+  	echo $before_image;
   }
 
   //After Image column in posts
   if($column_name === 'aimage') {
       
-	$bafg_before_after_method = !empty(get_post_meta($id, 'bafg_before_after_method', true)) ? get_post_meta($id, 'bafg_before_after_method', true) : 'method_1';
+	$bafg_before_after_method = !empty( $meta['bafg_before_after_method'] ) ? $meta['bafg_before_after_method'] : 'method_1';
 	
 	if( is_plugin_active( 'beaf-before-and-after-gallery-pro/before-and-after-gallery-pro.php' ) ){
 		
 		if($bafg_before_after_method == 'method_2'){
 		
-			$image_url = get_post_meta($id, 'bafg_before_after_image', true);
+			$image_url = ! empty( $meta['bafg_before_after_image'] ) ? $meta['bafg_before_after_image'] : '';
 
 		}else if( $bafg_before_after_method == 'method_3' ){
 
-			$image_url = get_post_meta($id, 'bafg_third_image', true);
+			$image_url = ! empty( $meta['bafg_third_image'] ) ? $meta['bafg_third_image'] : '';
 		}else{
-			$image_url = get_post_meta($id, 'bafg_after_image', true);
+			$image_url = ! empty( $meta['bafg_after_image'] ) ? $meta['bafg_after_image'] : '';
 		}
 	}else{
-		$image_url = get_post_meta($id, 'bafg_after_image', true);
+		$image_url = ! empty( $meta['bafg_after_image'] ) ? $meta['bafg_after_image'] : '';
 	}
 	
-	 $image_id = attachment_url_to_postid( $image_url );
-	 $after_image = wp_get_attachment_image( $image_id, 'thumbnail');
-	 echo $after_image;
+	$image_id = attachment_url_to_postid( $image_url );
+	$after_image = wp_get_attachment_image( $image_id, 'thumbnail');
+	echo $after_image;
 }
 
 
@@ -95,14 +108,14 @@ function bafg_custom_columns_image($column_name, $id){
 //Middle Image column in posts
 if($column_name === 'second_image') {
       
-	$bafg_before_after_method = !empty(get_post_meta($id, 'bafg_before_after_method', true)) ? get_post_meta($id, 'bafg_before_after_method', true) : 'method_1';
+	$bafg_before_after_method = !empty( $meta['bafg_before_after_method'] ) ? $meta['bafg_before_after_method'] : 'method_1';
 	
 	if( is_plugin_active( 'beaf-before-and-after-gallery-pro/before-and-after-gallery-pro.php' ) ){
 		
 		if($bafg_before_after_method == 'method_3'){
 		
-			$image_url = get_post_meta($id, 'bafg_second_image', true);
-			$image_id = attachment_url_to_postid( $image_url );
+			$image_url    = ! empty( $meta['bafg_second_image'] ) ? $meta['bafg_second_image'] : '';
+			$image_id     = attachment_url_to_postid( $image_url );
 			$second_image = wp_get_attachment_image( $image_id, 'thumbnail');
 		}else{
 			return;

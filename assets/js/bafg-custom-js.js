@@ -3,19 +3,19 @@
 
     $(window).on('load', function () { 
         $(".bafg-twentytwenty-container").each(function () {
-            if ($(this).attr('bafg-move-slider-on-hover') == 'no') {
+            if ($(this).attr('bafg-move-slider-on-hover') == '') {
                 var moveSliderHover = false;
             } else {
                 var moveSliderHover = true;
             }
 
-            if ($(this).attr('bafg-overlay') == 'yes') {
+            if ($(this).attr('bafg-overlay') == '1') {
                 var overlay = false;
             } else {
                 var overlay = true;
             }
 
-            if ($(this).attr('bafg-click-to-move') == 'no') {
+            if ($(this).attr('bafg-click-to-move') == '') {
                 var clickToMove = false;
             } else {
                 var clickToMove = true;
