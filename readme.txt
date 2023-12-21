@@ -1,7 +1,7 @@
 ﻿=== Ultimate Before After Image Slider & Gallery - BEAF ===
 Contributors: themefic, raihan143, hasanet, codexa
 Donate link: 
-Tags: before after, before after elementor, before after slider, before after gallery, before after filter gallery, before after divi, before after viewer, before after woocommerce, before after multiple image, compare images, image comparison, before after slider wordpress, before after image, twentytwenty, jquery twentytwenty, wordpress before after slider, elementor before and after slider, wordpress before after gallery, elementor before after slider, elementor before after image comparison slider, visual composer before after slider, visual composer image comparison, slider, gallery, before after wordpress, before after beaver, before after oxygen, twenty20, twenty20 image before after plugin, twenty20 wordpress plugin, twenty twenty
+Tags: before after, before after elementor, before after slider, before after gallery, before after filter gallery, before after divi, before after viewer, before after woocommerce, before after multiple image, compare images, image comparison, before after slider wordpress, before after image, twentytwenty, jquery twentytwenty, wordpress before after slider, elementor before and after slider, wordpress before after gallery, elementor before after slider, elementor before after image comparison slider, visual composer before after slider, visual composer image comparison, slider, gallery, before after wordpress, before after beaver, before after oxygen, twenty20, twenty20 image before after plugin, twenty20 wordpress plugin, twenty twenty, video comparison slider, before after video slider
 Requires at least: 4.0
 Tested up to: 6.4
 Stable tag: 4.5.0
@@ -346,9 +346,15 @@ Yes, We provide full support on the WordPress.org forums. You can also post ques
 - Improvement: System stability Improved
 - Fixed: Fixed some minor issues
 
-= 4.4.8 – 19/12/2023 =
+= 4.4.9 – 19/12/2023 =
 
-- Notice: We will be releasing a new option panel by Thursday. Before updating the plugin, we recommend taking a backup of your current setup.
+- Notice: We will be releasing a new options panel On December 21, 2023. Before updating the plugin, we recommend taking a backup of your current setup.
+
+= 4.4.8 – 12/12/2023 =
+
+- Improvement: System stability Improved
+- Updated: Extended Notice( Black Friday )
+- Updated: readme.txt
 
 = 4.4.7 – 16/11/2023 =
 
