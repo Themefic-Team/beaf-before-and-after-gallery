@@ -339,7 +339,7 @@ Yes, We provide full support on the WordPress.org forums. You can also post ques
 
 == Changelog ==
 
-= 4.5.0 – 21/12/2023 =
+= 4.5.0 – 25/12/2023 =
 
 - Improvement: Introducing a new Options Panel.
 - Improvement: Optimized Code
@@ -348,7 +348,7 @@ Yes, We provide full support on the WordPress.org forums. You can also post ques
 
 = 4.4.9 – 19/12/2023 =
 
-- Notice: We will be releasing a new options panel On December 21, 2023. Before updating the plugin, we recommend taking a backup of your current setup.
+- Notice: We will be releasing a new options panel On December 25, 2023. Before updating the plugin, we recommend taking a backup of your current setup.
 
 = 4.4.8 – 12/12/2023 =
 
