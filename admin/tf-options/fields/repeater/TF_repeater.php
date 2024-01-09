@@ -95,7 +95,7 @@ if ( ! class_exists( 'TF_Repeater' ) ) {
 											$value = sanitize_title(str_replace(' ', '_', strtolower($value)));
 										}
 
-										$tf_option = new TF_Options();
+										$tf_option = new BEAF_Options();
 										$tf_option->field( $re_field, $value, $this->settings_id, $parent_field);
 									endforeach;
 									$num ++;
@@ -147,7 +147,7 @@ if ( ! class_exists( 'TF_Repeater' ) ) {
 									//remove special characters, replace space with underscore and convert to lowercase
 									$value = sanitize_title(str_replace(' ', '_', strtolower($value)));
 								}
-								$tf_option = new TF_Options();
+								$tf_option = new BEAF_Options();
 								$tf_option->field( $re_field, $value, '_____' . $this->settings_id, $parent );
 							} ?>
                         </div>
