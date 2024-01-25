@@ -9,9 +9,10 @@ if (!defined('ABSPATH')) {
 * Enqueue css and js for bafg
 */
 add_action( 'admin_enqueue_scripts', 'bafg_admin_enqueue_scripts' );
+add_action( 'admin_enqueue_scripts', 'bafg_admin_dequeue_scripts', 9999 );
 
 //Enqueue script in admin area
-function bafg_admin_enqueue_scripts(){   
+function bafg_admin_enqueue_scripts(){ 
 	//enqueue styles
 	wp_enqueue_style( 'notyf', BEAF_ASSETS_URL . 'libs/notyf/notyf.min.css' );
 	wp_enqueue_style( 'bafg_admin_style', plugins_url( '../assets/css/bafg-admin-style.css', __FILE__ ));
@@ -27,6 +28,30 @@ function bafg_admin_enqueue_scripts(){
 		'ajax_url'          => admin_url( 'admin-ajax.php' ),
 		'nonce'             => wp_create_nonce( 'tf_options_nonce' ),
 	) );
+}
+
+// admin dequeue scripts
+function bafg_admin_dequeue_scripts(){ 
+	
+	// global Variables
+	global $post_type;
+	global $wp_scripts;
+
+	$beafg_post_type = array( 'bafg' );
+
+	if(  in_array( $post_type, $beafg_post_type )  ) {
+		if ( wp_script_is('acf-color-picker-alpha', 'enqueued') ) {
+
+			$acf_script_handle = 'acf-color-picker-alpha';
+			$acf_script_data = $wp_scripts->registered[$acf_script_handle];
+
+			wp_dequeue_script($acf_script_handle);
+			
+			if( isset( $acf_script_data ) ) {
+				wp_enqueue_script( $acf_script_handle, $acf_script_data->src, $acf_script_data->deps, $acf_script_data->ver, true );
+			}
+		}
+	}
 }
 
 // admin column
