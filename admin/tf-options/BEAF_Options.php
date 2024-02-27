@@ -147,8 +147,10 @@ if ( ! class_exists( 'BEAF_Options' ) ) {
 			if ( in_array( $screen, $tf_options_screens ) || in_array( $post_type, $tf_options_post_type ) ) {
 
 				wp_enqueue_style( 'tf-fontawesome-4', '//cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css', array(), $this->beaf_options_version() );
+				// wp_enqueue_style( 'tf-fontawesome-4', BEAF_ASSETS_URL . 'libs/fontawesome/4/font-awesome.min.css', array(), $this->beaf_options_version() );
 				wp_enqueue_style( 'tf-fontawesome-5', '//cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.4/css/all.min.css', array(), $this->beaf_options_version() );
 				wp_enqueue_style( 'tf-fontawesome-6', '//cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css', array(), $this->beaf_options_version() );
+				// wp_enqueue_style( 'tf-fontawesome-6', BEAF_ASSETS_URL . 'libs/fontawesome/6/all.min.css', array(), $this->beaf_options_version() );
 				wp_enqueue_style( 'tf-remixicon', '//cdn.jsdelivr.net/npm/remixicon@3.2.0/fonts/remixicon.css', array(), $this->beaf_options_version() );
 				wp_enqueue_style( 'tf-select2', '//cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css', array(), $this->beaf_options_version() );
 				wp_enqueue_style( 'tf-flatpickr', '//cdnjs.cloudflare.com/ajax/libs/flatpickr/4.6.13/flatpickr.min.css', array(), $this->beaf_options_version() );
@@ -158,7 +160,9 @@ if ( ! class_exists( 'BEAF_Options' ) ) {
 			if ( in_array( $screen, $tf_options_screens ) || in_array( $post_type, $tf_options_post_type ) ) {
 				wp_enqueue_script( 'Chart-js', '//cdnjs.cloudflare.com/ajax/libs/Chart.js/2.6.0/Chart.js', array( 'jquery' ), '2.6.0', true );
 				wp_enqueue_script( 'tf-flatpickr', '//cdnjs.cloudflare.com/ajax/libs/flatpickr/4.6.13/flatpickr.min.js', array( 'jquery' ), $this->beaf_options_version(), true );
-				wp_enqueue_script( 'tf-select2', '//cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js', array( 'jquery' ), $this->beaf_options_version(), true );
+				// wp_enqueue_script( 'tf-select2', '//cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js', array( 'jquery' ), $this->beaf_options_version(), true );
+				wp_enqueue_script( 'select2', BEAF_ASSETS_URL . 'libs/select2/select2.min.js', array( 'jquery' ), $this->beaf_options_version(), true );
+				
 
 
 				$tf_google_map = function_exists( 'is_tf_pro' ) && is_tf_pro() && ! empty( BAFG_Before_After_Gallery::beaf_opt( 'google-page-option' ) ) ? BAFG_Before_After_Gallery::beaf_opt( 'google-page-option' ) : "false";
