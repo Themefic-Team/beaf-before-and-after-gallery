@@ -54,7 +54,13 @@ BEAF_Settings::option( 'beaf_settings', array(
 					'subtitle' => __( 'Open Before After image URL to a new tab', 'bafg' ),
 					'is_pro' => true,
 				) ),
-
+				apply_filters( 'bafg_assets_from_cdn', array(
+					'id' => 'bafg_assets_from_cdn',
+					'type' => 'switch',
+					'label' => __( 'Load Assets from CDN', 'bafg' ),
+					'subtitle' => __( 'Load all assets from CDN to help increase the website', 'bafg' ),
+					'default' => false,
+				) ),
 			)
 		),
 		'watermark' => array(
