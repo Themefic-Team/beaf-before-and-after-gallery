@@ -14,6 +14,7 @@ BEAF_Settings::option( 'beaf_settings', array(
 	'sections' => array(
 		'tools' => array(
 			'title' => __( 'Tools', 'bafg' ),
+			'icon'=> 'fa-solid fa-screwdriver-wrench',
 			'fields' => array(
 				array(
 					'id' => 'enable_preloader',
@@ -54,11 +55,18 @@ BEAF_Settings::option( 'beaf_settings', array(
 					'subtitle' => __( 'Open Before After image URL to a new tab', 'bafg' ),
 					'is_pro' => true,
 				) ),
-
+				apply_filters( 'bafg_assets_from_cdn', array(
+					'id' => 'bafg_assets_from_cdn',
+					'type' => 'switch',
+					'label' => __( 'Load Assets from CDN', 'bafg' ),
+					'subtitle' => __( 'Load all assets from CDN to help increase the website speed', 'bafg' ),
+					'default' => false,
+				) ),
 			)
 		),
 		'watermark' => array(
 			'title' => __( 'Watermark', 'bafg' ),
+			'icon' => 'fa-regular fa-image',
 			'fields' => array(
 				apply_filters( 'bafg_enable_watermark', array(
 					'id' => 'enable_watermark',
@@ -110,6 +118,7 @@ BEAF_Settings::option( 'beaf_settings', array(
 		),
 		'shortcodes' => array(
 			'title' => __( 'Shortcodes', 'bafg' ),
+			'icon' => 'fa-solid fa-code',
 			'fields' => array(
 				array(
 					'id' => 'bafg_before_after_shortcode',
@@ -122,6 +131,7 @@ BEAF_Settings::option( 'beaf_settings', array(
 		),
 		'documentation' => array(
 			'title' => __( 'Documentation', 'bafg' ),
+			'icon' => 'fa-solid fa-file',
 			'fields' => array(
 				array(
 					'id' => 'bafg_documentation',
