@@ -59,7 +59,7 @@ BEAF_Settings::option( 'beaf_settings', array(
 					'id' => 'bafg_assets_from_cdn',
 					'type' => 'switch',
 					'label' => __( 'Load Assets from CDN', 'bafg' ),
-					'subtitle' => __( 'Load all assets from CDN to help increase the website', 'bafg' ),
+					'subtitle' => __( 'Load all assets from CDN to help increase the website speed', 'bafg' ),
 					'default' => false,
 				) ),
 			)
