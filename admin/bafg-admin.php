@@ -212,8 +212,8 @@ function bafg_new_feature_notice() {
 			?>
 			<div class="notice notice-success">
 			   <h2><?php echo esc_html__( 'It looks like you have WooCommerce plugin installed.', 'bafg' ); ?></h2>
-				<p><?php echo esc_html__( 'If you want to use before after slider on the WooCommerce product page, you can try our free plugin', 'bafg' ); ?> <a href="<?php echo admin_url('/plugin-install.php?s=ebeaf&tab=search&type=term'); ?>"> Before After for WooCommerce</a></p>
-				<p><a class="button" href="<?php echo admin_url('?bafg-woo-dismissed'); ?>">Close this Notice</a></p>
+				<p><?php echo esc_html__( 'If you want to use before after slider on the WooCommerce product page, you can try our free plugin', 'bafg' ); ?> <a href="<?php echo esc_url(admin_url('/plugin-install.php?s=ebeaf&tab=search&type=term')); ?>"> Before After for WooCommerce</a></p>
+				<p><a class="button" href="<?php echo esc_url( wp_nonce_url( admin_url('?bafg-woo-dismissed'), 'bafg-woo-dismissed-nonce' ) ); ?>">Close this Notice</a></p>
 			</div>
 			<?php
 		}
@@ -224,11 +224,17 @@ function bafg_new_feature_notice() {
 add_action( 'admin_notices', 'bafg_new_feature_notice' );
 
 function bafg_new_feature_notice_dismissed() {
-	$user_id = get_current_user_id();
+	if( !isset($_GET['_wpnonce']) || !wp_verify_nonce( esc_html($_GET['_wpnonce']), 'bafg-woo-dismissed-nonce' ) ){
+		return; 
+	}else{
+	
+		$user_id = get_current_user_id();
 
-	if ( isset( $_GET['bafg-woo-dismissed'] ) ) {
-        add_user_meta( $user_id, 'bafg_woo_new_feature_notice_dismissed', 'true', true );
+		if ( isset( $_GET['bafg-woo-dismissed'] ) ) {
+			add_user_meta( $user_id, 'bafg_woo_new_feature_notice_dismissed', 'true', true );
+		}
 	}
+	
 }
 add_action( 'admin_init', 'bafg_new_feature_notice_dismissed' );
 
