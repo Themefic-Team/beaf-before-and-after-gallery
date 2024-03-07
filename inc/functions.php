@@ -284,6 +284,7 @@ if(!function_exists('bafg_review_notice')){
                        data = {
                            action : 'bafg_review_notice_callback',
                            status : status,
+                           _nonce : tf_options.nonce
                        };
 
                        $.ajax({
@@ -320,18 +321,24 @@ if(!function_exists('bafg_review_notice')){
 if( !function_exists( 'bafg_review_notice_callback' ) ){
 
     function bafg_review_notice_callback(){
-        $status = $_POST['status'];
-        if( $status == 'already'){ 
-            update_option( 'bafg_review_notice_status', '1' );
-        }else if($status == 'never'){ 
-            update_option( 'bafg_review_notice_status', '2' );
-        }else if($status == 'later'){
-            $cookie_name  = "bafg_review_notice_status";
-            $cookie_value = "1";
-            setcookie($cookie_name, $cookie_value, time() + (86400 * 7), "/"); 
-            update_option( 'bafg_review_notice_status', '0' ); 
-        }  
-        wp_die();
+        // nonce validation
+        if( !isset( $_POST['_nonce'] ) || !wp_verify_nonce( $_POST['_nonce'], 'bafg_review_notice_nonce' ) ){
+            wp_die();
+        }else{
+            $status = esc_html($_POST['status']);
+            if( $status == 'already'){ 
+                update_option( 'bafg_review_notice_status', '1' );
+            }else if($status == 'never'){ 
+                update_option( 'bafg_review_notice_status', '2' );
+            }else if($status == 'later'){
+                $cookie_name  = "bafg_review_notice_status";
+                $cookie_value = "1";
+                setcookie($cookie_name, $cookie_value, time() + (86400 * 7), "/"); 
+                update_option( 'bafg_review_notice_status', '0' ); 
+            }  
+            wp_die();
+        }
+        
     }
     add_action( 'wp_ajax_bafg_review_notice_callback', 'bafg_review_notice_callback' );
 
