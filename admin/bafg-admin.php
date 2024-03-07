@@ -75,7 +75,7 @@ function bafg_custom_columns_image($column_name, $id){
   	
     $image_id     = attachment_url_to_postid( $image_url );
     $before_image = wp_get_attachment_image( $image_id, 'thumbnail');
-  	echo $before_image;
+  	echo wp_kses_post($before_image);
   }
 
   //After Image column in posts
@@ -101,7 +101,7 @@ function bafg_custom_columns_image($column_name, $id){
 	
 	$image_id = attachment_url_to_postid( $image_url );
 	$after_image = wp_get_attachment_image( $image_id, 'thumbnail');
-	echo $after_image;
+	echo wp_kses_post($after_image);
 }
 
 
@@ -121,7 +121,7 @@ if($column_name === 'second_image') {
 		}else{
 			return;
 		}
-		echo $second_image;
+		echo wp_kses_post($second_image);
 	}
 	
 }
@@ -132,9 +132,10 @@ if($column_name === 'second_image') {
 
 function bafg_custom_columns_shortcode($column_name, $id){  
   if($column_name === 'bafg_shortcode') { 
-   $post_id =	$id;
-   $shortcode = 'bafg id="' . $post_id . '"';
-      echo '[' . $shortcode .']';   
+	$post_id =	$id;
+	$shortcode = '[bafg id="' . $post_id . '"]'; 
+      echo '<input type="text" name="bafg_display_shortcode" class="bafg_display_shortcode" value="'.esc_attr($shortcode).'" readonly onclick="bafgCopyShortcode()">';
+	  
   }  
 }
 

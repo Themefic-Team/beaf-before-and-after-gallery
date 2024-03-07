@@ -76,12 +76,7 @@ class BAFG_Before_After_Gallery {
 		if ( ! defined( 'BAFG_PLUGIN_PATH' ) ) {
 			define( 'BAFG_PLUGIN_PATH', plugin_dir_path( __FILE__ ) );
 		}
-
-		/*
-		 * BAFG meta fields
-		 */
-		$this->bafg_meta_fields();
-
+ 
 		/*
 		 * Require admin file
 		 */
@@ -276,11 +271,7 @@ class BAFG_Before_After_Gallery {
 	}
 
 	/*
-								metabox included
-							   */
-	public function bafg_meta_fields() {
-		require_once( 'metabox/bafg-metaboxs.php' );
-	}
+ 
 
 	/*
 	 * BAFG shortcode callback
@@ -299,8 +290,8 @@ class BAFG_Before_After_Gallery {
 		$a_image = ! empty( $meta['bafg_after_image'] ) ? $meta['bafg_after_image'] : '';
 		$orientation = ! empty( $meta['bafg_image_styles'] ) ? $meta['bafg_image_styles'] : 'horizontal';
 		$offset = ! empty( $meta['bafg_default_offset'] ) ? $meta['bafg_default_offset'] : '0.5';
-		$before_label = ! empty( $meta['bafg_before_label'] ) ? $meta['bafg_before_label'] : 'Before';
-		$after_label = ! empty( $meta['bafg_after_label'] ) ? $meta['bafg_after_label'] : 'After';
+		$before_label = ! empty( $meta['bafg_before_label'] ) ? $meta['bafg_before_label'] : esc_html(__('Before', 'bafg'));
+		$after_label = ! empty( $meta['bafg_after_label'] ) ? $meta['bafg_after_label'] :  esc_html(__('After', 'bafg'));
 		$overlay = ! empty( $meta['bafg_no_overlay'] ) ? $meta['bafg_no_overlay'] : '';
 		$move_slider_on_hover = ! empty( $meta['bafg_move_slider_on_hover'] ) ? $meta['bafg_move_slider_on_hover'] : '';
 		$click_to_move = ! empty( $meta['bafg_click_to_move'] ) ? $meta['bafg_click_to_move'] : '';
@@ -330,8 +321,8 @@ class BAFG_Before_After_Gallery {
 
 			<div class="bafg-twentytwenty-container <?php echo esc_attr( 'slider-' . $id . '' ); ?> <?php echo esc_attr( $bafg_custom_color ) ?> "
 				bafg-orientation="<?php echo esc_attr( $orientation ); ?>" bafg-default-offset="<?php echo esc_attr( $offset ); ?>"
-				bafg-before-label="<?php echo esc_attr__( $before_label, 'bafg' ); ?>"
-				bafg-after-label="<?php echo esc_attr__( $after_label, 'bafg' ); ?>"
+				bafg-before-label="<?php echo esc_html( $before_label ); ?>"
+				bafg-after-label="<?php echo esc_attr($after_label ); ?>"
 				bafg-overlay="<?php echo esc_attr( $overlay ); ?>"
 				bafg-move-slider-on-hover="<?php echo esc_attr( $move_slider_on_hover ); ?>"
 				bafg-click-to-move="<?php echo esc_attr( $click_to_move ); ?>">
@@ -366,11 +357,7 @@ class BAFG_Before_After_Gallery {
 
 				if ( ! empty( $bafg_before_label_background ) || ! empty( $bafg_before_label_color ) ) {
 					?>
-					.
-
-					<?php echo 'slider-' . $id . ' ';
-
-					?>
+					. <?php echo esc_attr('slider-' . $id . ' '); ?>
 					.twentytwenty-before-label::before {
 						background:
 							<?php echo esc_attr( $bafg_before_label_background );
@@ -388,11 +375,7 @@ class BAFG_Before_After_Gallery {
 				?>
 				<?php if ( ! empty( $bafg_after_label_background ) || ! empty( $bafg_after_label_color ) ) {
 					?>
-					.
-
-					<?php echo 'slider-' . $id . ' ';
-
-					?>
+					. <?php echo esc_attr( 'slider-' . $id . ' '); ?>
 					.twentytwenty-after-label::before {
 						background:
 							<?php echo esc_attr( $bafg_after_label_background );
@@ -487,7 +470,7 @@ class BAFG_Before_After_Gallery {
 				while ( $gallery_query->have_posts() ) :
 					$gallery_query->the_post();
 
-					echo '<div class="bafg-col-' . $col . '">';
+					echo '<div class="bafg-col-' . esc_attr($col) . '">';
 					echo do_shortcode( '[bafg id="' . get_the_id() . '"]' );
 					echo '</div>';
 

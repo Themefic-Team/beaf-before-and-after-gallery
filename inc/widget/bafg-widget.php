@@ -49,9 +49,9 @@ class bafg_widget extends WP_Widget {
  
     public function form( $instance ) {
  
-        $title          = ! empty( $instance['title'] ) ? $instance['title'] : esc_html__( '', 'bafg' );
-        $bafg_post_id   = ! empty( $instance['bafg_post_id'] ) ? $instance['bafg_post_id'] : esc_html__( '', 'bafg' );
-        $bafg_shortcode = ! empty( $instance['bafg_shortcode'] ) ? $instance['bafg_shortcode'] : esc_html__( '', 'bafg' );
+        $title          = ! empty( $instance['title'] ) ? $instance['title'] : '';
+        $bafg_post_id   = ! empty( $instance['bafg_post_id'] ) ? $instance['bafg_post_id'] : '';
+        $bafg_shortcode = ! empty( $instance['bafg_shortcode'] ) ? $instance['bafg_shortcode'] : '';
         ?>
         <p>
         <label for="<?php echo esc_attr( $this->get_field_id( 'title' ) ); ?>"><?php echo esc_html__( 'Title:', 'bafg' ); ?></label>
