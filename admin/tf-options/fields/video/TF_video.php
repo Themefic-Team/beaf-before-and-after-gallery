@@ -13,12 +13,12 @@ if ( ! class_exists( 'TF_video' ) ) {
 		}
 
 		public function render() {
-			echo '<div class="tf-fieldset-media-preview tf-fieldset-media-preview ' . str_replace(array("[","]","-"),"_",esc_attr( $this->field_name() ) ) . '">';
+			echo '<div class="tf-fieldset-media-preview tf-fieldset-media-preview ' . esc_attr(str_replace(array("[","]","-")),"_",esc_attr( $this->field_name() ) ) . '">';
 			
 			echo '</div>
 			<div class="tf-fieldset-media">
-			<input type="text" name="' . esc_attr( $this->field_name() ) . '" id="' . esc_attr( $this->field_name() ) . '" value="' . $this->value . '" /><a href="#" tf-field-name="' . esc_attr( $this->field_name() ) . '" class="tf-media-upload button button-primary button-large bafg-video-upload">' . esc_html( "Upload Video","bafg" ) . '</a></div>
-			<input type="hidden" name="' . esc_attr( $this->field_name() ) . '" id="' . esc_attr( $this->field_name() ) . '" value="' . $this->value . '"  />';
+			<input type="text" name="' . esc_attr( $this->field_name() ) . '" id="' . esc_attr( $this->field_name() ) . '" value="' . esc_attr($this->value) . '" /><a href="#" tf-field-name="' . esc_attr( $this->field_name() ) . '" class="tf-media-upload button button-primary button-large bafg-video-upload">' . esc_html( "Upload Video","bafg" ) . '</a></div>
+			<input type="hidden" name="' . esc_attr( $this->field_name() ) . '" id="' . esc_attr( $this->field_name() ) . '" value="' . esc_attr($this->value) . '"  />';
 		}
 
 		//sanitize

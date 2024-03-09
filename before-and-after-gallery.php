@@ -131,7 +131,7 @@ class BAFG_Before_After_Gallery {
 			if ( ! empty( $files ) ) {
 				$class = 'notice notice-error';
 				$message = '<strong>' . $files . '</strong>' . __( ' file is missing! It is required to function properly!', 'bafg' );
-printf( '<div class="%1$s"><p>%2$s</p></div>', esc_attr( $class ), $message );
+printf( '<div class="%1$s"><p>%2$s</p></div>', esc_attr( $class ), esc_attr($message) );
 
 			}
 		}
