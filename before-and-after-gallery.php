@@ -130,8 +130,9 @@ class BAFG_Before_After_Gallery {
 		if ( is_admin() ) {
 			if ( ! empty( $files ) ) {
 				$class = 'notice notice-error';
-				$message = '<strong>' . $files . '</strong>' . __( ' file is missing! It is required to function Before After properly!', 'bafg' );
-				printf( '<div class="%1$s"><p>%2$s</p></div>', esc_attr( $class ), $message );
+				$message = '<strong>' . $files . '</strong>' . __( ' file is missing! It is required to function properly!', 'bafg' );
+printf( '<div class="%1$s"><p>%2$s</p></div>', esc_attr( $class ), $message );
+
 			}
 		}
 	}
