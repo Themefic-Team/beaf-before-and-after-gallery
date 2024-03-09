@@ -32,41 +32,41 @@ if ( ! class_exists( 'TF_hotelAvailabilityCal' ) ) {
                 <div class="tf-room-cal-field" style="display: flex; gap: 10px; flex-wrap: wrap; margin-top: 15px;">
 
                     <div class="tf-field-date" style="width: calc(50% - 5px)">
-                        <label class="tf-field-label"><?php echo __( 'Check In', 'bafg' ); ?></label>
+                        <label class="tf-field-label"><?php echo esc_html( __( 'Check In', 'bafg' )); ?></label>
                         <div class="tf-fieldset" style="margin-top: 0;">
-                            <input readonly="readonly" type="text" class="tf_room_check_in" name="tf_room_check_in" placeholder="<?php echo __( 'Check In', 'bafg' ); ?>">
+                            <input readonly="readonly" type="text" class="tf_room_check_in" name="tf_room_check_in" placeholder="<?php echo esc_html( __( 'Check In', 'bafg' )); ?>">
                             <i class="fa-solid fa-calendar-days"></i>
                         </div>
                     </div>
 
                     <div class="tf-field-date" style="width: calc(50% - 5px)">
-                        <label class="tf-field-label"><?php echo __( 'Check Out', 'bafg' ); ?></label>
+                        <label class="tf-field-label"><?php echo esc_html( __( 'Check Out', 'bafg' )); ?></label>
                         <div class="tf-fieldset" style="margin-top: 0;">
-                            <input readonly="readonly" type="text" class="tf_room_check_out" name="tf_room_check_out" placeholder="<?php echo __( 'Check Out', 'bafg' ); ?>">
+                            <input readonly="readonly" type="text" class="tf_room_check_out" name="tf_room_check_out" placeholder="<?php echo esc_html( __( 'Check Out', 'bafg' )); ?>">
                             <i class="fa-solid fa-calendar-days"></i>
                         </div>
                     </div>
 
                     <div class="tf-field-text tf-price-by-room" style="width: calc(50% - 5px)">
-                        <label class="tf-field-label"><?php echo __( 'Price', 'bafg' ); ?></label>
-                        <input type="number" min="0" name="tf_room_price" placeholder="<?php echo __( 'Price', 'bafg' ); ?>">
+                        <label class="tf-field-label"><?php echo esc_html( __( 'Price', 'bafg' )); ?></label>
+                        <input type="number" min="0" name="tf_room_price" placeholder="<?php echo esc_html( __( 'Price', 'bafg' )); ?>">
                     </div>
 
                     <div class="tf-field-text tf-price-by-person" style="width: calc(50% - 5px)">
-                        <label class="tf-field-label"><?php echo __( 'Adult Price', 'bafg' ); ?></label>
-                        <input type="number" min="0" name="tf_room_adult_price" placeholder="<?php echo __( 'Adult Price', 'bafg' ); ?>">
+                        <label class="tf-field-label"><?php echo esc_html( __( 'Adult Price', 'bafg' )); ?></label>
+                        <input type="number" min="0" name="tf_room_adult_price" placeholder="<?php echo esc_html( __( 'Adult Price', 'bafg' )); ?>">
                     </div>
 
                     <div class="tf-field-text tf-price-by-person" style="width: calc(50% - 5px)">
-                        <label class="tf-field-label"><?php echo __( 'Child Price', 'bafg' ); ?></label>
-                        <input type="number" min="0" name="tf_room_child_price" placeholder="<?php echo __( 'Child Price', 'bafg' ); ?>">
+                        <label class="tf-field-label"><?php echo esc_html( __( 'Child Price', 'bafg' )); ?></label>
+                        <input type="number" min="0" name="tf_room_child_price" placeholder="<?php echo esc_html( __( 'Child Price', 'bafg' )); ?>">
                     </div>
 
                     <div class="tf-field-select" style="width: calc(50% - 5px)">
-                        <label class="tf-field-label"><?php echo __( 'Status', 'bafg' ); ?></label>
+                        <label class="tf-field-label"><?php echo esc_html( __( 'Status', 'bafg' )); ?></label>
                         <select name="tf_room_status" class="tf-select">
-                            <option value="available"><?php echo __( 'Available', 'bafg' ); ?></option>
-                            <option value="unavailable"><?php echo __( 'Unavailable', 'bafg' ); ?></option>
+                            <option value="available"><?php echo esc_html( __( 'Available', 'bafg' )); ?></option>
+                            <option value="unavailable"><?php echo esc_html( __( 'Unavailable', 'bafg' )); ?></option>
                         </select>
                     </div>
 
@@ -74,11 +74,11 @@ if ( ! class_exists( 'TF_hotelAvailabilityCal' ) ) {
                         <input type="hidden" name="new_post" value="<?php echo $this->value ? 'false' : 'true'; ?>">
                         <input type="hidden" name="hotel_id" value="<?php echo esc_attr( get_the_ID() ); ?>">
                         <input type="hidden" name="room_index" value="<?php echo esc_attr( $room_index ); ?>">
-                        <span class="tf_room_cal_update button button-primary button-large"><?php echo __( 'Save Calendar', 'bafg' ); ?></span>
+                        <span class="tf_room_cal_update button button-primary button-large"><?php echo esc_html( __( 'Save Calendar', 'bafg' )); ?></span>
                     </div>
 
                 </div>
-                <input type="hidden" class="avail_date" name="<?php echo esc_attr( $this->field_name() ); ?>" id="<?php echo esc_attr( $this->field_name() ); ?>" value='<?php echo $this->value; ?>'/>
+                <input type="hidden" class="avail_date" name="<?php echo esc_attr( $this->field_name() ); ?>" id="<?php echo esc_attr( $this->field_name() ); ?>" value='<?php echo esc_html($this->value); ?>'/>
             </div>
 			<?php
 		}
