@@ -24,16 +24,16 @@ if ( ! class_exists( 'TF_ical' ) ) {
 				$rooms                = unserialize( $tf_hotel_rooms_value );
 			}
 
-			$room_index = str_replace( array( '[', ']', 'room' ), '', $this->parent_field );
+			$room_index = str_replace( array( '[', ']', 'room' ), '', esc_attr($this->parent_field ));
 			$pricing_by = ! empty( $rooms[ $room_index ]['pricing-by'] ) ? $rooms[ $room_index ]['pricing-by'] : '1';
 
 			$placeholder = ( ! empty( $this->field['placeholder'] ) ) ? 'placeholder="' . $this->field['placeholder'] . '"' : '';
-			echo '<input type="text" name="' . esc_attr( $this->field_name() ) . '" id="' . esc_attr( $this->field_name() ) . '" value="' . esc_attr( $this->value ) . '" ' . $placeholder . ' ' . $this->field_attributes() . '/>';
+			echo '<input type="text" name="' . esc_attr( $this->field_name() ) . '" id="' . esc_attr( $this->field_name() ) . '" value="' . esc_attr( $this->value ) . '" ' . esc_attr($placeholder) . ' ' . esc_attr($this->field_attributes()) . '/>';
 
 			if ( isset( $this->field['button_text'] ) && ! empty( $this->field['button_text'] ) ) {
 				$button_class = 'button button-primary button-large';
-				$button_class .= isset( $this->field['button_class'] ) ? ' ' . $this->field['button_class'] : '';
-				echo '<a href="#" class="' . $button_class . '" style="margin-top: 16px;" data-room-index="' . $room_index . '" data-pricing-by="' . $pricing_by . '">' . $this->field['button_text'] . '</a>';
+				$button_class .= isset( $this->field['button_class'] ) ? ' ' . esc_attr($this->field['button_class']) : '';
+				echo '<a href="#" class="' . esc_attr($button_class) . '" style="margin-top: 16px;" data-room-index="' . esc_attr($room_index) . '" data-pricing-by="' . esc_attr($pricing_by) . '">' . esc_attr($this->field['button_text']) . '</a>';
 			}
 		}
 
