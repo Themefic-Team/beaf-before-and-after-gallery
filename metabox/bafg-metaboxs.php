@@ -27,6 +27,6 @@ function bafg_blackfriday(){
 		display: none;
 	}	
 	</style>
-    <a target="_blank" href="https://themefic.com/black-friday/"><img style="max-width: 100%;" src="<?php echo plugin_dir_url( __FILE__ ); ?>../BLACK_FRIDAY_BACKGROUND_GRUNGE.png" alt=""></a>
+        <a target="_blank" href="https://themefic.com/black-friday/"><img style="max-width: 100%;" src="<?php echo esc_url( plugin_dir_url( __FILE__ ) . '../BLACK_FRIDAY_BACKGROUND_GRUNGE.png' ); ?>" alt=""></a>
     <?php
 }

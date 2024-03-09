@@ -530,16 +530,34 @@ class Insights {
      *
      * @return int
      */
-    public function get_post_count( $post_type ) {
-        global $wpdb;
 
-        return (int) $wpdb->get_var(
-            $wpdb->prepare(
-                "SELECT count(ID) FROM $wpdb->posts WHERE post_type = %s and post_status = %s",
-                [ $post_type, 'publish' ]
-            )
+    //====Old====== 
+    // public function get_post_count( $post_type ) {
+    //     global $wpdb;
+
+    //     return (int) $wpdb->get_var(
+    //         $wpdb->prepare(
+    //             "SELECT count(ID) FROM $wpdb->posts WHERE post_type = %s and post_status = %s",
+    //             [ $post_type, 'publish' ]
+    //         )
+    //     );
+    // }
+
+    // New Added by Masum
+    public function get_post_count( $post_type ) {
+        $args = array(
+            'post_type'      => $post_type,
+            'post_status'    => 'publish',
+            'posts_per_page' => -1, 
         );
+    
+        $query = new WP_Query( $args );
+        $count = $query->found_posts;
+        wp_reset_postdata(); 
+    
+        return $count;
     }
+    
 
     /**
      * Get server related info.

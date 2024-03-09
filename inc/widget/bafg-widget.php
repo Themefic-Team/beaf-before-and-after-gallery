@@ -24,10 +24,10 @@ class bafg_widget extends WP_Widget {
  
     public function widget( $args, $instance ) {
  
-        echo $args['before_widget'];
+        echo esc_html($args['before_widget']);
  
         if ( ! empty( $instance['title'] ) ) {
-            echo $args['before_title'] . apply_filters( 'widget_title', $instance['title'] ) . $args['after_title'];
+            echo esc_html($args['before_title']) . esc_html(apply_filters( 'widget_title', $instance['title'] )) . esc_html($args['after_title']);
         }
  
         echo '<div class="textwidget">';
@@ -43,7 +43,7 @@ class bafg_widget extends WP_Widget {
  
         echo '</div>';
  
-        echo $args['after_widget'];
+        echo esc_html($args['after_widget']);
  
     }
  
