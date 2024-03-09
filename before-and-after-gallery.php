@@ -153,8 +153,8 @@ printf( '<div class="%1$s"><p>%2$s</p></div>', esc_attr( $class ), esc_attr($mes
 	public function bafg_image_before_after_foucs_scripts() {
 		$version = time();
 
-		wp_enqueue_style( 'bafg_twentytwenty', plugin_dir_url( __FILE__ ) . 'assets/css/twentytwenty.css' );
-		wp_enqueue_style( 'bafg-style', plugin_dir_url( __FILE__ ) . 'assets/css/bafg-style.css' );
+		wp_enqueue_style( 'bafg_twentytwenty', plugin_dir_url( __FILE__ ) . 'assets/css/twentytwenty.css', array(), '1.0.0' );
+		wp_enqueue_style( 'bafg-style', plugin_dir_url( __FILE__ ) . 'assets/css/bafg-style.css', array(), '1.0.0' );		
 
 		$debug_mode = is_array( get_option( 'beaf_settings' ) ) && ! empty( get_option( 'beaf_settings' )['enable_debug_mode'] ) ? get_option( 'beaf_settings' )['enable_debug_mode'] : '';
 
@@ -163,9 +163,9 @@ printf( '<div class="%1$s"><p>%2$s</p></div>', esc_attr( $class ), esc_attr($mes
 			$in_footer = true;
 		}
 
-		wp_enqueue_script( 'eventMove', plugin_dir_url( __FILE__ ) . 'assets/js/jquery.event.move.js', array( 'jquery' ), null, $in_footer );
-		wp_enqueue_script( 'bafg_twentytwenty', plugin_dir_url( __FILE__ ) . 'assets/js/jquery.twentytwenty.js', array( 'jquery', 'eventMove' ), $version, $in_footer );
-		wp_enqueue_script( 'bafg_custom_js', plugin_dir_url( __FILE__ ) . 'assets/js/bafg-custom-js.js', array( 'jquery', 'bafg_twentytwenty' ), null, true );
+		wp_enqueue_script( 'eventMove', plugin_dir_url( __FILE__ ) . 'assets/js/jquery.event.move.js', array( 'jquery' ), '1.0.0', true );
+		wp_enqueue_script( 'bafg_twentytwenty', plugin_dir_url( __FILE__ ) . 'assets/js/jquery.twentytwenty.js', array( 'jquery', 'eventMove' ), '1.0.0', true );
+		wp_enqueue_script( 'bafg_custom_js', plugin_dir_url( __FILE__ ) . 'assets/js/bafg-custom-js.js', array( 'jquery', 'bafg_twentytwenty' ), '1.0.0', true );
 
 		/*
 		 *  Localize the script
@@ -452,7 +452,7 @@ printf( '<div class="%1$s"><p>%2$s</p></div>', esc_attr( $class ), esc_attr($mes
 			}
 
 			?>
-			<?php $gallery_id = rand( 10, 200 ); ?>
+			<?php $gallery_id = wp_rand( 10, 200 ); ?>
 			<?php if ( $info != 'true' ) : ?>
 				<style>
 					.bafg-gallery-row.gallery-id-

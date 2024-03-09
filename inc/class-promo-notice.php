@@ -20,7 +20,7 @@ class bafg_PROMO_NOTICE {
 
         $bafg_pro_activated = get_option( 'bafg_pro_activated');
         
-        if(in_array(date('F'), $this->months) &&  $bafg_pro_activated != 'true' ){   
+        if(in_array(gmdate('F'), $this->months) &&  $bafg_pro_activated != 'true' ){   
             add_filter('cron_schedules', array($this, 'bafg_custom_cron_interval'));
              
             if (!wp_next_scheduled('bafg_promo__schudle')) {

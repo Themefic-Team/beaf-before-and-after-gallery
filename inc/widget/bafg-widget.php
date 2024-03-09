@@ -95,7 +95,7 @@ class bafg_widget extends WP_Widget {
  
         $instance = array();
  
-        $instance['title']          = ( !empty( $new_instance['title'] ) ) ? strip_tags( $new_instance['title'] ) : '';
+        $instance['title']          = ( !empty( $new_instance['title'] ) ) ? wp_strip_all_tags( $new_instance['title'] ) : '';
         $instance['bafg_post_id']   = ( !empty( $new_instance['bafg_post_id'] ) ) ? $new_instance['bafg_post_id'] : '';
         $instance['bafg_shortcode'] = ( !empty( $new_instance['bafg_shortcode'] ) ) ? $new_instance['bafg_shortcode'] : '';
  
