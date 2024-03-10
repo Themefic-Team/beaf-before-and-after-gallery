@@ -27,7 +27,7 @@ if ( ! class_exists( 'TF_radio' ) ) {
 							$disabled = '';
 						}
 						if( isset($value['label']) ){
-							echo '<li><input '. esc_attr($disabled) .' type="radio" id="' . esc_attr($this->field_name()) . '[' . esc_attr($key) . ']" name="' . esc_attr($this->field_name()) . '" data-depend-id="' . esc_attr( $this->field['id'] ) . '' . esc_attr($this->parent_field) . '" value="' . esc_attr( $key ) . '" ' . esc_attr($checked) . ' '. esc_attr($this->field_attributes()) .'/><label for="' . esc_attr($this->field_name()) . '[' . esc_attr($key) . ']">' . esc_attr($value['label']) . '</label></li>';
+							echo '<li><input '. esc_attr($disabled) .' type="radio" id="' . esc_attr($this->field_name()) . '[' . esc_attr($key) . ']" name="' . esc_attr($this->field_name()) . '" data-depend-id="' . esc_attr( $this->field['id'] ) . '' . esc_attr($this->parent_field) . '" value="' . esc_attr( $key ) . '" ' . esc_attr($checked) . ' '. esc_attr($this->field_attributes()) .'/><label for="' . esc_attr($this->field_name()) . '[' . esc_attr($key) . ']">' . wp_kses_post( $value['label'] ) . '</label></li>';
 						}
 					}else{
 						echo '<li><input type="radio" id="' . esc_attr($this->field_name()) . '[' . esc_attr($key) . ']" name="' . esc_attr($this->field_name()) . '" data-depend-id="' . esc_attr( $this->field['id'] ) . '' . esc_attr($this->parent_field) . '" value="' . esc_attr( $key ) . '" ' . esc_attr($checked) . ' '. esc_attr($this->field_attributes()) .'/><label for="' . esc_attr($this->field_name()) . '[' . esc_attr($key) . ']">' . esc_attr($value) . '</label></li>';

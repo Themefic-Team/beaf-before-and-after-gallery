@@ -13,7 +13,8 @@ if ( ! class_exists( 'TF_video' ) ) {
 		}
 
 		public function render() {
-			echo '<div class="tf-fieldset-media-preview tf-fieldset-media-preview ' . esc_attr(str_replace(array("[","]","-")),"_",esc_attr( $this->field_name() ) ) . '">';
+			echo '<div class="tf-fieldset-media-preview tf-fieldset-media-preview ' . esc_attr(str_replace(array("[", "]", "-"), "_", esc_attr($this->field_name()))) . '">';
+
 			
 			echo '</div>
 			<div class="tf-fieldset-media">

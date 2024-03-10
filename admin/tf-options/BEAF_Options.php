@@ -307,7 +307,7 @@ if ( ! class_exists( 'BEAF_Options' ) ) {
 			}
 			?>
 
-		<div class="tf-field tf-field-<?php echo esc_attr( $field['type'] ); ?> <?php echo esc_attr( $class ); ?> <?php echo ! empty( $visible ) ? esc_attr( $visible ) : ''; ?>">
+		<div class="tf-field tf-field-<?php echo esc_attr( $field['type'] ); ?> <?php echo esc_attr( $class ); ?> <?php echo ! empty( $visible ) ? esc_attr( $visible ) : ''; ?>"
 			<?php echo ! empty( $depend ) ? esc_attr( $depend ) : ''; ?> style="<?php echo esc_attr( $field_style ); ?>">
 				<?php if ( ! empty( $field['label'] ) ) : ?>
 					<label for="<?php echo esc_attr( $id ) ?>" class="tf-field-label">

@@ -503,10 +503,16 @@ if( ! function_exists( 'bafg_before_after_method' ) ) {
                     'label'  => __( 'Method 3 (Using 3 images )<div class="bafg-tooltip method-3-tooltip"><span>?</span><div class="bafg-tooltip-info">Pro feature! 3 image slider addon required to activate this. <a href="https://themefic.com/wp-content/uploads/2023/07/3-image-slider-addon.png" target="_blank"> More info</a></div></div>', 'bafg' ),
                     'is_pro' => true
                 ),$post),
-                'method_4' => apply_filters( 'bafg_video_slider_method',array(
-                    'label'  => __( 'Method 4 (Using Video) <div class="bafg-tooltip method-3-tooltip"><span>?</span><div class="bafg-tooltip-info">Pro feature! Video slider addon required to activate this. <a href="https://themefic.com/wp-content/uploads/2023/07/video-slider-addon.png" target="_blank"> More info</a></div></div>', 'bafg' ),
-                    'is_pro' => true
-                ), $post),
+                'method_4' => apply_filters( 
+                    'bafg_video_slider_method',
+                    array(
+                        'label'  => __( 'Method 4 (Using Video) <div class="bafg-tooltip method-3-tooltip"><span>?</span><div class="bafg-tooltip-info">Pro feature! Video slider addon required to activate this. <a href="https://themefic.com/wp-content/uploads/2023/07/video-slider-addon.png" target="_blank"> More info</a></div></div>', 'bafg' ),
+                        'is_pro' => true
+                    ),
+                    $post
+                ),
+                
+                
             ),
             'default' => 'method_1',
         );

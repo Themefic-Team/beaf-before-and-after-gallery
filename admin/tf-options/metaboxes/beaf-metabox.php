@@ -19,7 +19,7 @@ BEAF_Metabox::metabox( 'beaf_meta', array(
 						'type' => 'radio',
 						'label' => __( 'Before After Method', 'bafg' ),
 						'title' => __( 'Before After Method', 'bafg' ),
-						'subtitle' => __( 'Choose a method to make a before after slider using a single image, 2 images, 3 images and Videos.', 'bafg' ),
+						'subtitle' => __( 'Choose a method to make a before after slider using a single image, 2 images, 3 images, and Videos.', 'bafg' ),
 						'options' => array(
 							'method_1' => __( 'Method 1 (Using 2 images)', 'bafg' ),
 							'method_2' => array(
@@ -31,10 +31,14 @@ BEAF_Metabox::metabox( 'beaf_meta', array(
 								'is_pro' => true
 							),
 							'method_4' => array(
-								'label' => __( 'Method 4 (Using Video) <div class="bafg-tooltip method-3-tooltip"><span>?</span><div class="bafg-tooltip-info">Pro feature! 3 image slider addon required to activate this. <a href="https://themefic.com/wp-content/uploads/2023/07/3-image-slider-addon.png" target="_blank"> More info</a></div></div>', 'bafg' ),
+								'label'   => sprintf(
+									__( 'Method 4 (Using Video) <div class="bafg-tooltip method-3-tooltip"><span>?</span><div class="bafg-tooltip-info">Pro feature! 3 image slider addon required to activate this. <a href="%s" target="_blank"> More info</a></div></div>', 'bafg' ),
+									esc_url( 'https://themefic.com/wp-content/uploads/2023/07/3-image-slider-addon.png' )
+								),
 								'is_pro' => true
 							),
 						),
+					
 						'default' => 'method_1',
 					), $post ),
 
