@@ -8,7 +8,7 @@ function beaf_dashboard_header() {
     <div class="tf-setting-top-bar">
         <div class="version">
             <img src="<?php echo esc_url(BEAF_ASSETS_URL); ?>image/beaf-logo.webp" alt="logo">
-            <span>v 4</span>
+            <span><?php echo esc_html('v'.BEAF_VERSION) ?></span>
         </div>
         <div class="other-document">
             <svg width="26" height="25" viewBox="0 0 26 25" fill="none" xmlns="http://www.w3.org/2000/svg"
