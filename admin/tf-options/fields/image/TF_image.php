@@ -21,7 +21,7 @@ if ( ! class_exists( 'TF_image' ) ) {
 			}
 			echo '</div>
 			<div class="tf-fieldset-media">
-			<input type="text" name="' .  $this->field_name() . '" id="' . $this->field_name() . '" value="' . esc_attr($this->value) . '" disabled="disabled" /><a href="#" tf-field-name="' . esc_attr( $this->field_name() ) . '" class="tf-media-upload button button-primary button-large">' . esc_html(__( "Upload","bafg" )) . '</a></div>
+			<input type="text" name="' .  esc_attr( $this->field_name() ) . '" id="' . esc_attr( $this->field_name() ) . '" value="' . esc_attr($this->value) . '" disabled="disabled" /><a href="#" tf-field-name="' . esc_attr( $this->field_name() ) . '" class="tf-media-upload button button-primary button-large">' . esc_html(__( "Upload","bafg" )) . '</a></div>
 			<input type="hidden" name="' . esc_attr( $this->field_name() ) . '" id="' . esc_attr( $this->field_name() ) . '" value="' . esc_attr($this->value) . '"  />
 			';
 		}
