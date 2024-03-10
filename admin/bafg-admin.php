@@ -11,8 +11,7 @@ if (!defined('ABSPATH')) {
 add_action( 'admin_enqueue_scripts', 'bafg_admin_enqueue_scripts' );
 
 //Enqueue script in admin area
-function bafg_admin_enqueue_scripts(){   
-	$in_footer = true;
+function bafg_admin_enqueue_scripts(){    
 	// Enqueue styles
 	wp_enqueue_style( 'notyf', BEAF_ASSETS_URL . 'libs/notyf/notyf.min.css', array(), '1.0.0' );
 	wp_enqueue_style( 'bafg_admin_style', plugins_url( '../assets/css/bafg-admin-style.css', __FILE__ ), array(), '1.0.0' );
@@ -21,8 +20,10 @@ function bafg_admin_enqueue_scripts(){
 	// Enqueue scripts
 	wp_enqueue_script( 'wp-color-picker-alpha', plugins_url( '../assets/js/wp-color-picker-alpha.min.js', __FILE__ ), array( 'wp-color-picker' ), '1.0.0', true );
 	wp_enqueue_script( 'notyf', BEAF_ASSETS_URL . 'libs/notyf/notyf.min.js', array('jquery'), '1.0.0', true );
-	wp_enqueue_script( 'beaf-admin', plugins_url( '../assets/js/bafg-script.js', __FILE__ ), array('jquery','wp-color-picker','wp-color-picker-alpha'), '1.0.0', $in_footer );
-	wp_enqueue_script('jquery-ui-sortable', array('jquery', 'jquery-ui'), '1.0.0', $in_footer );
+	wp_enqueue_script( 'beaf-admin', plugins_url( '../assets/js/bafg-script.js', __FILE__ ), array('jquery','wp-color-picker','wp-color-picker-alpha'), '1.0.0', true );
+	if ( ! wp_script_is( 'jquery-ui-sortable' ) ) {
+		wp_enqueue_script( 'jquery-ui-sortable' );
+	}
 	wp_enqueue_script( 'beaf-options', BEAF_ASSETS_URL . 'js/beaf-options.js', array('jquery'), '1.0.0', true );
 	wp_localize_script( 'beaf-admin', 'tf_options', array(
 		'ajax_url'          => admin_url( 'admin-ajax.php' ),
