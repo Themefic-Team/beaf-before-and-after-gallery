@@ -22,18 +22,29 @@ BEAF_Metabox::metabox( 'beaf_meta', array(
 						'subtitle' => __( 'Choose a method to make a before after slider using a single image, 2 images, 3 images, and Videos.', 'bafg' ),
 						'options' => array(
 							'method_1' => __( 'Method 1 (Using 2 images)', 'bafg' ),
-							'method_2' => array(
-								'label' => __( 'Method 2 (Using 1 image )<div class="bafg-tooltip method-3-tooltip"><span>?</span><div class="bafg-tooltip-info">Pro feature!</div></div>', 'bafg' ),
+							'method_2' => array( 
+								'label'   => sprintf(
+									/* translators: %1$s, %2$s is replaced with "tooltip " */ 
+									esc_html__( 'Method 2 (Using 1 image ) %1$s', 'bafg' ),
+									'<div class="bafg-tooltip method-3-tooltip"><span>?</span><div class="bafg-tooltip-info">Pro feature!</div></div>', 
+								), 
 								'is_pro' => true
 							),
 							'method_3' => array(
-								'label' => __( 'Method 3 (Using 3 images )<div class="bafg-tooltip method-3-tooltip"><span>?</span><div class="bafg-tooltip-info">Pro feature! 3 image slider addon required to activate this. <a href="https://themefic.com/wp-content/uploads/2023/07/3-image-slider-addon.png" target="_blank"> More info</a></div></div>', 'bafg' ),
+								'label'   => sprintf(
+									/* translators: %1$s, %2$s is replaced with "tooltip & link" */ 
+									esc_html__( 'Method 3 (Using 3 images ) %1$s Pro feature! 3 image slider addon required to activate this. %2$s', 'bafg' ),
+									'<div class="bafg-tooltip method-3-tooltip"><span>?</span><div class="bafg-tooltip-info">',
+									'<a href="'.esc_url('https://themefic.com/wp-content/uploads/2023/07/3-image-slider-addon.png').'" target="_blank"> More info</a></div></div>',
+								), 
 								'is_pro' => true
 							),
 							'method_4' => array(
 								'label'   => sprintf(
-									__( 'Method 4 (Using Video) <div class="bafg-tooltip method-3-tooltip"><span>?</span><div class="bafg-tooltip-info">Pro feature! 3 image slider addon required to activate this. <a href="%s" target="_blank"> More info</a></div></div>', 'bafg' ),
-									esc_url( 'https://themefic.com/wp-content/uploads/2023/07/3-image-slider-addon.png' )
+									/* translators: %1$s, %2$s is replaced with "tooltip & link" */ 
+									esc_html__( 'Method 4 (Using Video) %1$s Pro feature! Video slider addon required to activate this. %2$s', 'bafg' ),
+									'<div class="bafg-tooltip method-3-tooltip"><span>?</span><div class="bafg-tooltip-info">',
+									'<a href="'.esc_url('https://themefic.com/wp-content/uploads/2023/07/3-image-slider-addon.png').'" target="_blank"> More info</a></div></div>',
 								),
 								'is_pro' => true
 							),
