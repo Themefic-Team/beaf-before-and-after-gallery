@@ -255,7 +255,7 @@ if(!function_exists('bafg_review_notice')){
            $current_user = wp_get_current_user();
        ?>
            <div class="notice notice-info themefic_review_notice"> 
-               
+               <p>
                <?php printf(
                     /* translators: %s is replaced with "user id & Plugins Name" */ 
                         esc_html__(  'Hey %1$s 👋, You have been using %2$s for quite a while. If you feel %2$s is helping your business to grow in any way, would you please help %2$s to grow by simply leaving a 5* review on the WordPress Forum?', 'bafg' ),
@@ -263,7 +263,7 @@ if(!function_exists('bafg_review_notice')){
                         'Ultimate Before After Image Slider & Gallery'
                     );  
                 ?> 
-               
+               </p>
                <ul>
                    <li><a target="_blank" href="<?php echo esc_url('https://wordpress.org/support/plugin/beaf-before-and-after-gallery/reviews/#new-post') ?>" class=""><span class="dashicons dashicons-external"></span><?php esc_attr_e(' Ok, you deserve it!', 'bafg' ) ?></a></li>
                    <li><a href="#" class="already_done" data-status="already"><span class="dashicons dashicons-smiley"></span> <?php esc_attr_e('I already did', 'bafg') ?></a></li>
