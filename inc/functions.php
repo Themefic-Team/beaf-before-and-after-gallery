@@ -36,7 +36,7 @@ function bafg_slider_info($id){
 	$bafg_pro_activated = get_option( 'bafg_pro_activated' );
 	?>
 	<div class="bafg-slider-info-wraper">
-		<div style="<?php if( $bafg_pro_activated == 'true' ) { if($bafg_width != ''){ echo 'width: '.$bafg_width.';'; } ?> <?php if( $bafg_width != '' && $bafg_slider_alignment == 'right' ){ echo ' float: right;'; } ?> <?php if( $bafg_width == '' && $bafg_slider_alignment == 'right' ){ echo ' float: right; width: 100%;'; } ?> <?php if( $bafg_slider_alignment == 'center' ){ echo ' margin: 0 auto;'; } } ?>" class="<?php echo esc_attr('slider-info-'.$id.''); ?> bafg-slider-info">
+		<div style="<?php if( $bafg_pro_activated == 'true' ) { if($bafg_width != ''){ echo 'width: '.esc_attr($bafg_width).';'; } ?> <?php if( $bafg_width != '' && $bafg_slider_alignment == 'right' ){ echo ' float: right;'; } ?> <?php if( $bafg_width == '' && $bafg_slider_alignment == 'right' ){ echo ' float: right; width: 100%;'; } ?> <?php if( $bafg_slider_alignment == 'center' ){ echo ' margin: 0 auto;'; } } ?>" class="<?php echo esc_attr('slider-info-'.$id.''); ?> bafg-slider-info">
 			<?php
 			$bafg_slider_title = !empty($meta['bafg_slider_title']) ? $meta['bafg_slider_title'] : '';
 			if( trim($bafg_slider_title) != '' ) :
@@ -71,7 +71,7 @@ function bafg_slider_info($id){
 				 
 			}
 			?>
-			<a href="<?php echo esc_url($bafg_readmore_link); ?>" class="bafg_slider_readmore_button" <?php if($bafg_readmore_link_target == 'new_tab') echo 'target="_blank"'; ?> ><?php echo esc_html__( $bafg_readmore_text , 'bafg' ); ?></a>
+			<a href="<?php echo esc_url($bafg_readmore_link); ?>" class="bafg_slider_readmore_button" <?php if($bafg_readmore_link_target == 'new_tab') echo 'target="_blank"'; ?> ><?php echo esc_html($bafg_readmore_text); ?></a>
 			</div>
 
 			<?php endif; ?>
@@ -255,19 +255,21 @@ if(!function_exists('bafg_review_notice')){
            $current_user = wp_get_current_user();
        ?>
            <div class="notice notice-info themefic_review_notice"> 
-              
-               <?php echo sprintf( 
-                       __( ' <p>Hey %1$s 👋, You have been using %2$s for quite a while. If you feel %2$s is helping your business to grow in any way, would you please help %2$s to grow by simply leaving a 5* review on the WordPress Forum?', 'bafg' ),
-                       $current_user->user_login,
-                       'Ultimate Before After Image Slider & Gallery'
-                   ); ?> 
-               
+               <p>
+               <?php printf(
+                    /* translators: %s is replaced with "user id & Plugins Name" */ 
+                        esc_html__(  'Hey %1$s 👋, You have been using %2$s for quite a while. If you feel %2$s is helping your business to grow in any way, would you please help %2$s to grow by simply leaving a 5* review on the WordPress Forum?', 'bafg' ),
+                        esc_html($current_user->user_login),
+                        'Ultimate Before After Image Slider & Gallery'
+                    );  
+                ?> 
+               </p>
                <ul>
-                   <li><a target="_blank" href="<?php echo esc_url('https://wordpress.org/support/plugin/beaf-before-and-after-gallery/reviews/#new-post') ?>" class=""><span class="dashicons dashicons-external"></span><?php _e(' Ok, you deserve it!', 'bafg' ) ?></a></li>
-                   <li><a href="#" class="already_done" data-status="already"><span class="dashicons dashicons-smiley"></span> <?php _e('I already did', 'bafg') ?></a></li>
-                   <li><a href="#" class="later" data-status="later"><span class="dashicons dashicons-calendar-alt"></span> <?php _e('Maybe Later', 'bafg') ?></a></li>
-                   <li><a target="_blank"  href="<?php echo esc_url('https://themefic.com/docs/beaf/') ?>" class=""><span class="dashicons dashicons-sos"></span> <?php _e('I need help', 'bafg') ?></a></li>
-                   <li><a href="#" class="never" data-status="never"><span class="dashicons dashicons-dismiss"></span><?php _e('Never show again', 'bafg') ?> </a></li> 
+                   <li><a target="_blank" href="<?php echo esc_url('https://wordpress.org/support/plugin/beaf-before-and-after-gallery/reviews/#new-post') ?>" class=""><span class="dashicons dashicons-external"></span><?php esc_attr_e(' Ok, you deserve it!', 'bafg' ) ?></a></li>
+                   <li><a href="#" class="already_done" data-status="already"><span class="dashicons dashicons-smiley"></span> <?php esc_attr_e('I already did', 'bafg') ?></a></li>
+                   <li><a href="#" class="later" data-status="later"><span class="dashicons dashicons-calendar-alt"></span> <?php esc_attr_e('Maybe Later', 'bafg') ?></a></li>
+                   <li><a target="_blank"  href="<?php echo esc_url('https://themefic.com/docs/beaf/') ?>" class=""><span class="dashicons dashicons-sos"></span> <?php esc_attr_e('I need help', 'bafg') ?></a></li>
+                   <li><a href="#" class="never" data-status="never"><span class="dashicons dashicons-dismiss"></span><?php esc_attr_e('Never show again', 'bafg') ?> </a></li> 
                </ul>
                <button type="button" class="notice-dismiss review_notice_dismiss"><span class="screen-reader-text">Dismiss this notice.</span></button>
 
@@ -404,7 +406,18 @@ if( !function_exists( 'bafg_pro_version_notice' ) ){
 					}else{
 				?>
 					<div class="notice notice-warning is-dismissible bafg-update-pro">
-						<p style="font-size:16px"><?php echo sprintf( __('<b>Warning:</b> The installed version of BEAF Pro ('.$bafg_pro_version.') has not been tested on your version of WordPress ('.$wp_version.'). It has been tested up to version 5.9. <a href="%s" target="_blank">You should update BEAF Pro to latest version to make sure that you have a version that has been tested for compatibility.</a>', 'bafg'), "https://themefic.com/docs/beaf/seeing-warning-versions-wordpress-beaf-tested/"  ) ?></p>
+						<p style="font-size:16px">
+                            <?php  
+                                printf(
+
+                                    /* translators: %1$: $bafg_pro_version,  %2$: $wp_version,  %3$: link, */
+                                    esc_html__( '<b>Warning:</b> The installed version of BEAF Pro (%1$) has not been tested on your version of WordPress (%2$). It has been tested up to version 5.9. <a href="%3$" target="_blank">You should update BEAF Pro to latest version to make sure that you have a version that has been tested for compatibility.</a>', 'bafg'), 
+                                    esc_html($bafg_pro_version), 
+                                    esc_html($wp_version), 
+                                    "https://themefic.com/docs/beaf/seeing-warning-versions-wordpress-beaf-tested/"  
+                                );     
+                            ?> 
+                         </p>
 					</div>
 				<?php
 					}
@@ -453,15 +466,15 @@ if( ! function_exists( 'bafg_frontend_preview_shortcode_pro_cb' ) ) {
         </div>
         <div class="bafg-frontend-upload-buttons">
             <div class="bafg-bimage-up">
-                <label><?php echo __( "Upload Before Image","bafg-pro" ); ?></label>
+                <label><?php echo esc_html(__( "Upload Before Image","bafg" )); ?></label>
                 <input type="file" name="" id="bafg-before-image" class="upload-before-image" accept="image/*">
             </div>
             <div class="bafg-aimage-up">
-                <label><?php echo __( "Upload After Image","bafg-pro" ); ?></label>
+                <label><?php echo esc_html(__( "Upload After Image","bafg" )); ?></label>
                 <input type="file" name="" id="bafg-after-image" class="upload-after-image" accept="image/*">
             </div>
             <div class="bafg-reset-preview">
-                <button class="bafg-reset-preview-btn"><?php echo __( "Reset","bafg-pro" ); ?></button>
+                <button class="bafg-reset-preview-btn"><?php echo esc_html(__( "Reset","bafg" )); ?></button>
             </div>
         </div>
         <?php
@@ -490,10 +503,16 @@ if( ! function_exists( 'bafg_before_after_method' ) ) {
                     'label'  => __( 'Method 3 (Using 3 images )<div class="bafg-tooltip method-3-tooltip"><span>?</span><div class="bafg-tooltip-info">Pro feature! 3 image slider addon required to activate this. <a href="https://themefic.com/wp-content/uploads/2023/07/3-image-slider-addon.png" target="_blank"> More info</a></div></div>', 'bafg' ),
                     'is_pro' => true
                 ),$post),
-                'method_4' => apply_filters( 'bafg_video_slider_method',array(
-                    'label'  => __( 'Method 4 (Using Video) <div class="bafg-tooltip method-3-tooltip"><span>?</span><div class="bafg-tooltip-info">Pro feature! Video slider addon required to activate this. <a href="https://themefic.com/wp-content/uploads/2023/07/video-slider-addon.png" target="_blank"> More info</a></div></div>', 'bafg' ),
-                    'is_pro' => true
-                ), $post),
+                'method_4' => apply_filters( 
+                    'bafg_video_slider_method',
+                    array(
+                        'label'  => __( 'Method 4 (Using Video) <div class="bafg-tooltip method-3-tooltip"><span>?</span><div class="bafg-tooltip-info">Pro feature! Video slider addon required to activate this. <a href="https://themefic.com/wp-content/uploads/2023/07/video-slider-addon.png" target="_blank"> More info</a></div></div>', 'bafg' ),
+                        'is_pro' => true
+                    ),
+                    $post
+                ),
+                
+                
             ),
             'default' => 'method_1',
         );

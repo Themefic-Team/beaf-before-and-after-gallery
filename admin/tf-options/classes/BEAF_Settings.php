@@ -137,8 +137,7 @@ if ( ! class_exists( 'BEAF_Settings' ) ) {
 				?>
 				<div class="tf-setting-dashboard">
 					<!-- dashboard-header-include -->
-					<?php echo beaf_dashboard_header(); ?>
-
+				<?php echo esc_attr( beaf_dashboard_header() ); ?>
 					<div class="tf-option-wrapper tf-setting-wrapper">
 						<form method="post" action="" class="tf-option-form <?php echo esc_attr( $ajax_save_class ) ?>"
 							enctype="multipart/form-data">
@@ -157,7 +156,7 @@ if ( ! class_exists( 'BEAF_Settings' ) ) {
 												class="tf-tablinks <?php echo $section_count == 0 ? 'active' : ''; ?>"
 												data-tab="<?php echo esc_attr( $parent_tab_key ) ?>">
 												<?php echo ! empty( $section['icon'] ) ? '<span class="tf-sec-icon"><i class="' . esc_attr( $section['icon'] ) . '"></i></span>' : ''; ?>
-												<?php echo $section['title']; ?>
+												<?php echo esc_attr( $section['title'] ); ?>
 											</a>
 
 											<?php if ( ! empty( $section['sub_section'] ) ) : ?>
@@ -169,7 +168,7 @@ if ( ! class_exists( 'BEAF_Settings' ) ) {
 																data-tab="<?php echo esc_attr( $sub_key ) ?>">
 																<span class="tf-tablinks-inner">
 																	<?php echo ! empty( $sub['icon'] ) ? '<span class="tf-sec-icon"><i class="' . esc_attr( $sub['icon'] ) . '"></i></span>' : ''; ?>
-																	<?php echo $sub['title']; ?>
+																	<?php echo esc_attr( $sub['title'] ); ?>
 																</span>
 															</a>
 														</li>
@@ -209,7 +208,7 @@ if ( ! class_exists( 'BEAF_Settings' ) ) {
 									<!-- Footer -->
 									<div class="tf-option-footer">
 										<button type="submit" class="tf-admin-btn tf-btn-secondary tf-submit-btn">
-											<?php _e( 'Save', 'bafg' ); ?>
+											<?php esc_attr_e( 'Save', 'bafg' ); ?>
 										</button>
 									</div>
 								</div>
@@ -227,17 +226,9 @@ if ( ! class_exists( 'BEAF_Settings' ) ) {
 		 */
 		public function save_options() {
 
-			// Add nonce for security and authentication.
-			$nonce_name = isset( $_POST['tf_option_nonce'] ) ? $_POST['tf_option_nonce'] : '';
-			$nonce_action = 'tf_option_nonce_action';
-
-			// Check if a nonce is set.
-			if ( ! isset( $nonce_name ) ) {
-				return;
-			}
-
+			// Add nonce for security and authentication. 
 			// Check if a nonce is valid.
-			if ( ! wp_verify_nonce( $nonce_name, $nonce_action ) ) {
+			if (!isset($_POST['tf_option_nonce']) || ! wp_verify_nonce( $_POST['tf_option_nonce'], 'tf_option_nonce_action' ) ) {
 				return;
 			}
 

@@ -24,10 +24,10 @@ class bafg_widget extends WP_Widget {
  
     public function widget( $args, $instance ) {
  
-        echo $args['before_widget'];
+        echo esc_html($args['before_widget']);
  
         if ( ! empty( $instance['title'] ) ) {
-            echo $args['before_title'] . apply_filters( 'widget_title', $instance['title'] ) . $args['after_title'];
+            echo esc_html($args['before_title']) . esc_html(apply_filters( 'widget_title', $instance['title'] )) . esc_html($args['after_title']);
         }
  
         echo '<div class="textwidget">';
@@ -43,15 +43,15 @@ class bafg_widget extends WP_Widget {
  
         echo '</div>';
  
-        echo $args['after_widget'];
+        echo esc_html($args['after_widget']);
  
     }
  
     public function form( $instance ) {
  
-        $title          = ! empty( $instance['title'] ) ? $instance['title'] : esc_html__( '', 'bafg' );
-        $bafg_post_id   = ! empty( $instance['bafg_post_id'] ) ? $instance['bafg_post_id'] : esc_html__( '', 'bafg' );
-        $bafg_shortcode = ! empty( $instance['bafg_shortcode'] ) ? $instance['bafg_shortcode'] : esc_html__( '', 'bafg' );
+        $title          = ! empty( $instance['title'] ) ? $instance['title'] : '';
+        $bafg_post_id   = ! empty( $instance['bafg_post_id'] ) ? $instance['bafg_post_id'] : '';
+        $bafg_shortcode = ! empty( $instance['bafg_shortcode'] ) ? $instance['bafg_shortcode'] : '';
         ?>
         <p>
         <label for="<?php echo esc_attr( $this->get_field_id( 'title' ) ); ?>"><?php echo esc_html__( 'Title:', 'bafg' ); ?></label>
@@ -95,7 +95,7 @@ class bafg_widget extends WP_Widget {
  
         $instance = array();
  
-        $instance['title']          = ( !empty( $new_instance['title'] ) ) ? strip_tags( $new_instance['title'] ) : '';
+        $instance['title']          = ( !empty( $new_instance['title'] ) ) ? wp_strip_all_tags( $new_instance['title'] ) : '';
         $instance['bafg_post_id']   = ( !empty( $new_instance['bafg_post_id'] ) ) ? $new_instance['bafg_post_id'] : '';
         $instance['bafg_shortcode'] = ( !empty( $new_instance['bafg_shortcode'] ) ) ? $new_instance['bafg_shortcode'] : '';
  

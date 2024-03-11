@@ -11,18 +11,20 @@ if (!defined('ABSPATH')) {
 add_action( 'admin_enqueue_scripts', 'bafg_admin_enqueue_scripts' );
 
 //Enqueue script in admin area
-function bafg_admin_enqueue_scripts(){   
-	//enqueue styles
-	wp_enqueue_style( 'notyf', BEAF_ASSETS_URL . 'libs/notyf/notyf.min.css' );
-	wp_enqueue_style( 'bafg_admin_style', plugins_url( '../assets/css/bafg-admin-style.css', __FILE__ ));
-	wp_enqueue_style( 'beaf-admin-options', BEAF_ASSETS_URL . 'css/beaf-admin-options.css');
+function bafg_admin_enqueue_scripts(){    
+	// Enqueue styles
+	wp_enqueue_style( 'notyf', BEAF_ASSETS_URL . 'libs/notyf/notyf.min.css', array(), '1.0.0' );
+	wp_enqueue_style( 'bafg_admin_style', plugins_url( '../assets/css/bafg-admin-style.css', __FILE__ ), array(), '1.0.0' );
+	wp_enqueue_style( 'beaf-admin-options', BEAF_ASSETS_URL . 'css/beaf-admin-options.css', array(), '1.0.0' );
 
-	//enqueue scripts
-	wp_enqueue_script( 'wp-color-picker-alpha', plugins_url( '../assets/js/wp-color-picker-alpha.min.js',__FILE__ ), array( 'wp-color-picker' ), null, true );
-    wp_enqueue_script( 'notyf', BEAF_ASSETS_URL . 'libs/notyf/notyf.min.js', array('jquery'), null, false );
-    wp_enqueue_script( 'beaf-admin', plugins_url( '../assets/js/bafg-script.js', __FILE__ ), array('jquery','wp-color-picker','wp-color-picker-alpha'), null, true );
-	wp_enqueue_script('jquery-ui-sortable');
-	wp_enqueue_script( 'beaf-options', BEAF_ASSETS_URL . 'js/beaf-options.js', array('jquery'), null, true );
+	// Enqueue scripts
+	wp_enqueue_script( 'wp-color-picker-alpha', plugins_url( '../assets/js/wp-color-picker-alpha.min.js', __FILE__ ), array( 'wp-color-picker' ), '1.0.0', true );
+	wp_enqueue_script( 'notyf', BEAF_ASSETS_URL . 'libs/notyf/notyf.min.js', array('jquery'), '1.0.0', true );
+	wp_enqueue_script( 'beaf-admin', plugins_url( '../assets/js/bafg-script.js', __FILE__ ), array('jquery','wp-color-picker','wp-color-picker-alpha'), '1.0.0', true );
+	if ( ! wp_script_is( 'jquery-ui-sortable' ) ) {
+		wp_enqueue_script( 'jquery-ui-sortable' );
+	}
+	wp_enqueue_script( 'beaf-options', BEAF_ASSETS_URL . 'js/beaf-options.js', array('jquery'), '1.0.0', true );
 	wp_localize_script( 'beaf-admin', 'tf_options', array(
 		'ajax_url'          => admin_url( 'admin-ajax.php' ),
 		'nonce'             => wp_create_nonce( 'tf_options_nonce' ),
@@ -75,7 +77,7 @@ function bafg_custom_columns_image($column_name, $id){
   	
     $image_id     = attachment_url_to_postid( $image_url );
     $before_image = wp_get_attachment_image( $image_id, 'thumbnail');
-  	echo $before_image;
+  	echo wp_kses_post($before_image);
   }
 
   //After Image column in posts
@@ -101,7 +103,7 @@ function bafg_custom_columns_image($column_name, $id){
 	
 	$image_id = attachment_url_to_postid( $image_url );
 	$after_image = wp_get_attachment_image( $image_id, 'thumbnail');
-	echo $after_image;
+	echo wp_kses_post($after_image);
 }
 
 
@@ -121,7 +123,7 @@ if($column_name === 'second_image') {
 		}else{
 			return;
 		}
-		echo $second_image;
+		echo wp_kses_post($second_image);
 	}
 	
 }
@@ -132,9 +134,10 @@ if($column_name === 'second_image') {
 
 function bafg_custom_columns_shortcode($column_name, $id){  
   if($column_name === 'bafg_shortcode') { 
-   $post_id =	$id;
-   $shortcode = 'bafg id="' . $post_id . '"';
-      echo '[' . $shortcode .']';   
+	$post_id =	$id;
+	$shortcode = '[bafg id="' . $post_id . '"]'; 
+      echo '<input type="text" name="bafg_display_shortcode" class="bafg_display_shortcode" value="'.esc_attr($shortcode).'" readonly onclick="bafgCopyShortcode()">';
+	  
   }  
 }
 

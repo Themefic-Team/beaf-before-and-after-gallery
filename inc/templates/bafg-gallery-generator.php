@@ -6,7 +6,7 @@
 		<label for="bafg_gallery_cata"><?php echo esc_html__( 'Category:', 'bafg' ); ?></label><br>
 		<select id="bafg_gallery_cata">
 			<option value=""><?php echo esc_html__( '-Select category-', 'bafg' ); ?></option>
-			<option value="all"><?php echo __( 'All','bafg' ); ?></option>
+			<option value="all"><?php echo esc_html__( 'All','bafg' ); ?></option>
 			<?php
 			$terms = get_terms( array(
 				'taxonomy' => 'bafg_gallery',
@@ -28,7 +28,7 @@
 		<label for="bafg_gallery_item"><?php echo esc_html__( 'Max Items:', 'bafg' ); ?></label>
 		<input id="bafg_gallery_item" type="text" value="" placeholder="Unlimited">
 		
-		<label for="bafg_gallery_info" class="bafg_gallery_info"><input id="bafg_gallery_info" type="checkbox" <?php echo apply_filters('bafg_gallery_info_attrs','disabled'); ?> > <?php echo esc_html__( 'Display Slider Title, Description and Read more link', 'bafg' ); ?><div class="bafg-tooltip"><span>?</span>
+		<label for="bafg_gallery_info" class="bafg_gallery_info"><input id="bafg_gallery_info" type="checkbox" <?php echo esc_attr(apply_filters('bafg_gallery_info_attrs','disabled')); ?> > <?php echo esc_html__( 'Display Slider Title, Description and Read more link', 'bafg' ); ?><div class="bafg-tooltip"><span>?</span>
                         <div class="bafg-tooltip-info">Pro feature!</div>
                     </div></label>
 		

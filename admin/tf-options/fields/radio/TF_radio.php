@@ -27,16 +27,16 @@ if ( ! class_exists( 'TF_radio' ) ) {
 							$disabled = '';
 						}
 						if( isset($value['label']) ){
-							echo '<li><input '. $disabled .' type="radio" id="' . $this->field_name() . '[' . $key . ']" name="' . $this->field_name() . '" data-depend-id="' . esc_attr( $this->field['id'] ) . '' . $this->parent_field . '" value="' . esc_attr( $key ) . '" ' . $checked . ' '. $this->field_attributes() .'/><label for="' . $this->field_name() . '[' . $key . ']">' . $value['label'] . '</label></li>';
+							echo '<li><input '. esc_attr($disabled) .' type="radio" id="' . esc_attr($this->field_name()) . '[' . esc_attr($key) . ']" name="' . esc_attr($this->field_name()) . '" data-depend-id="' . esc_attr( $this->field['id'] ) . '' . esc_attr($this->parent_field) . '" value="' . esc_attr( $key ) . '" ' . esc_attr($checked) . ' '. esc_attr($this->field_attributes()) .'/><label for="' . esc_attr($this->field_name()) . '[' . esc_attr($key) . ']">' . wp_kses_post( $value['label'] ) . '</label></li>';
 						}
 					}else{
-						echo '<li><input type="radio" id="' . $this->field_name() . '[' . $key . ']" name="' . $this->field_name() . '" data-depend-id="' . esc_attr( $this->field['id'] ) . '' . $this->parent_field . '" value="' . esc_attr( $key ) . '" ' . $checked . ' '. $this->field_attributes() .'/><label for="' . $this->field_name() . '[' . $key . ']">' . $value . '</label></li>';
+						echo '<li><input type="radio" id="' . esc_attr($this->field_name()) . '[' . esc_attr($key) . ']" name="' . esc_attr($this->field_name()) . '" data-depend-id="' . esc_attr( $this->field['id'] ) . '' . esc_attr($this->parent_field) . '" value="' . esc_attr( $key ) . '" ' . esc_attr($checked) . ' '. esc_attr($this->field_attributes()) .'/><label for="' . esc_attr($this->field_name()) . '[' . esc_attr($key) . ']">' . esc_attr($value) . '</label></li>';
 					}
 					
 				}
 				echo '</ul>';
 			} else {
-				echo '<input type="radio" id="' . $this->field_name() . '" name="' . $this->field_name() . '" data-depend-id="' . esc_attr( $this->field['id'] ) . '' . $this->parent_field . '" value="1" ' . checked( $this->value, 1, false ) . ' '. $this->field_attributes() .'/><label for="' . $this->field_name() . '">' . $this->field['title'] . '</label>';
+				echo '<input type="radio" id="' . esc_attr($this->field_name()) . '" name="' . esc_attr($this->field_name()) . '" data-depend-id="' . esc_attr( $this->field['id'] ) . '' . esc_attr($this->parent_field) . '" value="1" ' . checked( $this->value, 1, false ) . ' '. esc_attr($this->field_attributes()).'/><label for="' . esc_attr($this->field_name()) . '">' . esc_attr($this->field['title']) . '</label>';
 			}
 		}
 	}

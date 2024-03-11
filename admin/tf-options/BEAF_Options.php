@@ -307,20 +307,19 @@ if ( ! class_exists( 'BEAF_Options' ) ) {
 			}
 			?>
 
-			<div class="tf-field tf-field-<?php echo esc_attr( $field['type'] ); ?> <?php echo esc_attr( $class ); ?> <?php echo ! empty( $visible ) ? $visible : ''; ?>"
-				<?php echo ! empty( $depend ) ? $depend : ''; ?> style="<?php echo esc_attr( $field_style ); ?>">
-
+		<div class="tf-field tf-field-<?php echo esc_attr( $field['type'] ); ?> <?php echo esc_attr( $class ); ?> <?php echo ! empty( $visible ) ? esc_attr( $visible ) : ''; ?>"
+			<?php echo ! empty( $depend ) ? esc_attr( $depend ) : ''; ?> style="<?php echo esc_attr( $field_style ); ?>">
 				<?php if ( ! empty( $field['label'] ) ) : ?>
 					<label for="<?php echo esc_attr( $id ) ?>" class="tf-field-label">
 						<?php echo esc_html( $field['label'] ) ?>
 						<?php if ( $is_pro ) : ?>
 							<div class="tf-csf-badge"><span class="tf-pro">
-									<?php _e( "Pro", "bafg" ); ?>
+									<?php esc_attr_e( "Pro", "bafg" ); ?>
 								</span></div>
 						<?php endif; ?>
 						<?php if ( $badge_up ) : ?>
 							<div class="tf-csf-badge"><span class="tf-upcoming">
-									<?php _e( "Upcoming", "bafg" ); ?>
+									<?php esc_attr_e( "Upcoming", "bafg" ); ?>
 								</span></div>
 						<?php endif; ?>
 					</label>
@@ -339,7 +338,7 @@ if ( ! class_exists( 'BEAF_Options' ) ) {
 						$_field = new $fieldClass( $field, $value, $settings_id, $parent );
 						$_field->render();
 					} else {
-						echo '<p>' . __( 'Field not found!', 'bafg' ) . '</p>';
+						echo '<p>' . esc_attr_e( 'Field not found!', 'bafg' ) . '</p>';
 					}
 					?>
 				</div>
