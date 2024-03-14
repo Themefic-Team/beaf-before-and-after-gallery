@@ -14,7 +14,7 @@ add_action('add_meta_boxes', function (){
 function bafg_shortcode_callback(){
     $bafg_scode = isset($_GET['post']) ? '[bafg id="'.$_GET['post'].'"]' : '';
     ?>
-    <input type="text" name="bafg_display_shortcode" class="bafg_display_shortcode" value="<?php echo esc_attr($bafg_scode); ?>" readonly onclick="bafgCopyShortcode()">
+    <input type="text" name="bafg_display_shortcode" class="bafg_display_shortcode" value="<?php echo esc_attr($bafg_scode); ?>" readonly >
     <?php
 }
 
