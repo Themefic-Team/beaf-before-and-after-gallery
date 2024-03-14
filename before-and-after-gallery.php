@@ -122,8 +122,6 @@ class BAFG_Before_After_Gallery {
 		 */
 		add_filter( 'single_template', array( $this, 'bafg_custom_single_template' ) );
 
-
-
 	}
 
 	/**
