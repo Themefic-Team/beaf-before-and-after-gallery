@@ -339,9 +339,10 @@ Yes, We provide full support on the WordPress.org forums. You can also post ques
 
 == Changelog ==
 
-= 4.5.6 – 11/03/2024 =
+= 4.5.6 – 14/03/2024 =
 
 - Fixed: Updated Security issues
+- Fixed: Console Error 
 - Optimized: Organized and Optimized Code
 - Updated: Escaped Security patches
 - Improvement: System stability Improved
