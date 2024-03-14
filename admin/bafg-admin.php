@@ -136,7 +136,7 @@ function bafg_custom_columns_shortcode($column_name, $id){
   if($column_name === 'bafg_shortcode') { 
 	$post_id =	$id;
 	$shortcode = '[bafg id="' . $post_id . '"]'; 
-      echo '<input type="text" name="bafg_display_shortcode" class="bafg_display_shortcode" value="'.esc_attr($shortcode).'" readonly onclick="bafgCopyShortcode()">';
+      echo '<input type="text" name="bafg_display_shortcode" class="bafg_display_shortcode" value="'.esc_attr($shortcode).'" readonly ">';
 	  
   }  
 }
@@ -160,7 +160,7 @@ function bafg_gallery_columns($theme_columns) {
 function bafg_gallery_column_content( $content, $column_name, $term_id ){
 	switch ( $column_name ) {
 		case 'bafg_gallery':
-			$content = '<input class="bafg_display_shortcode" type="text" value="[bafg_gallery category='.$term_id.']" readonly onclick="bafgCopyShortcode()">';
+			$content = '<input class="bafg_display_shortcode" type="text" value="[bafg_gallery category='.$term_id.']" readonly >';
 			break;
 	}
 	return $content;
