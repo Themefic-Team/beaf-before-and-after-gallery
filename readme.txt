@@ -245,6 +245,9 @@ Learn more about how [Appsero collects and uses this data](https://appsero.com/p
 
 BEAF is based on the famous <a href="https://zurb.com/playground/twentytwenty">TwentyTwenty</a> script that developed by Zurb team. Our icon is taken from <a href="https://iconfinder.com/">Iconfinder</a>.
 
+How can I report security bugs?
+You can report security bugs through the Patchstack Vulnerability Disclosure Program. The Patchstack team help validate, triage and handle any security vulnerabilities. [<a href="https://patchstack.com/database/vdp/beaf-before-and-after-gallery" target="_blank">Report a security vulnerability</a>.]
+
 <strong>Our Other Plugins</strong>
 
 * <a href="https://wordpress.org/plugins/tourfic/">Travel and Hotel Booking Solution for WooCommerce – Tourfic</a>
@@ -262,6 +265,10 @@ BEAF is based on the famous <a href="https://zurb.com/playground/twentytwenty">T
 5. You can also check this step by step <a href="https://youtu.be/Z82qj9ObId4">Youtube Video</a>.
 
 == Frequently Asked Questions ==
+
+= How can I report security bugs? =
+
+You can report security bugs through the Patchstack Vulnerability Disclosure Program. The Patchstack team help validate, triage and handle any security vulnerabilities. [<a href="https://patchstack.com/database/vdp/beaf-before-and-after-gallery" target="_blank">Report a security vulnerability</a>.]
 
 = What is Twenty Twenty Script? =
 
@@ -339,13 +346,14 @@ Yes, We provide full support on the WordPress.org forums. You can also post ques
 
 == Changelog ==
 
-= 4.5.6 – 14/03/2024 =
+= 4.5.6 – 15/03/2024 =
 
 - Fixed: Updated Security issues
 - Fixed: Console Error 
 - Optimized: Organized and Optimized Code
 - Updated: Escaped Security patches
 - Improvement: System stability Improved
+- Added: Disclaimer for Patchstack VDP
 
 = 4.5.5 – 07/03/2024 =
 
