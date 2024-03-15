@@ -25,7 +25,6 @@ define( 'BEAF_OPTIONS_PATH', BEAF_ADMIN_PATH . 'tf-options/' );
 //define assets url
 define( 'BEAF_ASSETS_URL', plugin_dir_url( __FILE__ ) . 'assets/' );
 
-
 class BAFG_Before_After_Gallery {
 
 	public function __construct() {
