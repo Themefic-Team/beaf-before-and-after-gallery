@@ -349,7 +349,6 @@ Yes, We provide full support on the WordPress.org forums. You can also post ques
 = 4.5.8 – 28/04/2024 =
 
 - Fixed: Minor Bugs
-- Added: Plugin dependency notice
 
 = 4.5.7 – 03/04/2024 =
 
