@@ -4,12 +4,12 @@ Donate link:
 Tags: before after, before after elementor, before after slider, before after gallery, before after image
 Requires at least: 4.0
 Tested up to: 6.5
-Stable tag: 4.5.7
+Stable tag: 4.5.8
 Requires PHP: 7.4
 License: GPL-2.0+
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
-Want to show comparison of two images? With BEAF, you can easily create before and after image slider and image gallery. Elementor Supported.
+Want to show a comparison of the two images? With BEAF, you can easily create before and after image sliders and image galleries. Elementor Supported.
 
 == Description ==
 
@@ -21,7 +21,7 @@ Want to show comparison of two images? With BEAF, you can easily create before a
 👉 Video Guide: [Complete Step by Step Guide](https://www.youtube.com/playlist?list=PLY0rtvOwg0ynodV0sVmSRX1OPCSs9mzhz)
 👉 Join Our FB Community: [BEAF Facebook Group](https://facebook.com/groups/beaf.wp)
 
-Looking for a WordPress Before and After Slider & Gallery Plugin? Want to show comparison of two images? BEAF is the Ultimate Before After WordPress Plugin with which you can easily create beautiful Before After Image comparison Slider or Gallery. BEAF let’s you add unlimited numbers of Before After Slider & Gallery in WordPress. You heard it right, unlimited for FREE. BEAF also comes up with premium high-quality features that will help you showcase your portfolio in a better way than others. This All-in-One Before After Slider plugin consists almost all the basic to advanced options which you may need to create stunning and beautiful image comparison sliders and gallery:
+Looking for a WordPress Before and After Slider & Gallery Plugin? Want to show a comparison of the two images? BEAF is the Ultimate Before After WordPress Plugin with which you can easily create beautiful Before After Image comparison Slider or Gallery. BEAF let’s you add unlimited numbers of Before After Slider & Gallery in WordPress. You heard it right, unlimited for FREE. BEAF also comes up with premium high-quality features that will help you showcase your portfolio in a better way than others. This All-in-One Before After Slider plugin consists almost all the basic to advanced options which you may need to create stunning and beautiful image comparison sliders and gallery:
 
 * Horizontal or Vertical layout
 * Multi-Column Before After Gallery
@@ -133,9 +133,9 @@ After your publish, a shortcode will generate so that you can publish the slider
 
 * **Speed optimized:** Compatible with any lazy load plugins. It also works with WEBP images.
 
-* **Unlimited Slider:** You can create unlimited number of slider
+* **Unlimited Slider:** You can create an unlimited number of slider
 
-* **SEO Friendly:** Support WP Image alt as image alt and title. Also, no custo
+* **SEO Friendly:** Support WP Image alt as image alt and title.
 
 * **Live Preview:** See the preview of the slider/gallery while editing
 
@@ -345,6 +345,10 @@ Yes, We provide full support on the WordPress.org forums. You can also post ques
 24. Before After Video Slider
 
 == Changelog ==
+
+= 4.5.8 – 28/04/2024 =
+
+- Fixed: Minor Bugs
 
 = 4.5.7 – 03/04/2024 =
 
