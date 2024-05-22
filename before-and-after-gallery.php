@@ -148,7 +148,6 @@ printf( '<div class="%1$s"><p>%2$s</p></div>', esc_attr( $class ), esc_attr($mes
 		return ( isset( $options[ $option ] ) ) ? $options[ $option ] : $default;
 	}
 
-
 	/*
 	 * Enqueue css and js in frontend
 	 */
