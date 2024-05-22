@@ -774,6 +774,7 @@
 
 .bafg-twentytwenty-container {
 	position: relative;
+	max-width: unset !important;
 }
 
 .bafg-twentytwenty-container .popup_button {
@@ -920,4 +921,5 @@ div#bafg_popup_wrap .bafg-preloader {
 
 .bafg-twentytwenty-container img {
 	margin: 0;
+	width: 100%;
 }
