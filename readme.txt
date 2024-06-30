@@ -4,7 +4,7 @@ Donate link:
 Tags: before after, before after elementor, before after slider, before after gallery, before after image
 Requires at least: 4.0
 Tested up to: 6.5
-Stable tag: 4.5.11
+Stable tag: 4.5.12
 Requires PHP: 7.4
 License: GPL-2.0+
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
@@ -345,6 +345,12 @@ Yes, We provide full support on the WordPress.org forums. You can also post ques
 24. Before After Video Slider
 
 == Changelog ==
+
+= 4.5.12 – 30/06/2024 =
+
+- Compatibility: Compatible with WordPress 6.5.5
+- Improvement: System stability improved
+- Minor bug fixes and improvements
 
 = 4.5.11 – 12/06/2024 =
 
@@ -779,21 +785,6 @@ Yes, We provide full support on the WordPress.org forums. You can also post ques
 
 - Fixed Minor Styling Issues.
 - Added 2 New Preview Styles (Pro Version).
-
-= 3.3.1 - 14/06/2021 =
-
-- Added title, description and Read more link option.
-- Added title, description and Read more style option.
-- Added Read More button editing option (Pro Version).
-
-= 3.3.0 - 09/06/2021 =
-
-- Added a Widget called BEAF Slider to display the slider in the sidebar.
-- Fixed Slider Preview page.
-- Enabled Live Preview
-- Removed BEAF Custom Post Type URL Generation for SEO Purpose.
-- Added title, description and Read more link for BEAF slider or gallery (Pro Version).
-- Updated Gallery Generator
 
 = 1.0.0 - 29/01/2020 =
 
