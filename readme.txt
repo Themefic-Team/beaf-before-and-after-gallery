@@ -319,13 +319,13 @@ Yes, We provide full support on the WordPress.org forums. You can also post ques
 
 == Screenshots ==
 
-1. Multiple layout (Vertical & Horizontal Demo)
+1. Multiple layouts (Vertical & Horizontal Demo)
 2. Gallery Generator
 3. Gallery Preview
 4. Change Before-After Label
 5. Disable Overlay
-6. Move Slider on Mouse Hover
-7. Change Before-After Label Background and Color
+6. Move the Slider on the Mouse Hover
+7. Change the Before-After Label Background and Color
 8. Titles, Description & Read More Button
 9. Unlimited Slider Creation
 10. Shortcode Generator
@@ -346,7 +346,7 @@ Yes, We provide full support on the WordPress.org forums. You can also post ques
 
 == Changelog ==
 
-= 4.5.12 – 30/06/2024 =
+= 4.5.12 – 02/07/2024 =
 
 - Compatibility: Compatible with WordPress 6.5.5
 - Improvement: System stability improved
