@@ -2,8 +2,8 @@
 // don't load directly
 defined( 'ABSPATH' ) || exit;
 
-if ( ! class_exists( 'TF_text' ) ) {
-	class TF_tab extends TF_Fields {
+if ( ! class_exists( 'BEAF_text' ) ) {
+	class BEAF_tab extends BEAF_Fields {
 
 		public function __construct( $field, $value = '', $settings_id = '', $parent_field = '' ) {
 			parent::__construct( $field, $value, $settings_id, $parent_field );
@@ -22,7 +22,7 @@ if ( ! class_exists( 'TF_text' ) ) {
 								} ?>" data-tab-id="<?php if ( isset( $value['id'] ) ) {
 									 echo esc_attr( $value['id'] );
 								 } ?>">
-									<?php echo esc_attr($value['title']) ?>
+									<?php echo esc_attr( $value['title'] ) ?>
 								</li>
 							<?php endforeach; ?>
 						<?php endif; ?>
