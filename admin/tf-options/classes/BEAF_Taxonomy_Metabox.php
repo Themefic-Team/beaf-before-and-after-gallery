@@ -2,8 +2,8 @@
 // don't load directly
 defined( 'ABSPATH' ) || exit;
 
-if ( ! class_exists( 'TF_Taxonomy_Metabox' ) ) {
-	class TF_Taxonomy_Metabox {
+if ( ! class_exists( 'BEAF_Taxonomy_Metabox' ) ) {
+	class BEAF_Taxonomy_Metabox {
 
 		public $taxonomy_id = null;
 		public $taxonomy_title = null;
@@ -126,8 +126,8 @@ if ( ! class_exists( 'TF_Taxonomy_Metabox' ) ) {
 					if ( ! empty( $field['id'] ) ) {
 						$data = isset( $taxonomy_request[ $field['id'] ] ) ? $taxonomy_request[ $field['id'] ] : '';
 
-						$fieldClass = 'TF_' . $field['type'];
-						$data = $fieldClass == 'TF_repeater' || $fieldClass == 'TF_map' || $fieldClass == 'TF_tab' || $fieldClass == 'TF_color' ? serialize( $data ) : $data;
+						$fieldClass = 'BEAF_' . $field['type'];
+						$data = $fieldClass == 'BEAF_repeater' || $fieldClass == 'BEAF_map' || $fieldClass == 'BEAF_tab' || $fieldClass == 'BEAF_color' ? serialize( $data ) : $data;
 
 						if ( class_exists( $fieldClass ) ) {
 							$_field = new $fieldClass( $field, $data, $this->taxonomy_id );
