@@ -791,41 +791,6 @@ Yes, We provide full support on the WordPress.org forums. You can also post ques
 - Added Lazy Load Support.
 - Updated Licensing Issue for Pro.
 
-= 3.3.9 - 15/08/2021 =
-
-- Fixed Minor Styling Issues.
-
-= 3.3.8 - 25/07/2021 =
-
-- Check: WordPress 5.8 compatibility
-
-= 3.3.7 - 19/07/2021 =
-
-- Fixed a conflict with Elementor sections.
-
-= 3.3.6 - 05/07/2021 =
-
-- Fixed an Image Sizing conflict with WP Rocket.
-
-= 3.3.5 - 02/07/2021 =
-
-- Fixed conflict with WoodMart Theme HTML shortcode generator box.
-
-= 3.3.4 - 28/06/2021 =
-
-- Fixed Bug of Before - After Label Styling
-
-= 3.3.3 - 25/06/2021 =
-
-- Fixed Minor Styling Issues.
-- Fixed Elementor Issues.
-- Added 1 New Preview Styles (Pro Version).
-
-= 3.3.2 - 21/06/2021 =
-
-- Fixed Minor Styling Issues.
-- Added 2 New Preview Styles (Pro Version).
-
 = 1.0.0 - 29/01/2020 =
 
 Initial stable release
