@@ -2,8 +2,8 @@
 // don't load directly
 defined( 'ABSPATH' ) || exit;
 
-if ( file_exists( BEAF_ADMIN_PATH . 'tf-options/options/tf-menu-icon.php' ) ) {
-	require_once BEAF_ADMIN_PATH . 'tf-options/options/tf-menu-icon.php';
+if ( file_exists( BEAF_ADMIN_PATH . 'tf-options/options/beaf-menu-icon.php' ) ) {
+	require_once BEAF_ADMIN_PATH . 'tf-options/options/beaf-menu-icon.php';
 } else {
 	$menu_icon = 'dashicons-palmtree';
 }
@@ -14,7 +14,7 @@ BEAF_Settings::option( 'beaf_settings', array(
 	'sections' => array(
 		'tools' => array(
 			'title' => __( 'Tools', 'bafg' ),
-			'icon'=> 'fa-solid fa-screwdriver-wrench',
+			'icon' => 'fa-solid fa-screwdriver-wrench',
 			'fields' => array(
 				array(
 					'id' => 'enable_preloader',
