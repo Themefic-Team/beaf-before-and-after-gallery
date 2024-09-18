@@ -350,6 +350,7 @@ class bafg_PROMO_NOTICE {
         delete_option('bafg_dismiss_admin_notice');
         delete_option('bafg_dismiss_post_notice');
         delete_option('bafg_promo_notice_exists');
+        delete_option('bafg_promo__schudle_start_from');
     }
  
 }
