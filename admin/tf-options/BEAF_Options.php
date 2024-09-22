@@ -142,6 +142,9 @@ if ( ! class_exists( 'BEAF_Options' ) ) {
 			$admin_date_format_for_users = ! empty( BAFG_Before_After_Gallery::beaf_opt( "tf-date-format-for-users" ) ) ? BAFG_Before_After_Gallery::beaf_opt( "tf-date-format-for-users" ) : "Y/m/d";
 			$bafg_load_from_cdn = ! empty( BAFG_Before_After_Gallery::beaf_opt( "bafg_assets_from_cdn" ) ) ? BAFG_Before_After_Gallery::beaf_opt( "bafg_assets_from_cdn" ) : 0;
 
+
+			// var_dump( $tf_options_screens );
+
 			//Css
 			if ( in_array( $screen, $tf_options_screens ) || in_array( $post_type, $tf_options_post_type ) ) {
 
