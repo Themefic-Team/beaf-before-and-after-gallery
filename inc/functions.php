@@ -305,7 +305,7 @@ if ( ! function_exists( 'bafg_review_notice' ) ) {
 				<p>
 					<?php printf(
 						/* translators: %s is replaced with "user id & Plugins Name" */
-						esc_html__( 'Hey 👋, You have been using %2$s for quite a while. If you feel %2$s is helping your business to grow in any way, would you please help %1$s to grow by simply leaving a 5* review on the WordPress Forum?', 'bafg' ),
+						esc_html__( 'Hey 👋, You have been using %1$s for quite a while. If you feel %1$s is helping your business to grow in any way, would you please help %1$s to grow by simply leaving a 5* review on the WordPress Forum?', 'bafg' ),
 						'Ultimate Before After Image Slider & Gallery',
 					);
 					?>
