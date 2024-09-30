@@ -331,6 +331,46 @@ if ( ! function_exists( 'bafg_review_notice' ) ) {
 
 			</div>
 
+            <style>
+                /* Review admin notice CSS */
+                .themefic_review_notice ul li {
+                    display: inline-block;
+                }
+
+                .themefic_review_notice ul {
+                    margin: 0;
+                    margin-bottom: 5px;
+                }
+
+                .themefic_review_notice ul li a {
+                    text-decoration: none;
+                    padding: 7px;
+                    color: #00718a;
+                    font-weight: 600;
+                    transition: 0.4s;
+                }
+
+                .themefic_review_notice ul li:nth-child(1) a {
+                    padding-left: 0 !important;
+                }
+
+                .themefic_review_notice ul li a span {
+                    padding-right: 3px;
+                    display: inline-block;
+                }
+
+                .themefic_review_notice ul li a:hover {
+                    color: #218ea6;
+                }
+                .themefic_review_notice {
+                    position: relative;
+                }
+
+                .themefic_review_notice .review_notice_dismiss {
+                    padding: 2px;
+                }
+            </style>
+
 			<!--   Themefic Plugin Review Admin Notice Script -->
 			<script>
 				jQuery(document).ready(function ($) {
@@ -338,11 +378,10 @@ if ( ! function_exists( 'bafg_review_notice' ) ) {
 						event.preventDefault();
 						var $this = $(this);
 						var status = $this.attr('data-status');
-						$this.closest('.themefic_review_notice').css('display', 'none')
+						$this.closest('.themefic_review_notice').css('display', 'none');
 						data = {
 							action: 'bafg_review_notice_callback',
 							status: status,
-							_nonce: tf_options.nonce
 						};
 
 						$.ajax({
@@ -350,7 +389,6 @@ if ( ! function_exists( 'bafg_review_notice' ) ) {
 							type: 'post',
 							data: data,
 							success: function (data) {
-								;
 							},
 							error: function (data) {
 							}
@@ -359,8 +397,7 @@ if ( ! function_exists( 'bafg_review_notice' ) ) {
 					$(document).on('click', '.review_notice_dismiss', function (event) {
 						event.preventDefault();
 						var $this = $(this);
-						$this.closest('.themefic_review_notice').css('display', 'none')
-
+						$this.closest('.themefic_review_notice').css('display', 'none');
 					});
 				});
 			</script>
