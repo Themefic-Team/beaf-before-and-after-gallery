@@ -121,6 +121,33 @@ class BAFG_Before_After_Gallery {
 		 */
 		add_filter( 'single_template', array( $this, 'bafg_custom_single_template' ) );
 
+
+		//enqueue scripts
+		add_action( 'admin_enqueue_scripts', [ $this, 'BEAF_tourfic_admin_denqueue_script' ], 20 );
+
+	}
+
+
+		/*
+	 * Admin setting option dequeue 
+	 */
+	public function BEAF_tourfic_admin_denqueue_script( $screen ) {
+		global $post_type;
+		$BEAF_options_screens = array(
+			'bafg_page_beaf_settings',
+			'bafg_page_bafg-pro-license',
+		);
+		$Beaf_options_post_type = array( 'bafg' );
+		
+		//The tourfic admin js Listings Directory Compatibility
+		if ( in_array( $screen, $BEAF_options_screens ) || in_array( $post_type, $Beaf_options_post_type ) ) {
+			wp_dequeue_style( 'tf-admin' );
+			wp_deregister_style( 'tf-admin' );
+			wp_dequeue_style( 'tf-pro' );
+			wp_dequeue_script( 'tf-pro' );
+			wp_deregister_script('tf-pro');
+		}
+
 	}
 
 	/**
