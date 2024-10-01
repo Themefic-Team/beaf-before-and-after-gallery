@@ -30,7 +30,7 @@ class BAFG_Before_After_Gallery {
 	public function __construct() {
 
 		/**
-		 * Include wp plugin.php file
+		 * Include wp plugin.php file 
 		 */
 		if ( ! function_exists( 'is_plugin_active' ) ) {
 			require_once ABSPATH . 'wp-admin/includes/plugin.php';
@@ -39,14 +39,14 @@ class BAFG_Before_After_Gallery {
 		/**
 		 * Include admin function file
 		 */
-		if ( file_exists( BEAF_ADMIN_PATH . 'inc/functions.php' ) ) {
+		if ( defined('BEAF_ADMIN_PATH') && !empty(BEAF_ADMIN_PATH) ) {
 			require_once BEAF_ADMIN_PATH . 'inc/functions.php';
 		}
 
 		/**
 		 * Option framework include
 		 */
-		if ( file_exists( BEAF_OPTIONS_PATH . 'BEAF_Options.php' ) ) {
+		if ( defined('BEAF_OPTIONS_PATH') && !empty(BEAF_OPTIONS_PATH) ) {
 			require_once BEAF_OPTIONS_PATH . 'BEAF_Options.php';
 		} else {
 			self::beaf_file_missing( BEAF_OPTIONS_PATH . 'BEAF_Options.php' );
