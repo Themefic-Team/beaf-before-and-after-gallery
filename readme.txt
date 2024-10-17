@@ -3,7 +3,7 @@ Contributors: themefic, hasanet, codexa, mdashikul, hemelhasan, raihan143
 Tags: before after, before after elementor, before after slider, before and after slider, elementor before and after slider
 Requires at least: 4.0
 Tested up to: 6.6
-Stable tag: 4.5.26
+Stable tag: 4.5.27
 Requires PHP: 7.4
 License: GPL-2.0+
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
@@ -72,7 +72,7 @@ We believe the free version is good enough for most businesses. However, we have
 <hr>
 
 ### Before After for WooCommerce:
-Do you need a before and after image slider (Keep) for WooCommerce? Then check this plugin of ours [here](https://wordpress.org/plugins/before-after-for-woocommerce).
+Do you need a before and after image slider for WooCommerce? Then check this plugin of ours [here](https://wordpress.org/plugins/before-after-for-woocommerce).
 
 ### Features:
 
@@ -82,7 +82,7 @@ Here are the most important features of BEAF. If you need any further informatio
 
 Display Sliders in Horizontal or Vertical Layout. [Click here](https://themefic.com/plugins/beaf/#multiple-layout) for a quick preview.
 
-= Before and After Gallery (Keep)  =
+= Before and After Gallery  =
 
 Create 2 Columns, 3 Columns, and 4 Columns Before After Gallery in WordPress with BEAF. [Click here](https://themefic.com/plugins/beaf/#gallery) for a quick preview.
 
@@ -265,7 +265,7 @@ BEAF is a WordPress plugin that allows you to create Before After Sliders. Want 
 
 = How to create an Image Before After Slider in WordPress? =
 
-To create a before and after image slider (Keep) in WordPress, watch this[video](https://youtu.be/MLkJ1jL-TZM). It provides a step-by-step guide on how to add before and after image comparison sliders to your WordPress website.
+To create a before and after image slider in WordPress, watch this[video](https://youtu.be/MLkJ1jL-TZM). It provides a step-by-step guide on how to add before and after image comparison sliders to your WordPress website.
 
 = Can we create Elementor before after image slider with BEAF? =
 
@@ -279,11 +279,11 @@ Please refer to the installation tab for detailed instructions.
 
 Yes, BEAF is fully free and available on WordPress.org. The free version will always remain free. However, there is also a Pro version with additional features available for purchase on our official website.
 
-= Can I create a Before and After Gallery (Keep) with BEAF? =
+= Can I create a Before and After Gallery with BEAF? =
 
 Yes, BEAF allows you to create multi-column galleries with ease.
 
-= How to create a filterable Before and After Gallery (Keep) in WordPress? =
+= How to create a filterable Before and After Gallery in WordPress? =
 
 With [BEAF Pro](https://themefic.com/plugins/beaf/pro/filterable-gallery/), you can create 2-column, 3-column, or 4-column filterable galleries in WordPress. You can add as many galleries as needed, and they can be a combination of all available preview and single image styles. Filter colors and padding can also be customized through the options panel.
 
@@ -330,6 +330,10 @@ Yes, we provide full support on the WordPress.org forums & [Our Website](https:/
 24. Before After Video Slider
 
 == Changelog ==
+
+= 4.5.27 – 17/10/2024 =
+
+- Updated readme.txt 
 
 = 4.5.26 – 17/10/2024 =
 
