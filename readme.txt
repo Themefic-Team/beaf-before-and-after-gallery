@@ -4,7 +4,7 @@ Donate link:
 Tags: before after, before after elementor, before after slider, before after gallery, before after image
 Requires at least: 4.0
 Tested up to: 6.6
-Stable tag: 4.5.25
+Stable tag: 4.5.26
 Requires PHP: 7.4
 License: GPL-2.0+
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
@@ -319,32 +319,34 @@ Yes, We provide full support on the WordPress.org forums. You can also post ques
 
 == Screenshots ==
 
-1. Multiple layouts (Vertical & Horizontal Demo)
-2. Gallery Generator
-3. Gallery Preview
+1. Multiple Layouts (Vertical & Horizontal)
+2. Slider Gallery Generator
+3. Gallery with Multiple Column Preview
 4. Change Before-After Label
-5. Disable Overlay
-6. Move the Slider on the Mouse Hover
-7. Change the Before-After Label Background and Color
-8. Titles, Description & Read More Button
-9. Unlimited Slider Creation
-10. Shortcode Generator
-11. Option Panel 1
-12. Option Panel 2
-13. Option Panel 3
-14. Elementor Addon
-15. Pro Features
-16. Preview Style 1 & 2
-17. Preview Style 3 & 4
-18. Preview Style 5 & 6
-19. Filterable Gallery
-20. Single Image Slider 1
-21. Single Image Slider 2
-22. Custom Width – Height – Alignment
-23. Auto Slide
-24. Before After Video Slider
+5. On Hover & Click Slider Change
+6. Slider Title, Description & Button
+7. Shortcode for All Sliders
+8. Filterable Gallery Based on Categories
+9. Dedicated Option Panel (Content Settings)
+10. Dedicated Option Panel (Control Settings)
+11. Dedicated Option Panel (Design Settings)
+12. Page Builder Support
+13. 10 Different Preview Styles (Pro)
+14. 10 Different Preview Styles (Pro)
+15. Filterable Gallery View (Pro)
+16. 3 Image Slider (Pro)
+17. Video Slider (Pro)
+18. Titles, Description & Button (Pro)
+19. 4 Different Filters (Pro)
+20. Image Watermark (Pro)
 
 == Changelog ==
+
+= 4.5.26 – 21/10/2024 =
+
+- Updated slider screenshots for ORG
+- Updated plugin banner for ORG
+- Updated readme.txt file
 
 = 4.5.25 – 08/10/2024 =
 
@@ -637,78 +639,6 @@ Yes, We provide full support on the WordPress.org forums. You can also post ques
 
 - Fixed: Css issue in three image addon
 - Fixed: Responsive check on fullscreen option
-
-= 4.3.9 – 20/11/2022 =
-
-- Added: Appsero integration 
-- Fixed: Compatibility check with WordPress 6.1.1
-
-= 4.3.8 – 03/10/2022 =
-
-- Fixed: Some JS Bug
-- Fixed: Gallery CSS
-
-= 4.3.7 – 27/10/2022 =
-
-- Fixed: Compatibility check with WordPress 6.1
-- Fancybox issue fixed
-
-= 4.3.6 – 27/10/2022 =
-
-- Fixed: Css issue in fullscreen mode
-- Improved: JS/CSS code
-
-= 4.3.5 – 20/10/2022 =
-
-- Updated: Compatibility check with WordPress 6.0.3
-- Improved: JS/CSS code
-
-= 4.3.4 – 11/10/2022 =
- 
-- Updated: Compatibility check with WordPress
- 
-= 4.3.3 – 09/04/2022 =
- 
- - Fix: Fancybox overriding issue fixed
-
-= 4.3.2 – 08/31/2022 =
- 
- - Fixed the Full screen view issue ( Pro )
- - Compatibility checked
-
-= 4.3.1 – 07/21/2022 =
- 
- - Removed unused js file
-
-= 4.3.0 – 07/19/2022 =
- 
- - New feature: Added slider full-screen view option
-
-= 4.2.8 – 07/10/2022 =
- 
- - Fixed: undefined variable
- - Updated admin panel style
-
-= 4.2.7 – 05/23/2022 =
- 
- - Fixed: undefined array issue fixed
- - Compatible with WordPress 6.0
-
-= 4.2.6 – 05/19/2022 =
- 
- - Feature: Added debug mode
- - Updated admin panel style
-
-= 4.2.5 – 05/09/2022 =
- 
- - Fixed: Some JS Bug and Gallery CSS
-
-= 4.2.4 – 04/21/2022 =
- 
- - Feature: 7 preview styles added for 3 Image addons(Pro)
- - Feature: Auto slide of 3 image slider added(Pro)
- - Multiple 3 image sliders in different styles are now working on the same page(Pro)
- - Fixed: Some JS bugs were fixed and gallery CSS fixed
 
 = 1.0.0 - 29/01/2020 =
 
