@@ -4,7 +4,7 @@ Donate link:
 Tags: before after, before after elementor, before after slider, before after gallery, before after image
 Requires at least: 4.0
 Tested up to: 6.6
-Stable tag: 4.5.26
+Stable tag: 4.5.28
 Requires PHP: 7.4
 License: GPL-2.0+
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
@@ -342,11 +342,20 @@ Yes, We provide full support on the WordPress.org forums. You can also post ques
 
 == Changelog ==
 
-= 4.5.26 – 21/10/2024 =
+= 4.5.28 – 21/10/2024 =
 
 - Updated slider screenshots for ORG
 - Updated plugin banner for ORG
 - Updated readme.txt file
+
+= 4.5.27 – 17/10/2024 =
+
+- Updated readme.txt
+
+= 4.5.26 – 17/10/2024 =
+
+- Updated readme.txt
+- Minor bug fixes & improvements
 
 = 4.5.25 – 08/10/2024 =
 
