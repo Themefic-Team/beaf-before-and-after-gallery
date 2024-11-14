@@ -335,9 +335,19 @@ class bafg_PROMO_NOTICE {
 	}
 
     public  function bafg_black_friday_notice_bafg_dismiss_callback() {   
+       
         $bafg_promo_option = get_option( 'bafg_promo__schudle_option' );
-        $start_date = isset($bafg_promo_option['start_date']) ? strtotime($bafg_promo_option['start_date']) : time();
-        $restart = isset($bafg_promo_option['side_restart']) && $bafg_promo_option['side_restart'] != false ? $bafg_promo_option['side_restart'] : 5;
+        $service_banner = isset($bafg_promo_option['service_banner']) ? $bafg_promo_option['service_banner'] : array();
+        $promo_banner = isset($bafg_promo_option['promo_banner']) ? $bafg_promo_option['promo_banner'] : array();
+        $current_day = date('l');
+        if($service_banner['enable_status'] == true && in_array($current_day, $service_banner['display_days'])){ 
+            $start_date = isset($service_banner['start_date']) ? strtotime($service_banner['start_date']) : time();
+            $restart = isset($service_banner['restart']) && $service_banner['restart'] != false ? $service_banner['restart'] : 5;
+        }else{
+            $start_date = isset($promo_banner['start_date']) ? strtotime($promo_banner['start_date']) : time();
+            $restart = isset($promo_banner['restart']) && $promo_banner['restart'] != false ? $promo_banner['restart'] : 5;
+        }
+          
         update_option( 'bafg_dismiss_post_notice', time() + (86400 * $restart) );  
         wp_die();
     }
