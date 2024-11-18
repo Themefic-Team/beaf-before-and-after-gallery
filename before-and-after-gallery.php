@@ -205,6 +205,7 @@ class BAFG_Before_After_Gallery {
 				'site_url' => plugin_dir_url( __FILE__ )
 			)
 		);
+
 	}
 
 	//register post type
