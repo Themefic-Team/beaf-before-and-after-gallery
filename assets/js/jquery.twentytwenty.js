@@ -151,62 +151,102 @@
           }
            
     	}
-      
-      container.css( "height", offset.h);
+        container.css( "height", offset.h);
 
       /*
         * Auto video pause and sound control based on slider handle position
         * @author : Abu Hena
-        * Modified By : Jewel Hossain
         **/ 
-      // Synchronize both videos on slider move
       if(sliderMethod == 'method_4'){
-        let sliderPositionPercent;
-        let sliderVideoType = container.data('video-type');
-        
-        if( sliderOrientation == 'vertical' ){
-          sliderPositionPercent = offset.ch / offset.h * 100;
-          console.log(sliderPositionPercent);
-        } else {
-          sliderPositionPercent = offset.cw / offset.w * 100; 
-        }
 
-        sliderPositionPercent = Math.random(sliderPositionPercent);
+        if(container.hasClass('active')){
+          let sliderVideoType = container.data('video-type');
+          let totalWidth      = offset.w;
+          let totalHeight     = offset.h;
+          let sliderCurrentPosition;
 
-        if(sliderVideoType == 'youtube'){
-          let firstVideoId  = container.children().eq(0).attr('id');
-          let secondVideoId = container.children().eq(1).attr('id');
-
-          // Play both videos at the same time
-          console.log(firstVideoId, secondVideoId, sliderPositionPercent);
-          if (sliderPositionPercent > 0 && sliderPositionPercent <= 100) {
-            players[firstVideoId].playVideo();
-            players[secondVideoId].playVideo();
-            
-            let firstVolume = sliderPositionPercent / 100;
-            let secondVolume = 1 - firstVolume;
-
-            players[firstVideoId].setVolume(firstVolume * 100);
-            players[secondVideoId].setVolume(secondVolume * 100);
+          if( sliderOrientation == 'vertical' ){
+            totalHeight           = totalHeight.replace('px', '');
+            sliderCurrentPosition = offset.ch;                  
+            sliderCurrentPosition = sliderCurrentPosition.replace('px', '');
+            sliderPositionPercent = sliderCurrentPosition/totalHeight * 100;
+          }else{                  
+            totalWidth            = totalWidth.replace('px', '');
+            sliderCurrentPosition = offset.cw;
+            sliderCurrentPosition = sliderCurrentPosition.replace('px', '');
+            sliderPositionPercent = sliderCurrentPosition/totalWidth * 100;
           }
-        } else if(sliderVideoType == 'vimeo'){
-          let firstVideoId  = container.children().eq(0).attr('id');
-          let secondVideoId = container.children().eq(1).attr('id');
+          sliderPositionPercent = Math.round(sliderPositionPercent);        
 
-          if (sliderPositionPercent > 0 && sliderPositionPercent <= 100) {
-            vimeoPlayers[firstVideoId].play();
-            vimeoPlayers[secondVideoId].play();
+          let firstVideo  = container.children().eq(0).attr('id');
+          let secondVideo = container.children().eq(1).attr('id');
 
-            vimeoPlayers[firstVideoId].setVolume(sliderPositionPercent / 100);
-            vimeoPlayers[secondVideoId].setVolume(1 - sliderPositionPercent / 100);
-          }
-        } else if(sliderVideoType == 'self'){
-          if (sliderPositionPercent > 0 && sliderPositionPercent <= 100) {
-            beforeSelfVdo[0].play();
-            afterSelfVdo[0].play();
+          if(sliderVideoType == 'youtube'){
 
-            beforeSelfVdo[0].volume = sliderPositionPercent / 100;
-            afterSelfVdo[0].volume = 1 - sliderPositionPercent / 100;
+            if(sliderPositionPercent > 50){
+
+              if(container.hasClass('muted') != true){
+                players[firstVideo].setVolume(sliderPositionPercent);
+                players[secondVideo].setVolume(100 - sliderPositionPercent);
+              }
+              players[secondVideo].pauseVideo();
+              players[firstVideo].playVideo();
+
+            }else if(sliderPositionPercent < 50){
+
+              players[firstVideo].pauseVideo();
+              players[secondVideo].playVideo();
+
+              if(container.hasClass('muted') != true){
+                players[firstVideo].setVolume(sliderPositionPercent);
+                players[secondVideo].setVolume(100 - sliderPositionPercent);
+              }
+
+            }
+
+          }else if(sliderVideoType == 'vimeo'){
+
+            if(sliderPositionPercent > 50){
+              vimeoPlayers[secondVideo].pause();
+              vimeoPlayers[firstVideo].play();
+
+              if(container.hasClass('muted') != true){
+                //vimeo volume scale must be between 0 and 1
+                vimeoPlayers[firstVideo].setVolume(sliderPositionPercent/100);
+                vimeoPlayers[secondVideo].setVolume(1 - sliderPositionPercent/100);
+              }
+
+            }else if(sliderPositionPercent < 50){
+              vimeoPlayers[firstVideo].pause();
+              vimeoPlayers[secondVideo].play();
+
+              if(container.hasClass('muted') != true){
+                //vimeo volume scale must be between 0 and 1
+                vimeoPlayers[firstVideo].setVolume(sliderPositionPercent/100);
+                vimeoPlayers[secondVideo].setVolume(1 - sliderPositionPercent/100);
+              }
+            }
+
+          }else if(sliderVideoType == 'self'){
+
+            if(sliderPositionPercent > 50){
+              beforeSelfVdo[0].play();
+              afterSelfVdo[0].pause();
+              
+              if(container.hasClass('muted') != true){
+                beforeSelfVdo[0].volume = sliderPositionPercent/100;
+                afterSelfVdo[0].volume  = 1 - sliderPositionPercent/100;
+              }
+            }else if(sliderPositionPercent < 50){
+              afterSelfVdo[0].play();
+              beforeSelfVdo[0].pause();
+
+              if(container.hasClass('muted') != true){
+                beforeSelfVdo[0].volume = sliderPositionPercent/100;
+                afterSelfVdo[0].volume  = 1 - sliderPositionPercent/100;
+              }
+            }
+
           }
         }
       }
