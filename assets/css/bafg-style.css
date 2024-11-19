@@ -762,7 +762,7 @@
 
 .bafg-twentytwenty-container {
 	position: relative;
-	max-width: unset !important;
+	max-width: unset;
 }
 
 .bafg-twentytwenty-container .popup_button {
