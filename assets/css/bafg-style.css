@@ -760,9 +760,9 @@
 	background: unset;
 }
 
-.bafg-twentytwenty-container {
+.bafg-twentytwenty-container:not([data-video-type]) {
 	position: relative;
-	max-width: unset;
+	max-width: unset !important;
 }
 
 .bafg-twentytwenty-container .popup_button {
