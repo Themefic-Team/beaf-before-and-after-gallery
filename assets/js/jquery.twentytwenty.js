@@ -166,7 +166,6 @@
         
         if( sliderOrientation == 'vertical' ){
           sliderPositionPercent = offset.ch / offset.h * 100;
-          console.log(sliderPositionPercent);
         } else {
           sliderPositionPercent = offset.cw / offset.w * 100; 
         }
