@@ -507,7 +507,19 @@ BEAF_Metabox::metabox( 'beaf_meta', array(
 					'is_pro' => true,
 					'field_width' => 50,
 				), $post ),
-
+				array(
+					'id' => 'bafg_both_video_play',
+					'type' => 'switch',
+					'label' => __( 'Play Both Videos On Slide', 'bafg' ),
+					'default' => false,
+					'subtitle' => __( 'Plays both before after videos on slide togather.', 'bafg' ),
+					// 'dependency' => array(
+					// 	array( 'beaf_meta[bafg_before_after_method]', '==', 'method_4' ),
+					// ),
+					'class' => 'bafg-both-video-play',
+					'is_pro' => true,
+					'field_width' => 50,
+				),
 				apply_filters( 'bafg_on_scroll_slide', array(
 					'id' => '',
 					'type' => 'switch',
