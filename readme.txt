@@ -233,10 +233,11 @@ You can report security bugs through the Patchstack Vulnerability Disclosure Pro
 
 ###  Our Plugins
 
-* [Travel and Hotel Booking Solution for WooCommerce – Tourfic](https://wordpress.org/plugins/tourfic/)
+* [Tourfic – Ultimate Hotel Booking, Travel Booking & Apartment Booking WordPress Plugin](https://wordpress.org/plugins/tourfic)
 * [Ultimate Addons For Contact Form 7](https://wordpress.org/plugins/ultimate-addons-for-contact-form-7/)
 * [Onepage / Direct Checkout for WooCommerce - Instantio](https://wordpress.org/plugins/instantio)
 * [Before After Image Slider for WooCommerce – eBEAF](https://wordpress.org/plugins/before-after-for-woocommerce)
+* [Hydra Booking – All in One Appointment Scheduling and Booking Calendar Solution](https://wordpress.org/plugins/hydra-booking)
 
 == Installation ==
 
