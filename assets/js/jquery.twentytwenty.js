@@ -162,7 +162,7 @@
       if(sliderMethod == 'method_4'){
 
         if(bothVideoPlay != '1'){
-
+            
           if(container.hasClass('active')){
             let sliderVideoType = container.data('video-type');
             let totalWidth      = offset.w;
