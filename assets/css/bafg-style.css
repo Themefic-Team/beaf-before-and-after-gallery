@@ -760,7 +760,7 @@
 	background: unset;
 }
 
-.bafg-twentytwenty-container {
+.bafg-twentytwenty-container:not([data-video-type]) {
 	position: relative;
 	max-width: unset !important;
 }

@@ -220,8 +220,15 @@ function bafg_gallery_cb() {
 /*
  * Shortcode copied alert text
  */
+
 add_action( 'admin_footer', function () {
-	echo '<div id="bafg_copy">' . esc_html__( 'Shortcode Copied!', 'bafg' ) . '</div>';
+
+	$screen = get_current_screen();
+
+    if ( 'bafg' === $screen->post_type || 'edit-bafg_taxonomy' === $screen->taxonomy ) {
+        echo '<div id="bafg_copy">' . esc_html__( 'Shortcode Copied!', 'bafg' ) . '</div>';
+    }
+
 } );
 
 /*
