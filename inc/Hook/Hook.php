@@ -1,4 +1,8 @@
 <?php
+// Exit if accessed directly
+if (!defined('ABSPATH')) {
+	exit();
+}
 
 class Hook {
     
@@ -42,11 +46,11 @@ class Hook {
         */
         require_once(BEAF_INC_PATH . 'Hook/PostType.php');
 		add_action( 'init', array( new PostType, 'bafg_image_before_after_foucs_posttype' ) );
-
-		/*
-		* BAFG meta fields
-		*/
-		$this->bafg_meta_fields();
+		
+		/**
+		 * Register Meta box For PostType
+		 */
+		add_action('add_meta_boxes', array( new PostType, 'bafg_add_slider_metabox' ) );
 
 		/*
 		* Require admin file
@@ -123,13 +127,6 @@ class Hook {
 	public static function beaf_opt( $option = '', $default = null ) {
 		$options = get_option( 'beaf_settings' );
 		return ( isset( $options[ $option ] ) ) ? $options[ $option ] : $default;
-	}
-
-	/*
-	metabox included
-	*/
-	public function bafg_meta_fields() {
-		require_once( BEAF_PLUGIN_PATH . '/metabox/bafg-metaboxs.php' );
 	}
 
 

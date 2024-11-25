@@ -1186,14 +1186,14 @@ if ( ! function_exists( 'bafg_watermark_position_cb' ) ) {
 }
 
 if ( ! function_exists( 'bafg_bafg_preview_shortcode_cb' ) ) {
-	add_filter( 'bafg_bafg_preview_shortcode', 'bafg_bafg_preview_shortcode_cb', 30 );
+	add_filter( 'bafg_bafg_preview_shortcode', 'bafg_bafg_preview_shortcode_cb', 40 );
 	function bafg_bafg_preview_shortcode_cb( $options ) {
 		$pro_options = array(
 			'id' => 'bafg_before_after_shortcode',
 			'is_pro' => false
 		);
 
-		if ( ! is_plugin_active( 'beaf-before-and-after-gallery-pro/beaf-before-and-after-gallery-pro.php' ) ) {
+		if ( ! is_plugin_active( 'beaf-before-and-after-gallery-pro/before-and-after-gallery-pro.php' ) ) {
 			$options = $options;
 		} else {
 			if ( is_array( $options ) ) {

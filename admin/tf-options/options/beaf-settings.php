@@ -121,9 +121,10 @@ BEAF_Settings::option( 'beaf_settings', array(
 			'icon' => 'fa-solid fa-code',
 			'fields' => array(
 				apply_filters( 'bafg_bafg_preview_shortcode', array(
-					'id' => 'bafg_before_after_shortcode',
+					'id' => '',
 					'title' => __( 'All the available shortcodes', 'bafg' ),
 					'type' => 'notice',
+					// 'is_pro' => true,
 					'content' => "<code>[bafg_preview]</code> - Before After Gallery Frontend Preview (Users will be able to upload images without login)",
 				) ),
 			)

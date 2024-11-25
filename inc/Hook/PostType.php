@@ -1,5 +1,8 @@
 <?php
-
+// Exit if accessed directly
+if (!defined('ABSPATH')) {
+	exit();
+}
     
 class PostType {
 
@@ -77,6 +80,18 @@ class PostType {
 
 		register_taxonomy( 'bafg_gallery', array( 'bafg' ), $args );
 
+	}
+
+	public function bafg_add_slider_metabox(){
+		add_meta_box('bafg_shortcode_metabox','Shortcode', array($this, 'bafg_shortcode_callback'),'bafg','side','high'); 
+	}
+
+	//Metabox shortcode
+	public function bafg_shortcode_callback(){
+		$bafg_scode = isset($_GET['post']) ? '[bafg id="'.$_GET['post'].'"]' : '';
+		?>
+		<input type="text" name="bafg_display_shortcode" class="bafg_display_shortcode" value="<?php echo esc_attr($bafg_scode); ?>" readonly >
+		<?php
 	}
 
 }
