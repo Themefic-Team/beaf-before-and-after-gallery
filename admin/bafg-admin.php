@@ -27,8 +27,6 @@ class BAFG_Options {
 		add_filter( "manage_edit-bafg_gallery_columns", [ $this , 'bafg_gallery_columns'] );
 		add_filter( 'manage_bafg_gallery_custom_column', [ $this ,'bafg_gallery_column_content'], 10, 3 );
 
-		// $this->bafg_gallery_cb();
-
 		/*
 		* Shortcode copied alert text
 		*/
@@ -75,7 +73,6 @@ class BAFG_Options {
 			// Enqueue styles
 			wp_enqueue_style( 'beaf-notyf', BEAF_ASSETS_URL . 'libs/notyf/notyf.min.css', array() );
 			wp_enqueue_style( 'bafg_admin_style', plugins_url( '../assets/css/bafg-admin-style.css', __FILE__ ), array() );
-
 
 			// Enqueue scripts
 			wp_enqueue_script( 'wp-color-picker-alpha', plugins_url( '../assets/js/wp-color-picker-alpha.min.js', __FILE__ ), array( 'wp-color-picker' ), true );
@@ -228,13 +225,6 @@ class BAFG_Options {
 	}
 
 	/*
-	* Gallery generator callback
-	*/
-	public function bafg_gallery_cb() {
-		require_once( plugin_dir_path( __FILE__ ) . '../inc/templates/bafg-gallery-generator.php' );
-	}
-
-	/*
 	* Admin notice for new features
 	*/
 	public function bafg_new_feature_notice() {
@@ -282,9 +272,3 @@ class BAFG_Options {
 }
 
 new BAFG_Options();
-
-function bafg_gallery_cb() {
-	require_once( plugin_dir_path( __FILE__ ) . '../inc/templates/bafg-gallery-generator.php' );
-}
-
-

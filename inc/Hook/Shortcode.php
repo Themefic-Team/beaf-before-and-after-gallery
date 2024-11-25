@@ -13,6 +13,10 @@ class BAFG_Shortcode {
 		* Gallery shortcode
 		*/
 		add_shortcode( 'bafg_gallery', array( $this, 'bafg_gallery_shortcode' ) );
+		/**
+		 * All Slide Gallery Preview
+		 */
+		add_shortcode( 'bafg_preview', array( $this, 'bafg_frontend_preview_shortcode_pro_cb') );
     }
 
 	/**
@@ -235,6 +239,59 @@ class BAFG_Shortcode {
 			</div>
 			<?php
 			wp_reset_postdata();
+		}
+
+		return ob_get_clean();
+	}
+
+	/**
+	 * Register shortcode for bafg_preview.
+	 *
+	 * @param array $atts The shortcode attributes.
+	 * @return string The shortcode output.
+	 * 
+	 * @author Abu Hena
+	 */
+	public function bafg_frontend_preview_shortcode_pro_cb( $atts ) {
+
+		extract(
+			shortcode_atts(
+				array(
+					'id' => '',
+				),
+				$atts
+			)
+		);
+		
+		//define the before and after images url
+		$before_image =  BEAF_ASSETS_URL . '/image/before.jpg';
+		$after_image =  BEAF_ASSETS_URL . '/image/after.jpg';
+
+		ob_start();
+		if ( is_plugin_active( 'beaf-before-and-after-gallery-pro/before-and-after-gallery-pro.php' ) ) {
+		?>
+		<div class="bafg-twentytwenty-container bafg-frontend-preview" bafg-overlay="yes" bafg-move-slider-on-hover="no">
+			<img class="bafg-before-prev-image" before-image-url="<?php echo esc_url( $before_image ) ?>"
+				src="<?php echo esc_url( $before_image ) ?>">
+			<img class="bafg-after-prev-image" after-image-url="<?php echo esc_url( $after_image ) ?>"
+				src="<?php echo esc_url( $after_image ) ?>">
+		</div>
+		<div class="bafg-frontend-upload-buttons">
+			<div class="bafg-bimage-up">
+				<label><?php echo esc_html( __( "Upload Before Image", "bafg" ) ); ?></label>
+				<input type="file" name="" id="bafg-before-image" class="upload-before-image" accept="image/*">
+			</div>
+			<div class="bafg-aimage-up">
+				<label><?php echo esc_html( __( "Upload After Image", "bafg" ) ); ?></label>
+				<input type="file" name="" id="bafg-after-image" class="upload-after-image" accept="image/*">
+			</div>
+			<div class="bafg-reset-preview">
+				<button class="bafg-reset-preview-btn"><?php echo esc_html( __( "Reset", "bafg" ) ); ?></button>
+			</div>
+		</div>
+		<?php
+		} else {
+			echo 'To display this shortcode please activate Beaf Pro';
 		}
 
 		return ob_get_clean();

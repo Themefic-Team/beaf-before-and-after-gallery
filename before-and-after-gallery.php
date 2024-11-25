@@ -17,7 +17,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit();
 }
 
-final class BAFG_Before_After_Gallery {
+ class BAFG_Before_After_Gallery {
 
 	public function __construct() {
 

@@ -2,11 +2,9 @@
 
 class AdminMenu {
 
-
-
     /*
-	 * Adding submenu for pro version
-	 * Retrun @Pro Batch 
+	 * Register admin menu
+	 * Retrun menu with pro submenu Batch 
 	 */
 	public function bafg_register_menu_page() {
 
@@ -16,7 +14,7 @@ class AdminMenu {
 			__( 'Gallery Generator', 'bafg' ),
 			'manage_options',
 			'bafg_gallery',
-			'bafg_gallery_cb'
+			array($this, 'bafg_gallery_cb')
 		);
 	
 		add_submenu_page(
@@ -37,6 +35,13 @@ class AdminMenu {
 			);
 		}
 
+	}
+
+	/*
+	* Gallery generator callback
+	*/
+	public function bafg_gallery_cb() {
+		require_once( BEAF_PLUGIN_PATH . 'inc/templates/bafg-gallery-generator.php' );
 	}
 
 }

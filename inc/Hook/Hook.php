@@ -61,9 +61,7 @@ class Hook {
 		/*
 		* Submenu for pro version
 		*/
-		if(is_admin()){
-			require_once(BEAF_INC_PATH . 'Hook/AdminMenu.php');
-		}
+		require_once(BEAF_INC_PATH . 'Hook/AdminMenu.php');
 		add_action( 'admin_menu', array( new AdminMenu, 'bafg_register_menu_page' ) );
 
 		/*
