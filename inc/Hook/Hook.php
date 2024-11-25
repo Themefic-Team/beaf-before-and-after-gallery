@@ -48,7 +48,7 @@ class Hook {
 		add_action( 'init', array( new PostType, 'bafg_image_before_after_foucs_posttype' ) );
 		
 		/**
-		 * Register Meta box For PostType
+		 * Register Meta box For
 		 */
 		add_action('add_meta_boxes', array( new PostType, 'bafg_add_slider_metabox' ) );
 
@@ -76,7 +76,7 @@ class Hook {
 		/*
 		* Require function file
 		*/
-		// require_once( BEAF_PLUGIN_PATH . 'inc/functions.php' );
+		require_once( BEAF_PLUGIN_PATH . 'inc/functions.php' );
 
 		/*
 		* Require elementor widget
