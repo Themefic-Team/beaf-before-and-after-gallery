@@ -60,7 +60,7 @@ class Hook {
         }
 
         require_once(BEAF_INC_PATH . 'Hook/Shortcode.php');
-        new BAFG_Shortcode();
+        BAFG_Shortcode::init();
 
 		/*
 		* Submenu for pro version

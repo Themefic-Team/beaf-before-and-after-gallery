@@ -24,6 +24,21 @@ class BAFG_Shortcode {
     }
 
 	/**
+     * Initializes a singleton instance
+     *
+     * @return \BAFG_Shortcode
+     */
+    public static function init() {
+        static $instance = false;
+
+        if ( ! $instance ) {
+            $instance = new self();
+        }
+
+        return $instance;
+    }
+
+	/**
      * BAFG shortcode callback
      *
      * @param  array $atts
