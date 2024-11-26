@@ -36,12 +36,24 @@ if ( ! defined( 'ABSPATH' ) ) {
 		/**
 		 * define all necessary constants
 		 */
-		define( 'BEAF_PLUGIN_PATH', plugin_dir_path( __FILE__ ) );
-		define( 'BEAF_VERSION', '4.5.29' );
-		define( 'BEAF_ADMIN_PATH', BEAF_PLUGIN_PATH . 'admin/' );
-		define( 'BEAF_INC_PATH', BEAF_PLUGIN_PATH . 'inc/' );
-		define( 'BEAF_OPTIONS_PATH', BEAF_ADMIN_PATH . 'tf-options/' );
-		define( 'BEAF_ASSETS_URL', plugin_dir_url( __FILE__ ) . 'assets/' );
+		if(! defined( 'BEAF_PLUGIN_PATH' ) ) {
+			define( 'BEAF_PLUGIN_PATH', plugin_dir_path( __FILE__ ) );
+		}
+		if(! defined( 'BEAF_VERSION' ) ) {
+			define( 'BEAF_VERSION', '4.5.29' );
+		}
+		if(! defined( 'BEAF_ADMIN_PATH' ) ) {
+			define( 'BEAF_ADMIN_PATH', BEAF_PLUGIN_PATH . 'admin/' );
+		}
+		if(! defined( 'BEAF_INC_PATH' ) ){
+			define( 'BEAF_INC_PATH', BEAF_PLUGIN_PATH . 'inc/' );
+		}
+		if(! defined( 'BEAF_OPTIONS_PATH' ) ){
+			define( 'BEAF_OPTIONS_PATH', BEAF_ADMIN_PATH . 'tf-options/' );
+		}
+		if(! defined( 'BEAF_ASSETS_URL' ) ){
+			define( 'BEAF_ASSETS_URL', plugin_dir_url( __FILE__ ) . 'assets/' );
+		}
 		
 		if ( ! defined( 'BAFG_PLUGIN_URL' ) ) {
 			define( 'BAFG_PLUGIN_URL', plugin_dir_url( __FILE__ ) );
