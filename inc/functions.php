@@ -3,10 +3,12 @@
 
 // Beaf Plugins Print_r
 if ( ! function_exists( 'beaf_print_r' ) ) {
-	function beaf_print_r( $value ) {
-		echo '<pre>';
-		print_r( $value );
-		echo '</pre>';
+	function beaf_print_r( ...$args ) {
+		foreach($args as $value){
+			echo '<pre>';
+			print_r( $value );
+			echo '</pre>';
+		}
 
 	}
 }

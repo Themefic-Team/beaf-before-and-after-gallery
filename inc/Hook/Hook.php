@@ -29,7 +29,7 @@ class Hook {
 		} else {
 			self::beaf_file_missing( BEAF_OPTIONS_PATH . 'BEAF_Options.php' );
 		}
-
+		
 		/*
 		* Enqueue css and js for BAFG
 		*/

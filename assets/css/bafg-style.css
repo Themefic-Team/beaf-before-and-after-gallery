@@ -913,3 +913,9 @@ div#bafg_popup_wrap .bafg-preloader {
 	margin: 0;
 	width: 100%;
 }
+
+pre {
+	background-color: #030466;
+	color: #45ff45;
+	padding: 20px;
+}
