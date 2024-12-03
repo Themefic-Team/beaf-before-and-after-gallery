@@ -169,13 +169,16 @@ function bafg_slider_info_styles( $id ) {
 		}
 		<?php if ( $bafg_slider_info_readmore_alignment == 'right' ) : ?>
 			.<?php echo esc_attr( 'slider-info-' . $id . '' ); ?>.bafg-slider-info .bafg_slider_readmore_button_wrap{
+					display: flex;
 					justify-content: end;
 				}
 		<?php endif; ?>
 
 		<?php if ( $bafg_slider_info_readmore_alignment == 'center' ) : ?>
 			.<?php echo esc_attr( 'slider-info-' . $id . '' ); ?>.bafg-slider-info .bafg_slider_readmore_button_wrap{
+					display: flex;
 					justify-content: center;
+
 				}
 		<?php endif; ?>
 
