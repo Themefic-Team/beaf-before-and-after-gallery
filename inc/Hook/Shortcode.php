@@ -126,9 +126,7 @@ class BAFG_Shortcode {
 
 				if ( ! empty( $bafg_before_label_background ) || ! empty( $bafg_before_label_color ) ) {
 					?>
-					.
-
-					<?php echo esc_attr( 'slider-' . $id . ' ' ); ?>
+					<?php echo esc_attr( '.slider-' . $id . ' ' ); ?>
 					.twentytwenty-before-label::before {
 						background:
 							<?php echo esc_attr( $bafg_before_label_background );
@@ -146,9 +144,7 @@ class BAFG_Shortcode {
 				?>
 				<?php if ( ! empty( $bafg_after_label_background ) || ! empty( $bafg_after_label_color ) ) {
 					?>
-					.
-
-					<?php echo esc_attr( 'slider-' . $id . ' ' ); ?>
+					<?php echo esc_attr( '.slider-' . $id . ' ' ); ?>
 					.twentytwenty-after-label::before {
 						background:
 							<?php echo esc_attr( $bafg_after_label_background );

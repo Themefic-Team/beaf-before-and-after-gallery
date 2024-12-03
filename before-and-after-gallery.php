@@ -24,7 +24,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 		$this->define_constants();
 
 		add_action('plugins_loaded', array($this, 'init_plugin'));
-
+		
 	}
 
 	/**
