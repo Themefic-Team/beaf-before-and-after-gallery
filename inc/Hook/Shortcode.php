@@ -23,6 +23,34 @@ class BAFG_Shortcode {
 		add_shortcode( 'bafg_preview', array( $this, 'bafg_frontend_preview_shortcode_pro_cb') );
     }
 
+	public function beaf_enqueue_scripts( $style_handlers = array(), $script_handlers = array() ) {
+
+		$default_styles = array(
+			'bafg_twentytwenty',
+			'bafg-style',
+		);
+	
+		$default_scripts = array(
+			'eventMove',
+			'bafg_twentytwenty',
+			'bafg_custom_js',
+		);
+	
+		$merged_styles = array_merge( $default_styles, (array) $style_handlers );
+		
+		$merged_scripts = array_merge( $default_scripts, (array) $script_handlers );
+	
+		// Enqueue styles
+		foreach ( $merged_styles as $style_handle ) {
+			wp_enqueue_style( $style_handle );
+		}
+	
+		// Enqueue scripts
+		foreach ( $merged_scripts as $script_handle ) {
+			wp_enqueue_script( $script_handle );
+		}
+	}
+
 	/**
      * Initializes a singleton instance
      *
@@ -51,6 +79,8 @@ class BAFG_Shortcode {
 		extract( shortcode_atts( array(
 			'id' => ''
 		), $atts ) );
+
+		$this->beaf_enqueue_scripts();
 
 		ob_start();
 
@@ -178,6 +208,8 @@ class BAFG_Shortcode {
 	 */
 	public function bafg_gallery_shortcode( $atts, $content = null ) {
 
+		$this->beaf_enqueue_scripts();
+		
 		ob_start();
 
 		extract( shortcode_atts( array(
@@ -277,6 +309,8 @@ class BAFG_Shortcode {
 				$atts
 			)
 		);
+
+		$this->beaf_enqueue_scripts();
 		
 		//define the before and after images url
 		$before_image =  BEAF_ASSETS_URL . '/image/before.jpg';

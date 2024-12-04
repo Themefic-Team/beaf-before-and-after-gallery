@@ -12,8 +12,8 @@ class LoadAssest{
 	public function bafg_image_before_after_foucs_scripts() {
 		$version = time();
 
-		wp_enqueue_style( 'bafg_twentytwenty', BEAF_ASSETS_URL . 'css/twentytwenty.css', array(), BEAF_VERSION );
-		wp_enqueue_style( 'bafg-style', BEAF_ASSETS_URL . 'css/bafg-style.css', array(), BEAF_VERSION );
+		wp_register_style( 'bafg_twentytwenty', BEAF_ASSETS_URL . 'css/twentytwenty.css', array(), BEAF_VERSION );
+		wp_register_style( 'bafg-style', BEAF_ASSETS_URL . 'css/bafg-style.css', array(), BEAF_VERSION );
 
 		$debug_mode = is_array( get_option( 'beaf_settings' ) ) && ! empty( get_option( 'beaf_settings' )['enable_debug_mode'] ) ? get_option( 'beaf_settings' )['enable_debug_mode'] : '';
 
@@ -22,9 +22,9 @@ class LoadAssest{
 			$in_footer = true;
 		}
 
-		wp_enqueue_script( 'eventMove', BEAF_ASSETS_URL . 'js/jquery.event.move.js', array( 'jquery' ), BEAF_VERSION, $in_footer );
-		wp_enqueue_script( 'bafg_twentytwenty', BEAF_ASSETS_URL . 'js/jquery.twentytwenty.js', array( 'jquery', 'eventMove' ), BEAF_VERSION, $in_footer );
-		wp_enqueue_script( 'bafg_custom_js', BEAF_ASSETS_URL . 'js/bafg-custom-js.js', array( 'jquery', 'bafg_twentytwenty' ), BEAF_VERSION, true );
+		wp_register_script( 'eventMove', BEAF_ASSETS_URL . 'js/jquery.event.move.js', array( 'jquery' ), BEAF_VERSION, $in_footer );
+		wp_register_script( 'bafg_twentytwenty', BEAF_ASSETS_URL . 'js/jquery.twentytwenty.js', array( 'jquery', 'eventMove' ), BEAF_VERSION, $in_footer );
+		wp_register_script( 'bafg_custom_js', BEAF_ASSETS_URL . 'js/bafg-custom-js.js', array( 'jquery', 'bafg_twentytwenty' ), BEAF_VERSION, true );
 
 		/*
 		 *  Localize the script
