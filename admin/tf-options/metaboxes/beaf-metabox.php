@@ -639,6 +639,7 @@ BEAF_Metabox::metabox( 'beaf_meta', array(
 					'type' => 'text',
 					'label' => __( 'Slider Width', 'bafg' ),
 					'is_pro' => true,
+					'placeholder' => __( 'e.g:640px|%', 'bafg' ),
 					'field_width' => 50,
 				), $post ),
 
@@ -647,6 +648,7 @@ BEAF_Metabox::metabox( 'beaf_meta', array(
 					'type' => 'text',
 					'label' => __( 'Slider Height', 'bafg' ),
 					'is_pro' => true,
+					'placeholder' => __( 'e.g:340px|%', 'bafg' ),
 					'field_width' => 50,
 				), $post ),
 
@@ -760,21 +762,21 @@ BEAF_Metabox::metabox( 'beaf_meta', array(
 					'id' => 'bafg_slider_info_readmore_font_size',
 					'type' => 'text',
 					'label' => __( 'Font Size', 'bafg' ),
-					'placeholder' => 'eg. 14px',
+					'placeholder' => 'eg.14px',
 					'field_width' => 33,
 				),
 				array(
 					'id' => 'bafg_slider_info_readmore_button_padding_top_bottom',
 					'type' => 'text',
 					'label' => __( 'Padding Top Bottom', 'bafg' ),
-					'placeholder' => 'eg. 14px',
+					'placeholder' => 'eg.14px',
 					'field_width' => 33,
 				),
 				array(
 					'id' => 'bafg_slider_info_readmore_button_padding_left_right',
 					'type' => 'text',
 					'label' => __( 'Padding Left Right', 'bafg' ),
-					'placeholder' => 'eg. 14px',
+					'placeholder' => 'eg.14px',
 					'field_width' => 33,
 				),
 				//border radius
@@ -782,7 +784,7 @@ BEAF_Metabox::metabox( 'beaf_meta', array(
 					'id' => 'bafg_slider_info_readmore_border_radius',
 					'type' => 'text',
 					'label' => __( 'Border Radius', 'bafg' ),
-					'placeholder' => 'eg. 14px',
+					'placeholder' => 'eg.14px',
 					'field_width' => 33,
 				),
 				//button width
