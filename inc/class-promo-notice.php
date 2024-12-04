@@ -191,7 +191,7 @@ class bafg_PROMO_NOTICE {
                 <a href="<?php echo esc_attr( $deal_link ); ?>" style="display: block; line-height: 0;" target="_blank" >
                     <img  style="width: 100%;" src="<?php echo esc_attr($image_url) ?>" alt="">
                 </a> 
-                <?php if( isset($this->bafg_promo_option['dasboard_dismiss']) && $this->bafg_promo_option['dasboard_dismiss'] == true): ?>
+                <?php if( isset($dashboard_banner['dismiss_status']) && $dashboard_banner['dismiss_status'] == true): ?>
                 <button type="button" class="notice-dismiss bafg_black_friday_notice_dismiss"><span class="screen-reader-text"><?php echo esc_html(__('Dismiss this notice.', 'bafg' )) ?></span></button>
                 <?php  endif; ?>
             </div>
@@ -225,7 +225,7 @@ class bafg_PROMO_NOTICE {
     public function bafg_black_friday_notice_dismiss_callback() {  
 
         $bafg_promo_option = get_option( 'bafg_promo__schudle_option' );
-        $restart = isset($bafg_promo_option['dasboard_restart']) && $bafg_promo_option['dasboard_restart'] != false ? $bafg_promo_option['dasboard_restart'] : false; 
+        $restart = isset($bafg_promo_option['dashboard_banner']['restart']) && $bafg_promo_option['dashboard_banner']['restart'] != false ? $bafg_promo_option['dashboard_banner']['restart'] : false;  
         if($restart == false){
             update_option( 'bafg_dismiss_admin_notice', strtotime($bafg_promo_option['end_date']) ); 
         }else{

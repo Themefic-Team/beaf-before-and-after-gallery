@@ -2,8 +2,8 @@
 Contributors: themefic, hasanet, codexa, mdashikul, hemelhasan, raihan143
 Tags: before after, before after elementor, before after slider, before and after slider, elementor before and after slider
 Requires at least: 4.0
-Tested up to: 6.6
-Stable tag: 4.5.29
+Stable tag: 4.5.34
+Tested up to: 6.7
 Requires PHP: 7.4
 License: GPL-2.0+
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
@@ -233,10 +233,11 @@ You can report security bugs through the Patchstack Vulnerability Disclosure Pro
 
 ###  Our Plugins
 
-* [Travel and Hotel Booking Solution for WooCommerce – Tourfic](https://wordpress.org/plugins/tourfic/)
+* [Tourfic – Ultimate Hotel Booking, Travel Booking & Apartment Booking WordPress Plugin](https://wordpress.org/plugins/tourfic)
 * [Ultimate Addons For Contact Form 7](https://wordpress.org/plugins/ultimate-addons-for-contact-form-7/)
 * [Onepage / Direct Checkout for WooCommerce - Instantio](https://wordpress.org/plugins/instantio)
 * [Before After Image Slider for WooCommerce – eBEAF](https://wordpress.org/plugins/before-after-for-woocommerce)
+* [Hydra Booking – All in One Appointment Scheduling and Booking Calendar Solution](https://wordpress.org/plugins/hydra-booking)
 
 == Installation ==
 
@@ -326,6 +327,29 @@ Yes, we provide full support on the WordPress.org forums & [Our Website](https:/
 20. Image Watermark (Pro)
 
 == Changelog ==
+
+= 4.5.34 – 20/11/2024 =
+
+- Update: Revised and updated the plugin's Readme.txt file information.
+
+= 4.5.33 – 18/11/2024 =
+
+- Compatibility: Fully compatible with WordPress 6.7
+
+= 4.5.32 – 18/11/2024 =
+
+- Improvement: Enhanced gallery CSS styling for a better visual experience.
+- Fix: Addressed minor bugs and implemented general improvements.
+- Improvement: Increased system stability and performance.
+
+= 4.5.31 – 14/11/2024 =
+
+- Minor bug fixes & improvements
+
+= 4.5.30 – 14/11/2024 =
+
+- Minor bug fixes & improvements
+- System stability improved 
 
 = 4.5.29 – 23/10/2024 =
 
@@ -458,30 +482,6 @@ Yes, we provide full support on the WordPress.org forums & [Our Website](https:/
 - Updated: Escaped Security patches
 - Improvement: System stability Improved
 - Added: Disclaimer for Patchstack VDP
-
-= 4.5.5 – 07/03/2024 =
-
-- Fixed: Cross Site Request Forgery Vulnerability
-
-= 4.5.4 – 06/03/2024 =
-
-- Improvement: Minor Bug Fixing
-- Improvement: System stability Improved
-
-= 4.5.3 – 29/02/2024 =
-
-- Improvement: Should be compatible with the EU Data Protection Directive
-- Improvement: Option Panel Settings
-
-= 4.5.2 – 24/01/2024 =
-
-- Fixed: Console Error
-- Updated: readme.txt
-
-= 4.5.1 – 09/01/2024 =
-
-- Compatibility: Compatible With Tourfic Plugin
-- Fixed: Console error
 
 = Changelog Between 2020 - 2023 =
 Find them [here](https://themefic.com/plugins/beaf/#changelogs).
