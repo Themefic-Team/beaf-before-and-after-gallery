@@ -2,7 +2,7 @@
 Contributors: themefic, hasanet, codexa, mdashikul, hemelhasan, raihan143
 Tags: before after, before after elementor, before after slider, before and after slider, elementor before and after slider
 Requires at least: 4.0
-Stable tag: 4.5.34
+Stable tag: 4.6.0
 Tested up to: 6.7
 Requires PHP: 7.4
 License: GPL-2.0+
@@ -328,6 +328,18 @@ Yes, we provide full support on the WordPress.org forums & [Our Website](https:/
 
 == Changelog ==
 
+= 4.6.0 – 09/12/2024 =
+
+- Added: Double video playback settings are now available for the Video Slider.
+- Fixed: "Read More" button alignment issues are now resolved.
+- Fixed: The BEAF gallery generator issues have been resolved.
+- Improved: Overall Assets management has been improved for better performance
+- Improved: BEAF is rebuilt into a class component for better performance.
+- Improved: The watermark addon for the BEAF plugin improved performance.
+- Improved: The video slider addon improved for better performance.
+- Improved: The 3-image slider addon improved for better performance.
+- System stability: Improved for smoother performance overall.
+
 = 4.5.34 – 20/11/2024 =
 
 - Update: Revised and updated the plugin's Readme.txt file information.
@@ -454,34 +466,6 @@ Yes, we provide full support on the WordPress.org forums & [Our Website](https:/
 - Improvement: Optimized code and performance
 - Improvement: System stability improved
 - Minor bug fixes and improvements
-
-= 4.5.10 – 03/06/2024 =
-
-- Improvement: System stability Improved
-- Minor bug fixes & improvements
-
-= 4.5.9 – 22/05/2024 =
-
-- Fixed: Before-after slider handle issue
-- Fixed: Responsive issue for 2-image slider
-
-= 4.5.8 – 28/04/2024 =
-
-- Fixed: Minor Bugs
-
-= 4.5.7 – 03/04/2024 =
-
-- Compatibility: Compatible with WordPress 6.5
-- Minor bug fixes & improvements
-
-= 4.5.6 – 15/03/2024 =
-
-- Fixed: Updated Security issues
-- Fixed: Console Error 
-- Optimized: Organized and Optimized Code
-- Updated: Escaped Security patches
-- Improvement: System stability Improved
-- Added: Disclaimer for Patchstack VDP
 
 = Changelog Between 2020 - 2023 =
 Find them [here](https://themefic.com/plugins/beaf/#changelogs).
