@@ -331,13 +331,14 @@ Yes, we provide full support on the WordPress.org forums & [Our Website](https:/
 = 4.6.0 – 09/12/2024 =
 
 - Added: Double video playback settings are now available for the Video Slider.
-- Fixed: "Read More" button alignment issues are now resolved.
-- Fixed: The BEAF gallery generator issues have been resolved.
 - Improved: Overall Assets management has been improved for better performance
 - Improved: BEAF is rebuilt into a class component for better performance.
 - Improved: The watermark addon for the BEAF plugin improved performance.
 - Improved: The video slider addon improved for better performance.
 - Improved: The 3-image slider addon improved for better performance.
+- Fixed: "Read More" button alignment issues are now resolved.
+- Fixed: The BEAF gallery generator issues have been resolved.
+- Fixed: Minor bugs and issues are now resolved.
 - System stability: Improved for smoother performance overall.
 
 = 4.5.34 – 20/11/2024 =
