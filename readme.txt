@@ -45,6 +45,7 @@ BEAF also provides premium, high-quality features to help you present your Befor
 * On Scroll Slider (Pro)
 * Change Read More text (Pro)
 * Disable slider handle (Pro)
+* Uploaded Before After Image Preview Without Login(Pro)
 
 **Demo Link**
 > [Check out the demo](https://themefic.com/plugins/beaf) to see it in action!
@@ -328,7 +329,7 @@ Yes, we provide full support on the WordPress.org forums & [Our Website](https:/
 
 == Changelog ==
 
-= 4.6.0 – 09/12/2024 =
+= 4.6.0 – 10/12/2024 =
 
 - Added: Double video playback settings are now available for the Video Slider.
 - Improved: Overall Assets management has been improved for better performance
