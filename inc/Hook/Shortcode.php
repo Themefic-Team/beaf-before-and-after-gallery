@@ -318,6 +318,9 @@ class BAFG_Shortcode {
 
 		ob_start();
 		if ( is_plugin_active( 'beaf-before-and-after-gallery-pro/before-and-after-gallery-pro.php' ) ) {
+			wp_enqueue_script('bafg_custom_pro');
+			wp_enqueue_style('bafg_pro_style');
+			wp_enqueue_style('bafg-responsive-pro');
 		?>
 		<div class="bafg-twentytwenty-container bafg-frontend-preview" bafg-overlay="yes" bafg-move-slider-on-hover="no">
 			<img class="bafg-before-prev-image" before-image-url="<?php echo esc_url( $before_image ) ?>"
