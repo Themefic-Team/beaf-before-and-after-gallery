@@ -500,7 +500,7 @@ if ( ! function_exists( 'bafg_pro_version_notice' ) ) {
 								printf(
 
 									/* translators: %1$: $bafg_pro_version,  %2$: $wp_version,  %3$: link, */
-									esc_html__( '<b>Warning:</b> The installed version of BEAF Pro (%1$) has not been tested on your version of WordPress (%2$). It has been tested up to version 5.9. <a href="%3$" target="_blank">You should update BEAF Pro to latest version to make sure that you have a version that has been tested for compatibility.</a>', 'bafg' ),
+									wp_kses_post( '<b>Warning:</b> The installed version of BEAF Pro (%1$s) has not been tested on your version of WordPress (%2$s). It has been tested up to version 5.9. <a href="%3$s" target="_blank">You should update BEAF Pro to the latest version to make sure that you have a version that has been tested for compatibility.</a>', 'bafg' ),
 									esc_html( $bafg_pro_version ),
 									esc_html( $wp_version ),
 									"https://themefic.com/docs/beaf/seeing-warning-versions-wordpress-beaf-tested/"
