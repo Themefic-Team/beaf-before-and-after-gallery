@@ -37,9 +37,9 @@ class BAFG_Before_After_Gallery {
 		define( 'BEAF_ADMIN_PATH', BEAF_PLUGIN_PATH . 'admin/' );
 		define( 'BEAF_INC_PATH', BEAF_PLUGIN_PATH . 'inc/' );
 		define( 'BEAF_OPTIONS_PATH', BEAF_ADMIN_PATH . 'tf-options/' );
-		define( 'BEAF_ASSETS_URL', plugin_dir_url( __FILE__ ) . 'assets/' );
 		define( 'BAFG_PLUGIN_URL', plugin_dir_url( __FILE__ ) );
-		define( 'BAFG_PLUGIN_PATH', plugin_dir_path( __FILE__ ) );
+		define( 'BEAF_ASSETS_URL', BAFG_PLUGIN_URL . 'assets/' );
+		define( 'BAFG_PLUGIN_PATH', BEAF_PLUGIN_PATH );
 	}
 
 	/**
