@@ -2,7 +2,7 @@
 Contributors: themefic, hasanet, codexa, mdashikul, hemelhasan, raihan143
 Tags: before after, before after elementor, before after slider, before and after slider, elementor before and after slider
 Requires at least: 4.0
-Stable tag: 4.6.0
+Stable tag: 4.6.2
 Tested up to: 6.7
 Requires PHP: 7.4
 License: GPL-2.0+
@@ -329,7 +329,7 @@ Yes, we provide full support on the WordPress.org forums & [Our Website](https:/
 
 == Changelog ==
 
-= 4.6.0 – 10/12/2024 =
+= 4.6.2 – 17/12/2024 =
 
 - Added: Double video playback settings are now available for the Video Slider.
 - Improved: Overall Assets management has been improved for better performance
@@ -341,6 +341,14 @@ Yes, we provide full support on the WordPress.org forums & [Our Website](https:/
 - Fixed: The BEAF gallery generator issues have been resolved.
 - Fixed: Minor bugs and issues are now resolved.
 - System stability: Improved for smoother performance overall.
+
+= 4.6.1 – 11/12/2024 =
+
+- Minor bug fixes & improvements
+
+= 4.6.0 – 10/12/2024 =
+
+- Minor bug fixes & improvements
 
 = 4.5.34 – 20/11/2024 =
 
@@ -414,60 +422,6 @@ Yes, we provide full support on the WordPress.org forums & [Our Website](https:/
 
 - Fixed: Beaf Settings panel saving issue
 - Improvement: System stability improved
-
-= 4.5.20 – 10/09/2024 =
-
-- System stability improved
-- Minor bug fixes & improvements
-
-= 4.5.19 – 18/08/2024 =
-
-- Fixed: Color picker issue
-
-= 4.5.18 – 15/08/2024 =
-
-- Fixed: Meta field not found issue.
-- System stability improved.
-
-= 4.5.17 – 13/08/2024 =
-
-- Improvement: Compatible with Tourfic
-- Improvement: Compatible with UACF7
-
-= 4.5.16 – 28/07/2024 =
-
-- Improvement: Reorganized CSS/JS Code
-- System stability improved
-
-= 4.5.15 – 17/07/2024 =
-
-- Compatible with WordPress 6.6
-- System stability improved
-
-= 4.5.14 – 11/07/2024 =
-
-- Improvement: System stability improved
-- Fixed: Notice banner issue 
-
-= 4.5.13 – 04/07/2024 =
-
-- Improvement: System stability improved
-- Fixed: escaping and text-domain issue
-- Fixed: Minor Bugs fixed
-
-= 4.5.12 – 02/07/2024 =
-
-- Compatibility: Compatible with WordPress 6.5.5
-- Improvement: System stability improved
-- Minor bug fixes and improvements
-
-= 4.5.11 – 12/06/2024 =
-
-- Compatibility: Compatible with WordPress 6.5.4
-- Improvement: Removed unused scripts
-- Improvement: Optimized code and performance
-- Improvement: System stability improved
-- Minor bug fixes and improvements
 
 = Changelog Between 2020 - 2023 =
 Find them [here](https://themefic.com/plugins/beaf/#changelogs).
