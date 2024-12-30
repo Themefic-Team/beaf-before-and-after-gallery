@@ -337,7 +337,7 @@ Yes, we provide full support on the WordPress.org forums & [Our Website](https:/
 
 = 4.6.3 – 30/12/2024 =
 
-- Added: Updated the readme.txt file and plugin information.
+- Updated: Readme.txt file and plugin information.
 - Compatibility: Fully compatible with WordPress 6.7.1.
 
 = 4.6.2 – 18/12/2024 =
