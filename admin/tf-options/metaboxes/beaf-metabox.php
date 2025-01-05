@@ -561,7 +561,19 @@ BEAF_Metabox::metabox( 'beaf_meta', array(
 					'default' => false,
 					'subtitle' => __( 'Allow a user to click (or tap) anywhere on the image to move the slider to that location.', 'bafg' ),
 					'field_width' => 50,
+					'dependency' => array( 'bafg_auto_slide', '==', '' )
 				),
+
+				array(
+					'id' => 'bafg_click_to_move_text',
+					'type' => 'heading',
+					'label' => __( 'Click To Move', 'bafg' ),
+					'default' => false,
+					'subtitle' => __( 'Click to move will not work with autoslide. Please disable autolside to enable \'Click To Move\'', 'bafg' ),
+					'field_width' => 50,
+					'dependency' => array( 'bafg_auto_slide', '!=', '' )
+				),
+
 				array(
 					'id' => 'bafg_no_overlay',
 					'type' => 'switch',
