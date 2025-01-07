@@ -337,7 +337,7 @@ Yes, we provide full support on the WordPress.org forums & [Our Website](https:/
 
 = 4.6.4 – 07/01/2025 =
 
-- Added: Auto slider and click-to-move compatibility message.
+- Added: Dependency notice for "Auto Slider" and "Click to Move" functionality.
 
 = 4.6.3 – 30/12/2024 =
 
