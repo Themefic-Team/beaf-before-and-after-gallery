@@ -265,6 +265,6 @@ pre {
 	padding: 20px;
 }
 
-.tf-field-text.tf-depend-hidden[data-controller="bafg_auto_slide"] .tf-fieldset {
-	display: none;
+.tf-field-heading.tf-depend-hidden[data-controller="bafg_auto_slide"] {
+	background: none;
 }
