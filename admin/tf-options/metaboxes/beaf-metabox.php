@@ -566,10 +566,10 @@ BEAF_Metabox::metabox( 'beaf_meta', array(
 
 				array(
 					'id' => 'bafg_click_to_move_text',
-					'type' => 'heading',
+					'type' => 'text',
 					'label' => __( 'Click To Move', 'bafg' ),
 					'default' => false,
-					'subtitle' => __( 'Click to move will not work with autoslide. Please disable autolside to enable \'Click To Move\'', 'bafg' ),
+					'subtitle' => __( 'The \'Click to Move\' feature is unavailable when \'Auto Slide\' is enabled. Please disable \'Auto Slide\' to use the \'Click to Move\' functionality.', 'bafg' ),
 					'field_width' => 50,
 					'dependency' => array( 'bafg_auto_slide', '!=', '' )
 				),
