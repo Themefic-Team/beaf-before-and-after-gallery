@@ -337,7 +337,8 @@ Yes, we provide full support on the WordPress.org forums & [Our Website](https:/
 
 = 4.6.11 – 27/04/2025 =
 
-- Improved: Security has been updated to address vulnerabilities.
+- Improved: Security has been enhanced to address vulnerabilities.
+- Fixed: The 3-image slider overlay issue has been resolved.
 
 = 4.6.10 – 16/04/2025 =
 
