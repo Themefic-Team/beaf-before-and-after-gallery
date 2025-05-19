@@ -497,9 +497,9 @@ if ( ! class_exists( 'BEAF_Settings' ) ) {
 		 */
 		public function beaf_save_options() {
 
-			if ( ! current_user_can( 'manage_options' ) ) {
-				wp_die( __( 'You are not allowed to perform this action.', 'bafg' ) );
-			}
+			// if ( ! current_user_can( 'manage_options' ) ) {
+			// 	wp_die( __( 'You are not allowed to perform this action.', 'bafg' ) );
+			// }
 
 			// Add nonce for security and authentication. 
 			// Check if a nonce is valid.
