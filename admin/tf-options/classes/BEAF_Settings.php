@@ -246,9 +246,7 @@ if ( ! class_exists( 'BEAF_Settings' ) ) {
 							</div>
 							<div class="quote-content">
 								<h3><?php echo __('Need Help Customizing Your WordPress Site?', 'bafg');  ?></h3>
-								<p><?php echo __('Need help with a rental platform, booking system, service-based site, or custom WordPress development?
-We build smart, tailored solutions that align with your goals — so you can focus on growing your business.
-Let’s make your vision a reality.', 'bafg');  ?></p>								
+								<p><?php echo __('Need help with a rental platform, booking system, service-based site, or custom WordPress development? We build smart, tailored solutions that align with your goals — so you can focus on growing your business. Let’s make your vision a reality.', 'bafg');  ?></p>								
 							</div>
 						</div>
 
@@ -256,7 +254,7 @@ Let’s make your vision a reality.', 'bafg');  ?></p>
 							<h3><?php echo __('Helpful Resources', 'bafg');  ?></h3>
 							<div class="quick-access-wrapper">
 								<div class="access-item">
-									<a href="https://themefic.com/docs/uacf7/" target="_blank">
+									<a href="https://themefic.com/docs/beaf/" target="_blank">
 										<span class="icon"><i class="fa-solid fa-folder-open"></i></span>
 										<?php echo _e( 'Documentation', 'bafg' ); ?>
 									</a>
@@ -268,19 +266,13 @@ Let’s make your vision a reality.', 'bafg');  ?></p>
 									</a>
 								</div>
 								<div class="access-item">
-									<a href="https://www.facebook.com/groups/ultimate.cf7" target="_blank">
+									<a href="https://facebook.com/groups/beaf.wp" target="_blank">
 										<span class="icon"><i class="fa-solid fa-users"></i></span>
 										<?php echo _e( 'Join our Community', 'bafg' ); ?>
 									</a>
 								</div>
 								<div class="access-item">
-									<a href="https://app.loopedin.io/ultimate-addons-for-contact-form-7" target="_blank">
-										<span class="icon"><i class="fa-solid fa-road-circle-check"></i></span>
-										<?php echo _e( 'See our Roadmap', 'bafg' ); ?>
-									</a>
-								</div>
-								<div class="access-item">
-									<a href="https://app.loopedin.io/ultimate-addons-for-contact-form-7#/ideas" target="_blank">
+									<a href="https://portal.themefic.com/support/" target="_blank">
 										<span class="icon"><i class="fa-solid fa-lightbulb"></i></span>
 										<?php echo _e( 'Request a Feature', 'bafg' ); ?>
 									</a>
