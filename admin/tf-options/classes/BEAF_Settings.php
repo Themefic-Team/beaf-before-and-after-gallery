@@ -246,7 +246,9 @@ if ( ! class_exists( 'BEAF_Settings' ) ) {
 							</div>
 							<div class="quote-content">
 								<h3><?php echo __('Need Help Customizing Your WordPress Site?', 'ultimate-addons-cf7');  ?></h3>
-								<p><?php echo __('Want to tweak a theme, adjust a plugin like ultimate addons or add custom functionality to your site? Our expert WordPress developers can tailor it just the way you need. We only charge $29/hour.', 'ultimate-addons-cf7');  ?></p>								
+								<p><?php echo __('Need help with a rental platform, booking system, service-based site, or custom WordPress development?
+We build smart, tailored solutions that align with your goals — so you can focus on growing your business.
+Let’s make your vision a reality.', 'ultimate-addons-cf7');  ?></p>								
 							</div>
 						</div>
 
@@ -496,14 +498,18 @@ if ( ! class_exists( 'BEAF_Settings' ) ) {
 		 * @author Foysal
 		 */
 		public function beaf_save_options() {
+ 
+			// Check if a nonce is valid.
+			if ( ! isset( $_POST['beaf_option_nonce'] ) || ! isset( $_POST[ $this->option_id ] ) ) {
+				return;
+			}
 
 			if ( ! current_user_can( 'manage_options' ) ) {
 				wp_die( __( 'You are not allowed to perform this action.', 'bafg' ) );
 			}
 
-			// Add nonce for security and authentication. 
-			// Check if a nonce is valid.
-			if ( ! isset( $_POST['beaf_option_nonce'] ) || ! wp_verify_nonce( $_POST['beaf_option_nonce'], 'beaf_option_nonce_action' ) ) {
+			// Check nonce
+			if ( ! wp_verify_nonce( $_POST['beaf_option_nonce'], 'beaf_option_nonce_action' ) ) {
 				return;
 			}
 
