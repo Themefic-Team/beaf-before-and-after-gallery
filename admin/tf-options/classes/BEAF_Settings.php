@@ -399,11 +399,11 @@ Let’s make your vision a reality.', 'ultimate-addons-cf7');  ?></p>
 									<span class="badge free">Free</span>
 									<?php if (!$installed): ?>
 										<button class="plugin-button install" data-action="install" data-plugin="<?php echo esc_attr($plugin['slug']); ?>" data-plugin_filename="<?php echo esc_attr($plugin['file_name']); ?>">
-											Install <span class="loader"></span>
+											Install
 										</button>
 									<?php elseif (!$activated): ?>
 										<button class="plugin-button activate" data-action="activate" data-plugin="<?php echo esc_attr($plugin['slug']); ?>" data-plugin_filename="<?php echo esc_attr($plugin['file_name']); ?>" >
-											Activate <span class="loader"></span>
+											Activate
 										</button>
 									<?php else: ?>
 										<span class="plugin-button plugin-status active">Activated</span>
