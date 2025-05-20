@@ -338,6 +338,7 @@ Yes, we provide full support on the WordPress.org forums & [Our Website](https:/
 = 4.6.13 – 20/05/2025 =
 
 - Fixed: Access permission issues have been resolved.
+- Added: Settings sidebar banner has been introduced for Info.
 - System stability has been enhanced for better performance.
 
 = 4.6.12 – 18/05/2025 =
