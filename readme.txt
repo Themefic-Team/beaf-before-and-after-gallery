@@ -2,7 +2,7 @@
 Contributors: themefic, hasanet, codexa, mdashikul, hemelhasan, raihan143
 Tags: before after, before after elementor, before after slider, before and after slider, elementor before and after slider
 Requires at least: 4.0
-Stable tag: 4.6.13
+Stable tag: 4.7.0
 Tested up to: 6.8
 Requires PHP: 7.4
 License: GPL-2.0+
@@ -335,7 +335,7 @@ Yes, we provide full support on the WordPress.org forums & [Our Website](https:/
 
 == Changelog ==
 
-= 4.6.13 – 20/05/2025 =
+= 4.7.0 – 20/05/2025 =
 
 - Fixed: Access permission issues have been resolved.
 - Added: Settings sidebar banner has been introduced for Info.
