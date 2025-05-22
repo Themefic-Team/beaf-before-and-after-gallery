@@ -240,6 +240,7 @@ You can report security bugs through the Patchstack Vulnerability Disclosure Pro
 * [Ultimate Addons For Contact Form 7](https://wordpress.org/plugins/ultimate-addons-for-contact-form-7/)
 * [Instantio – WooCommerce Quick Checkout | Floating Cart, Side Cart & Popup Cart](https://wordpress.org/plugins/instantio)
 * [Hydra Booking – All in One Appointment Scheduling and Booking Calendar Solution](https://wordpress.org/plugins/hydra-booking)
+* [Reviewfic – The Ultimate Testimonial Slider, Carousel, Grid Plugin](https://wordpress.org/plugins/reviewfic/)
 
 ###  Our Themes
 
