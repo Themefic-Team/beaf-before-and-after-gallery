@@ -338,8 +338,8 @@ Yes, we provide full support on the WordPress.org forums & [Our Website](https:/
 
 = 4.7.2 – 16/06/2025 =
 
-- Improved: Security Vulnerability and System stability
-- Improved: Compatible with Elementor(v3.29)
+- Improved: Security Vulnerability and System stability.
+- Improved: Compatibility with Elementor (v3.29).
 
 = 4.7.1 – 22/05/2025 =
 
