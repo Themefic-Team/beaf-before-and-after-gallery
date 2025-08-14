@@ -364,3 +364,5 @@ if ( ! class_exists( 'BEAF_Options' ) ) {
 
 	}
 }
+
+BEAF_Options::instance();

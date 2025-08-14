@@ -24,18 +24,11 @@ class Hook {
 		/**
 		 * Option framework include
 		 */
-		add_action( 'init', function() {
-			if ( defined( 'BEAF_OPTIONS_PATH' ) && ! empty( BEAF_OPTIONS_PATH ) ) {
-				require_once BEAF_OPTIONS_PATH . 'BEAF_Options.php';
-				// Instance now created AFTER init → safe for translations.
-				if ( class_exists( 'BEAF_Options' ) ) {
-					BEAF_Options::instance();
-				}
-			} else {
-				// Show missing file notice after init (safe for translations)
-				self::beaf_file_missing( BEAF_OPTIONS_PATH . 'BEAF_Options.php' );
-			}
-		}, 6 );
+		if ( defined( 'BEAF_OPTIONS_PATH' ) && ! empty( BEAF_OPTIONS_PATH ) ) {
+			require_once BEAF_OPTIONS_PATH . 'BEAF_Options.php';
+		} else {
+			self::beaf_file_missing( BEAF_OPTIONS_PATH . 'BEAF_Options.php' );
+		}
 
 		/*
 		 * Enqueue css and js for BAFG
