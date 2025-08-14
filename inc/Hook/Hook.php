@@ -104,9 +104,7 @@ class Hook {
 		 * Admin-only file(s) — defer until admin_init.
 		 */
 		if ( is_admin() ) {
-			add_action( 'admin_init', function() {
-				require_once BEAF_PLUGIN_PATH . 'admin/bafg-admin.php';
-			} );
+			require_once( BEAF_PLUGIN_PATH . 'admin/bafg-admin.php' );
 		}
 
 		/**
