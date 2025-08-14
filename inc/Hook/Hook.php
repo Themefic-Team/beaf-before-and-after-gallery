@@ -113,10 +113,9 @@ class Hook {
 		 * Elementor integration — include after init as well.
 		 * (Its internal hooks will wire up with Elementor when available.)
 		 */
-		add_action( 'init', function() {
-			require_once BEAF_PLUGIN_PATH . 'inc/bafg-elementor/bafg-elementor.php';
-		}, 12 );
+		require_once( BEAF_PLUGIN_PATH . 'inc/bafg-elementor/bafg-elementor.php' );
 
+		
 		/**
 		 * Frontend assets — include loader only when enqueuing.
 		 */
@@ -128,16 +127,17 @@ class Hook {
 			}
 		}, 999 );
 
+		
+
 		/**
 		 * Elementor editor assets — safe: the action only fires when Elementor is loaded.
 		 */
-		add_action( 'elementor/editor/before_enqueue_scripts', function() {
-			require_once BEAF_PLUGIN_PATH . 'inc/Hook/LoadAssets.php';
-			if ( class_exists( 'LoadAssest' ) ) {
-				$loader = new LoadAssest();
-				$loader->bafg_image_before_after_foucs_scripts();
-			}
-		} );
+		require_once( BEAF_PLUGIN_PATH . 'inc/Hook/LoadAssets.php' );
+		$loadAssets = new LoadAssest();
+
+		if ( did_action( 'elementor/loaded' ) ) {
+			add_action( 'elementor/editor/before_enqueue_scripts', [ $loadAssets,'bafg_image_before_after_foucs_scripts' ] ); 
+		}
 
 		/**
 		 * Admin assets.
