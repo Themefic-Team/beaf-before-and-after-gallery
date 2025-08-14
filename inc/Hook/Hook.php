@@ -93,12 +93,7 @@ class Hook {
 		/**
 		 * Widgets — include and register at widgets_init.
 		 */
-		add_action( 'widgets_init', function() {
-			require_once BEAF_PLUGIN_PATH . 'inc/widget/bafg-widget.php';
-			if ( class_exists( 'BAFG_Widget' ) ) {
-				register_widget( 'BAFG_Widget' );
-			}
-		} );
+		require_once( BEAF_PLUGIN_PATH . 'inc/widget/bafg-widget.php' );
 
 		/**
 		 * Admin-only file(s) — defer until admin_init.
