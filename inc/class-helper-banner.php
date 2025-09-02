@@ -5,7 +5,11 @@ if(!defined('ABSPATH')){
 
 class BEAF_Helper_Banner {
 
-    public function __construct(){
+    public function __construct() {
+        add_action('admin_init', [$this, 'load_helper_banner']);
+    }
+
+    public function load_helper_banner(){
 
         if(!class_exists('BAFG_Before_After_Gallery_Pro')){
 
@@ -13,11 +17,12 @@ class BEAF_Helper_Banner {
             add_action('admin_footer', [ $this, 'beaf_admin_helper_footer_script']);
 
         }
+
     }
 
     public function render_helper_banner() {
 
-        $campaign_id = 'banner60'; // change campaign id to start a new campaign
+        $campaign_id = 'flash60'; // change campaign id to start a new campaign
         $user_id = get_current_user_id();
         $user_first_visit_meta_key = 'beaf_fomo_first_visit_time_' . $campaign_id;
 
@@ -39,7 +44,7 @@ class BEAF_Helper_Banner {
         }
 
         $description         = 'Buy within next 2 hours to avail this discount. Hurry, clock is ticking...';
-        $button_url          = 'https://cf7addons.com/discount-deal/';
+        $button_url          = 'https://themefic.com/plugins/beaf/discount-deal/';
         $button_text         = 'Grab this deal now';
         $discount_percentage = 60;
 
