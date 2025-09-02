@@ -336,7 +336,7 @@ Yes, we provide full support on the WordPress.org forums & [Our Website](https:/
 
 == Changelog ==
 
-= 4.7.7 – 01/09/2025 =
+= 4.7.7 – 02/09/2025 =
 
 - Improved: System stability improved.
 - Improved: Compatibility with Elementor (v3.31).
