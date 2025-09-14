@@ -33,7 +33,7 @@ class Hook {
 		/*
 		 * Require function file
 		 */
-		add_action( 'admin_init', function() {
+		add_action( 'init', function() {
 
 			require_once( BEAF_PLUGIN_PATH . 'inc/functions.php' );
 
