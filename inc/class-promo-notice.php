@@ -45,13 +45,15 @@ class bafg_PROMO_NOTICE {
                 return;
             }  
             
-            add_filter('cron_schedules', array($this, 'bafg_custom_cron_interval'));
+            add_filter('cron_schedules', array($this, 'bafg_custom_cron_interval'), 5, 1);
              
-            if (!wp_next_scheduled('bafg_promo__schudle')) {
-                wp_schedule_event(time(), 'bafg_every_day', 'bafg_promo__schudle');
-            }
+            add_action( 'init', function() {
+                if (!wp_next_scheduled('bafg_promo__schedule')) {
+                    wp_schedule_event(time(), 'bafg_every_day', 'bafg_promo__schedule');
+                }
+            });
             
-            add_action('bafg_promo__schudle', array($this, 'bafg_promo__schudle_callback'));
+            add_action('bafg_promo__schedule', array($this, 'bafg_promo__schudle_callback'));
           
 
             if(get_option( 'bafg_promo__schudle_option' )){
@@ -348,7 +350,7 @@ class bafg_PROMO_NOTICE {
 
     // Deactivation Hook
     public function bafg_promo_notice_deactivation_hook() {
-        wp_clear_scheduled_hook('bafg_promo__schudle'); 
+        wp_clear_scheduled_hook('bafg_promo__schedule'); 
 
         delete_option('bafg_promo__schudle_option');
         delete_option('bafg_dismiss_admin_notice');
