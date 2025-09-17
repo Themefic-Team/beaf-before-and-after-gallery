@@ -4,14 +4,14 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-class bafg_PROMO_NOTICE {
+class bafg_SIDEBAR_BANNER {
 
     // private $api_url = 'http://bafg-api.test/';
-    private $api_url = 'https://api.themefic.com/';
-    private $args = array();
-    private $responsed = false; 
-    private $bafg_promo_option = false; 
-    private $error_message = ''; 
+    private $api_url           = 'https://api.themefic.com/';
+    private $args              = array();
+    private $responsed         = false;
+    private $bafg_promo_option = false;
+    private $error_message     = '';
 
     private $months = [
         'January',  
@@ -28,15 +28,13 @@ class bafg_PROMO_NOTICE {
         'December'
     ];
     private $plugins_existes = ['uacf7', 'tf', 'ins', 'ebef'];
-
     public function __construct() {
 
         $bafg_pro_activated = get_option( 'bafg_pro_activated');
-      
         if(in_array(gmdate('F'), $this->months) &&  $bafg_pro_activated != 'true' ){   
-
+            
             $bafg_promo__schudle_start_from = !empty(get_option( 'bafg_promo__schudle_start_from' )) ? get_option( 'bafg_promo__schudle_start_from' ) : 0;
-
+            
             if($bafg_promo__schudle_start_from == 0){
                 // delete option
                 delete_option('bafg_promo__schudle_option');
@@ -95,7 +93,7 @@ class bafg_PROMO_NOTICE {
             } 
             
 			
-            register_deactivation_hook( BAFG_PLUGIN_PATH . 'before-and-after-gallery.php', array($this, 'bafg_promo_notice_deactivation_hook') );
+            register_deactivation_hook( BAFG_PLUGIN_PATH . 'before-and-after-gallery.php', array($this, 'bafg_sidebar_banner_deactivation_hook') );
              
             
         }
@@ -168,7 +166,7 @@ class bafg_PROMO_NOTICE {
         $get_current_screen = get_current_screen();  
         if(($bafg_dismiss_admin_notice == 1  || time() >  $bafg_dismiss_admin_notice ) && $get_current_screen->base == 'dashboard'   ){ 
             // if very fist time then set the dismiss for our other plugbafg
-            update_option( 'bafg_promo_notice_exists', 'bafg' );
+            update_option( 'bafg_sidebar_banner_exists', 'bafg' );
             ?>
             <style> 
                 .bafg_black_friday_20222_admin_notice a:focus {
@@ -349,15 +347,15 @@ class bafg_PROMO_NOTICE {
     }
 
     // Deactivation Hook
-    public function bafg_promo_notice_deactivation_hook() {
+    public function bafg_sidebar_banner_deactivation_hook() {
         wp_clear_scheduled_hook('bafg_promo__schedule'); 
 
         delete_option('bafg_promo__schudle_option');
         delete_option('bafg_dismiss_admin_notice');
         delete_option('bafg_dismiss_post_notice');
-        delete_option('bafg_promo_notice_exists');
+        delete_option('bafg_sidebar_banner_exists');
     }
  
 }
 
-new bafg_PROMO_NOTICE();
+new bafg_SIDEBAR_BANNER();
