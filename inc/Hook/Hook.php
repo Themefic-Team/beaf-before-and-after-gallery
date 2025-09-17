@@ -37,7 +37,7 @@ class Hook {
 
 			require_once( BEAF_PLUGIN_PATH . 'inc/functions.php' );
 
-		}, 5 );
+		}, 99 );
 
 
 		/**
