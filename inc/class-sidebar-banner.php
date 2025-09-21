@@ -7,11 +7,11 @@ if ( ! defined( 'ABSPATH' ) ) {
 class bafg_SIDEBAR_BANNER {
 
     // private $api_url = 'http://bafg-api.test/';
-    private $api_url                    = 'https://api.themefic.com/';
-    private $args                       = array();
-    private $responsed                  = false;
-    private $bafg_sidebar_banner_option = false;
-    private $error_message              = '';
+    private $api_url = 'https://api.themefic.com/';
+    private $args = array();
+    private $responsed = false; 
+    private $bafg_sidebar_banner_option = false; 
+    private $error_message = ''; 
 
     private $months = [
         'January',  
@@ -28,35 +28,40 @@ class bafg_SIDEBAR_BANNER {
         'December'
     ];
     private $plugins_existes = ['uacf7', 'tf', 'ins', 'ebef'];
+
     public function __construct() {
 
         $bafg_pro_activated = get_option( 'bafg_pro_activated');
+      
         if(in_array(gmdate('F'), $this->months) &&  $bafg_pro_activated != 'true' ){   
-            
-            $bafg_sidebar_banner__schedule_start_from = !empty(get_option( 'bafg_sidebar_banner__schedule_start_from' )) ? get_option( 'bafg_sidebar_banner__schedule_start_from' ) : 0;
-            
-            if($bafg_sidebar_banner__schedule_start_from == 0){
+
+            $bafg_promo__schudle_start_from = !empty(get_option( 'bafg_promo__schudle_start_from' )) ? get_option( 'bafg_promo__schudle_start_from' ) : 0;
+
+            if($bafg_promo__schudle_start_from == 0){
                 // delete option
                 delete_option('bafg_sidebar_banner__schedule_option');
 
-            }elseif($bafg_sidebar_banner__schedule_start_from  != 0 && $bafg_sidebar_banner__schedule_start_from > time()){
+            }elseif($bafg_promo__schudle_start_from  != 0 && $bafg_promo__schudle_start_from > time()){
                 return;
-            }  
+            }
             
-            add_filter('cron_schedules', array($this, 'bafg_custom_cron_interval'), 5, 1);
-             
-            add_action( 'init', function() {
+            add_filter('cron_schedules', array($this, 'bafg_custom_cron_interval'));
+            
+            add_action( 'init', function (){
+
                 if (!wp_next_scheduled('bafg_sidebar_banner__schedule')) {
                     wp_schedule_event(time(), 'bafg_every_day', 'bafg_sidebar_banner__schedule');
                 }
+                
             });
             
-            add_action('bafg_sidebar_banner__schedule', array($this, 'bafg_sidebar_banner__schudle_callback'));
+            add_action('bafg_sidebar_banner__schedule', array($this, 'bafg_sidebar_banner__schedule_callback'));
           
 
             if(get_option( 'bafg_sidebar_banner__schedule_option' )){
                 $this->bafg_sidebar_banner_option = get_option( 'bafg_sidebar_banner__schedule_option' );
-            }
+            } 
+             
 
             $dashboard_banner = isset($this->bafg_sidebar_banner_option['dashboard_banner']) ? $this->bafg_sidebar_banner_option['dashboard_banner'] : '';
 
@@ -68,8 +73,9 @@ class bafg_SIDEBAR_BANNER {
             }
 
             // side Notice Woo Product Meta Box Notice 
+            $bafg_woo_existes = get_option( 'bafg_promo_notice_woo_exists' );
             $service_banner = isset($this->bafg_sidebar_banner_option['service_banner']) ? $this->bafg_sidebar_banner_option['service_banner'] : array();
-            $sidebar_banner = isset($this->bafg_sidebar_banner_option['promo_banner']) ? $this->bafg_sidebar_banner_option['promo_banner'] : array();
+            $promo_banner = isset($this->bafg_sidebar_banner_option['promo_banner']) ? $this->bafg_sidebar_banner_option['promo_banner'] : array();
 
             $current_day = date('l'); 
             if(isset($service_banner['enable_status']) && $service_banner['enable_status'] == true && in_array($current_day, $service_banner['display_days'])){ 
@@ -78,11 +84,12 @@ class bafg_SIDEBAR_BANNER {
                 $end_date = isset($service_banner['end_date']) ? $service_banner['end_date'] : '';
                 $enable_side = isset($service_banner['enable_status']) ? $service_banner['enable_status'] : false;
             }else{  
-                $start_date = isset($sidebar_banner['start_date']) ? $sidebar_banner['start_date'] : '';
-                $end_date = isset($sidebar_banner['end_date']) ? $sidebar_banner['end_date'] : '';
-                $enable_side = isset($sidebar_banner['enable_status']) ? $sidebar_banner['enable_status'] : false;
-            } 
-             if( is_array($this->bafg_sidebar_banner_option) && strtotime($end_date) > time() && strtotime($start_date) < time() && $enable_side == true){   
+                $start_date = isset($promo_banner['start_date']) ? $promo_banner['start_date'] : '';
+                $end_date = isset($promo_banner['end_date']) ? $promo_banner['end_date'] : '';
+                $enable_side = isset($promo_banner['enable_status']) ? $promo_banner['enable_status'] : false;
+            }
+
+            if( is_array($this->bafg_sidebar_banner_option) && strtotime($end_date) > time() && strtotime($start_date) < time() && $enable_side == true){   
                
                 add_action( 'add_meta_boxes', array($this, 'bafg_black_friday_2023_woo_product') );
               
@@ -92,7 +99,7 @@ class bafg_SIDEBAR_BANNER {
             } 
             
 			
-            register_deactivation_hook( BAFG_PLUGIN_PATH . 'before-and-after-gallery.php', array($this, 'bafg_sidebar_banner_deactivation_hook') );
+            register_deactivation_hook( BAFG_PLUGIN_PATH . 'before-and-after-gallery.php', array($this, 'bafg_promo_notice_deactivation_hook') );
              
             
         }
@@ -119,14 +126,15 @@ class bafg_SIDEBAR_BANNER {
             $data = wp_remote_retrieve_body($response);
            
             $this->responsed = json_decode($data, true); 
+
             $bafg_sidebar_banner__schedule_option = get_option( 'bafg_sidebar_banner__schedule_option' ); 
             if(!empty($bafg_sidebar_banner__schedule_option) && $bafg_sidebar_banner__schedule_option['notice_name'] != $this->responsed['notice_name']){ 
                 // Unset the cookie variable in the current script
                 update_option( 'bafg_dismiss_admin_notice', 1);
                 update_option( 'bafg_dismiss_post_notice', 1); 
-                update_option( 'bafg_sidebar_banner__schedule_start_from', time() + 43200);
+                update_option( 'bafg_promo__schudle_start_from', time() + 43200);
             }elseif(empty($bafg_sidebar_banner__schedule_option)){
-                update_option( 'bafg_sidebar_banner__schedule_start_from', time() + 43200);
+                update_option( 'bafg_promo__schudle_start_from', time() + 43200);
             }
             update_option( 'bafg_sidebar_banner__schedule_option', $this->responsed);
             
@@ -143,7 +151,7 @@ class bafg_SIDEBAR_BANNER {
         return $schedules;
     }
 
-    public function bafg_sidebar_banner__schudle_callback() {  
+    public function bafg_sidebar_banner__schedule_callback() {  
 
         $this->bafg_get_api_response();
 
@@ -164,7 +172,7 @@ class bafg_SIDEBAR_BANNER {
         $get_current_screen = get_current_screen();  
         if(($bafg_dismiss_admin_notice == 1  || time() >  $bafg_dismiss_admin_notice ) && $get_current_screen->base == 'dashboard'   ){ 
             // if very fist time then set the dismiss for our other plugbafg
-            update_option( 'bafg_sidebar_banner_exists', 'bafg' );
+            update_option( 'bafg_sidebar_banner_notice_exists', 'bafg' );
             ?>
             <style> 
                 .bafg_black_friday_20222_admin_notice a:focus {
@@ -188,7 +196,7 @@ class bafg_SIDEBAR_BANNER {
                 <a href="<?php echo esc_attr( $deal_link ); ?>" style="display: block; line-height: 0;" target="_blank" >
                     <img  style="width: 100%;" src="<?php echo esc_attr($image_url) ?>" alt="">
                 </a> 
-                <?php if( isset($dashboard_banner['dismiss_status']) && $dashboard_banner['dismiss_status'] == true): ?>
+                <?php if( isset($this->bafg_sidebar_banner_option['dasboard_dismiss']) && $this->bafg_sidebar_banner_option['dasboard_dismiss'] == true): ?>
                 <button type="button" class="notice-dismiss bafg_black_friday_notice_dismiss"><span class="screen-reader-text"><?php echo esc_html(__('Dismiss this notice.', 'bafg' )) ?></span></button>
                 <?php  endif; ?>
             </div>
@@ -198,7 +206,6 @@ class bafg_SIDEBAR_BANNER {
                         jQuery('.bafg_black_friday_20222_admin_notice').css('display', 'none')
                         data = {
                             action : 'bafg_black_friday_notice_dismiss_callback',
-                            nonce : '<?php echo wp_create_nonce('bafg_black_friday_notice_dismiss_callback'); ?>'
                         };
 
                         $.ajax({
@@ -220,13 +227,10 @@ class bafg_SIDEBAR_BANNER {
     } 
 
 
-    public function bafg_black_friday_notice_dismiss_callback() {
-        if ( ! check_ajax_referer( 'bafg_black_friday_notice_dismiss_callback', 'nonce', false ) ) {
-            wp_die();
-        }
+    public function bafg_black_friday_notice_dismiss_callback() {  
 
         $bafg_sidebar_banner_option = get_option( 'bafg_sidebar_banner__schedule_option' );
-        $restart = isset($bafg_sidebar_banner_option['dashboard_banner']['restart']) && $bafg_sidebar_banner_option['dashboard_banner']['restart'] != false ? $bafg_sidebar_banner_option['dashboard_banner']['restart'] : false;  
+        $restart = isset($bafg_sidebar_banner_option['dasboard_restart']) && $bafg_sidebar_banner_option['dasboard_restart'] != false ? $bafg_sidebar_banner_option['dasboard_restart'] : false; 
         if($restart == false){
             update_option( 'bafg_dismiss_admin_notice', strtotime($bafg_sidebar_banner_option['end_date']) ); 
         }else{
@@ -249,7 +253,7 @@ class bafg_SIDEBAR_BANNER {
     }
     public function bafg_black_friday_2023_callback_woo_product() {
         $service_banner = isset($this->bafg_sidebar_banner_option['service_banner']) ? $this->bafg_sidebar_banner_option['service_banner'] : array();
-        $sidebar_banner = isset($this->bafg_sidebar_banner_option['promo_banner']) ? $this->bafg_sidebar_banner_option['promo_banner'] : array();
+        $promo_banner = isset($this->bafg_sidebar_banner_option['promo_banner']) ? $this->bafg_sidebar_banner_option['promo_banner'] : array();
 
         $current_day = date('l'); 
         if($service_banner['enable_status'] == true && in_array($current_day, $service_banner['display_days'])){ 
@@ -258,9 +262,9 @@ class bafg_SIDEBAR_BANNER {
             $deal_link = esc_url($service_banner['redirect_url']);  
             $dismiss_status = $service_banner['dismiss_status'];
         }else{
-            $image_url = esc_url($sidebar_banner['banner_url']);
-            $deal_link = esc_url($sidebar_banner['redirect_url']); 
-            $dismiss_status = $sidebar_banner['dismiss_status'];  
+            $image_url = esc_url($promo_banner['banner_url']);
+            $deal_link = esc_url($promo_banner['redirect_url']); 
+            $dismiss_status = $promo_banner['dismiss_status'];  
         }  
       ?>
         <style>
@@ -305,8 +309,7 @@ class bafg_SIDEBAR_BANNER {
                 $(document).on('click', '.bafg_friday_notice_dismiss', function( event ) { 
                     jQuery('.bafg-bf-preview').css('display', 'none');
                     data = {
-                        action : 'bafg_black_friday_notice_bafg_dismiss_callback',
-                        nonce : '<?php echo wp_create_nonce('bafg_black_friday_notice_bafg_dismiss_callback'); ?>' 
+                        action : 'bafg_black_friday_notice_bafg_dismiss_callback', 
                     };
 
                     $.ajax({
@@ -345,13 +348,13 @@ class bafg_SIDEBAR_BANNER {
     }
 
     // Deactivation Hook
-    public function bafg_sidebar_banner_deactivation_hook() {
+    public function bafg_promo_notice_deactivation_hook() {
         wp_clear_scheduled_hook('bafg_sidebar_banner__schedule'); 
 
         delete_option('bafg_sidebar_banner__schedule_option');
         delete_option('bafg_dismiss_admin_notice');
         delete_option('bafg_dismiss_post_notice');
-        delete_option('bafg_sidebar_banner_exists');
+        delete_option('bafg_sidebar_banner_notice_exists');
     }
  
 }
