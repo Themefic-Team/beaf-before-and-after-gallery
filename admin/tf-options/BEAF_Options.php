@@ -346,7 +346,7 @@ if ( ! class_exists( 'BEAF_Options' ) ) {
 						$_field = new $fieldClass( $field, $value, $settings_id, $parent );
 						$_field->render();
 					} else {
-						echo '<p>' . esc_attr_e( 'Field not found!', 'bafg' ) . '</p>';
+						echo '<p>' . esc_html__( 'Field not found!', 'bafg' ) . '</p>';
 					}
 					?>
 				</div>
