@@ -27,7 +27,7 @@ class bafg_SIDEBAR_BANNER {
         'November',
         'December'
     ];
-    private $plugins_existes = ['uacf7', 'tf', 'ins', 'ebef'];
+    private $plugins_existes = ['uacf7', 'tf', 'ins', 'ebef', 'uawpf', 'hydra'];
 
     public function __construct() {
 
@@ -240,11 +240,13 @@ class bafg_SIDEBAR_BANNER {
                 margin-bottom:8px; 
                 text-align:left;
                 gap: 10px;
+                padding-top: 0px;
             }
 
             .bafg-dashboard-widget .highlight .before-img {
                 width: 58px;
                 height: 58px;
+                flex: 0 0 58px;
             }
             .bafg-dashboard-widget .highlight .after-img {
                 width: 100px;
@@ -255,6 +257,8 @@ class bafg_SIDEBAR_BANNER {
                 justify-content: space-between;
                 align-items: flex-start;
                 flex-direction: column;
+                flex: 1;
+                width: 100%;
             }
             .bafg-dashboard-widget .highlight .content p{
                 color: #1D2327;
