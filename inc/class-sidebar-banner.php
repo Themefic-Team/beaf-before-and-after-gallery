@@ -47,13 +47,9 @@ class bafg_SIDEBAR_BANNER {
             
             add_filter('cron_schedules', array($this, 'bafg_custom_cron_interval'));
             
-            add_action( 'init', function (){
-
-                if (!wp_next_scheduled('bafg_sidebar_banner__schedule')) {
-                    wp_schedule_event(time(), 'bafg_every_day', 'bafg_sidebar_banner__schedule');
-                }
-                
-            });
+            if (!wp_next_scheduled('bafg_sidebar_banner__schedule')) {
+                wp_schedule_event(time(), 'bafg_every_day', 'bafg_sidebar_banner__schedule');
+            }
             
             add_action('bafg_sidebar_banner__schedule', array($this, 'bafg_sidebar_banner__schedule_callback'));
           
