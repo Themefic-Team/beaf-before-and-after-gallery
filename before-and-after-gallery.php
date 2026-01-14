@@ -22,6 +22,10 @@ class BAFG_Before_After_Gallery {
 
 	public function __construct() {
 
+		if ( file_exists( __DIR__ . '/vendor/autoload.php' ) ) {
+			require_once __DIR__ . '/vendor/autoload.php';
+		}
+
 		$this->define_constants();
 
 		add_action( 'plugins_loaded', array( $this, 'init_plugin' ) );
@@ -85,3 +89,29 @@ function beaf_gallery_slider() {
 
 // kick-off the plugin
 beaf_gallery_slider();
+
+/**
+ * Initialize the plugin tracker
+ *
+ * @return void
+ */
+if ( ! function_exists( 'appsero_init_tracker_beaf_before_and_after_gallery' ) ) {
+	/* 
+	 * Initialize the appsero
+	 */
+
+	function appsero_init_tracker_beaf_before_and_after_gallery() {
+
+		$client = new Appsero\Client( 'daee3b5d-d8a3-46f0-ae49-7b6f869f4b42', 'Ultimate Before After Image Slider & Gallery – BEAF', __FILE__ );
+
+		// Change Admin notice text
+		$notice = sprintf( $client->__trans( 'Want to help make <strong>%1$s</strong> even more awesome? Allow %1$s to collect non-sensitive diagnostic data and usage information. I agree to get Important Product Updates & Discount related information on my email from  %1$s (I can unsubscribe anytime).' ), $client->name );
+		$client->insights()->notice( $notice );
+
+
+		// Active insights
+		$client->insights()->init();
+
+	}
+	appsero_init_tracker_beaf_before_and_after_gallery();
+}
