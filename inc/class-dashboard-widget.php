@@ -21,7 +21,7 @@ class BeafDashboardWidget {
     }
 
     public function beaf_register_dashboard_widget() {
-        wp_add_dashboard_widget( 'beaf_widget', __( 'Beaf Overview', 'bafg' ), array( $this, 'beaf_display_dashboard_widget' ) , null, null, 'normal', 'high' );
+        wp_add_dashboard_widget( 'beaf_widget', __( 'BEAF Overview', 'bafg' ), array( $this, 'beaf_display_dashboard_widget' ) , null, null, 'normal', 'high' );
     }
 
     public function beaf_widget_enqueue_assets( $screen ) {
@@ -58,13 +58,13 @@ class BeafDashboardWidget {
             <!-- Quick Actions -->
             <div class="beaf-actions">
                 <a href="<?php echo esc_url( admin_url( 'post-new.php?post_type=bafg' ) ); ?>" class="button button-primary">
-                    <?php esc_html_e( 'Create new slider', 'bafg' ); ?>
+                    <?php esc_html_e( 'Create Slider', 'bafg' ); ?>
                 </a>
                 <a href="<?php echo esc_url( admin_url( 'edit.php?post_type=bafg&page=bafg_gallery' ) ); ?>" class="button">
                     <?php esc_html_e( 'Gallery Generator', 'bafg' ); ?>
                 </a>
                 <a href="<?php echo esc_url( admin_url( 'edit.php?post_type=bafg&page=beaf_settings' ) ); ?>" class="button">
-                    <?php esc_html_e( 'Beaf Settings', 'bafg' ); ?>
+                    <?php esc_html_e( 'BEAF Settings', 'bafg' ); ?>
                 </a>
             </div>
             
@@ -90,7 +90,7 @@ class BeafDashboardWidget {
 
                     <div class="beaf-integration-item">
                         <svg fill="#2271b1" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"><path d="M 5 5 L 5 27 L 27 27 L 27 5 L 5 5 z M 7 7 L 25 7 L 25 25 L 7 25 L 7 7 z M 11 11 L 11 21 L 13 21 L 13 11 L 11 11 z M 15 11 L 15 13 L 21 13 L 21 11 L 15 11 z M 15 15 L 15 17 L 21 17 L 21 15 L 15 15 z M 15 19 L 15 21 L 21 21 L 21 19 L 15 19 z"></path></g></svg>
-                        <span><?php esc_html_e( 'Elementor Support', 'bafg' ); ?></span>
+                        <span><?php esc_html_e( 'Page Builder Support', 'bafg' ); ?></span>
                     </div>
 
                 </div>
