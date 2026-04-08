@@ -120,7 +120,7 @@ class BeafDashboardWidget {
             <?php } ?>
 
             <!-- Blog Section -->
-			<div class="beaf-section-title"><?php esc_html_e( 'Latest posts from Beaf', 'bafg' ); ?></div>
+			<div class="beaf-section-title"><?php esc_html_e( 'Latest posts from BEAF', 'bafg' ); ?></div>
 			<ul class="beaf-blog-list">
 				<li>
 					<span class="beaf-badge"><?php esc_html_e( 'NEW', 'bafg' ); ?></span>
