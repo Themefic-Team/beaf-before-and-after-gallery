@@ -98,7 +98,7 @@ class BeafDashboardWidget {
 
             <!-- Button for more integrations -->
             <div class="beaf-actions">
-                <a href="<?php echo esc_url( 'https://themefic.com/plugins/beaf/' ); ?>" class="button">
+                <a href="<?php echo esc_url( 'https://themefic.com/plugins/beaf/' ); ?>" target="_blank" class="button">
                     <?php esc_html_e( 'Check More Features', 'bafg' ); ?>
                 </a>
             </div>
