@@ -129,9 +129,6 @@ class BeafDashboardWidget {
 				<li>
 					<a href="<?php echo esc_url( 'https://themefic.com/before-after-slider-all-the-amazing-features-but-now-with-video/' ); ?>" target="_blank"><?php esc_html_e( 'Before After Slider: All the Amazing Features, But Now with Video', 'bafg' ); ?></a>
 				</li>
-				<li>
-					<a href="<?php echo esc_url( 'https://themefic.com/social-media-plugin-for-wordpress/' ); ?>" target="_blank"><?php esc_html_e( '8 Best Social Media Plugin for WordPress in 2026: The Ultimate Masterlist', 'bafg' ); ?></a>
-				</li>
 			</ul>
 
             <!-- Footer -->
