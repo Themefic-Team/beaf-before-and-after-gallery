@@ -336,15 +336,15 @@ Yes, we provide full support on the WordPress.org forums & [Our Website](https:/
 
 == Changelog ==
 
-= 4.7.15 – April 08, 2025 =
+= 4.7.15 – April 08, 2026 =
 
 - Improved: Dashboard widget for quick overview and status insights.
 
-= 4.7.14 – February 08, 2025 =
+= 4.7.14 – February 08, 2026 =
 
 - Compatibility: Compatible with WordPress 6.9.1.
 
-= 4.7.13 – January 16, 2025 =
+= 4.7.13 – January 16, 2026 =
 
 - Info: System stability has been improved.
 
