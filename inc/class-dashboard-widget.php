@@ -113,7 +113,7 @@ class BeafDashboardWidget {
                     <li><?php esc_html_e( '✔ 3 Image Comparison', 'bafg' ); ?></li>
                     <li><?php esc_html_e( '✔ Filterable Gallery', 'bafg' ); ?></li>
                 </ul>
-                <a href="<?php echo esc_url( 'https://themefic.com/instantio/pricing/' ); ?>" target="_blank" class="button button-primary go-pro">
+                <a href="<?php echo esc_url( 'https://themefic.com/plugins/beaf/pro/pricing/' ); ?>" target="_blank" class="button button-primary go-pro">
                     <?php esc_html_e( 'Upgrade Now', 'bafg' ); ?>
                 </a>
             </div>
