@@ -140,9 +140,6 @@ if ( ! class_exists( 'BEAF_Settings' ) ) {
 				<div class="tf-setting-dashboard">
 					<!-- dashboard-header-include -->
 					<?php echo esc_attr( beaf_dashboard_header() ); ?>
-					<div class="beaf-dashboard-promo-banner-header">
-						<?php do_action( 'beaf_dashboard_promo_notice' ); ?>
-					</div>
 					<div class="beaf-settings-page">
 
 						<div class="tf-option-wrapper tf-setting-wrapper">
@@ -225,6 +222,9 @@ if ( ! class_exists( 'BEAF_Settings' ) ) {
 						</div>
 
 						<div class="beaf-settings-sidebar">
+							<div class="beaf-dashboard-promo-banner-header beaf-sidebar-promo-header">
+								<?php do_action( 'beaf_dashboard_promo_notice' ); ?>
+							</div>
 							<?php echo $this->tf_sidebar(); ?>
 						</div>
 					</div>
