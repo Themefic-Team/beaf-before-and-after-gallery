@@ -57,6 +57,145 @@ class BEAF_Dashboard_Promo_Notice {
 	}
 
 	/**
+	 * Get dynamic pricing data.
+	 *
+	 * @return array
+	 */
+	private function get_dynamic_pricing() {
+
+		$cache_key = 'beaf_dynamic_pricing';
+
+		$pricing = get_transient( $cache_key );
+
+		if ( false !== $pricing ) {
+			return $pricing;
+		}
+
+		$response = wp_remote_get(
+			'http://api.themefic.com/dynamic-pricing/pricing.json',
+			array(
+				'timeout' => 10,
+				'redirection' => 3,
+			)
+		);
+
+		if ( is_wp_error( $response ) ) {
+			return array();
+		}
+
+		$status_code = wp_remote_retrieve_response_code( $response );
+
+		if ( 200 !== (int) $status_code ) {
+			return array();
+		}
+
+		$body = wp_remote_retrieve_body( $response );
+
+		if ( empty( $body ) ) {
+			return array();
+		}
+
+		$data = json_decode( $body, true );
+
+		if (
+			JSON_ERROR_NONE !== json_last_error() ||
+			! is_array( $data )
+		) {
+			return array();
+		}
+
+		set_transient(
+			$cache_key,
+			$data,
+			DAY_IN_SECONDS
+		);
+
+		return $data;
+	}
+
+	/**
+	 * Get current offer data.
+	 *
+	 * @return array
+	 */
+	private function get_current_offer() {
+
+		$base_price = 199;
+
+		$pricing = $this->get_dynamic_pricing();
+
+		// Fallback values.
+		$offer = array(
+			'offer_name'      => 'Special Deal',
+			'discount'        => 50,
+			'coupon'          => '',
+			'regular_price'   => $base_price,
+			'discount_price'  => 89,
+		);
+
+		try {
+
+			$timezone = new DateTimeZone( 'America/Toronto' );
+			$datetime = new DateTime( 'now', $timezone );
+
+			$day_number = (int) $datetime->format( 'N' );
+			
+			$is_weekend = ( $day_number >= 6 );
+
+			$key = $is_weekend ? 'weekend' : 'weekday';
+
+			if ( empty( $pricing[ $key ] ) || ! is_array( $pricing[ $key ] ) ) {
+				return $offer;
+			}
+
+			$config = $pricing[ $key ];
+
+			$discount = isset( $config['discount'] )
+				? absint( $config['discount'] )
+				: 0;
+
+			if ( $discount <= 0 || $discount >= 100 ) {
+				return $offer;
+			}
+
+			$discount_price = (int) floor (
+				$base_price * ( ( 100 - $discount ) / 100 )
+			);
+
+			$coupon = '';
+
+			// Weekday structure.
+			if ( ! empty( $config['coupons']['beaf'] ) ) {
+				$coupon = sanitize_text_field(
+					$config['coupons']['beaf']
+				);
+			}
+
+			// Weekend structure.
+			if ( ! empty( $config['coupon'] ) ) {
+				$coupon = sanitize_text_field(
+					$config['coupon']
+				);
+			}
+
+			$offer = array(
+				'offer_name'     => ! empty( $config['offer'] )
+					? sanitize_text_field( $config['offer'] )
+					: 'Special Deal',
+				'discount'       => $discount,
+				'coupon'         => $coupon,
+				'regular_price'  => $base_price,
+				'discount_price' => $discount_price,
+			);
+
+		} catch ( Exception $e ) {
+			// Keep fallback offer.
+		}
+
+		return $offer;
+	}
+
+	/**
 	 * Should display notice?
 	 */
 	public function should_display() {
@@ -100,6 +239,8 @@ class BEAF_Dashboard_Promo_Notice {
 			return;
 		}
 
+		$offer = $this->get_current_offer();
+
 		?>
 
 		<div class="beaf-promo-banner">
@@ -123,10 +264,14 @@ class BEAF_Dashboard_Promo_Notice {
 			<div class="beaf-promo-content">
 
 				<h3>
-					<?php esc_html_e(
-						'Lifetime License only for $49',
-						'bafg'
-					); ?>
+					<?php
+						echo esc_html(
+							sprintf(
+								'Lifetime License only for $%s',
+								number_format_i18n( $offer['discount_price'] )
+							)
+						);
+					?>
 				</h3>
 
 				<p>
