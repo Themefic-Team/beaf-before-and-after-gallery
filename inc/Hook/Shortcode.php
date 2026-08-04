@@ -90,8 +90,8 @@ class BAFG_Shortcode {
 		$a_image              = ! empty( $meta['bafg_after_image'] ) ? $meta['bafg_after_image'] : '';
 		$orientation          = ! empty( $meta['bafg_image_styles'] ) ? $meta['bafg_image_styles'] : 'horizontal';
 		$offset               = ! empty( $meta['bafg_default_offset'] ) ? $meta['bafg_default_offset'] : '0.5';
-		$before_label         = ! empty( $meta['bafg_before_label'] ) ? $meta['bafg_before_label'] : esc_html( __( 'Before', 'bafg' ) );
-		$after_label          = ! empty( $meta['bafg_after_label'] ) ? $meta['bafg_after_label'] : esc_html( __( 'After', 'bafg' ) );
+		$before_label         = ! empty( $meta['bafg_before_label'] ) ? esc_html( $meta['bafg_before_label'] ) : esc_html( __( 'Before', 'bafg' ) );
+		$after_label          = ! empty( $meta['bafg_after_label'] ) ? esc_html( $meta['bafg_after_label'] ) : esc_html( __( 'After', 'bafg' ) );
 		$overlay              = ! empty( $meta['bafg_no_overlay'] ) ? $meta['bafg_no_overlay'] : '';
 		$move_slider_on_hover = ! empty( $meta['bafg_move_slider_on_hover'] ) ? $meta['bafg_move_slider_on_hover'] : '';
 		$click_to_move        = ! empty( $meta['bafg_click_to_move'] ) ? $meta['bafg_click_to_move'] : '';
@@ -121,7 +121,7 @@ class BAFG_Shortcode {
 
 			<div class="bafg-twentytwenty-container <?php echo esc_attr( 'slider-' . $id . '' ); ?> <?php echo esc_attr( $bafg_custom_color ) ?> "
 				bafg-orientation="<?php echo esc_attr( $orientation ); ?>" bafg-default-offset="<?php echo esc_attr( $offset ); ?>"
-				bafg-before-label="<?php echo esc_html( $before_label ); ?>"
+				bafg-before-label="<?php echo esc_attr( $before_label ); ?>"
 				bafg-after-label="<?php echo esc_attr( $after_label ); ?>" bafg-overlay="<?php echo esc_attr( $overlay ); ?>"
 				bafg-move-slider-on-hover="<?php echo esc_attr( $move_slider_on_hover ); ?>"
 				bafg-click-to-move="<?php echo esc_attr( $click_to_move ); ?>">

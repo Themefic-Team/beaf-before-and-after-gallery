@@ -20,7 +20,7 @@ if ( ! class_exists( 'BEAF_text' ) ) {
 
 			if ( isset( $this->field['button_text'] ) && ! empty( $this->field['button_text'] ) ) {
 				$button_id = isset( $this->field['button_id'] ) ? 'id="' . esc_attr( $this->field['button_id'] ) . '"' : '';
-				echo '<a class="button button-primary button-large" ' . esc_attr( $button_id ) . ' style="margin-top:12px;">' . esc_attr( $this->field['button_text'] ) . '</a>';
+				echo '<a class="button button-primary button-large" ' . esc_attr( $button_id ) . ' style="margin-top:12px;">' . esc_html( $this->field['button_text'] ) . '</a>';
 			}
 		}
 
