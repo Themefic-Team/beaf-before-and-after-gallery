@@ -242,18 +242,42 @@ if ( ! class_exists( 'BEAF_Settings' ) ) {
 
 					<div class="beaf-sidebar-content">
 
-						<?php $this->tf_get_sidebar_plugin_list(); ?>
-
-						<div class="customization-quote">
+						<a
+							class="customization-quote"
+							href="<?php echo esc_url( 'https://themefic.com/plugins/beaf/services' ); ?>"
+							target="_blank"
+							rel="noopener noreferrer"
+							aria-label="<?php echo esc_attr__( 'Get a free WordPress development quote', 'bafg' ); ?>"
+						>
 							<div class="quote-header">
-								<i class="fa-solid fa-code"></i>
-								<a href="<?php echo esc_url( 'https://portal.themefic.com/hire-us/' ); ?>" target="_blank"><?php echo esc_html__( 'Get Free Quote', 'bafg' ); ?></a>
+								<i class="fa-solid fa-code" aria-hidden="true"></i>
+								<span>
+									<?php echo esc_html__( 'Get Free Quote', 'bafg' ); ?>
+								</span>
 							</div>
+
 							<div class="quote-content">
-								<h3><?php echo esc_html__( 'Need Help Customizing Your WordPress Site?', 'bafg' ); ?></h3>
-								<p><?php echo esc_html__( 'Want to tweak a theme, adjust a plugin like Ultimate Before After Image Slider, or add custom functionality to your site? Our expert WordPress developers can tailor it just the way you need. We only charge $29/hour', 'bafg' ); ?></p>								
+								<h3>
+									<?php
+									echo esc_html__(
+										'Need a WordPress Developer? We Build, Fix, and Customize Anything (Complete White Label).',
+										'bafg'
+									);
+									?>
+								</h3>
+
+								<p>
+									<?php
+									echo esc_html__(
+										'From plugin customization to full site builds, integrations, and design work, our team handles it end to end. Starting at $25/hour only, no project too small.',
+										'bafg'
+									);
+									?>
+								</p>
 							</div>
-						</div>
+						</a>
+
+						<?php $this->tf_get_sidebar_plugin_list(); ?>
 
 						<div class="quick-access">
 							<h3><?php echo esc_html__( 'Helpful Resources', 'bafg' ); ?></h3>

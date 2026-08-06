@@ -54,7 +54,7 @@ class BEAF_Helper_Banner {
         $end_time            = $countdown_start + ($duration * 60);
         $remaining           = max(0, $end_time - time());
 
-        $should_show = true; // set to false to disable
+        $should_show = false; // set to false to disable
 
         // Handle restart logic
         if ($remaining === 0) {
