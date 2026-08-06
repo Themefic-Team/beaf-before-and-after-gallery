@@ -72,7 +72,7 @@ class bafg_SIDEBAR_BANNER {
             $bafg_woo_existes = get_option( 'bafg_promo_notice_woo_exists' );
             $service_banner = isset($this->bafg_sidebar_banner_option['service_banner']) ? $this->bafg_sidebar_banner_option['service_banner'] : array();
             $sidebar_banner = isset($this->bafg_sidebar_banner_option['promo_banner']) ? $this->bafg_sidebar_banner_option['promo_banner'] : array();
-            $current_day = date('l');
+            $current_day = gmdate('l');
             if(isset($service_banner['enable_status']) && $service_banner['enable_status'] == true && in_array($current_day, $service_banner['display_days'])){ 
              
                 $start_date = isset($service_banner['start_date']) ? $service_banner['start_date'] : '';
@@ -348,7 +348,7 @@ class bafg_SIDEBAR_BANNER {
         if (is_wp_error($response)) {
             // Handle API request error
             $this->responsed = false;
-            $this->error_message = esc_html__($response->get_error_message(), 'bafg');
+            $this->error_message = esc_html($response->get_error_message());
  
         } else {
             // API request successful, handle the response content
@@ -375,7 +375,7 @@ class bafg_SIDEBAR_BANNER {
         $schedules['bafg_every_day'] = array(
             'interval' => 86400, // Every 24 hours
             // 'interval' => 5, // Every 24 hours
-            'display' => __('Every 24 hours')
+            'display' => __('Every 24 hours', 'bafg'),
         );
         return $schedules;
     }
@@ -484,7 +484,7 @@ class bafg_SIDEBAR_BANNER {
         $service_banner = isset($this->bafg_sidebar_banner_option['service_banner']) ? $this->bafg_sidebar_banner_option['service_banner'] : array();
         $sidebar_banner = isset($this->bafg_sidebar_banner_option['promo_banner']) ? $this->bafg_sidebar_banner_option['promo_banner'] : array();
 
-        $current_day = date('l'); 
+        $current_day = gmdate('l'); 
         if($service_banner['enable_status'] == true && in_array($current_day, $service_banner['display_days'])){ 
            
             $image_url = esc_url($service_banner['banner_url']);

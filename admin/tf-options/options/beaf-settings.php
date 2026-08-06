@@ -5,11 +5,11 @@ defined( 'ABSPATH' ) || exit;
 if ( file_exists( BEAF_ADMIN_PATH . 'tf-options/options/beaf-menu-icon.php' ) ) {
 	require_once BEAF_ADMIN_PATH . 'tf-options/options/beaf-menu-icon.php';
 } else {
-	$menu_icon = 'dashicons-palmtree';
+	$bafg_menu_icon = 'dashicons-palmtree';
 }
 BEAF_Settings::option( 'beaf_settings', array(
 	'title' => __( 'Beaf Settings ', 'bafg' ),
-	'icon' => $menu_icon,
+	'icon' => $bafg_menu_icon,
 	'position' => 25,
 	'sections' => array(
 		'tools' => array(

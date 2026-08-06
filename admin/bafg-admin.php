@@ -61,9 +61,9 @@ class BAFG_Options {
 		$tf_options_post_type = array( 'bafg' );
 
 		if ( in_array( $screen, $tf_options_screens ) || in_array( $post_type, $tf_options_post_type ) ) {
-			wp_enqueue_style( 'beaf-admin-options', BEAF_ASSETS_URL . 'css/beaf-admin-options.css', array() );
+			wp_enqueue_style( 'beaf-admin-options', BEAF_ASSETS_URL . 'css/beaf-admin-options.css', array(), BEAF_VERSION );
 
-			wp_enqueue_script( 'beaf-options', BEAF_ASSETS_URL . 'js/beaf-options.js', array( 'jquery' ), true );
+			wp_enqueue_script( 'beaf-options', BEAF_ASSETS_URL . 'js/beaf-options.js', array( 'jquery' ), BEAF_VERSION, true );
 
 			wp_localize_script( 'beaf-options', 'beaf_options', array(
 				'ajax_url' => admin_url( 'admin-ajax.php' ),
@@ -71,14 +71,14 @@ class BAFG_Options {
 			) );
 
 			// Enqueue styles
-			wp_enqueue_style( 'beaf-notyf', BEAF_ASSETS_URL . 'libs/notyf/notyf.min.css', array() );
-			wp_enqueue_style( 'bafg_admin_style', plugins_url( '../assets/css/bafg-admin-style.css', __FILE__ ), array() );
+			wp_enqueue_style( 'beaf-notyf', BEAF_ASSETS_URL . 'libs/notyf/notyf.min.css', array(), BEAF_VERSION );
+			wp_enqueue_style( 'bafg_admin_style', plugins_url( '../assets/css/bafg-admin-style.css', __FILE__ ), array(), BEAF_VERSION );
 
 			// Enqueue scripts
-			wp_enqueue_script( 'wp-color-picker-alpha', plugins_url( '../assets/js/wp-color-picker-alpha.min.js', __FILE__ ), array( 'wp-color-picker' ), true );
-			wp_enqueue_script( 'beaf-notyf', BEAF_ASSETS_URL . 'libs/notyf/notyf.min.js', array( 'jquery' ), true );
+			wp_enqueue_script( 'wp-color-picker-alpha', plugins_url( '../assets/js/wp-color-picker-alpha.min.js', __FILE__ ), array( 'wp-color-picker' ), BEAF_VERSION, true );
+			wp_enqueue_script( 'beaf-notyf', BEAF_ASSETS_URL . 'libs/notyf/notyf.min.js', array( 'jquery' ), BEAF_VERSION, true );
 
-			wp_enqueue_script( 'beaf-admin', plugins_url( '../assets/js/bafg-script.js', __FILE__ ), array( 'jquery', 'wp-color-picker', 'wp-color-picker-alpha' ), true );
+			wp_enqueue_script( 'beaf-admin', plugins_url( '../assets/js/bafg-script.js', __FILE__ ), array( 'jquery', 'wp-color-picker', 'wp-color-picker-alpha' ), BEAF_VERSION, true );
 			wp_localize_script( 'beaf-admin', 'beaf_options', array(
 				'ajax_url' => admin_url( 'admin-ajax.php' ),
 				'nonce' => wp_create_nonce( 'beaf_options_nonce' ),
@@ -119,7 +119,7 @@ class BAFG_Options {
 			'bimage' => esc_html__( 'Before Image', 'bafg' ),
 			'second_image' => esc_html__( 'Middle Image', 'bafg' ),
 			'aimage' => esc_html__( 'After Image', 'bafg' ),
-			'date' => __( 'Date' )
+			'date' => esc_html__( 'Date', 'bafg' )
 		);
 		return $columns;
 	}
@@ -225,7 +225,7 @@ class BAFG_Options {
 	* Gallery category column
 	*/
 	public function bafg_gallery_columns( $theme_columns ) {
-		$theme_columns['bafg_gallery'] = 'Gallery Shortcode';
+		$theme_columns['bafg_gallery'] = esc_html__( 'Gallery Shortcode', 'bafg' );
 		return $theme_columns;
 	}
 
@@ -254,13 +254,10 @@ class BAFG_Options {
 				<div class="notice notice-success">
 					<h2><?php echo esc_html__( 'It looks like you have WooCommerce plugin installed.', 'bafg' ); ?></h2>
 					<p><?php echo esc_html__( 'If you want to use before after slider on the WooCommerce product page, you can try our free plugin', 'bafg' ); ?>
-						<a href="<?php echo esc_url( admin_url( '/plugin-install.php?s=ebeaf&tab=search&type=term' ) ); ?>"> Before
-							After
-							for WooCommerce</a>
+						<a href="<?php echo esc_url( admin_url( '/plugin-install.php?s=ebeaf&tab=search&type=term' ) ); ?>"> <?php echo esc_html__( 'Before After for WooCommerce', 'bafg' ); ?></a>
 					</p>
 					<p><a class="button"
-							href="<?php echo esc_url( wp_nonce_url( admin_url( '?bafg-woo-dismissed' ), 'bafg-woo-dismissed-nonce' ) ); ?>">Close
-							this Notice</a></p>
+							href="<?php echo esc_url( wp_nonce_url( admin_url( '?bafg-woo-dismissed' ), 'bafg-woo-dismissed-nonce' ) ); ?>"><?php esc_html_e( 'Close this Notice', 'bafg' ); ?></a></p>
 				</div>
 				<?php
 			}
@@ -273,7 +270,9 @@ class BAFG_Options {
 	* Admin notice for new features dismissed
 	*/
 	public function bafg_new_feature_notice_dismissed() {
-		if ( ! isset( $_GET['_wpnonce'] ) || ! wp_verify_nonce( esc_html( $_GET['_wpnonce'] ), 'bafg-woo-dismissed-nonce' ) ) {
+		$nonce = isset( $_GET['_wpnonce'] ) ? sanitize_text_field( wp_unslash( $_GET['_wpnonce'] ) ) : '';
+
+		if ( ! $nonce || ! wp_verify_nonce( $nonce, 'bafg-woo-dismissed-nonce' ) ) {
 			return;
 		} else {
 

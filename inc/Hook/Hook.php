@@ -85,9 +85,9 @@ class Hook {
 		 * Admin Menu — include inside the hook.
 		 */
 		add_action( 'admin_menu', function() {
-			require_once BEAF_INC_PATH . 'Hook/AdminMenu.php';
-			if ( class_exists( 'AdminMenu' ) ) {
-				(new AdminMenu)->bafg_register_menu_page();
+			require_once BEAF_INC_PATH . 'Hook/BafgAdminMenu.php';
+			if ( class_exists( 'BafgAdminMenu' ) ) {
+				(new BafgAdminMenu)->bafg_register_menu_page();
 			}
 		} );
 
@@ -177,7 +177,7 @@ class Hook {
 		if ( is_admin() && ! empty( $files ) ) {
 			$class   = 'notice notice-error';
 			$message = '<strong>' . esc_html( $files ) . '</strong>' . ' ' . esc_html__( 'file is missing! It is required to function properly!', 'bafg' );
-			printf( '<div class="%1$s"><p>%2$s</p></div>', esc_attr( $class ), $message );
+			printf( '<div class="%1$s"><p>%2$s</p></div>', esc_attr( $class ), esc_html( $message ) );
 		}
 	}
 

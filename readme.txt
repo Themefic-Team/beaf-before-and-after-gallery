@@ -1,7 +1,7 @@
 === Ultimate Before After Image Slider & Gallery - BEAF ===
 Contributors: themefic, hasanet, codexa, mdashikul, hemelhasan, raihan143
 Tags: before after, before after elementor, before after slider, before and after slider, elementor before and after slider
-Requires at least: 4.0
+Requires at least: 4.8.0
 Stable tag: 4.7.18
 Tested up to: 7.0
 Requires PHP: 7.4

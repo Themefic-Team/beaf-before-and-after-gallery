@@ -50,7 +50,7 @@ if ( ! class_exists( 'BEAF_Repeater' ) ) {
 											<i class="fa-solid fa-angle-down"></i>
 										</span>
 										<span
-											class="tf-repeater-title"><?php echo ! empty( $tf_repater_default_value ) && gettype( $tf_repater_default_value ) == "string" ? esc_attr( $tf_repater_default_value ) : esc_html__( $label, 'bafg' ) ?>
+											class="tf-repeater-title"><?php echo ! empty( $tf_repater_default_value ) && gettype( $tf_repater_default_value ) == "string" ? esc_attr( $tf_repater_default_value ) : esc_html( $label) ?>
 										</span>
 										<div class="tf-repeater-icon-absulate">
 											<span class="tf-repeater-icon tf-repeater-icon-move">

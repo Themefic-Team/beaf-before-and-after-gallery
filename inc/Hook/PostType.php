@@ -20,8 +20,8 @@ class PostType {
 		register_post_type( 'bafg',
 			array(
 				'labels' => array(
-					'name' => _x( 'Before and After Slider', 'bafg' ),
-					'singular_name' => _x( 'Before and After Slider', 'bafg' ),
+					'name' => _x( 'Before and After Slider', 'bafg', 'bafg' ),
+					'singular_name' => _x( 'Before and After Slider', 'bafg', 'bafg' ),
 					'add_new' => __( 'Add New', 'bafg' ),
 					'add_new_item' => __( 'Add New Slider', 'bafg' ),
 					'new_item' => __( 'New Slider', 'bafg' ),
@@ -82,15 +82,52 @@ class PostType {
 
 	}
 
-	public function bafg_add_slider_metabox(){
-		add_meta_box('bafg_shortcode_metabox','Shortcode', array($this, 'bafg_shortcode_callback'),'bafg','side','high'); 
+	/**
+	 * Register the shortcode metabox.
+	 *
+	 * @return void
+	 */
+	public function bafg_add_slider_metabox() {
+		add_meta_box(
+			'bafg_shortcode_metabox',
+			esc_html__( 'Shortcode', 'bafg' ),
+			array( $this, 'bafg_shortcode_callback' ),
+			'bafg',
+			'side',
+			'high'
+		);
 	}
 
-	//Metabox shortcode
-	public function bafg_shortcode_callback(){
-		$bafg_scode = isset($_GET['post']) ? '[bafg id="'.$_GET['post'].'"]' : '';
+	/**
+	 * Render the shortcode metabox.
+	 *
+	 * WordPress passes the current post object directly to this callback,
+	 * so there is no need to read the post ID from $_GET.
+	 *
+	 * @param WP_Post $post Current post object.
+	 * @return void
+	 */
+	public function bafg_shortcode_callback( $post ) {
+		$bafg_shortcode = '';
+
+		if (
+			$post instanceof WP_Post &&
+			'bafg' === $post->post_type &&
+			current_user_can( 'edit_post', $post->ID )
+		) {
+			$bafg_shortcode = sprintf(
+				'[bafg id="%d"]',
+				absint( $post->ID )
+			);
+		}
 		?>
-		<input type="text" name="bafg_display_shortcode" class="bafg_display_shortcode" value="<?php echo esc_attr($bafg_scode); ?>" readonly >
+		<input
+			type="text"
+			name="bafg_display_shortcode"
+			class="bafg_display_shortcode"
+			value="<?php echo esc_attr( $bafg_shortcode ); ?>"
+			readonly
+		>
 		<?php
 	}
 

@@ -1,4 +1,9 @@
 <?php
+// Exit if accessed directly
+if ( ! defined( 'ABSPATH' ) ) {
+	exit();
+}
+
 //all functions goes here
 
 // Beaf Plugins Print_r
@@ -66,7 +71,7 @@ function bafg_slider_info( $id ) {
 			$bafg_slider_title = ! empty( $meta['bafg_slider_title'] ) ? $meta['bafg_slider_title'] : '';
 			if ( trim( $bafg_slider_title ) != '' ) :
 				?>
-				<h2 class="bafg-slider-title"><?php echo esc_html__( $bafg_slider_title, 'bafg' ); ?></h2>
+				<h2 class="bafg-slider-title"><?php echo esc_html( $bafg_slider_title); ?></h2>
 				<?php
 			endif;
 
@@ -76,7 +81,7 @@ function bafg_slider_info( $id ) {
 				?>
 				<div class="bafg-slider-description">
 					<?php
-					echo esc_html__( $bafg_slider_description, "bafg" );
+					echo esc_html( $bafg_slider_description);
 					?>
 				</div>
 				<?php
@@ -97,7 +102,7 @@ function bafg_slider_info( $id ) {
 					}
 					?>
 					<a href="<?php echo esc_url( $bafg_readmore_link ); ?>" class="bafg_slider_readmore_button" <?php if ( $bafg_readmore_link_target == 'new_tab' )
-						   echo 'target="_blank"'; ?>><?php echo esc_html__( $bafg_readmore_text, 'bafg' ); ?></a>
+						   echo 'target="_blank"'; ?>><?php echo esc_html( $bafg_readmore_text ); ?></a>
 				</div>
 
 			<?php endif; ?>
@@ -397,7 +402,7 @@ if ( ! function_exists( 'bafg_review_notice' ) ) {
 						data = {
 							action: 'bafg_review_notice_callback',
 							status: status,
-							nonce: '<?php echo wp_create_nonce( 'bafg_review_notice_nonce' ); ?>'
+							nonce: '<?php echo esc_attr( wp_create_nonce( 'bafg_review_notice_nonce' ) ); //wp_create_nonce ?>'
 						};
 
 						$.ajax({
@@ -434,11 +439,15 @@ add_action( 'wp_ajax_bafg_review_notice_callback', 'bafg_review_notice_callback'
 if ( ! function_exists( 'bafg_review_notice_callback' ) ) {
 	function bafg_review_notice_callback() {
 		// nonce validation
-		if ( ! isset( $_POST['nonce'] ) || ! wp_verify_nonce( $_POST['nonce'], 'bafg_review_notice_nonce' ) ) {
+		if ( ! isset( $_POST['nonce'] ) || ! wp_verify_nonce( sanitize_text_field( wp_unslash( $_POST['nonce'] ) ), 'bafg_review_notice_nonce' ) ) {
 			wp_die();
 		}
-		
-		$status = esc_html( $_POST['status'] );
+
+		if ( ! isset( $_POST['status'] ) ) {
+			wp_die();
+		}
+
+		$status = sanitize_text_field( wp_unslash( $_POST['status'] ) );
 		if ( $status == 'already' ) {
 			update_option( 'bafg_review_notice_status', '1' );
 		} else if ( $status == 'never' ) {
@@ -1266,7 +1275,7 @@ if ( ! function_exists( 'bafg_watermark_enable_field_meta_cb' ) ) {
 }
 
 function beaf_utm_generator( $url, $utm_params = array() ) {
-	$host_url = parse_url( get_site_url(), PHP_URL_HOST );
+	$host_url = wp_parse_url( get_site_url(), PHP_URL_HOST );
 	$utm_params = array_merge( array(
 		'utm_source'   => 'beaf_' . $host_url,
 		'utm_medium'   => 'plugin',

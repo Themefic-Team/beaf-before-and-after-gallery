@@ -97,7 +97,7 @@ BEAF_Metabox::metabox( 'beaf_meta', array(
 					'label' => __( 'Before Image Alter text', 'bafg' ),
 					'dependency' => array( 'bafg_before_after_method', '==', 'method_1' ),
 				),
-				apply_filters( 'before_image_link',
+				apply_filters( 'bafg_before_image_link',
 					array(
 						'id' => '',
 						'type' => 'text',
@@ -125,7 +125,7 @@ BEAF_Metabox::metabox( 'beaf_meta', array(
 					'label' => __( 'After Image Alter text', 'bafg' ),
 					'dependency' => array( 'bafg_before_after_method', '==', 'method_1' ),
 				),
-				apply_filters( 'after_image_link',
+				apply_filters( 'bafg_after_image_link',
 					array(
 						'id' => '',
 						'type' => 'text',
@@ -148,7 +148,7 @@ BEAF_Metabox::metabox( 'beaf_meta', array(
 					'is_pro' => true
 				), $post ),
 
-				apply_filters( 'first_img_alt', array(
+				apply_filters( 'bafg_first_img_alt', array(
 					'id' => '',
 					'type' => 'text',
 					'label' => __( 'First Image Alter text', 'bafg' ),
@@ -164,7 +164,7 @@ BEAF_Metabox::metabox( 'beaf_meta', array(
 					'is_pro' => true
 				), $post ),
 
-				apply_filters( 'second_img_alt', array(
+				apply_filters( 'bafg_second_img_alt', array(
 					'id' => '',
 					'type' => 'text',
 					'label' => __( 'Second Image Alter text', 'bafg' ),
@@ -180,7 +180,7 @@ BEAF_Metabox::metabox( 'beaf_meta', array(
 					'is_pro' => true
 				), $post ),
 
-				apply_filters( 'third_img_alt', array(
+				apply_filters( 'bafg_third_img_alt', array(
 					'id' => '',
 					'type' => 'text',
 					'label' => __( 'Third Image Alter text', 'bafg' ),

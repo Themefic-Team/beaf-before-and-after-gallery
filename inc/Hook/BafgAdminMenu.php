@@ -4,7 +4,7 @@ if (!defined('ABSPATH')) {
 	exit();
 }
 
-class AdminMenu {
+class BafgAdminMenu {
 
     /*
 	 * Register admin menu

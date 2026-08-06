@@ -129,7 +129,7 @@ if ( ! class_exists( 'BEAF_icon' ) ) {
 				),
 			);
 
-			$icons = apply_filters( 'tf_icon_list', $icons );
+			$icons = apply_filters( 'bafg_icon_list', $icons );
 
 			return $icons;
 		}

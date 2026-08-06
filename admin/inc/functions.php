@@ -1,4 +1,8 @@
 <?php
+// Exit if accessed directly
+if ( ! defined( 'ABSPATH' ) ) {
+	exit();
+}
 /**
  * Dashboard header section
  */
@@ -8,7 +12,7 @@ function beaf_dashboard_header() {
     <div class="tf-setting-top-bar">
         <div class="version">
             <img src="<?php echo esc_url(BEAF_ASSETS_URL); ?>image/beaf-logo.webp" alt="logo">
-            <span><?php echo esc_html__('v'.BEAF_VERSION, 'bafg') ?></span>
+            <span><?php echo esc_html('v'.BEAF_VERSION) ?></span>
         </div>
         <div class="other-document">
             <svg width="26" height="25" viewBox="0 0 26 25" fill="none" xmlns="http://www.w3.org/2000/svg"

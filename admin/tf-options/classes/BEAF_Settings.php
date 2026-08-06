@@ -17,10 +17,10 @@ if ( ! class_exists( 'BEAF_Settings' ) ) {
 
 		public function __construct( $key, $params = array() ) {
 			$this->option_id = $key;
-			$this->option_title = ! empty( $params['title'] ) ? apply_filters( $key . '_title', $params['title'] ) : '';
-			$this->option_icon = ! empty( $params['icon'] ) ? apply_filters( $key . '_icon', $params['icon'] ) : '';
-			$this->option_position = ! empty( $params['position'] ) ? apply_filters( $key . '_position', $params['position'] ) : 5;
-			$this->option_sections = ! empty( $params['sections'] ) ? apply_filters( $key . '_sections', $params['sections'] ) : array();
+			$this->option_title = ! empty( $params['title'] ) ? apply_filters( 'bafg_' . $key . '_title', $params['title'] ) : '';
+			$this->option_icon = ! empty( $params['icon'] ) ? apply_filters( 'bafg_' . $key . '_icon', $params['icon'] ) : '';
+			$this->option_position = ! empty( $params['position'] ) ? apply_filters( 'bafg_' . $key . '_position', $params['position'] ) : 5;
+			$this->option_sections = ! empty( $params['sections'] ) ? apply_filters( 'bafg_' . $key . '_sections', $params['sections'] ) : array();
 
 			// run only is admin panel options, avoid performance loss
 			$this->pre_tabs = $this->pre_tabs( $this->option_sections );
@@ -225,7 +225,7 @@ if ( ! class_exists( 'BEAF_Settings' ) ) {
 							<div class="beaf-dashboard-promo-banner-header beaf-sidebar-promo-header">
 								<?php do_action( 'beaf_dashboard_promo_notice' ); ?>
 							</div>
-							<?php echo $this->tf_sidebar(); ?>
+							<?php $this->tf_sidebar(); ?>
 						</div>
 					</div>
 				</div>
@@ -238,48 +238,48 @@ if ( ! class_exists( 'BEAF_Settings' ) ) {
 			<div class="beaf-sidebar">
 				<div class="beaf-sidebar-wrap">
 					<!-- promo banner  -->
-					 <?php echo apply_filters('beaf_dashboard_helper_banner', ''); ?>
+					 <?php echo wp_kses_post( apply_filters('beaf_dashboard_helper_banner', '') ); ?>
 
 					<div class="beaf-sidebar-content">
 
-						<?php echo $this->tf_get_sidebar_plugin_list(); ?>
+						<?php $this->tf_get_sidebar_plugin_list(); ?>
 
 						<div class="customization-quote">
 							<div class="quote-header">
 								<i class="fa-solid fa-code"></i>
-								<a href="<?php echo esc_url( 'https://portal.themefic.com/hire-us/' ); ?>" target="_blank"><?php echo __('Get Free Quote', 'bafg');  ?></a>
+								<a href="<?php echo esc_url( 'https://portal.themefic.com/hire-us/' ); ?>" target="_blank"><?php echo esc_html__( 'Get Free Quote', 'bafg' ); ?></a>
 							</div>
 							<div class="quote-content">
-								<h3><?php echo __('Need Help Customizing Your WordPress Site?', 'bafg');  ?></h3>
-								<p><?php echo __('Want to tweak a theme, adjust a plugin like Ultimate Before After Image Slider, or add custom functionality to your site? Our expert WordPress developers can tailor it just the way you need. We only charge $29/hour', 'bafg');  ?></p>								
+								<h3><?php echo esc_html__( 'Need Help Customizing Your WordPress Site?', 'bafg' ); ?></h3>
+								<p><?php echo esc_html__( 'Want to tweak a theme, adjust a plugin like Ultimate Before After Image Slider, or add custom functionality to your site? Our expert WordPress developers can tailor it just the way you need. We only charge $29/hour', 'bafg' ); ?></p>								
 							</div>
 						</div>
 
 						<div class="quick-access">
-							<h3><?php echo __('Helpful Resources', 'bafg');  ?></h3>
+							<h3><?php echo esc_html__( 'Helpful Resources', 'bafg' ); ?></h3>
 							<div class="quick-access-wrapper">
 								<div class="access-item">
 									<a href="https://themefic.com/docs/beaf/" target="_blank">
 										<span class="icon"><i class="fa-solid fa-folder-open"></i></span>
-										<?php echo _e( 'Documentation', 'bafg' ); ?>
+										<?php echo esc_html__( 'Documentation', 'bafg' ); ?>
 									</a>
 								</div>
 								<div class="access-item">
 									<a href="https://portal.themefic.com/support/" target="_blank">
 										<span class="icon"><i class="fa-solid fa-headset"></i></span>
-										<?php echo _e( 'Get Support', 'bafg' ); ?>
+										<?php echo esc_html__( 'Get Support', 'bafg' ); ?>
 									</a>
 								</div>
 								<div class="access-item">
 									<a href="https://facebook.com/groups/beaf.wp" target="_blank">
 										<span class="icon"><i class="fa-solid fa-users"></i></span>
-										<?php echo _e( 'Join our Community', 'bafg' ); ?>
+										<?php echo esc_html__( 'Join our Community', 'bafg' ); ?>
 									</a>
 								</div>
 								<div class="access-item">
 									<a href="https://portal.themefic.com/support/" target="_blank">
 										<span class="icon"><i class="fa-solid fa-lightbulb"></i></span>
-										<?php echo _e( 'Request a Feature', 'bafg' ); ?>
+										<?php echo esc_html__( 'Request a Feature', 'bafg' ); ?>
 									</a>
 								</div>
 							</div>
@@ -441,9 +441,9 @@ if ( ! class_exists( 'BEAF_Settings' ) ) {
 				wp_send_json_error('You do not have permission to perform this action.');
 			}
 
-			$plugin_slug = isset($_POST['plugin_slug']) ? sanitize_text_field($_POST['plugin_slug']) : '';
-			$plugin_filename = isset($_POST['plugin_filename']) ? sanitize_text_field($_POST['plugin_filename']) : '';
-			$plugin_action = isset($_POST['plugin_action']) ? sanitize_text_field($_POST['plugin_action']) : '';
+			$plugin_slug = isset($_POST['plugin_slug']) ? sanitize_text_field(wp_unslash($_POST['plugin_slug'])) : '';
+			$plugin_filename = isset($_POST['plugin_filename']) ? sanitize_text_field(wp_unslash($_POST['plugin_filename'])) : '';
+			$plugin_action = isset($_POST['plugin_action']) ? sanitize_text_field(wp_unslash($_POST['plugin_action'])) : '';
 
 			if (!$plugin_slug || !$plugin_action) {
 				wp_send_json_error('Invalid request.');
@@ -502,16 +502,16 @@ if ( ! class_exists( 'BEAF_Settings' ) ) {
 			}
 
 			if ( ! current_user_can( 'manage_options' ) ) {
-				wp_die( __( 'You are not allowed to perform this action.', 'bafg' ) );
+				wp_die( esc_html__( 'You are not allowed to perform this action.', 'bafg' ) );
 			}
 
 			// Check nonce
-			if ( ! wp_verify_nonce( $_POST['beaf_option_nonce'], 'beaf_option_nonce_action' ) ) {
+			if ( ! wp_verify_nonce( sanitize_text_field(wp_unslash( $_POST['beaf_option_nonce'] )), 'beaf_option_nonce_action' ) ) {
 				return;
 			}
 
 			$tf_option_value = array();
-			$option_request = ( ! empty( $_POST[ $this->option_id ] ) ) ? $_POST[ $this->option_id ] : array();
+			$option_request = ( ! empty( $_POST[ $this->option_id ] ) ) ? sanitize_text_field(wp_unslash( $_POST[ $this->option_id ] )) : array();
 			if ( ! empty( $option_request ) && ! empty( $this->option_sections ) ) {
 				foreach ( $this->option_sections as $section ) {
 					if ( ! empty( $section['fields'] ) ) {
@@ -558,8 +558,7 @@ if ( ! class_exists( 'BEAF_Settings' ) ) {
 								}
 
 
-								if ( isset( $_FILES ) && ! empty( $_FILES['file'] ) ) {
-									uacf7_print_r( $_FILES );
+								if ( isset( $_FILES['file']['name'], $_FILES['file']['tmp_name'], $_FILES['file']['type'] ) && is_array( $_FILES['file']['name'] ) && ! empty( $_FILES['file']['name'] ) ) {
 								
 									$tf_upload_dir = wp_upload_dir();
 								
@@ -580,16 +579,19 @@ if ( ! class_exists( 'BEAF_Settings' ) ) {
 										);
 								
 										for ( $i = 0; $i < count( $_FILES['file']['name'] ); $i++ ) {
-											$original_name = $_FILES['file']['name'][ $i ];
-											$tmp_name      = $_FILES['file']['tmp_name'][ $i ];
-											$type          = $_FILES['file']['type'][ $i ];
-								
+                                            if ( ! isset( $_FILES['file']['name'][ $i ], $_FILES['file']['tmp_name'][ $i ], $_FILES['file']['type'][ $i ] ) ) {
+                                                continue;
+                                            }
+
+                                            $original_name = sanitize_file_name( wp_unslash( $_FILES['file']['name'][ $i ] ) );
+                                            $tmp_name      = sanitize_text_field( wp_unslash( $_FILES['file']['tmp_name'][ $i ] ) );
+                                            $type          = sanitize_text_field( wp_unslash( $_FILES['file']['type'][ $i ] ) );
 											$sanitized_name = sanitize_file_name( $original_name );
 											$extension      = strtolower( pathinfo( $sanitized_name, PATHINFO_EXTENSION ) );
 								
 											// Check if file type and extension are allowed
 											if ( in_array( $extension, $allowed_extensions, true ) && $type === $allowed_mime_types[ $extension ] ) {
-												move_uploaded_file( $tmp_name, $tf_itinerary_fonts . '/' . $sanitized_name );
+												copy( $tmp_name, $tf_itinerary_fonts . '/' . $sanitized_name );
 											}
 										}
 									}
@@ -631,7 +633,7 @@ if ( ! class_exists( 'BEAF_Settings' ) ) {
 				'message' => __( 'Something went wrong!', 'bafg' ),
 			];
 
-			if ( ! empty( $_POST['beaf_option_nonce'] ) && wp_verify_nonce( $_POST['beaf_option_nonce'], 'beaf_option_nonce_action' ) ) {
+			if ( ! empty( $_POST['beaf_option_nonce'] ) && wp_verify_nonce( sanitize_text_field( wp_unslash( $_POST['beaf_option_nonce'] ) ), 'beaf_option_nonce_action' ) ) {
 				$this->beaf_save_options();
 				$response = [ 
 					'status' => 'success',
@@ -649,9 +651,13 @@ if ( ! class_exists( 'BEAF_Settings' ) ) {
 		 * @author Foysal
 		 */
 		public function get_current_page_url() {
-			$page_url = ( isset( $_SERVER['HTTPS'] ) && $_SERVER['HTTPS'] === 'on' ? "https" : "http" ) . "://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
+			$scheme = ( isset( $_SERVER['HTTPS'] ) && $_SERVER['HTTPS'] === 'on' ) ? 'https' : 'http';
+			$host = isset( $_SERVER['HTTP_HOST'] ) ? sanitize_text_field( wp_unslash( $_SERVER['HTTP_HOST'] ) ) : '';
+			$request_uri = isset( $_SERVER['REQUEST_URI'] ) ? sanitize_text_field( wp_unslash( $_SERVER['REQUEST_URI'] ) ) : '';
 
-			return $page_url;
+			$page_url = $scheme . '://' . $host . $request_uri;
+
+			return esc_url_raw( $page_url );
 		}
 
 		/*
@@ -660,7 +666,7 @@ if ( ! class_exists( 'BEAF_Settings' ) ) {
 		 * @author Foysal
 		 */
 		public function get_query_string( $url ) {
-			$url_parts = parse_url( $url );
+			$url_parts = wp_parse_url( $url );
 			parse_str( $url_parts['query'], $query_string );
 
 			return $query_string;

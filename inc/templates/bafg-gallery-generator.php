@@ -1,20 +1,27 @@
+<?php
+// Exit if accessed directly
+if ( ! defined( 'ABSPATH' ) ) {
+	exit();
+}
+
+?>
 <div class="bafg-wrap">
 <!--Gallery generator-->
 	<div id="bafg_gallery_generator">
 		<h2><?php echo esc_html__( 'BEAF Gallery', 'bafg' ); ?></h2>
-		<p><?php echo esc_html__('With this option, you can easily generate 2 columns, 3 columns or even 4 columns Before - After Gallery. Just select the options below, generate shortcode and copy-paste the shortcode wherever you want to show the gallery on your website. That\'s it.'); ?> <a target="_blank" href="https://www.youtube.com/watch?v=Uq3qlVdD_dY"><?php echo esc_html__( 'Click here', 'bafg' ); ?></a> <?php echo esc_html__( 'to learn more.', 'bafg' ); ?></p>
+		<p><?php echo esc_html__('With this option, you can easily generate 2 columns, 3 columns or even 4 columns Before - After Gallery. Just select the options below, generate shortcode and copy-paste the shortcode wherever you want to show the gallery on your website. That\'s it.','bafg'); ?> <a target="_blank" href="https://www.youtube.com/watch?v=Uq3qlVdD_dY"><?php echo esc_html__( 'Click here', 'bafg' ); ?></a> <?php echo esc_html__( 'to learn more.', 'bafg' ); ?></p>
 		<label for="bafg_gallery_cata"><?php echo esc_html__( 'Category:', 'bafg' ); ?></label><br>
 		<select id="bafg_gallery_cata">
 			<option value=""><?php echo esc_html__( '-Select category-', 'bafg' ); ?></option>
 			<option value="all"><?php echo esc_html__( 'All','bafg' ); ?></option>
 			<?php
-			$terms = get_terms( array(
+			$bafg_gallery_terms = get_terms( array(
 				'taxonomy' => 'bafg_gallery',
 				'hide_empty' => false,
 			));
-			foreach( $terms as $term ) :
+			foreach( $bafg_gallery_terms as $term ) :
 			?>			
-			<option value="<?php echo esc_attr($term->term_id); ?>"><?php echo esc_html__($term->name, 'bafg'); ?></option>
+			<option value="<?php echo esc_attr($term->term_id); ?>"><?php echo esc_html( $term->name ); ?></option>
 			<?php
 			endforeach;
 			?>
@@ -50,18 +57,18 @@
 	<!--Filter gallery generator-->
 	<div id="bafg_filter_gallery_generator">
 		<h2><?php echo esc_html__( 'BEAF Filterable Gallery', 'bafg' ); ?></h2>
-		<p><?php echo esc_html__('With this option, you can easily generate 2 columns, 3 columns or even 4 columns Before - After Filterable Gallery. Just select the options below, generate shortcode and copy-paste the shortcode wherever you want to show the gallery on your website. That\'s it'); ?> <a target="_blank" href="https://themefic.com/plugins/beaf/pro/#filtergallery"><?php echo esc_html__( 'Click here', 'bafg' ); ?></a> <?php echo esc_html__( 'to learn more.', 'bafg' ); ?></p>
+		<p><?php echo esc_html__('With this option, you can easily generate 2 columns, 3 columns or even 4 columns Before - After Filterable Gallery. Just select the options below, generate shortcode and copy-paste the shortcode wherever you want to show the gallery on your website. That\'s it', 'bafg'); ?> <a target="_blank" href="https://themefic.com/plugins/beaf/pro/#filtergallery"><?php echo esc_html__( 'Click here', 'bafg' ); ?></a> <?php echo esc_html__( 'to learn more.', 'bafg' ); ?></p>
 		<label for="bafg_filter_gallery_cata"><?php echo esc_html__( 'Category:', 'bafg' ); ?></label><br>
 		<select id="bafg_filter_gallery_cata" multiple>
 			<option value="all"><?php echo esc_html__( 'All', 'bafg' ); ?></option>
 			<?php
-			$terms = get_terms( array(
+			$bafg_gallery_terms = get_terms( array(
 				'taxonomy' => 'bafg_gallery',
 				'hide_empty' => false,
 			));
-			foreach( $terms as $term ) :
+			foreach( $bafg_gallery_terms as $term ) :
 			?>
-			<option value="<?php echo esc_attr($term->term_id); ?>"><?php echo esc_html__($term->name, 'bafg' ); ?></option>
+			<option value="<?php echo esc_attr($term->term_id); ?>"><?php echo esc_html( $term->name ); ?></option>
 			<?php
 			endforeach;
 			?>

@@ -95,12 +95,12 @@ beaf_gallery_slider();
  *
  * @return void
  */
-if ( ! function_exists( 'appsero_init_tracker_beaf_before_and_after_gallery' ) ) {
+if ( ! function_exists( 'bafg_appsero_init_tracker_beaf_before_and_after_gallery' ) ) {
 	/* 
 	 * Initialize the appsero
 	 */
 
-	function appsero_init_tracker_beaf_before_and_after_gallery() {
+	function bafg_appsero_init_tracker_beaf_before_and_after_gallery() {
 
 		$client = new Appsero\Client( 'daee3b5d-d8a3-46f0-ae49-7b6f869f4b42', 'Ultimate Before After Image Slider & Gallery – BEAF', __FILE__ );
 
@@ -113,5 +113,5 @@ if ( ! function_exists( 'appsero_init_tracker_beaf_before_and_after_gallery' ) )
 		$client->insights()->init();
 
 	}
-	appsero_init_tracker_beaf_before_and_after_gallery();
+	bafg_appsero_init_tracker_beaf_before_and_after_gallery();
 }

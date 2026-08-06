@@ -257,7 +257,7 @@ class BEAF_Dashboard_Promo_Notice {
 
 			<div class="beaf-promo-icon">
 
-				<img style="height:72px; width:60px;" src="<?php echo BAFG_PLUGIN_URL; ?>assets/image/shield-icon.gif" alt="shield logo">
+				<img style="height:72px; width:60px;" src="<?php echo esc_url( BAFG_PLUGIN_URL ); ?>assets/image/shield-icon.gif" alt="shield logo">
 
 			</div>
 
