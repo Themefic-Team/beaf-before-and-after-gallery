@@ -38,7 +38,7 @@ if ( ! class_exists( 'BEAF_Repeater' ) ) {
 									$tf_repater_default_value = $value['title'];
 								}
 								if ( $this->field['id'] == "amenities" ) {
-									$tf_repater_default_value = __( 'Amenity', 'bafg' );
+									$tf_repater_default_value = __( 'Amenity', 'beaf-before-and-after-gallery' );
 								}
 								?>
 								<div class="tf-single-repeater tf-single-repeater-<?php echo esc_attr( $this->field['id'] ); ?>">

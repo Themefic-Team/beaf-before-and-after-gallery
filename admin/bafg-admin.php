@@ -44,7 +44,7 @@ class BAFG_Options {
 		$screen = get_current_screen();
 
 		if ( 'bafg' === $screen->post_type || 'edit-bafg_taxonomy' === $screen->taxonomy ) {
-			echo '<div id="bafg_copy">' . esc_html__( 'Shortcode Copied!', 'bafg' ) . '</div>';
+			echo '<div id="bafg_copy">' . esc_html__( 'Shortcode Copied!', 'beaf-before-and-after-gallery' ) . '</div>';
 		}
 	}
 
@@ -114,12 +114,12 @@ class BAFG_Options {
 	public function bafg_custom_columns( $columns ) {
 		$columns = array(
 			'cb' => '<input type="checkbox" />',
-			'title' => esc_html__( 'Title', 'bafg' ),
-			'bafg_shortcode' => esc_html__( 'Shortcode', 'bafg' ),
-			'bimage' => esc_html__( 'Before Image', 'bafg' ),
-			'second_image' => esc_html__( 'Middle Image', 'bafg' ),
-			'aimage' => esc_html__( 'After Image', 'bafg' ),
-			'date' => esc_html__( 'Date', 'bafg' )
+			'title' => esc_html__( 'Title', 'beaf-before-and-after-gallery' ),
+			'bafg_shortcode' => esc_html__( 'Shortcode', 'beaf-before-and-after-gallery' ),
+			'bimage' => esc_html__( 'Before Image', 'beaf-before-and-after-gallery' ),
+			'second_image' => esc_html__( 'Middle Image', 'beaf-before-and-after-gallery' ),
+			'aimage' => esc_html__( 'After Image', 'beaf-before-and-after-gallery' ),
+			'date' => esc_html__( 'Date', 'beaf-before-and-after-gallery' )
 		);
 		return $columns;
 	}
@@ -225,7 +225,7 @@ class BAFG_Options {
 	* Gallery category column
 	*/
 	public function bafg_gallery_columns( $theme_columns ) {
-		$theme_columns['bafg_gallery'] = esc_html__( 'Gallery Shortcode', 'bafg' );
+		$theme_columns['bafg_gallery'] = esc_html__( 'Gallery Shortcode', 'beaf-before-and-after-gallery' );
 		return $theme_columns;
 	}
 
@@ -252,12 +252,12 @@ class BAFG_Options {
 			if ( ! get_user_meta( $user_id, 'bafg_woo_new_feature_notice_dismissed', true ) ) {
 				?>
 				<div class="notice notice-success">
-					<h2><?php echo esc_html__( 'It looks like you have WooCommerce plugin installed.', 'bafg' ); ?></h2>
-					<p><?php echo esc_html__( 'If you want to use before after slider on the WooCommerce product page, you can try our free plugin', 'bafg' ); ?>
-						<a href="<?php echo esc_url( admin_url( '/plugin-install.php?s=ebeaf&tab=search&type=term' ) ); ?>"> <?php echo esc_html__( 'Before After for WooCommerce', 'bafg' ); ?></a>
+					<h2><?php echo esc_html__( 'It looks like you have WooCommerce plugin installed.', 'beaf-before-and-after-gallery' ); ?></h2>
+					<p><?php echo esc_html__( 'If you want to use before after slider on the WooCommerce product page, you can try our free plugin', 'beaf-before-and-after-gallery' ); ?>
+						<a href="<?php echo esc_url( admin_url( '/plugin-install.php?s=ebeaf&tab=search&type=term' ) ); ?>"> <?php echo esc_html__( 'Before After for WooCommerce', 'beaf-before-and-after-gallery' ); ?></a>
 					</p>
 					<p><a class="button"
-							href="<?php echo esc_url( wp_nonce_url( admin_url( '?bafg-woo-dismissed' ), 'bafg-woo-dismissed-nonce' ) ); ?>"><?php esc_html_e( 'Close this Notice', 'bafg' ); ?></a></p>
+							href="<?php echo esc_url( wp_nonce_url( admin_url( '?bafg-woo-dismissed' ), 'bafg-woo-dismissed-nonce' ) ); ?>"><?php esc_html_e( 'Close this Notice', 'beaf-before-and-after-gallery' ); ?></a></p>
 				</div>
 				<?php
 			}

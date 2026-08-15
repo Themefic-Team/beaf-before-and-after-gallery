@@ -107,8 +107,8 @@ if ( ! class_exists( 'BEAF_Settings' ) ) {
 			//Setting submenu
 			add_submenu_page(
 				'edit.php?post_type=bafg',
-				__( 'Beaf Settings', 'bafg' ),
-				__( 'Settings', 'bafg' ),
+				__( 'Beaf Settings', 'beaf-before-and-after-gallery' ),
+				__( 'Settings', 'beaf-before-and-after-gallery' ),
 				'manage_options',
 				'beaf_settings',
 				array( $this, 'beaf_options_page' ),
@@ -212,7 +212,7 @@ if ( ! class_exists( 'BEAF_Settings' ) ) {
 										<!-- Footer -->
 										<div class="tf-option-footer">
 											<button type="submit" class="tf-admin-btn tf-btn-secondary beaf-submit-btn">
-												<?php esc_attr_e( 'Save', 'bafg' ); ?>
+												<?php esc_attr_e( 'Save', 'beaf-before-and-after-gallery' ); ?>
 											</button>
 										</div>
 									</div>
@@ -247,12 +247,12 @@ if ( ! class_exists( 'BEAF_Settings' ) ) {
 							href="<?php echo esc_url( 'https://themefic.com/plugins/beaf/services' ); ?>"
 							target="_blank"
 							rel="noopener noreferrer"
-							aria-label="<?php echo esc_attr__( 'Get a free WordPress development quote', 'bafg' ); ?>"
+							aria-label="<?php echo esc_attr__( 'Get a free WordPress development quote', 'beaf-before-and-after-gallery' ); ?>"
 						>
 							<div class="quote-header">
 								<i class="fa-solid fa-code" aria-hidden="true"></i>
 								<span>
-									<?php echo esc_html__( 'Get Free Quote', 'bafg' ); ?>
+									<?php echo esc_html__( 'Get Free Quote', 'beaf-before-and-after-gallery' ); ?>
 								</span>
 							</div>
 
@@ -261,7 +261,7 @@ if ( ! class_exists( 'BEAF_Settings' ) ) {
 									<?php
 									echo esc_html__(
 										'Need a WordPress Developer? We Build, Fix, and Customize Anything (Complete White Label).',
-										'bafg'
+										'beaf-before-and-after-gallery'
 									);
 									?>
 								</h3>
@@ -270,7 +270,7 @@ if ( ! class_exists( 'BEAF_Settings' ) ) {
 									<?php
 									echo esc_html__(
 										'From plugin customization to full site builds, integrations, and design work, our team handles it end to end. Starting at $25/hour only, no project too small.',
-										'bafg'
+										'beaf-before-and-after-gallery'
 									);
 									?>
 								</p>
@@ -280,30 +280,30 @@ if ( ! class_exists( 'BEAF_Settings' ) ) {
 						<?php $this->tf_get_sidebar_plugin_list(); ?>
 
 						<div class="quick-access">
-							<h3><?php echo esc_html__( 'Helpful Resources', 'bafg' ); ?></h3>
+							<h3><?php echo esc_html__( 'Helpful Resources', 'beaf-before-and-after-gallery' ); ?></h3>
 							<div class="quick-access-wrapper">
 								<div class="access-item">
 									<a href="https://themefic.com/docs/beaf/" target="_blank">
 										<span class="icon"><i class="fa-solid fa-folder-open"></i></span>
-										<?php echo esc_html__( 'Documentation', 'bafg' ); ?>
+										<?php echo esc_html__( 'Documentation', 'beaf-before-and-after-gallery' ); ?>
 									</a>
 								</div>
 								<div class="access-item">
 									<a href="https://portal.themefic.com/support/" target="_blank">
 										<span class="icon"><i class="fa-solid fa-headset"></i></span>
-										<?php echo esc_html__( 'Get Support', 'bafg' ); ?>
+										<?php echo esc_html__( 'Get Support', 'beaf-before-and-after-gallery' ); ?>
 									</a>
 								</div>
 								<div class="access-item">
 									<a href="https://facebook.com/groups/beaf.wp" target="_blank">
 										<span class="icon"><i class="fa-solid fa-users"></i></span>
-										<?php echo esc_html__( 'Join our Community', 'bafg' ); ?>
+										<?php echo esc_html__( 'Join our Community', 'beaf-before-and-after-gallery' ); ?>
 									</a>
 								</div>
 								<div class="access-item">
 									<a href="https://portal.themefic.com/support/" target="_blank">
 										<span class="icon"><i class="fa-solid fa-lightbulb"></i></span>
-										<?php echo esc_html__( 'Request a Feature', 'bafg' ); ?>
+										<?php echo esc_html__( 'Request a Feature', 'beaf-before-and-after-gallery' ); ?>
 									</a>
 								</div>
 							</div>
@@ -526,7 +526,7 @@ if ( ! class_exists( 'BEAF_Settings' ) ) {
 			}
 
 			if ( ! current_user_can( 'manage_options' ) ) {
-				wp_die( esc_html__( 'You are not allowed to perform this action.', 'bafg' ) );
+				wp_die( esc_html__( 'You are not allowed to perform this action.', 'beaf-before-and-after-gallery' ) );
 			}
 
 			// Check nonce
@@ -535,7 +535,7 @@ if ( ! class_exists( 'BEAF_Settings' ) ) {
 			}
 
 			$tf_option_value = array();
-			$option_request = ( ! empty( $_POST[ $this->option_id ] ) ) ? sanitize_text_field(wp_unslash( $_POST[ $this->option_id ] )) : array();
+			$option_request = ( ! empty( $_POST[ $this->option_id ] ) ) ? map_deep(wp_unslash( $_POST[ $this->option_id ] ), 'sanitize_text_field') : array();
 			if ( ! empty( $option_request ) && ! empty( $this->option_sections ) ) {
 				foreach ( $this->option_sections as $section ) {
 					if ( ! empty( $section['fields'] ) ) {
@@ -649,19 +649,19 @@ if ( ! class_exists( 'BEAF_Settings' ) ) {
 		public function beaf_ajax_save_options() {
 			// Check if the request is valid.
 			if ( ! check_ajax_referer( 'beaf_option_nonce_action', 'beaf_option_nonce' ) ) {
-				wp_send_json_error( __( 'Invalid request!', 'bafg' ) );
+				wp_send_json_error( __( 'Invalid request!', 'beaf-before-and-after-gallery' ) );
 			}
 			
 			$response = [ 
 				'status' => 'error',
-				'message' => __( 'Something went wrong!', 'bafg' ),
+				'message' => __( 'Something went wrong!', 'beaf-before-and-after-gallery' ),
 			];
 
 			if ( ! empty( $_POST['beaf_option_nonce'] ) && wp_verify_nonce( sanitize_text_field( wp_unslash( $_POST['beaf_option_nonce'] ) ), 'beaf_option_nonce_action' ) ) {
 				$this->beaf_save_options();
 				$response = [ 
 					'status' => 'success',
-					'message' => __( 'Options saved successfully!', 'bafg' ),
+					'message' => __( 'Options saved successfully!', 'beaf-before-and-after-gallery' ),
 				];
 			}
 

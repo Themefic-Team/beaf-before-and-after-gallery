@@ -16,9 +16,9 @@ if ( ! class_exists( 'BEAF_date' ) ) {
 				'range' => false,
 				'multiple' => false,
 				'minDate' => '',
-				'label_from' => esc_html__( 'From', 'bafg' ),
-				'label_to' => esc_html__( 'To', 'bafg' ),
-				'placeholder' => esc_html__( 'Select Date', 'bafg' ),
+				'label_from' => esc_html__( 'From', 'beaf-before-and-after-gallery' ),
+				'label_to' => esc_html__( 'To', 'beaf-before-and-after-gallery' ),
+				'placeholder' => esc_html__( 'Select Date', 'beaf-before-and-after-gallery' ),
 			) );
 
 			$value = wp_parse_args( $this->value, array(
@@ -29,7 +29,7 @@ if ( ! class_exists( 'BEAF_date' ) ) {
 			$format = ( ! empty( $args['format'] ) ) ? $args['format'] : 'Y-m-d';
 			$range = ( ! empty( $args['range'] ) ) ? $args['range'] : false;
 			$multiple = ( ! empty( $args['multiple'] ) ) ? $args['multiple'] : false;
-			$placeholder = ( ! empty( $args['placeholder'] ) ) ? $args['placeholder'] : esc_html__( 'Select Date', 'bafg' );
+			$placeholder = ( ! empty( $args['placeholder'] ) ) ? $args['placeholder'] : esc_html__( 'Select Date', 'beaf-before-and-after-gallery' );
 			$minDate = ( ! empty( $args['minDate'] ) ) ? $args['minDate'] : '';
 
 			if ( $range ) : ?>

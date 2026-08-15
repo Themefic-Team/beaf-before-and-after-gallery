@@ -176,7 +176,7 @@ class Hook {
 	public static function beaf_file_missing( $files = '' ) {
 		if ( is_admin() && ! empty( $files ) ) {
 			$class   = 'notice notice-error';
-			$message = '<strong>' . esc_html( $files ) . '</strong>' . ' ' . esc_html__( 'file is missing! It is required to function properly!', 'bafg' );
+			$message = '<strong>' . esc_html( $files ) . '</strong>' . ' ' . esc_html__( 'file is missing! It is required to function properly!', 'beaf-before-and-after-gallery' );
 			printf( '<div class="%1$s"><p>%2$s</p></div>', esc_attr( $class ), esc_html( $message ) );
 		}
 	}

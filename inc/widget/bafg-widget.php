@@ -63,11 +63,11 @@ class bafg_widget extends WP_Widget {
         $bafg_shortcode = ! empty( $instance['bafg_shortcode'] ) ? $instance['bafg_shortcode'] : '';
         ?>
         <p>
-        <label for="<?php echo esc_attr( $this->get_field_id( 'title' ) ); ?>"><?php echo esc_html__( 'Title:', 'bafg' ); ?></label>
+        <label for="<?php echo esc_attr( $this->get_field_id( 'title' ) ); ?>"><?php echo esc_html__( 'Title:', 'beaf-before-and-after-gallery' ); ?></label>
             <input class="widefat" id="<?php echo esc_attr( $this->get_field_id( 'title' ) ); ?>" name="<?php echo esc_attr( $this->get_field_name( 'title' ) ); ?>" type="text" value="<?php echo esc_attr( $title ); ?>">
         </p>
         <p>
-            <label for="<?php echo esc_attr( $this->get_field_id( 'bafg_post_id' ) ); ?>"><?php echo esc_html__( 'Select Slider:', 'bafg' ); ?></label>
+            <label for="<?php echo esc_attr( $this->get_field_id( 'bafg_post_id' ) ); ?>"><?php echo esc_html__( 'Select Slider:', 'beaf-before-and-after-gallery' ); ?></label>
             
             <?php
             $bafg_list = get_posts(array(
@@ -77,7 +77,7 @@ class bafg_widget extends WP_Widget {
             ?>
             
             <select class="widefat" id="<?php echo esc_attr( $this->get_field_id( 'bafg_post_id' ) ); ?>" name="<?php echo esc_attr( $this->get_field_name( 'bafg_post_id' ) ); ?>">
-                <option><?php echo esc_html__('Select a Slider', 'bafg'); ?></option>
+                <option><?php echo esc_html__('Select a Slider', 'beaf-before-and-after-gallery'); ?></option>
                 <?php
 				
 				if (!empty($bafg_list) && !is_wp_error($bafg_list)) {
@@ -90,9 +90,9 @@ class bafg_widget extends WP_Widget {
 				?>
             </select>
         </p>
-        <p><label><?php echo esc_html__( 'Or:', 'bafg' ); ?></label></p>
+        <p><label><?php echo esc_html__( 'Or:', 'beaf-before-and-after-gallery' ); ?></label></p>
         <p>
-        	<label for="<?php echo esc_attr( $this->get_field_id( 'bafg_shortcode' ) ); ?>"><?php echo esc_html__( 'Enter Shortcode:', 'bafg' ); ?></label>
+        	<label for="<?php echo esc_attr( $this->get_field_id( 'bafg_shortcode' ) ); ?>"><?php echo esc_html__( 'Enter Shortcode:', 'beaf-before-and-after-gallery' ); ?></label>
 
             <input class="widefat" type="text" id="<?php echo esc_attr( $this->get_field_id( 'bafg_shortcode' ) ); ?>" name="<?php echo esc_attr( $this->get_field_name( 'bafg_shortcode' ) ); ?>" value="<?php echo esc_attr($bafg_shortcode); ?>">
         </p>

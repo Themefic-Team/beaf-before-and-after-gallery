@@ -14,8 +14,8 @@ class BafgAdminMenu {
 
 		add_submenu_page(
 			'edit.php?post_type=bafg',
-			__( 'Gallery Generator', 'bafg' ),
-			__( 'Gallery Generator', 'bafg' ),
+			__( 'Gallery Generator', 'beaf-before-and-after-gallery' ),
+			__( 'Gallery Generator', 'beaf-before-and-after-gallery' ),
 			'manage_options',
 			'bafg_gallery',
 			array($this, 'bafg_gallery_cb')
@@ -23,8 +23,8 @@ class BafgAdminMenu {
 	
 		add_submenu_page(
 			'edit.php?post_type=bafg',
-			__( 'Documentation', 'bafg' ),
-			__( 'Documentation', 'bafg' ),
+			__( 'Documentation', 'beaf-before-and-after-gallery' ),
+			__( 'Documentation', 'beaf-before-and-after-gallery' ),
 			'manage_options',
 			'https://themefic.com/docs/beaf/'
 		);

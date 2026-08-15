@@ -90,8 +90,8 @@ class BAFG_Shortcode {
 		$a_image              = ! empty( $meta['bafg_after_image'] ) ? $meta['bafg_after_image'] : '';
 		$orientation          = ! empty( $meta['bafg_image_styles'] ) ? $meta['bafg_image_styles'] : 'horizontal';
 		$offset               = ! empty( $meta['bafg_default_offset'] ) ? $meta['bafg_default_offset'] : '0.5';
-		$before_label         = ! empty( $meta['bafg_before_label'] ) ? esc_html( $meta['bafg_before_label'] ) : esc_html( __( 'Before', 'bafg' ) );
-		$after_label          = ! empty( $meta['bafg_after_label'] ) ? esc_html( $meta['bafg_after_label'] ) : esc_html( __( 'After', 'bafg' ) );
+		$before_label         = ! empty( $meta['bafg_before_label'] ) ? esc_html( $meta['bafg_before_label'] ) : esc_html( __( 'Before', 'beaf-before-and-after-gallery' ) );
+		$after_label          = ! empty( $meta['bafg_after_label'] ) ? esc_html( $meta['bafg_after_label'] ) : esc_html( __( 'After', 'beaf-before-and-after-gallery' ) );
 		$overlay              = ! empty( $meta['bafg_no_overlay'] ) ? $meta['bafg_no_overlay'] : '';
 		$move_slider_on_hover = ! empty( $meta['bafg_move_slider_on_hover'] ) ? $meta['bafg_move_slider_on_hover'] : '';
 		$click_to_move        = ! empty( $meta['bafg_click_to_move'] ) ? $meta['bafg_click_to_move'] : '';
@@ -231,6 +231,7 @@ class BAFG_Shortcode {
 				$gallery_query = new WP_Query( array(
 					'post_type'      => 'bafg',
 					'posts_per_page' => $items,
+					// phpcs:ignore WordPress.DB.SlowDBQuery.slow_db_query_tax_query -- Required to filter gallery items by the selected bafg_gallery taxonomy term.
 					'tax_query'      => array(
 						array(
 							'taxonomy' => 'bafg_gallery',
@@ -330,15 +331,15 @@ class BAFG_Shortcode {
 		</div>
 		<div class="bafg-frontend-upload-buttons">
 			<div class="bafg-bimage-up">
-				<label><?php echo esc_html( __( "Upload Before Image", "bafg" ) ); ?></label>
+				<label><?php echo esc_html( __( "Upload Before Image", "beaf-before-and-after-gallery" ) ); ?></label>
 				<input type="file" name="" id="bafg-before-image" class="upload-before-image" accept="image/*">
 			</div>
 			<div class="bafg-aimage-up">
-				<label><?php echo esc_html( __( "Upload After Image", "bafg" ) ); ?></label>
+				<label><?php echo esc_html( __( "Upload After Image", "beaf-before-and-after-gallery" ) ); ?></label>
 				<input type="file" name="" id="bafg-after-image" class="upload-after-image" accept="image/*">
 			</div>
 			<div class="bafg-reset-preview">
-				<button class="bafg-reset-preview-btn"><?php echo esc_html( __( "Reset", "bafg" ) ); ?></button>
+				<button class="bafg-reset-preview-btn"><?php echo esc_html( __( "Reset", "beaf-before-and-after-gallery" ) ); ?></button>
 			</div>
 		</div>
 		<?php

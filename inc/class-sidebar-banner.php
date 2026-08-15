@@ -126,7 +126,7 @@ class bafg_SIDEBAR_BANNER {
         // Use API title if available, otherwise fallback
         $widget_title = !empty($dashboard_banner['title'])
         ? esc_html($dashboard_banner['title'])
-        : __('Themefic Deals & Services', 'bafg');
+        : __('Themefic Deals & Services', 'beaf-before-and-after-gallery');
 
 
 		wp_add_dashboard_widget(
@@ -141,7 +141,7 @@ class bafg_SIDEBAR_BANNER {
         $dashboard_widget = isset($this->bafg_sidebar_banner_option['dashboard_widget']) ? $this->bafg_sidebar_banner_option['dashboard_widget'] : [];
 
         if (empty($dashboard_widget) || empty($dashboard_widget['enable_status'])) {
-            echo '<p>' . esc_html__('No active widget promotion.', 'bafg') . '</p>';
+            echo '<p>' . esc_html__('No active widget promotion.', 'beaf-before-and-after-gallery') . '</p>';
             return;
         }
 
@@ -375,7 +375,7 @@ class bafg_SIDEBAR_BANNER {
         $schedules['bafg_every_day'] = array(
             'interval' => 86400, // Every 24 hours
             // 'interval' => 5, // Every 24 hours
-            'display' => __('Every 24 hours', 'bafg'),
+            'display' => __('Every 24 hours', 'beaf-before-and-after-gallery'),
         );
         return $schedules;
     }
@@ -401,7 +401,7 @@ class bafg_SIDEBAR_BANNER {
         $get_current_screen = get_current_screen();  
         if(($bafg_dismiss_admin_notice == 1  || time() >  $bafg_dismiss_admin_notice ) && $get_current_screen->base == 'dashboard'   ){ 
             // if very fist time then set the dismiss for our other plugbafg
-            update_option( 'bafg_sidebar_banner_notice_exists', 'bafg' );
+            update_option( 'bafg_sidebar_banner_notice_exists', 'beaf-before-and-after-gallery' );
             ?>
             <style> 
                 .bafg_black_friday_20222_admin_notice a:focus {
@@ -426,7 +426,7 @@ class bafg_SIDEBAR_BANNER {
                     <img  style="width: 100%;" src="<?php echo esc_attr($image_url) ?>" alt="">
                 </a> 
                 <?php if( isset($this->bafg_sidebar_banner_option['dasboard_dismiss']) && $this->bafg_sidebar_banner_option['dasboard_dismiss'] == true): ?>
-                <button type="button" class="notice-dismiss bafg_black_friday_notice_dismiss"><span class="screen-reader-text"><?php echo esc_html(__('Dismiss this notice.', 'bafg' )) ?></span></button>
+                <button type="button" class="notice-dismiss bafg_black_friday_notice_dismiss"><span class="screen-reader-text"><?php echo esc_html(__('Dismiss this notice.', 'beaf-before-and-after-gallery' )) ?></span></button>
                 <?php  endif; ?>
             </div>
             <script>
@@ -476,7 +476,7 @@ class bafg_SIDEBAR_BANNER {
     public function bafg_black_friday_2023_woo_product() { 
         $bafg_dismiss_post_notice = get_option( 'bafg_dismiss_post_notice' ); 
         if($bafg_dismiss_post_notice == 1  || time() >  $bafg_dismiss_post_notice ): 
-            add_meta_box( 'bafg_black_friday_annous', ' ', array($this, 'bafg_black_friday_2023_callback_woo_product'), 'bafg', 'side', 'high' );
+            add_meta_box( 'bafg_black_friday_annous', ' ', array($this, 'bafg_black_friday_2023_callback_woo_product'), 'beaf-before-and-after-gallery', 'side', 'high' );
         endif;
    
     }

@@ -248,7 +248,7 @@ class BEAF_Dashboard_Promo_Notice {
 			<button
 				type="button"
 				class="beaf-promo-close"
-				aria-label="<?php esc_attr_e( 'Dismiss', 'bafg' ); ?>"
+				aria-label="<?php esc_attr_e( 'Dismiss', 'beaf-before-and-after-gallery' ); ?>"
 			>
 				<svg width="9" height="9" viewBox="0 0 9 9" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path d="M8 0.5L0.5 8M0.5 0.5L8 8" stroke="#626A6A" stroke-linecap="round" stroke-linejoin="round"/>
@@ -277,7 +277,7 @@ class BEAF_Dashboard_Promo_Notice {
 				<p>
 					<?php esc_html_e(
 						'All PRO features included.',
-						'bafg'
+						'beaf-before-and-after-gallery'
 					); ?>
 				</p>
 
@@ -290,7 +290,7 @@ class BEAF_Dashboard_Promo_Notice {
 					class="button button-primary"
 				>
 					<div class="buy-now-text">
-						<?php esc_html_e( 'Buy Now', 'bafg' ); ?>
+						<?php esc_html_e( 'Buy Now', 'beaf-before-and-after-gallery' ); ?>
 					</div>
 					<div class="arrow-icon">
 						<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">

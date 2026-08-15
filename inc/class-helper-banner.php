@@ -88,13 +88,13 @@ class BEAF_Helper_Banner {
         <div class="beaf-sidebar-promo">
             <div class="promo-discount">
                 <span>
-                    <?php echo esc_html__( 'Get', 'bafg' ); ?>
+                    <?php echo esc_html__( 'Get', 'beaf-before-and-after-gallery' ); ?>
                     <svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <path d="M9 5.44473V17M9 5.44473C8.67847 4.11978 8.12484 2.98706 7.41132 2.19428C6.6978 1.4015 5.8575 0.985449 5 1.00039C4.41063 1.00039 3.8454 1.23451 3.42865 1.65125C3.0119 2.06798 2.77778 2.6332 2.77778 3.22256C2.77778 3.81191 3.0119 4.37713 3.42865 4.79387C3.8454 5.2106 4.41063 5.44473 5 5.44473M9 5.44473C9.32153 4.11978 9.87516 2.98706 10.5887 2.19428C11.3022 1.4015 12.1425 0.985449 13 1.00039C13.5894 1.00039 14.1546 1.23451 14.5713 1.65125C14.9881 2.06798 15.2222 2.6332 15.2222 3.22256C15.2222 3.81191 14.9881 4.37713 14.5713 4.79387C14.1546 5.2106 13.5894 5.44473 13 5.44473M15.2222 9.00019V15.2223C15.2222 15.6937 15.0349 16.1459 14.7015 16.4793C14.3681 16.8127 13.9159 17 13.4444 17H4.55556C4.08406 17 3.63187 16.8127 3.29848 16.4793C2.96508 16.1459 2.77778 15.6937 2.77778 15.2223V9.00019M1.88889 5.44473H16.1111C16.602 5.44473 17 5.84268 17 6.33359V8.11133C17 8.60224 16.602 9.00019 16.1111 9.00019H1.88889C1.39797 9.00019 1 8.60224 1 8.11133V6.33359C1 5.84268 1.39797 5.44473 1.88889 5.44473Z" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
                     </svg>
                 </span>
                 <span class="promo-discount-percent"><?php echo esc_html($discount_percentage); ?>%</span>
-                <span class="promo-discount-text"><?php echo esc_html__('Discount', 'bafg'); ?></span>
+                <span class="promo-discount-text"><?php echo esc_html__('Discount', 'beaf-before-and-after-gallery'); ?></span>
             </div>
             <div class="promo-description">
                 <p><?php echo esc_html($description); ?></p>

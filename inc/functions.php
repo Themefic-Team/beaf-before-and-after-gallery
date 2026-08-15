@@ -9,11 +9,12 @@ if ( ! defined( 'ABSPATH' ) ) {
 // Beaf Plugins Print_r
 if ( ! function_exists( 'beaf_print_r' ) ) {
 	function beaf_print_r( ...$args ) {
-		foreach($args as $value){
-			echo '<pre>';
-			print_r( $value );
-			echo '</pre>';
+		echo '<pre>';
+		foreach ( $args as $arg ) {
+			$debug_output = wp_json_encode( $arg, JSON_PRETTY_PRINT | JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE );
+			echo esc_html( false !== $debug_output ? $debug_output : '' );
 		}
+		echo '</pre>';
 
 	}
 }
@@ -95,9 +96,9 @@ function bafg_slider_info( $id ) {
 					$bafg_readmore_link_target = ! empty( $meta['bafg_readmore_link_target'] ) ? $meta['bafg_readmore_link_target'] : '';
 					$bafg_pro_activated = get_option( 'bafg_pro_activated' );
 
-					$bafg_readmore_text = esc_html__( 'Read more', 'bafg' );
+					$bafg_readmore_text = esc_html__( 'Read more', 'beaf-before-and-after-gallery' );
 					if ( $bafg_pro_activated == 'true' ) {
-						$bafg_readmore_text = ! empty( $meta['bafg_readmore_text'] ) ? $meta['bafg_readmore_text'] : esc_html__( 'Read more', 'bafg' );
+						$bafg_readmore_text = ! empty( $meta['bafg_readmore_text'] ) ? $meta['bafg_readmore_text'] : esc_html__( 'Read more', 'beaf-before-and-after-gallery' );
 
 					}
 					?>
@@ -325,7 +326,7 @@ if ( ! function_exists( 'bafg_review_notice' ) ) {
 				<p>
 					<?php printf(
 						/* translators: %s is replaced with "user id & Plugins Name" */
-						esc_html__( 'Hey 👋, You have been using %1$s for quite a while. If you feel %1$s is helping your business to grow in any way, would you please help %1$s to grow by simply leaving a 5* review on the WordPress Forum?', 'bafg' ),
+						esc_html__( 'Hey 👋, You have been using %1$s for quite a while. If you feel %1$s is helping your business to grow in any way, would you please help %1$s to grow by simply leaving a 5* review on the WordPress Forum?', 'beaf-before-and-after-gallery' ),
 						'Ultimate Before After Image Slider & Gallery',
 					);
 					?>
@@ -334,16 +335,16 @@ if ( ! function_exists( 'bafg_review_notice' ) ) {
 					<li><a target="_blank"
 							href="<?php echo esc_url( 'https://wordpress.org/support/plugin/beaf-before-and-after-gallery/reviews/#new-post' ) ?>"
 							class=""><span
-								class="dashicons dashicons-external"></span><?php esc_attr_e( ' Ok, you deserve it!', 'bafg' ) ?></a>
+								class="dashicons dashicons-external"></span><?php esc_attr_e( ' Ok, you deserve it!', 'beaf-before-and-after-gallery' ) ?></a>
 					</li>
 					<li><a href="#" class="already_done" data-status="already"><span class="dashicons dashicons-smiley"></span>
-							<?php esc_attr_e( 'I already did', 'bafg' ) ?></a></li>
+							<?php esc_attr_e( 'I already did', 'beaf-before-and-after-gallery' ) ?></a></li>
 					<li><a href="#" class="later" data-status="later"><span class="dashicons dashicons-calendar-alt"></span>
-							<?php esc_attr_e( 'Maybe Later', 'bafg' ) ?></a></li>
+							<?php esc_attr_e( 'Maybe Later', 'beaf-before-and-after-gallery' ) ?></a></li>
 					<li><a target="_blank" href="<?php echo esc_url( 'https://themefic.com/docs/beaf/' ) ?>" class=""><span
-								class="dashicons dashicons-sos"></span> <?php esc_attr_e( 'I need help', 'bafg' ) ?></a></li>
+								class="dashicons dashicons-sos"></span> <?php esc_attr_e( 'I need help', 'beaf-before-and-after-gallery' ) ?></a></li>
 					<li><a href="#" class="never" data-status="never"><span
-								class="dashicons dashicons-dismiss"></span><?php esc_attr_e( 'Never show again', 'bafg' ) ?> </a></li>
+								class="dashicons dashicons-dismiss"></span><?php esc_attr_e( 'Never show again', 'beaf-before-and-after-gallery' ) ?> </a></li>
 				</ul>
 				<button type="button" data-status="never" class="notice-dismiss review_notice_dismiss"><span
 						class="screen-reader-text">Dismiss this
@@ -493,7 +494,7 @@ if ( ! function_exists( 'bafg_pro_version_notice' ) ) {
 								printf(
 
 									/* translators: %1$: $bafg_pro_version,  %2$: $wp_version,  %3$: link, */
-									esc_html__( '<b>Warning:</b> The installed version of BEAF Pro (%1$) has not been tested on your version of WordPress (%2$). It has been tested up to version 5.9. <a href="%3$" target="_blank">You should update BEAF Pro to latest version to make sure that you have a version that has been tested for compatibility.</a>', 'bafg' ),
+									esc_html__( '<b>Warning:</b> The installed version of BEAF Pro (%1$) has not been tested on your version of WordPress (%2$). It has been tested up to version 5.9. <a href="%3$" target="_blank">You should update BEAF Pro to latest version to make sure that you have a version that has been tested for compatibility.</a>', 'beaf-before-and-after-gallery' ),
 									esc_html( $bafg_pro_version ),
 									esc_html( $wp_version ),
 									"https://themefic.com/docs/beaf/seeing-warning-versions-wordpress-beaf-tested/"
@@ -535,16 +536,16 @@ if ( ! function_exists( 'bafg_before_after_method' ) ) {
 		$pro_options = array(
 			'id' => 'bafg_before_after_method',
 			'options' => array(
-				'method_1' => __( 'Method 1 (Using 2 images)', 'bafg' ),
-				'method_2' => __( 'Method 2 (Using 1 image)', 'bafg' ),
+				'method_1' => __( 'Method 1 (Using 2 images)', 'beaf-before-and-after-gallery' ),
+				'method_2' => __( 'Method 2 (Using 1 image)', 'beaf-before-and-after-gallery' ),
 				'method_3' => apply_filters( 'bafg_three_image_slider_method', array(
-					'label' => __( 'Method 3 (Using 3 images )<div class="bafg-tooltip method-3-tooltip"><span>?</span><div class="bafg-tooltip-info">Pro feature! 3 image slider addon required to activate this. <a href="https://themefic.com/wp-content/uploads/2023/07/3-image-slider-addon.png" target="_blank"> More info</a></div></div>', 'bafg' ),
+					'label' => __( 'Method 3 (Using 3 images )<div class="bafg-tooltip method-3-tooltip"><span>?</span><div class="bafg-tooltip-info">Pro feature! 3 image slider addon required to activate this. <a href="https://themefic.com/wp-content/uploads/2023/07/3-image-slider-addon.png" target="_blank"> More info</a></div></div>', 'beaf-before-and-after-gallery' ),
 					'is_pro' => true
 				), $post ),
 				'method_4' => apply_filters(
 					'bafg_video_slider_method',
 					array(
-						'label' => __( 'Method 4 (Using Video) <div class="bafg-tooltip method-3-tooltip"><span>?</span><div class="bafg-tooltip-info">Pro feature! Video slider addon required to activate this. <a href="https://themefic.com/wp-content/uploads/2023/07/video-slider-addon.png" target="_blank"> More info</a></div></div>', 'bafg' ),
+						'label' => __( 'Method 4 (Using Video) <div class="bafg-tooltip method-3-tooltip"><span>?</span><div class="bafg-tooltip-info">Pro feature! Video slider addon required to activate this. <a href="https://themefic.com/wp-content/uploads/2023/07/video-slider-addon.png" target="_blank"> More info</a></div></div>', 'beaf-before-and-after-gallery' ),
 						'is_pro' => true
 					),
 					$post
@@ -637,43 +638,43 @@ if ( ! function_exists( 'bafg_before_after_style_cb' ) ) {
 			'id' => 'bafg_before_after_style',
 			'options' => array(
 				'default' => array(
-					'title' => __( 'Default', 'bafg' ),
+					'title' => __( 'Default', 'beaf-before-and-after-gallery' ),
 					'url' => BEAF_ASSETS_URL . 'image/default.png',
 				),
 				'design-1' => array(
-					'title' => __( 'Design 1', 'bafg' ),
+					'title' => __( 'Design 1', 'beaf-before-and-after-gallery' ),
 					'url' => BEAF_ASSETS_URL . 'image/style1.png',
 				),
 				'design-2' => array(
-					'title' => __( 'Design 2', 'bafg' ),
+					'title' => __( 'Design 2', 'beaf-before-and-after-gallery' ),
 					'url' => BEAF_ASSETS_URL . 'image/style2.png',
 				),
 				'design-3' => array(
-					'title' => __( 'Design 3', 'bafg' ),
+					'title' => __( 'Design 3', 'beaf-before-and-after-gallery' ),
 					'url' => BEAF_ASSETS_URL . 'image/style3.png',
 				),
 				'design-4' => array(
-						'title' => __( 'Design 4', 'bafg' ),
+						'title' => __( 'Design 4', 'beaf-before-and-after-gallery' ),
 						'url' => BEAF_ASSETS_URL . 'image/style4.png',
 					),
 				'design-5' => array(
-						'title' => __( 'Design 5', 'bafg' ),
+						'title' => __( 'Design 5', 'beaf-before-and-after-gallery' ),
 						'url' => BEAF_ASSETS_URL . 'image/style5.png',
 					),
 				'design-6' => array(
-						'title' => __( 'Design 6', 'bafg' ),
+						'title' => __( 'Design 6', 'beaf-before-and-after-gallery' ),
 						'url' => BEAF_ASSETS_URL . 'image/style6.png',
 					),
 				'design-7' => array(
-						'title' => __( 'Design 7', 'bafg' ),
+						'title' => __( 'Design 7', 'beaf-before-and-after-gallery' ),
 						'url' => BEAF_ASSETS_URL . 'image/style7.png',
 					),
 				'design-8' => array(
-						'title' => __( 'Design 8', 'bafg' ),
+						'title' => __( 'Design 8', 'beaf-before-and-after-gallery' ),
 						'url' => BEAF_ASSETS_URL . 'image/style8.png',
 					),
 				'design-9' => array(
-						'title' => __( 'Design 9', 'bafg' ),
+						'title' => __( 'Design 9', 'beaf-before-and-after-gallery' ),
 						'url' => BEAF_ASSETS_URL . 'image/style9.png',
 					)
 			)
@@ -1208,7 +1209,7 @@ if ( ! function_exists( 'bafg_three_image_slider_method_cb' ) ) {
 	add_filter( 'bafg_three_image_slider_method', 'bafg_three_image_slider_method_cb', 30, 2 );
 	function bafg_three_image_slider_method_cb( $options, $post ) {
 		$pro_options = array(
-			'label' => __( 'Method 3 ( Using 3 images )', 'bafg' ),
+			'label' => __( 'Method 3 ( Using 3 images )', 'beaf-before-and-after-gallery' ),
 			'is_pro' => false
 		);
 
@@ -1229,7 +1230,7 @@ if ( ! function_exists( 'bafg_video_slider_method_cb' ) ) {
 	add_filter( 'bafg_video_slider_method', 'bafg_video_slider_method_cb', 30, 2 );
 	function bafg_video_slider_method_cb( $options, $post ) {
 		$pro_options = array(
-			'label' => __( 'Method 4 ( Using Videos )', 'bafg' ),
+			'label' => __( 'Method 4 ( Using Videos )', 'beaf-before-and-after-gallery' ),
 			'is_pro' => false
 		);
 

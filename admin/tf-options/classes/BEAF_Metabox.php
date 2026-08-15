@@ -150,7 +150,7 @@ if ( ! class_exists( 'BEAF_Metabox' ) ) {
 			}
 
 			$tf_meta_box_value = array();
-			$metabox_request = ( ! empty( $_POST[ $this->metabox_id ] ) ) ? sanitize_text_field( wp_unslash( $_POST[ $this->metabox_id ] ) ) : array();
+			$metabox_request = ( ! empty( $_POST[ $this->metabox_id ] ) ) ? map_deep( wp_unslash( $_POST[ $this->metabox_id ] ), 'sanitize_text_field' ) : array();
 
 			if ( ! empty( $metabox_request ) && ! empty( $this->metabox_sections ) ) {
 				foreach ( $this->metabox_sections as $section ) {
