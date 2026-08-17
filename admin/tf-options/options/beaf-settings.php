@@ -40,7 +40,6 @@ BEAF_Settings::option( 'beaf_settings', array(
 					'id' => '',
 					'title' => __( 'All the available shortcodes', 'beaf-before-and-after-gallery' ),
 					'type' => 'notice',
-					// 'is_pro' => true,
 					'content' => "<code>[bafg_preview]</code> - Before After Gallery Frontend Preview (Users will be able to upload images without login)",
 				) ),
 			)
