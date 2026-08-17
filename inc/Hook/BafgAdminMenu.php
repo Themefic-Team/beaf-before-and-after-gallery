@@ -1,14 +1,14 @@
 <?php
 // Exit if accessed directly
-if (!defined('ABSPATH')) {
+if ( ! defined( 'ABSPATH' ) ) {
 	exit();
 }
 
 class BafgAdminMenu {
 
-    /*
+	/*
 	 * Register admin menu
-	 * Retrun menu with pro submenu Batch 
+	 * Retrun menu with pro submenu Batch
 	 */
 	public function bafg_register_menu_page() {
 
@@ -18,9 +18,9 @@ class BafgAdminMenu {
 			__( 'Gallery Generator', 'beaf-before-and-after-gallery' ),
 			'manage_options',
 			'bafg_gallery',
-			array($this, 'bafg_gallery_cb')
+			array( $this, 'bafg_gallery_cb' )
 		);
-	
+
 		add_submenu_page(
 			'edit.php?post_type=bafg',
 			__( 'Documentation', 'beaf-before-and-after-gallery' ),
@@ -38,14 +38,19 @@ class BafgAdminMenu {
 				'https://themefic.com/plugins/beaf/pro/'
 			);
 		}
-
 	}
 
 	/*
-	* Gallery generator callback
-	*/
+	 * Gallery generator callback
+	 */
 	public function bafg_gallery_cb() {
-		require_once( BEAF_PLUGIN_PATH . 'inc/templates/bafg-gallery-generator.php' );
-	}
 
+		$template = BEAF_PLUGIN_PATH . 'inc/templates/bafg-gallery-generator.php';
+
+		$template = apply_filters( 'beaf_gallery_generator_template', $template );
+
+		if ( is_string( $template ) && file_exists( $template ) ) {
+			require $template;
+		}
+	}
 }

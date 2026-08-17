@@ -75,15 +75,9 @@ if ( ! class_exists( 'BEAF_Options' ) ) {
 		 * @author Foysal
 		 */
 		public function load_metaboxes() {
-			if ( $this->is_tf_pro_active() ) {
-				$metaboxes = glob( BEAF_ADMIN_PATH . 'tf-options/metaboxes/*.php' );
-			} else {
-				$metaboxes = glob( $this->tf_options_file_path( 'metaboxes/*.php' ) );
-			}
+			$metaboxes = glob( $this->tf_options_file_path( 'metaboxes/*.php' ) );
 
-			// if( !empty( $pro_metaboxes ) ) {
-			// 		$metaboxes = array_merge( $metaboxes, $pro_metaboxes );
-			// }
+			$metaboxes = apply_filters( 'beaf_options_metabox_files', $metaboxes );
 
 			if ( ! empty( $metaboxes ) ) {
 				foreach ( $metaboxes as $metabox ) {
@@ -99,11 +93,9 @@ if ( ! class_exists( 'BEAF_Options' ) ) {
 		 * @author Foysal
 		 */
 		public function load_options() {
-			if ( $this->is_tf_pro_active() ) {
-				$options = glob( BEAF_ADMIN_PATH . 'tf-options/options/*.php' );
-			} else {
-				$options = glob( $this->tf_options_file_path( 'options/*.php' ) );
-			}
+			$options = glob( $this->tf_options_file_path( 'options/*.php' ) );
+
+			$options = apply_filters( 'beaf_options_setting_files', $options );
 
 			if ( ! empty( $options ) ) {
 				foreach ( $options as $option ) {
@@ -119,11 +111,9 @@ if ( ! class_exists( 'BEAF_Options' ) ) {
 		 * @author Foysal
 		 */
 		public function load_taxonomy() {
-			if ( $this->is_tf_pro_active() ) {
-				$taxonomies = glob( BEAF_ADMIN_PATH . 'tf-options/taxonomies/*.php' );
-			} else {
-				$taxonomies = glob( $this->tf_options_file_path( 'taxonomies/*.php' ) );
-			}
+			$taxonomies = glob( $this->tf_options_file_path( 'taxonomies/*.php' ) );
+
+			$taxonomies = apply_filters( 'beaf_options_taxonomy_files', $taxonomies );
 
 			if ( ! empty( $taxonomies ) ) {
 				foreach ( $taxonomies as $taxonomy ) {
@@ -221,21 +211,33 @@ if ( ! class_exists( 'BEAF_Options' ) ) {
 			}
 
 			$class = isset( $field['class'] ) ? $field['class'] : '';
-
-			$is_pro = isset( $field['is_pro'] ) ? $field['is_pro'] : '';
 			$badge_up = isset( $field['badge_up'] ) ? $field['badge_up'] : '';
+			$badges = array();
 
-			if ( function_exists( 'is_tf_pro' ) && is_tf_pro() ) {
-				$is_pro = false;
-			}
-			if ( $is_pro == true ) {
-				$class .= ' tf-field-disable tf-field-pro';
-			}
 			if ( $badge_up == true ) {
 				$class .= ' tf-field-disable tf-field-upcoming';
+				$badges[] = array(
+					'label' => __( 'Upcoming', 'beaf-before-and-after-gallery' ),
+					'class' => 'tf-upcoming',
+				);
 			}
-			$tf_meta_box_dep_value = get_post_meta( get_the_ID(), $settings_id, true );
 
+			$field_state = apply_filters(
+				'beaf_option_field_state',
+				array(
+					'class' => $class,
+					'badges' => $badges,
+				),
+				$field,
+				$value,
+				$settings_id,
+				$parent
+			);
+
+			$class = isset( $field_state['class'] ) ? $field_state['class'] : $class;
+			$badges = isset( $field_state['badges'] ) && is_array( $field_state['badges'] ) ? $field_state['badges'] : $badges;
+
+			$tf_meta_box_dep_value = get_post_meta( get_the_ID(), $settings_id, true );
 
 			$depend = '';
 			if ( ! empty( $field['dependency'] ) ) {
@@ -269,8 +271,8 @@ if ( ! class_exists( 'BEAF_Options' ) ) {
 				$visible = ( ! empty( $depend_visible ) ) ? ' tf-depend-visible' : ' tf-depend-hidden';
 			}
 
-			//field width
 			$field_width = isset( $field['field_width'] ) && ! empty( $field['field_width'] ) ? esc_attr( $field['field_width'] ) : '100';
+
 			if ( $field_width == '100' ) {
 				$field_style = 'width:100%;';
 			} else {
@@ -282,30 +284,35 @@ if ( ! class_exists( 'BEAF_Options' ) ) {
 				<?php echo ! empty( $depend ) ? wp_kses_post( $depend ) : ''; ?> style="<?php echo esc_attr( $field_style ); ?>">
 
 				<?php if ( ! empty( $field['label'] ) ) : ?>
-					<label for="<?php echo esc_attr( $id ) ?>" class="tf-field-label">
-						<?php echo esc_html( $field['label'] ) ?>
-						<?php if ( $is_pro ) : ?>
-							<div class="tf-csf-badge"><span class="tf-pro">
-									<?php esc_html_e( "Pro", "beaf-before-and-after-gallery" ); ?>
-								</span></div>
-						<?php endif; ?>
-						<?php if ( $badge_up ) : ?>
-							<div class="tf-csf-badge"><span class="tf-upcoming">
-									<?php esc_html_e( "Upcoming", "beaf-before-and-after-gallery" ); ?>
-								</span></div>
-						<?php endif; ?>
+					<label for="<?php echo esc_attr( $id ); ?>" class="tf-field-label">
+						<?php echo esc_html( $field['label'] ); ?>
+
+						<?php foreach ( $badges as $badge ) : ?>
+							<?php
+							$badge_label = isset( $badge['label'] ) ? $badge['label'] : '';
+							$badge_class = isset( $badge['class'] ) ? $badge['class'] : '';
+							?>
+							<?php if ( ! empty( $badge_label ) ) : ?>
+								<div class="tf-csf-badge">
+									<span class="<?php echo esc_attr( $badge_class ); ?>">
+										<?php echo esc_html( $badge_label ); ?>
+									</span>
+								</div>
+							<?php endif; ?>
+						<?php endforeach; ?>
 					</label>
 				<?php endif; ?>
 
 				<?php if ( ! empty( $field['subtitle'] ) ) : ?>
 					<span class="tf-field-sub-title">
-						<?php echo wp_kses_post( $field['subtitle'] ) ?>
+						<?php echo wp_kses_post( $field['subtitle'] ); ?>
 					</span>
 				<?php endif; ?>
 
 				<div class="tf-fieldset">
 					<?php
 					$fieldClass = 'BEAF_' . $field['type'];
+
 					if ( class_exists( $fieldClass ) ) {
 						$_field = new $fieldClass( $field, $value, $settings_id, $parent );
 						$_field->render();
@@ -314,21 +321,14 @@ if ( ! class_exists( 'BEAF_Options' ) ) {
 					}
 					?>
 				</div>
+
 				<?php if ( ! empty( $field['description'] ) ) : ?>
 					<p class="description">
-						<?php echo wp_kses_post( $field['description'] ) ?>
+						<?php echo wp_kses_post( $field['description'] ); ?>
 					</p>
 				<?php endif; ?>
 			</div>
 			<?php
-		}
-
-		public function is_tf_pro_active() {
-			if ( is_plugin_active( 'bafg-pro/bafg-pro.php' ) && defined( 'BEAF_PRO' ) ) {
-				return true;
-			}
-
-			return false;
 		}
 
 	}

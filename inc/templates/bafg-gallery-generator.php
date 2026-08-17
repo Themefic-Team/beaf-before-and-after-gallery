@@ -6,146 +6,52 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 ?>
 <div class="bafg-wrap">
-<!--Gallery generator-->
+	<!-- Gallery generator -->
 	<div id="bafg_gallery_generator">
 		<h2><?php echo esc_html__( 'BEAF Gallery', 'beaf-before-and-after-gallery' ); ?></h2>
-		<p><?php echo esc_html__('With this option, you can easily generate 2 columns, 3 columns or even 4 columns Before - After Gallery. Just select the options below, generate shortcode and copy-paste the shortcode wherever you want to show the gallery on your website. That\'s it.','beaf-before-and-after-gallery'); ?> <a target="_blank" href="https://www.youtube.com/watch?v=Uq3qlVdD_dY"><?php echo esc_html__( 'Click here', 'beaf-before-and-after-gallery' ); ?></a> <?php echo esc_html__( 'to learn more.', 'beaf-before-and-after-gallery' ); ?></p>
+
+		<p>
+			<?php echo esc_html__( 'With this option, you can easily generate 2 columns, 3 columns or even 4 columns Before - After Gallery. Just select the options below, generate shortcode and copy-paste the shortcode wherever you want to show the gallery on your website. That\'s it.', 'beaf-before-and-after-gallery' ); ?>
+			<a target="_blank" href="https://www.youtube.com/watch?v=Uq3qlVdD_dY"><?php echo esc_html__( 'Click here', 'beaf-before-and-after-gallery' ); ?></a>
+			<?php echo esc_html__( 'to learn more.', 'beaf-before-and-after-gallery' ); ?>
+		</p>
+
 		<label for="bafg_gallery_cata"><?php echo esc_html__( 'Category:', 'beaf-before-and-after-gallery' ); ?></label><br>
+
 		<select id="bafg_gallery_cata">
 			<option value=""><?php echo esc_html__( '-Select category-', 'beaf-before-and-after-gallery' ); ?></option>
-			<option value="all"><?php echo esc_html__( 'All','beaf-before-and-after-gallery' ); ?></option>
+			<option value="all"><?php echo esc_html__( 'All', 'beaf-before-and-after-gallery' ); ?></option>
+
 			<?php
 			$bafg_gallery_terms = get_terms( array(
 				'taxonomy' => 'bafg_gallery',
 				'hide_empty' => false,
-			));
-			foreach( $bafg_gallery_terms as $term ) :
-			?>			
-			<option value="<?php echo esc_attr($term->term_id); ?>"><?php echo esc_html( $term->name ); ?></option>
-			<?php
+			) );
+
+			foreach ( $bafg_gallery_terms as $term ) :
+				?>
+				<option value="<?php echo esc_attr( $term->term_id ); ?>"><?php echo esc_html( $term->name ); ?></option>
+				<?php
 			endforeach;
 			?>
 		</select>
+
 		<label for="bafg_gallery_column"><?php echo esc_html__( 'Columns:', 'beaf-before-and-after-gallery' ); ?></label>
+
 		<select id="bafg_gallery_column">
-			<option value="<?php echo esc_attr('2'); ?>"><?php echo esc_html__( '2 Columns', 'beaf-before-and-after-gallery' ); ?></option>
-			<option value="<?php echo esc_attr('3'); ?>"><?php echo esc_html__( '3 Columns', 'beaf-before-and-after-gallery' ); ?></option>
-			<option value="<?php echo esc_attr('4'); ?>"><?php echo esc_html__( '4 Columns', 'beaf-before-and-after-gallery' ); ?></option>
+			<option value="<?php echo esc_attr( '2' ); ?>"><?php echo esc_html__( '2 Columns', 'beaf-before-and-after-gallery' ); ?></option>
+			<option value="<?php echo esc_attr( '3' ); ?>"><?php echo esc_html__( '3 Columns', 'beaf-before-and-after-gallery' ); ?></option>
+			<option value="<?php echo esc_attr( '4' ); ?>"><?php echo esc_html__( '4 Columns', 'beaf-before-and-after-gallery' ); ?></option>
 		</select>
+
 		<label for="bafg_gallery_item"><?php echo esc_html__( 'Max Items:', 'beaf-before-and-after-gallery' ); ?></label>
-		<input id="bafg_gallery_item" type="text" value="" placeholder="Unlimited">
-		
-		<label for="bafg_gallery_info" class="bafg_gallery_info">
-			<input id="bafg_gallery_info" type="checkbox" <?php echo esc_attr(apply_filters('bafg_gallery_info_attrs','disabled')); ?> >
-			<?php echo esc_html__( 'Display Slider Title, Description and Read more link', 'beaf-before-and-after-gallery' ); ?>
-			<?php if(! class_exists('BAFG_Before_After_Gallery_Pro') || BEAF_PRO_LICENSE_STATUS != 'activate') { ?>
-				<div class="bafg-tooltip">
-					<span>?</span>
-					<div class="bafg-tooltip-info">Pro feature!</div>
-				</div>
-			<?php } ?>
-		</label>
-		
-		<input id="bafg_gallery_shortcode_generator" class="button button-primary" type="submit" value="Generate Shortcode">
+		<input id="bafg_gallery_item" type="text" value="" placeholder="<?php echo esc_attr__( 'Unlimited', 'beaf-before-and-after-gallery' ); ?>">
+
+		<input id="bafg_gallery_shortcode_generator" class="button button-primary" type="submit" value="<?php echo esc_attr__( 'Generate Shortcode', 'beaf-before-and-after-gallery' ); ?>">
 
 		<label for="bafg_gallery_shortcode"><?php echo esc_html__( 'Shortcode:', 'beaf-before-and-after-gallery' ); ?></label>
 		<input id="bafg_gallery_shortcode" type="text" value="" readonly>
+
 		<div id="bafg_gallery_shortcode_copy_alert"><?php echo esc_html__( 'Shortcode Copied!', 'beaf-before-and-after-gallery' ); ?></div>
-
-	</div>
-
-	<!--Filter gallery generator-->
-	<div id="bafg_filter_gallery_generator">
-		<h2><?php echo esc_html__( 'BEAF Filterable Gallery', 'beaf-before-and-after-gallery' ); ?></h2>
-		<p><?php echo esc_html__('With this option, you can easily generate 2 columns, 3 columns or even 4 columns Before - After Filterable Gallery. Just select the options below, generate shortcode and copy-paste the shortcode wherever you want to show the gallery on your website. That\'s it', 'beaf-before-and-after-gallery'); ?> <a target="_blank" href="https://themefic.com/plugins/beaf/pro/#filtergallery"><?php echo esc_html__( 'Click here', 'beaf-before-and-after-gallery' ); ?></a> <?php echo esc_html__( 'to learn more.', 'beaf-before-and-after-gallery' ); ?></p>
-		<label for="bafg_filter_gallery_cata"><?php echo esc_html__( 'Category:', 'beaf-before-and-after-gallery' ); ?></label><br>
-		<select id="bafg_filter_gallery_cata" multiple>
-			<option value="all"><?php echo esc_html__( 'All', 'beaf-before-and-after-gallery' ); ?></option>
-			<?php
-			$bafg_gallery_terms = get_terms( array(
-				'taxonomy' => 'bafg_gallery',
-				'hide_empty' => false,
-			));
-			foreach( $bafg_gallery_terms as $term ) :
-			?>
-			<option value="<?php echo esc_attr($term->term_id); ?>"><?php echo esc_html( $term->name ); ?></option>
-			<?php
-			endforeach;
-			?>
-		</select>
-		<label for="bafg_filter_gallery_column"><?php echo esc_html__( 'Columns:', 'beaf-before-and-after-gallery' ); ?></label>
-		<select id="bafg_filter_gallery_column">
-			<option value="<?php echo esc_attr('2'); ?>"><?php echo esc_html__( '2 Columns', 'beaf-before-and-after-gallery' ); ?></option>
-			<option value="<?php echo esc_attr('3'); ?>"><?php echo esc_html__( '3 Columns', 'beaf-before-and-after-gallery' ); ?></option>
-			<option value="<?php echo esc_attr('4'); ?>"><?php echo esc_html__( '4 Columns', 'beaf-before-and-after-gallery' ); ?></option>
-		</select>
-
-		<label for="bafg_filter_gallery_info" class="bafg_filter_gallery_info"><input id="bafg_filter_gallery_info" type="checkbox"> <?php echo esc_html__( 'Display Slider Title, Description and Read more link', 'beaf-before-and-after-gallery' ); ?></label>
-
-		<input id="bafg_filter_gallery_shortcode_generator" class="button button-primary" type="submit" value="Generate Shortcode">
-
-		<label for="bafg_filter_gallery_shortcode"><?php echo esc_html__( 'Shortcode:', 'beaf-before-and-after-gallery' ); ?></label>
-		<input id="bafg_filter_gallery_shortcode" type="text" value="" readonly>
-		<div id="bafg_filter_gallery_shortcode_copy_alert"><?php echo esc_html__( 'Shortcode Copied!', 'beaf-before-and-after-gallery' ); ?></div>
-		<div class="bafg-upgrade-to-pro"><a target="_blank" href="https://themefic.com/plugins/beaf/pro">Upgrade to pro!</a></div>
-
-	</div>
-
-	<!--Styles form-->
-
-	<div id="bafg_filter_gallery_style">
-
-		<?php
-			if ( isset( $_POST['bafg_filter_gallery_noncename'] ) && wp_verify_nonce( sanitize_text_field( wp_unslash( $_POST['bafg_filter_gallery_noncename'] ) ), 'bafg_filter_gallery_nonce' ) ) {
-				$bafg_filter_gallery_data = map_deep( wp_unslash( $_POST ), 'sanitize_text_field' );
-				do_action( 'bafg_save_filter_gallery_style', $bafg_filter_gallery_data );
-			}
-
-			$bafg_filter_gallery_alignment = get_option( 'bafg_filter_gallery_style_alignment' );
-		?>
-
-		<form action="" method="post">
-			<h2><?php echo esc_html__( 'BEAF Filter Buttons Style', 'beaf-before-and-after-gallery' ); ?></h2>
-			<label for="bafg_filter_gallery_style_border"><?php echo esc_html__( 'Border Radius(px):', 'beaf-before-and-after-gallery' ); ?></label><br>
-			<p><input id="bafg_filter_gallery_style_border" type="number" name="bafg_filter_gallery_style_border" min="1" max="100" value="<?php echo esc_attr(get_option( 'bafg_filter_gallery_style_border' )); ?>"></p>
-			<br>
-			<p><?php echo esc_html__( 'Colors(Normal):', 'beaf-before-and-after-gallery' ); ?></p>
-
-			<label for="bafg_filter_gallery_style_text_color"><?php echo esc_html__( 'Text Color:', 'beaf-before-and-after-gallery' ); ?></label>
-			<p><input id="bafg_filter_gallery_style_text_color" class="bafg-color-field" type="text" name="bafg_filter_gallery_style_text_color" value="<?php echo esc_attr(get_option( 'bafg_filter_gallery_style_text_color' )); ?>"></p>
-
-			<label for="bafg_filter_gallery_style_bg_color"><?php echo esc_html__( 'Background Color:', 'beaf-before-and-after-gallery' ); ?></label>
-			<p><input id="bafg_filter_gallery_style_bg_color" class="bafg-color-field" type="text" name="bafg_filter_gallery_style_bg_color" value="<?php echo esc_attr(get_option( 'bafg_filter_gallery_style_bg_color' )); ?>"></p>
-			<br>
-			<p><?php echo esc_html__( 'Colors(Hover and Active):', 'beaf-before-and-after-gallery' ); ?></p>
-
-			<label for="bafg_filter_gallery_style_text_h_color"><?php echo esc_html__( 'Text Color:', 'beaf-before-and-after-gallery' ); ?></label>
-			<p><input id="bafg_filter_gallery_style_text_h_color" class="bafg-color-field" type="text" name="bafg_filter_gallery_style_text_h_color" value="<?php echo esc_attr(get_option( 'bafg_filter_gallery_style_text_h_color' )); ?>"></p>
-
-			<label for="bafg_filter_gallery_style_bg_h_color"><?php echo esc_html__( 'Background Color:', 'beaf-before-and-after-gallery' ); ?></label>
-			<p><input id="bafg_filter_gallery_style_bg_h_color" class="bafg-color-field" type="text" name="bafg_filter_gallery_style_bg_h_color" value="<?php echo esc_attr(get_option( 'bafg_filter_gallery_style_bg_h_color' )); ?>"></p>
-			<br>
-			<label for="bafg_filter_gallery_style_padding_tb"><?php echo esc_html__( 'Padding(Top - Bottom):', 'beaf-before-and-after-gallery' ); ?></label>
-			<p><input id="bafg_filter_gallery_style_padding_tb" class="" type="number" name="bafg_filter_gallery_style_padding_tb" value="<?php echo esc_attr(get_option( 'bafg_filter_gallery_style_padding_tb' )); ?>" min="1"></p>
-
-			<label for="bafg_filter_gallery_style_padding_lr"><?php echo esc_html__( 'Padding(Left - Right):', 'beaf-before-and-after-gallery' ); ?></label>
-			<p><input id="bafg_filter_gallery_style_padding_lr" class="" type="number" name="bafg_filter_gallery_style_padding_lr" value="<?php echo esc_attr(get_option( 'bafg_filter_gallery_style_padding_lr' )); ?>" min="1"></p>
-			<label for="bafg_filter_gallery_style_alignment"><?php echo esc_html__( 'Alignment:', 'beaf-before-and-after-gallery' ); ?></label>
-			<br>
-			<select id="bafg_filter_gallery_style_alignment" name="bafg_filter_gallery_style_alignment">
-				<option value="left" <?php echo selected( $bafg_filter_gallery_alignment,'left' ) ?>><?php echo esc_html__( 'Left', 'beaf-before-and-after-gallery' ); ?></option>
-				<option value="center" <?php echo selected( $bafg_filter_gallery_alignment,'center' ) ?>><?php echo esc_html__( 'Center', 'beaf-before-and-after-gallery' ); ?></option>
-				<option value="right" <?php echo selected( $bafg_filter_gallery_alignment, 'right' ) ?>><?php echo esc_html__( 'Right', 'beaf-before-and-after-gallery' ); ?></option>
-			</select>
-			<br>
-			<input id="bafg_filter_gallery_shortcode_generator" class="button button-primary" type="submit" value="Save">
-
-			<div class="bafg-upgrade-to-pro"><a target="_blank" href="https://themefic.com/plugins/beaf/pro">Upgrade to pro!</a></div>
-			<?php
-				// Noncename needed to verify where the data originated
-				wp_nonce_field( 'bafg_filter_gallery_nonce', 'bafg_filter_gallery_noncename' );
-			?>
-		</form>
-
 	</div>
 </div>

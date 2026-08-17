@@ -1,6 +1,6 @@
 {
     "require": {
-        "appsero/client": "^2.0"
+        
     },
     "config": {
         "autoloader-suffix": "Beaf"
