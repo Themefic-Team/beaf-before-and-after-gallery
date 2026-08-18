@@ -324,73 +324,29 @@ if ( ! class_exists( 'BEAF_Settings' ) ) {
 					'slug'       => 'hydra-booking',
 					'file_name'  => 'hydra-booking',
 					'subtitle'   => 'All in One Appointment Booking System',
-					'image'      => 'https://ps.w.org/hydra-booking/assets/icon-128x128.jpg',
-					// 'pro'        => [
-					// 	'slug'      => 'hydra-booking-pro',
-					// 	'file_name' => 'hydra-booking-pro',
-					// 	'url'       => 'https://hydrabooking.com/',
-					// ],
+					'image'      => BEAF_ASSETS_URL . '/image/icons/icon-hydra.jpg',
 				],
 				[
 					'name'       => 'UACF7',
 					'slug'       => 'ultimate-addons-for-contact-form-7',
 					'file_name'  => 'ultimate-addons-for-contact-form-7',
 					'subtitle'   => '40+ Essential Addons for Contact Form 7',
-					'image'      => 'https://ps.w.org/ultimate-addons-for-contact-form-7/assets/icon-128x128.png',
-					// 'pro'        => [
-					// 	'slug'      => 'ultimate-addons-for-contact-form-7-pro',
-					// 	'file_name' => 'ultimate-addons-for-contact-form-7-pro',
-					// 	'url'       => 'https://cf7addons.com/pricing/',
-					// ],
+					'image'      => BEAF_ASSETS_URL . '/image/icons/icon-uacf7.jpg',
 				],
-				// [
-				// 	'name'       => 'BEAF',
-				// 	'slug'       => 'beaf-before-and-after-gallery',
-				// 	'file_name'  => 'before-and-after-gallery',
-				// 	'subtitle'   => 'Ultimate Before After Image Slider & Gallery',
-				// 	'image'      => 'https://ps.w.org/beaf-before-and-after-gallery/assets/icon-128x128.png',
-				// 	// 'pro'        => [
-				// 	// 	'slug'      => 'beaf-before-and-after-gallery-pro',
-				// 	// 	'file_name' => 'before-and-after-gallery-pro',
-				// 	// 	'url'       => 'https://themefic.com/plugins/beaf/pro/',
-				// 	// ],
-				// ],
 				[
 					'name'       => 'Tourfic',
 					'slug'       => 'tourfic',
 					'file_name'  => 'tourfic',
 					'subtitle'   => 'Travel, Hotel Booking & Car Rental WP Plugin',
-					'image'      => 'https://ps.w.org/tourfic/assets/icon-128x128.gif',
-					// 'pro'        => [
-					// 	'slug'      => 'tourfic-pro',
-					// 	'file_name' => 'tourfic-pro',
-					// 	'url'       => 'https://themefic.com/tourfic/',
-					// ],
+					'image'      => BEAF_ASSETS_URL . '/image/icons/icon-tourfic.jpg',
 				],
 				[
 					'name'       => 'Instantio',
 					'slug'       => 'instantio',
 					'file_name'  => 'instantio',
 					'subtitle'   => 'WooCommerce Quick & Direct Checkout',
-					'image'      => 'https://ps.w.org/instantio/assets/icon-128x128.png',
-					// 'pro'        => [
-					// 	'slug'      => 'wooinstant',
-					// 	'file_name' => 'wooinstant',
-					// 	'url'       => 'https://themefic.com/instantio/',
-					// ],
+					'image'      => BEAF_ASSETS_URL . '/image/icons/icon-instantio.jpg',
 				],
-				// [
-				// 	'name'       => 'Before After Slider for WooCommerce – eBEAF',
-				// 	'slug'       => 'before-after-for-woocommerce',
-				// 	'file_name'  => 'before-after-for-woocommerce',
-				// 	'image'      => 'https://ps.w.org/before-after-for-woocommerce/assets/icon-128x128.gif',
-				// 	'pro_url'    => '',
-				// 	'pro'        => [
-				// 		'slug'      => 'before-after-for-woocommerce-pro',
-				// 		'file_name' => 'before-after-for-woocommerce-pro',
-				// 		'url'       => 'https://themefic.com/plugins/ebeaf/pro/',
-				// 	],
-				// ],
 			];
 
 			?>
