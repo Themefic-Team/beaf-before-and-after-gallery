@@ -331,21 +331,21 @@ if ( ! class_exists( 'BEAF_Settings' ) ) {
 					'slug'       => 'ultimate-addons-for-contact-form-7',
 					'file_name'  => 'ultimate-addons-for-contact-form-7',
 					'subtitle'   => '40+ Essential Addons for Contact Form 7',
-					'image'      => BEAF_ASSETS_URL . '/image/icons/icon-uacf7.jpg',
+					'image'      => BEAF_ASSETS_URL . '/image/icons/icon-uacf7.png',
 				],
 				[
 					'name'       => 'Tourfic',
 					'slug'       => 'tourfic',
 					'file_name'  => 'tourfic',
 					'subtitle'   => 'Travel, Hotel Booking & Car Rental WP Plugin',
-					'image'      => BEAF_ASSETS_URL . '/image/icons/icon-tourfic.jpg',
+					'image'      => BEAF_ASSETS_URL . '/image/icons/icon-tourfic.gif',
 				],
 				[
 					'name'       => 'Instantio',
 					'slug'       => 'instantio',
 					'file_name'  => 'instantio',
 					'subtitle'   => 'WooCommerce Quick & Direct Checkout',
-					'image'      => BEAF_ASSETS_URL . '/image/icons/icon-instantio.jpg',
+					'image'      => BEAF_ASSETS_URL . '/image/icons/icon-instantio.png',
 				],
 			];
 
