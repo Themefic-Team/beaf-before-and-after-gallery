@@ -465,7 +465,7 @@ if ( ! function_exists( 'bafg_pro_version_notice' ) ) {
 				//get wp version
 				global $wp_version;
 				$get_current_screen = get_current_screen();
-				if ( $get_current_screen->base == 'dashboard' || $get_current_screen->base = 'plugins' ) {
+				if ( $get_current_screen->base == 'dashboard' || $get_current_screen->base == 'plugins' ) {
 					if ( isset( $_COOKIE['bafg_update_pro'] ) && $_COOKIE['bafg_update_pro'] == '1' ) {
 						return;
 					} else {

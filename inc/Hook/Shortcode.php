@@ -90,8 +90,8 @@ class BAFG_Shortcode {
 		$a_image              = ! empty( $meta['bafg_after_image'] ) ? $meta['bafg_after_image'] : '';
 		$orientation          = ! empty( $meta['bafg_image_styles'] ) ? $meta['bafg_image_styles'] : 'horizontal';
 		$offset               = ! empty( $meta['bafg_default_offset'] ) ? $meta['bafg_default_offset'] : '0.5';
-		$before_label         = ! empty( $meta['bafg_before_label'] ) ? esc_html( $meta['bafg_before_label'] ) : esc_html( __( 'Before', 'beaf-before-and-after-gallery' ) );
-		$after_label          = ! empty( $meta['bafg_after_label'] ) ? esc_html( $meta['bafg_after_label'] ) : esc_html( __( 'After', 'beaf-before-and-after-gallery' ) );
+		$before_label         = ! empty( $meta['bafg_before_label'] ) ? esc_html( $meta['bafg_before_label'] ) : esc_html__( 'Before', 'beaf-before-and-after-gallery' );
+		$after_label          = ! empty( $meta['bafg_after_label'] ) ? esc_html( $meta['bafg_after_label'] ) : esc_html__( 'After', 'beaf-before-and-after-gallery' );
 		$overlay              = ! empty( $meta['bafg_no_overlay'] ) ? $meta['bafg_no_overlay'] : '';
 		$move_slider_on_hover = ! empty( $meta['bafg_move_slider_on_hover'] ) ? $meta['bafg_move_slider_on_hover'] : '';
 		$click_to_move        = ! empty( $meta['bafg_click_to_move'] ) ? $meta['bafg_click_to_move'] : '';
@@ -149,10 +149,10 @@ class BAFG_Shortcode {
 
 			<style type="text/css">
 				<?php
-				$bafg_before_label_background = ! empty( $meta['bafg_before_label_background'] ) ? $meta['bafg_before_label_background'] : '';
-				$bafg_before_label_color      = ! empty( $meta['bafg_before_label_color'] ) ? $meta['bafg_before_label_color'] : '';
-				$bafg_after_label_background  = ! empty( $meta['bafg_after_label_background'] ) ? $meta['bafg_after_label_background'] : '';
-				$bafg_after_label_color       = ! empty( $meta['bafg_after_label_color'] ) ? $meta['bafg_after_label_color'] : '';
+				$bafg_before_label_background = ! empty( $meta['bafg_before_label_background'] ) ? esc_html( $meta['bafg_before_label_background'] ) : '';
+				$bafg_before_label_color      = ! empty( $meta['bafg_before_label_color'] ) ? esc_html( $meta['bafg_before_label_color'] ) : '';
+				$bafg_after_label_background  = ! empty( $meta['bafg_after_label_background'] ) ? esc_html( $meta['bafg_after_label_background'] ) : '';
+				$bafg_after_label_color       = ! empty( $meta['bafg_after_label_color'] ) ? esc_html( $meta['bafg_after_label_color'] ) : '';
 
 				if ( ! empty( $bafg_before_label_background ) || ! empty( $bafg_before_label_color ) ) {
 					?>
