@@ -19,27 +19,9 @@ if ( ! function_exists( 'beaf_print_r' ) ) {
 	}
 }
 
-/**
- * Black Friday Deals 2023
- */
-
-//Require ultimate Promo Notice
-if ( file_exists( __DIR__ . '/class-sidebar-banner.php' ) ) {
-	require_once( 'class-sidebar-banner.php' );
-}
-
 //Require Dashboard Notice
 if ( file_exists( BEAF_INC_PATH . 'class-dashboard-widget.php' ) ) {
 	require_once ( BEAF_INC_PATH .'class-dashboard-widget.php');
-}
-
-//Require ultimate Promo Notice
-if ( file_exists( BEAF_INC_PATH . 'class-helper-banner.php' ) ) {
-	require_once ( BEAF_INC_PATH .'class-helper-banner.php');
-}
-
-if ( file_exists( BEAF_INC_PATH . 'dashboard-promo-notice.php' ) ) {
-	require_once ( BEAF_INC_PATH .'dashboard-promo-notice.php');
 }
 
 // include plugin.php file
