@@ -271,7 +271,7 @@ pre {
 
 .beaf-settings-page {
 	display: grid;
-	grid-template-columns: 4fr 2fr;
+	grid-template-columns: 1fr;
 	gap: 32px;
     padding: 24px;
     background-color: #fff;
