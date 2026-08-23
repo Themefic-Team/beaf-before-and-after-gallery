@@ -215,7 +215,7 @@ if ( ! class_exists( 'BEAF_Options' ) ) {
 			$badges = array();
 
 			if ( $badge_up == true ) {
-				$class .= ' tf-field-disable tf-field-upcoming';
+				$class .= ' tf-field-upcoming';
 				$badges[] = array(
 					'label' => __( 'Upcoming', 'beaf-before-and-after-gallery' ),
 					'class' => 'tf-upcoming',

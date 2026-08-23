@@ -51,16 +51,12 @@ class BAFG_Options {
 	/**
 	 * Enqueue script in admin area
 	 */
-	public function bafg_admin_enqueue_scripts( $screen ) {
+	public function bafg_admin_enqueue_scripts( string $screen ) {
 		global $post_type;
-		$tf_options_screens = array(
-			'bafg_page_beaf_settings',
-			'bafg_page_bafg_gallery',
-			'bafg_page_bafg-pro-license',
-		);
 		$tf_options_post_type = array( 'bafg' );
+		$is_bafg_page = 0 === strpos( $screen, 'bafg_page_' );
 
-		if ( in_array( $screen, $tf_options_screens ) || in_array( $post_type, $tf_options_post_type ) ) {
+		if ( $is_bafg_page || in_array( $post_type, $tf_options_post_type, true ) ) {
 			wp_enqueue_style( 'beaf-admin-options', BEAF_ASSETS_URL . 'css/beaf-admin-options.css', array(), BEAF_VERSION );
 
 			wp_enqueue_script( 'beaf-options', BEAF_ASSETS_URL . 'js/beaf-options.js', array( 'jquery' ), BEAF_VERSION, true );
@@ -274,13 +270,16 @@ class BAFG_Options {
 
 		if ( ! $nonce || ! wp_verify_nonce( $nonce, 'bafg-woo-dismissed-nonce' ) ) {
 			return;
-		} else {
+		}
 
-			$user_id = get_current_user_id();
+		if ( ! current_user_can( 'manage_options' ) ) {
+			return;
+		}
 
-			if ( isset( $_GET['bafg-woo-dismissed'] ) ) {
-				add_user_meta( $user_id, 'bafg_woo_new_feature_notice_dismissed', 'true', true );
-			}
+		$user_id = get_current_user_id();
+
+		if ( isset( $_GET['bafg-woo-dismissed'] ) ) {
+			add_user_meta( $user_id, 'bafg_woo_new_feature_notice_dismissed', 'true', true );
 		}
 
 	}

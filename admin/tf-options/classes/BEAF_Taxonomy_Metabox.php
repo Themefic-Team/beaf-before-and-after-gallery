@@ -126,6 +126,10 @@ if ( ! class_exists( 'BEAF_Taxonomy_Metabox' ) ) {
 				return;
 			}
 
+			if ( ! current_user_can( 'edit_term', $term_id ) ) {
+				return;
+			}
+
 
 			$tf_taxonomy_value = array();
 			$taxonomy_request = ( ! empty( $_POST[ $this->taxonomy_id ] ) ) ? sanitize_text_field( wp_unslash( $_POST[ $this->taxonomy_id ] ) ) : array();
