@@ -120,89 +120,70 @@ class BAFG_Options {
 		return $columns;
 	}
 
-	/**
-	 * Manage beaf posts image column
-	 */
 	public function bafg_custom_columns_image( $column_name, $id ) {
 
-		$meta = ! empty( get_post_meta( $id, 'beaf_meta', true ) ) ? get_post_meta( $id, 'beaf_meta', true ) : '';
-	
-		//After Image column in posts
+		$meta = ! empty( get_post_meta( $id, 'beaf_meta', true ) )
+			? get_post_meta( $id, 'beaf_meta', true )
+			: '';
+
+		$method = ! empty( $meta['bafg_before_after_method'] )
+			? $meta['bafg_before_after_method']
+			: 'method_1';
+
+		$image_url = '';
+
 		if ( $column_name === 'bimage' ) {
-	
-			$bafg_before_after_method = ! empty( $meta['bafg_before_after_method'] ) ? $meta['bafg_before_after_method'] : 'method_1';
-	
-			if ( is_plugin_active( 'beaf-before-and-after-gallery-pro/before-and-after-gallery-pro.php' ) ) {
-	
-				if ( $bafg_before_after_method == 'method_2' ) {
-	
-					$image_url = ! empty( $meta['bafg_before_after_image'] ) ? $meta['bafg_before_after_image'] : '';
-	
-				} else if ( $bafg_before_after_method == 'method_3' ) {
-	
-					$image_url = ! empty( $meta['bafg_first_image'] ) ? $meta['bafg_first_image'] : '';
-				} else {
-					$image_url = ! empty( $meta['bafg_before_image'] ) ? $meta['bafg_before_image'] : '';
-	
-				}
-			} else {
-				$image_url = ! empty( $meta['bafg_before_image'] ) ? $meta['bafg_before_image'] : '';
-			}
-	
-			$image_id = attachment_url_to_postid( $image_url );
-			$before_image = wp_get_attachment_image( $image_id, 'thumbnail' );
-			echo wp_kses_post( $before_image );
+
+			$image_url = ! empty( $meta['bafg_before_image'] )
+				? $meta['bafg_before_image']
+				: '';
+
+		} elseif ( $column_name === 'aimage' ) {
+
+			$image_url = ! empty( $meta['bafg_after_image'] )
+				? $meta['bafg_after_image']
+				: '';
+
+		} elseif ( $column_name === 'second_image' ) {
+
+			// Free version has no middle image.
+
+		} else {
+
+			return;
 		}
-	
-		//After Image column in posts
-		if ( $column_name === 'aimage' ) {
-	
-			$bafg_before_after_method = ! empty( $meta['bafg_before_after_method'] ) ? $meta['bafg_before_after_method'] : 'method_1';
-	
-			if ( is_plugin_active( 'beaf-before-and-after-gallery-pro/before-and-after-gallery-pro.php' ) ) {
-	
-				if ( $bafg_before_after_method == 'method_2' ) {
-	
-					$image_url = ! empty( $meta['bafg_before_after_image'] ) ? $meta['bafg_before_after_image'] : '';
-	
-				} else if ( $bafg_before_after_method == 'method_3' ) {
-	
-					$image_url = ! empty( $meta['bafg_third_image'] ) ? $meta['bafg_third_image'] : '';
-				} else {
-					$image_url = ! empty( $meta['bafg_after_image'] ) ? $meta['bafg_after_image'] : '';
-				}
-			} else {
-				$image_url = ! empty( $meta['bafg_after_image'] ) ? $meta['bafg_after_image'] : '';
-			}
-	
-			$image_id = attachment_url_to_postid( $image_url );
-			$after_image = wp_get_attachment_image( $image_id, 'thumbnail' );
-			echo wp_kses_post( $after_image );
+
+		/**
+		 * Allow Pro/extensions to modify the admin column image URL.
+		 *
+		 * @param string $image_url Image URL.
+		 * @param string $column_name Column name.
+		 * @param array  $meta Post meta.
+		 * @param int    $id Post ID.
+		 * @param string $method Selected image method.
+		 */
+		$image_url = apply_filters(
+			'bafg_admin_column_image_url',
+			$image_url,
+			$column_name,
+			$meta,
+			$id,
+			$method
+		);
+
+		if ( empty( $image_url ) ) {
+			return;
 		}
-	
-	
-	
-		//Middle Image column in posts
-		if ( $column_name === 'second_image' ) {
-	
-			$bafg_before_after_method = ! empty( $meta['bafg_before_after_method'] ) ? $meta['bafg_before_after_method'] : 'method_1';
-	
-			if ( is_plugin_active( 'beaf-before-and-after-gallery-pro/before-and-after-gallery-pro.php' ) ) {
-	
-				if ( $bafg_before_after_method == 'method_3' ) {
-	
-					$image_url = ! empty( $meta['bafg_second_image'] ) ? $meta['bafg_second_image'] : '';
-					$image_id = attachment_url_to_postid( $image_url );
-					$second_image = wp_get_attachment_image( $image_id, 'thumbnail' );
-				} else {
-					return;
-				}
-				echo wp_kses_post( $second_image );
-			}
-	
+
+		$image_id = attachment_url_to_postid( $image_url );
+
+		if ( ! $image_id ) {
+			return;
 		}
-	
-	
+
+		$image = wp_get_attachment_image( $image_id, 'thumbnail' );
+
+		echo wp_kses_post( $image );
 	}
 
 	/**

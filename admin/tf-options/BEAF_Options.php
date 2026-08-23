@@ -154,13 +154,7 @@ if ( ! class_exists( 'BEAF_Options' ) ) {
 
 				wp_enqueue_script( 'tf-flatpickr', BEAF_ASSETS_URL . 'libs/flatpickr/flatpickr.min.js', array( 'jquery' ), $this->beaf_options_version(), true );
 				wp_enqueue_script( 'select2', BEAF_ASSETS_URL . 'libs/select2/select2.min.js', array( 'jquery' ), $this->beaf_options_version(), true );
-
-				$tf_google_map = function_exists( 'is_tf_pro' ) && is_tf_pro() && ! empty( Hook::beaf_opt( 'google-page-option' ) ) ? Hook::beaf_opt( 'google-page-option' ) : "false";
-
-				if ( $tf_google_map != true ) {
-					wp_enqueue_script( 'tf-leaflet', BEAF_ASSETS_URL . 'libs/leaflet/leaflet.js', array( 'jquery' ), '1.9', true );
-					wp_enqueue_script( 'tf-leaflet', BEAF_ASSETS_URL . 'libs/leaflet/leaflet.css', array( 'jquery' ), '1.9', true );
-				}
+				
 				wp_enqueue_script( 'jquery-ui-autocomplete' );
 
 				if ( ! wp_script_is( 'jquery-ui-sortable' ) ) {
@@ -169,8 +163,6 @@ if ( ! class_exists( 'BEAF_Options' ) ) {
 				wp_enqueue_media();
 				wp_enqueue_editor();
 			}
-
-			$tf_google_map = function_exists( 'is_tf_pro' ) && is_tf_pro() && ! empty( Hook::beaf_opt( 'google-page-option' ) ) ? Hook::beaf_opt( 'google-page-option' ) : "false";
 
 		}
 

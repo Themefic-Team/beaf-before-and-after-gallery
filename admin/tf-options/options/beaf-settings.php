@@ -32,18 +32,6 @@ BEAF_Settings::option( 'beaf_settings', array(
 				),
 			)
 		),
-		'shortcodes' => array(
-			'title' => __( 'Shortcodes', 'beaf-before-and-after-gallery' ),
-			'icon' => 'fa-solid fa-code',
-			'fields' => array(
-				apply_filters( 'bafg_bafg_preview_shortcode', array(
-					'id' => '',
-					'title' => __( 'All the available shortcodes', 'beaf-before-and-after-gallery' ),
-					'type' => 'notice',
-					'content' => "<code>[bafg_preview]</code> - Before After Gallery Frontend Preview (Users will be able to upload images without login)",
-				) ),
-			)
-		),
 		'documentation' => array(
 			'title' => __( 'Documentation', 'beaf-before-and-after-gallery' ),
 			'icon' => 'fa-solid fa-file',
