@@ -224,9 +224,6 @@ You can easily disable the slider handle. [Click here](https://themefic.com/plug
 
 Yes, we provide full support on the WordPress.org forums & [Our Website](https://portal.themefic.com/support/). You can also join our [BEAF Facebook Group](https://facebook.com/groups/beaf.wp) to stay informed with latest news and updatesc.  Check our [Support Policy](https://themefic.com/support-policy/).
 
-### Privacy Policy
-Ultimate Before After Image Slider & Gallery – BEAF uses [Appsero](https://appsero.com/) SDK to collect some telemetry data. Appsero SDK does not gather any data by default. The SDK only starts gathering basic telemetry data when a user allows it via the admin notice. Appsero SDK DOES NOT IMMEDIATELY start gathering data, without confirmation from users in any case. We use this data to troubleshoot problems faster, make product improvements & ensure a great user experience for all our users.
-
 ### Credit
 
 BEAF is based on the famous [TwentyTwenty](https://zurb.com/playground/twentytwenty) script that developed by Zurb team. Our icon is taken from [Iconfinder](https://iconfinder.com/).
