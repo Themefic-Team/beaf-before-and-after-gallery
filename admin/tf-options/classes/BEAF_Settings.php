@@ -35,8 +35,6 @@ if ( ! class_exists( 'BEAF_Settings' ) ) {
 
 			//ajax save options
 			add_action( 'wp_ajax_beaf_options_save', array( $this, 'beaf_ajax_save_options' ) );
-
-			add_action('wp_ajax_beaf_themefic_manage_plugin', array( $this, 'beaf_themefic_manage_plugin' ) );
 		}
 
 		public static function option( $key, $params = array() ) {
