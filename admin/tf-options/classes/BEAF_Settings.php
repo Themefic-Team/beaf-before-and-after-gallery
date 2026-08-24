@@ -291,47 +291,6 @@ if ( ! class_exists( 'BEAF_Settings' ) ) {
 									$data = $fieldClass == 'BEAF_repeater' || $fieldClass == 'BEAF_map' ? serialize( $data ) : $data;
 								}
 
-
-								if ( isset( $_FILES['file']['name'], $_FILES['file']['tmp_name'], $_FILES['file']['type'] ) && is_array( $_FILES['file']['name'] ) && ! empty( $_FILES['file']['name'] ) ) {
-								
-									$tf_upload_dir = wp_upload_dir();
-								
-									if ( ! empty( $tf_upload_dir['basedir'] ) ) {
-										$tf_itinerary_fonts = $tf_upload_dir['basedir'] . '/itinerary-fonts';
-								
-										if ( ! file_exists( $tf_itinerary_fonts ) ) {
-											wp_mkdir_p( $tf_itinerary_fonts );
-										}
-								
-										// Allowed extensions and MIME types
-										$allowed_extensions = array( 'ttf', 'otf', 'woff', 'woff2' );
-										$allowed_mime_types = array(
-											'ttf'   => 'font/ttf',
-											'otf'   => 'font/otf',
-											'woff'  => 'font/woff',
-											'woff2' => 'font/woff2'
-										);
-								
-										for ( $i = 0; $i < count( $_FILES['file']['name'] ); $i++ ) {
-                                            if ( ! isset( $_FILES['file']['name'][ $i ], $_FILES['file']['tmp_name'][ $i ], $_FILES['file']['type'][ $i ] ) ) {
-                                                continue;
-                                            }
-
-                                            $original_name = sanitize_file_name( wp_unslash( $_FILES['file']['name'][ $i ] ) );
-                                            $tmp_name      = sanitize_text_field( wp_unslash( $_FILES['file']['tmp_name'][ $i ] ) );
-                                            $type          = sanitize_text_field( wp_unslash( $_FILES['file']['type'][ $i ] ) );
-											$sanitized_name = sanitize_file_name( $original_name );
-											$extension      = strtolower( pathinfo( $sanitized_name, PATHINFO_EXTENSION ) );
-								
-											// Check if file type and extension are allowed
-											if ( in_array( $extension, $allowed_extensions, true ) && $type === $allowed_mime_types[ $extension ] ) {
-												copy( $tmp_name, $tf_itinerary_fonts . '/' . $sanitized_name );
-											}
-										}
-									}
-								}
-								
-
 								if ( class_exists( $fieldClass ) ) {
 									$_field = new $fieldClass( $field, $data, $this->option_id );
 									$tf_option_value[ $field['id'] ] = $_field->sanitize();

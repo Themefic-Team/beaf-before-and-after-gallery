@@ -20,8 +20,8 @@ class PostType {
 		register_post_type( 'bafg',
 			array(
 				'labels' => array(
-					'name' => _x( 'Before and After Slider', 'beaf-before-and-after-gallery', 'beaf-before-and-after-gallery' ),
-					'singular_name' => _x( 'Before and After Slider', 'beaf-before-and-after-gallery', 'beaf-before-and-after-gallery' ),
+					'name' => __( 'Before and After Slider', 'beaf-before-and-after-gallery'),
+					'singular_name' => __( 'Before and After Slider', 'beaf-before-and-after-gallery'),
 					'add_new' => __( 'Add New', 'beaf-before-and-after-gallery' ),
 					'add_new_item' => __( 'Add New Slider', 'beaf-before-and-after-gallery' ),
 					'new_item' => __( 'New Slider', 'beaf-before-and-after-gallery' ),
