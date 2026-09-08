@@ -71,7 +71,7 @@ class BAFG_Before_After_Gallery {
 		 */
 		require_once( 'inc/Hook/Hook.php' );
 
-		$hook = new Hook;
+		$hook = new BafgHook;
 		$hook->init();
 
 	}
