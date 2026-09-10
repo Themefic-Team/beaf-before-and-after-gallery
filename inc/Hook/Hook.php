@@ -89,7 +89,7 @@ class BafgHook {
 			if ( class_exists( 'BafgAdminMenu' ) ) {
 				(new BafgAdminMenu)->bafg_register_menu_page();
 			}
-		} );
+		}, 20 );
 
 		/**
 		 * Widgets — include and register at widgets_init.
