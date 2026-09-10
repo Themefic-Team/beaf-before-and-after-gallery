@@ -66,6 +66,8 @@ class BafgAdminMenu {
 					background: #ca4a1f;
 					padding: 4px 6px;
 					border-radius: 5px;
+					line-height: 1.6;
+					display: inline-block;
 				}
 			</style>
 			<?php
