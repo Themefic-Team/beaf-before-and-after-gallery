@@ -64,7 +64,7 @@ class BafgAdminMenu {
 					color: #fff;
 					font-weight: bold;
 					background: #ca4a1f;
-					padding: 5px 10px;
+					padding: 4px 6px;
 					border-radius: 5px;
 				}
 			</style>
