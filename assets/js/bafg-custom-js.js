@@ -21,8 +21,10 @@
                 var clickToMove = true;
             }
 
+            var orientation = $(this).attr('bafg-orientation') === 'vertical' ? 'vertical' : 'horizontal';
+
             $(this).twentytwenty({
-                orientation: $(this).attr('bafg-orientation'),
+                orientation: orientation,
                 default_offset_pct: $(this).attr('bafg-default-offset'),
                 before_label: $(this).attr('bafg-before-label'),
                 after_label: $(this).attr('bafg-after-label'),
@@ -31,6 +33,11 @@
                 click_to_move: clickToMove
             });
  
+            $(document).ready(function () {
+                $(this).find('.bafg-preloader').delay(1000).fadeOut(300, function () {
+                    $(this).remove();
+                });
+            }.bind(this));
             
             //Label OutSide
             var bafgLabelOutside = $(this).data('label_outside');

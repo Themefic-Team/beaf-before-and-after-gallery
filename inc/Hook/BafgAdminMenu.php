@@ -1,0 +1,91 @@
+<?php
+// Exit if accessed directly
+if ( ! defined( 'ABSPATH' ) ) {
+	exit();
+}
+
+class BafgAdminMenu {
+
+	/*
+	 * Register admin menu
+	 * Retrun menu with pro submenu Batch
+	 */
+	public function bafg_register_menu_page() {
+
+		add_submenu_page(
+			'edit.php?post_type=bafg',
+			__( 'Gallery Generator', 'beaf-before-and-after-gallery' ),
+			__( 'Gallery Generator', 'beaf-before-and-after-gallery' ),
+			'manage_options',
+			'bafg_gallery',
+			array( $this, 'bafg_gallery_cb' )
+		);
+
+		add_submenu_page(
+			'edit.php?post_type=bafg',
+			__( 'Documentation', 'beaf-before-and-after-gallery' ),
+			__( 'Documentation', 'beaf-before-and-after-gallery' ),
+			'manage_options',
+			'https://themefic.com/docs/beaf/'
+		);
+
+		if ( ! is_plugin_active( 'beaf-before-and-after-gallery-pro/before-and-after-gallery-pro.php' ) ) {
+			add_submenu_page(
+				'edit.php?post_type=bafg',
+				'Go Pro',
+				'<span class="bafg-pro-link">★ Upgrade to Pro</span>',
+				'manage_options',
+				'https://themefic.com/plugins/beaf/pro/'
+			);
+
+			add_action( 'admin_footer', 'bafg_upgrade_to_pro_new_tab' );
+
+		}
+
+		/**
+		 * Open the Upgrade to Pro menu item in a new tab.
+		 */
+		function bafg_upgrade_to_pro_new_tab() {
+			?>
+			<script>
+				document.addEventListener('DOMContentLoaded', function () {
+					const links = document.querySelectorAll('#adminmenu a');
+
+					links.forEach(function (link) {
+						if (link.href.indexOf('themefic.com') !== -1) {
+							link.target = '_blank';
+							link.rel = 'noopener noreferrer';
+						}
+					});
+				});
+			</script>
+			<style>
+				.bafg-pro-link {
+					color: #fff;
+					font-weight: bold;
+					background: #ca4a1f;
+					padding: 4px 6px;
+					border-radius: 5px;
+					line-height: 1.6;
+					display: inline-block;
+				}
+			</style>
+			<?php
+		}
+
+	}
+
+	/*
+	 * Gallery generator callback
+	 */
+	public function bafg_gallery_cb() {
+
+		$template = BEAF_PLUGIN_PATH . 'inc/templates/bafg-gallery-generator.php';
+
+		$template = apply_filters( 'beaf_gallery_generator_template', $template );
+
+		if ( is_string( $template ) && file_exists( $template ) ) {
+			require $template;
+		}
+	}
+}
